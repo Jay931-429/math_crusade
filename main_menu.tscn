@@ -1,0 +1,104 @@
+[gd_scene load_steps=8 format=3 uid="uid://3wuq87vlgd5x"]
+
+[ext_resource type="Script" path="res://main_menu.gd" id="1_88mwd"]
+[ext_resource type="Texture2D" uid="uid://b7ipf2j260boq" path="res://asset/art/MainMenu.png" id="1_b5r7i"]
+[ext_resource type="Texture2D" uid="uid://d3ntnqih5pdip" path="res://asset/art/Start_BTN.png" id="3_btr6p"]
+[ext_resource type="Texture2D" uid="uid://duahp3hv42fex" path="res://asset/art/GameLogoN.png" id="3_nscwb"]
+[ext_resource type="Texture2D" uid="uid://du5kijj3ncnsv" path="res://asset/art/Exit_BTN.png" id="4_t70mv"]
+[ext_resource type="Texture2D" uid="uid://dutptnolt082l" path="res://asset/art/Info_BTN.png" id="5_7r241"]
+[ext_resource type="Texture2D" uid="uid://co0wuwt55wm3u" path="res://asset/art/Music_BTN.png" id="6_l10kb"]
+
+[node name="MainMenu" type="Node2D"]
+metadata/_edit_group_ = true
+
+[node name="UI Main_Menu" type="CanvasLayer" parent="."]
+
+[node name="Main Menu" type="Control" parent="UI Main_Menu"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_88mwd")
+metadata/_edit_use_anchors_ = true
+
+[node name="Main_Menu_BG" type="TextureRect" parent="UI Main_Menu/Main Menu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -12.975
+anchor_top = -23.375
+anchor_right = -12.975
+anchor_bottom = -23.375
+offset_right = 1080.0
+offset_bottom = 1912.0
+texture = ExtResource("1_b5r7i")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_group_ = true
+
+[node name="Main_Menu_UI" type="VBoxContainer" parent="UI Main_Menu/Main Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -310.0
+offset_top = -286.0
+offset_right = 310.0
+offset_bottom = 286.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+metadata/_edit_group_ = true
+
+[node name="TextureRect" type="TextureRect" parent="UI Main_Menu/Main Menu/Main_Menu_UI"]
+layout_direction = 1
+layout_mode = 2
+texture = ExtResource("3_nscwb")
+metadata/_edit_group_ = true
+
+[node name="Start" type="Button" parent="UI Main_Menu/Main Menu/Main_Menu_UI"]
+layout_mode = 2
+size_flags_horizontal = 4
+icon = ExtResource("3_btr6p")
+
+[node name="Exit" type="Button" parent="UI Main_Menu/Main Menu/Main_Menu_UI"]
+layout_mode = 2
+size_flags_horizontal = 4
+icon = ExtResource("4_t70mv")
+
+[node name="Info_Music" type="HBoxContainer" parent="UI Main_Menu/Main Menu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 8.913
+anchor_top = 16.136
+anchor_right = 8.913
+anchor_bottom = 16.136
+offset_left = -255.112
+offset_top = -28.6202
+offset_right = 184.888
+offset_bottom = 189.38
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Information" type="Button" parent="UI Main_Menu/Main Menu/Info_Music"]
+layout_mode = 2
+icon = ExtResource("5_7r241")
+
+[node name="Music" type="Button" parent="UI Main_Menu/Main Menu/Info_Music"]
+layout_mode = 2
+action_mode = 0
+icon = ExtResource("6_l10kb")
+
+[connection signal="pressed" from="UI Main_Menu/Main Menu/Main_Menu_UI/Start" to="UI Main_Menu/Main Menu" method="_on_start_pressed"]
+[connection signal="pressed" from="UI Main_Menu/Main Menu/Main_Menu_UI/Exit" to="UI Main_Menu/Main Menu" method="_on_exit_pressed"]
+[connection signal="pressed" from="UI Main_Menu/Main Menu/Info_Music/Information" to="UI Main_Menu/Main Menu" method="_on_information_pressed"]
+[connection signal="pressed" from="UI Main_Menu/Main Menu/Info_Music/Music" to="UI Main_Menu/Main Menu" method="_on_music_pressed"]
