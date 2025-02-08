@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dbd3jyt28pxdr"]
+[gd_scene load_steps=20 format=3 uid="uid://dbd3jyt28pxdr"]
 
 [ext_resource type="Texture2D" uid="uid://lv6tonb4grsn" path="res://asset/art/Stage1BGround.png" id="1_84xdg"]
 [ext_resource type="Script" path="res://test_stage.gd" id="1_lhojg"]
@@ -13,7 +13,43 @@
 [ext_resource type="Texture2D" uid="uid://df0jfo46bb0vu" path="res://asset/art/9.png" id="10_eew4s"]
 [ext_resource type="Texture2D" uid="uid://c47ly81oewps" path="res://asset/art/0.png" id="11_argfi"]
 [ext_resource type="Texture2D" uid="uid://caifnlfmelihq" path="res://asset/art/Replay_BTN.png" id="13_mwr50"]
-[ext_resource type="Texture2D" uid="uid://we7f2dsdr1wg" path="res://asset/art/T_pLAYER.png" id="14_6f1aq"]
+[ext_resource type="Texture2D" uid="uid://d0uuvgaahkeyb" path="res://asset/Idle.png" id="14_ae1g8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ix5rx"]
+atlas = ExtResource("14_ae1g8")
+region = Rect2(9, 8, 67, 78)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_quq4l"]
+atlas = ExtResource("14_ae1g8")
+region = Rect2(76, 8, 67, 78)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qyu3c"]
+atlas = ExtResource("14_ae1g8")
+region = Rect2(143, 8, 67, 78)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q01dx"]
+atlas = ExtResource("14_ae1g8")
+region = Rect2(210, 8, 67, 78)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a242u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ix5rx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_quq4l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qyu3c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q01dx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
 
 [node name="Test_Stage" type="Node2D"]
 script = ExtResource("1_lhojg")
@@ -108,12 +144,12 @@ offset_bottom = 1746.0
 scale = Vector2(2, 2)
 icon = ExtResource("13_mwr50")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-offset_left = 15.0
-offset_top = 415.0
-offset_right = 347.0
-offset_bottom = 830.0
-texture = ExtResource("14_6f1aq")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(180, 718)
+scale = Vector2(5.24813, 4.37821)
+sprite_frames = SubResource("SpriteFrames_a242u")
+frame = 2
+frame_progress = 0.423047
 
 [connection signal="pressed" from="Number_Button/HBoxContainer/one" to="." method="_on_one_pressed"]
 [connection signal="pressed" from="Number_Button/HBoxContainer/two" to="." method="_on_two_pressed"]
