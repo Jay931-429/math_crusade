@@ -66,11 +66,18 @@ texture = ExtResource("1_84xdg")
 metadata/_edit_use_anchors_ = true
 metadata/_edit_group_ = true
 
+[node name="ProblemLabel" type="Label" parent="."]
+offset_left = 100.0
+offset_top = 360.0
+offset_right = 954.0
+offset_bottom = 514.0
+theme_override_font_sizes/font_size = 100
+
 [node name="Label" type="Label" parent="."]
-offset_left = 80.0
-offset_top = 200.0
-offset_right = 1032.0
-offset_bottom = 464.0
+offset_left = 360.0
+offset_top = 696.0
+offset_right = 740.0
+offset_bottom = 833.0
 theme_override_font_sizes/font_size = 100
 
 [node name="Number_Button" type="VBoxContainer" parent="."]
@@ -80,68 +87,76 @@ offset_right = 360.0
 offset_bottom = 1108.0
 scale = Vector2(5, 5)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Number_Button"]
+[node name="num_row_123" type="HBoxContainer" parent="Number_Button"]
 layout_mode = 2
 
-[node name="one" type="Button" parent="Number_Button/HBoxContainer"]
+[node name="one" type="Button" parent="Number_Button/num_row_123"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 1
 icon = ExtResource("2_n7v2v")
 
-[node name="two" type="Button" parent="Number_Button/HBoxContainer"]
+[node name="two" type="Button" parent="Number_Button/num_row_123"]
 layout_mode = 2
 icon = ExtResource("3_xs24w")
 
-[node name="three" type="Button" parent="Number_Button/HBoxContainer"]
+[node name="three" type="Button" parent="Number_Button/num_row_123"]
 layout_mode = 2
 icon = ExtResource("4_q2egb")
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Number_Button"]
+[node name="num_row_456" type="HBoxContainer" parent="Number_Button"]
 layout_mode = 2
 
-[node name="four" type="Button" parent="Number_Button/HBoxContainer2"]
+[node name="four" type="Button" parent="Number_Button/num_row_456"]
 layout_mode = 2
 icon = ExtResource("5_kyca0")
 
-[node name="five" type="Button" parent="Number_Button/HBoxContainer2"]
+[node name="five" type="Button" parent="Number_Button/num_row_456"]
 layout_mode = 2
 icon = ExtResource("6_h38kp")
 
-[node name="six" type="Button" parent="Number_Button/HBoxContainer2"]
+[node name="six" type="Button" parent="Number_Button/num_row_456"]
 layout_mode = 2
 icon = ExtResource("7_ipuj7")
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="Number_Button"]
+[node name="num_row_789" type="HBoxContainer" parent="Number_Button"]
 layout_mode = 2
 
-[node name="seven" type="Button" parent="Number_Button/HBoxContainer3"]
+[node name="seven" type="Button" parent="Number_Button/num_row_789"]
 layout_mode = 2
 icon = ExtResource("8_pl84t")
 
-[node name="eight" type="Button" parent="Number_Button/HBoxContainer3"]
+[node name="eight" type="Button" parent="Number_Button/num_row_789"]
 layout_mode = 2
 icon = ExtResource("9_o1y6k")
 
-[node name="nine" type="Button" parent="Number_Button/HBoxContainer3"]
+[node name="nine" type="Button" parent="Number_Button/num_row_789"]
 layout_mode = 2
 icon = ExtResource("10_eew4s")
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="Number_Button"]
+[node name="num_row_0_clear_bckspace" type="HBoxContainer" parent="Number_Button"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="zero" type="Button" parent="Number_Button/HBoxContainer4"]
+[node name="clear" type="Button" parent="Number_Button/num_row_0_clear_bckspace"]
+layout_mode = 2
+text = "Clear"
+
+[node name="zero" type="Button" parent="Number_Button/num_row_0_clear_bckspace"]
 layout_mode = 2
 icon = ExtResource("11_argfi")
 alignment = 0
 icon_alignment = 1
 
+[node name="back" type="Button" parent="Number_Button/num_row_0_clear_bckspace"]
+layout_mode = 2
+text = "back"
+
 [node name="Placeholder_BackButton" type="Button" parent="."]
-offset_left = 64.0
-offset_top = 1648.0
-offset_right = 162.0
-offset_bottom = 1746.0
-scale = Vector2(2, 2)
+offset_left = 47.0
+offset_top = 1440.0
+offset_right = 145.0
+offset_bottom = 1538.0
+scale = Vector2(1.5, 1.5)
 icon = ExtResource("13_mwr50")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -151,14 +166,33 @@ sprite_frames = SubResource("SpriteFrames_a242u")
 frame = 2
 frame_progress = 0.423047
 
-[connection signal="pressed" from="Number_Button/HBoxContainer/one" to="." method="_on_one_pressed"]
-[connection signal="pressed" from="Number_Button/HBoxContainer/two" to="." method="_on_two_pressed"]
-[connection signal="pressed" from="Number_Button/HBoxContainer/three" to="." method="_on_three_pressed"]
-[connection signal="pressed" from="Number_Button/HBoxContainer2/four" to="." method="_on_four_pressed"]
-[connection signal="pressed" from="Number_Button/HBoxContainer2/five" to="." method="_on_five_pressed"]
-[connection signal="pressed" from="Number_Button/HBoxContainer2/six" to="." method="_on_six_pressed"]
-[connection signal="pressed" from="Number_Button/HBoxContainer3/seven" to="." method="_on_seven_pressed"]
-[connection signal="pressed" from="Number_Button/HBoxContainer3/eight" to="." method="_on_eight_pressed"]
-[connection signal="pressed" from="Number_Button/HBoxContainer3/nine" to="." method="_on_nine_pressed"]
-[connection signal="pressed" from="Number_Button/HBoxContainer4/zero" to="." method="_on_zero_pressed"]
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = 513.0
+offset_top = 55.0
+offset_right = 646.0
+offset_bottom = 167.0
+theme_override_font_sizes/font_size = 50
+
+[node name="Submit" type="Button" parent="."]
+offset_left = 822.0
+offset_top = 729.0
+offset_right = 1047.0
+offset_bottom = 874.0
+theme_override_font_sizes/font_size = 100
+text = "Pass
+"
+
+[connection signal="pressed" from="Number_Button/num_row_123/one" to="." method="_on_one_pressed"]
+[connection signal="pressed" from="Number_Button/num_row_123/two" to="." method="_on_two_pressed"]
+[connection signal="pressed" from="Number_Button/num_row_123/three" to="." method="_on_three_pressed"]
+[connection signal="pressed" from="Number_Button/num_row_456/four" to="." method="_on_four_pressed"]
+[connection signal="pressed" from="Number_Button/num_row_456/five" to="." method="_on_five_pressed"]
+[connection signal="pressed" from="Number_Button/num_row_456/six" to="." method="_on_six_pressed"]
+[connection signal="pressed" from="Number_Button/num_row_789/seven" to="." method="_on_seven_pressed"]
+[connection signal="pressed" from="Number_Button/num_row_789/eight" to="." method="_on_eight_pressed"]
+[connection signal="pressed" from="Number_Button/num_row_789/nine" to="." method="_on_nine_pressed"]
+[connection signal="pressed" from="Number_Button/num_row_0_clear_bckspace/clear" to="." method="_on_clear_pressed"]
+[connection signal="pressed" from="Number_Button/num_row_0_clear_bckspace/zero" to="." method="_on_zero_pressed"]
+[connection signal="pressed" from="Number_Button/num_row_0_clear_bckspace/back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="Placeholder_BackButton" to="." method="_on_placeholder_back_button_pressed"]
+[connection signal="pressed" from="Submit" to="." method="_on_submit_pressed"]
