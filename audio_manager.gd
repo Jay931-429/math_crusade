@@ -1,6 +1,6 @@
 #
 #extends Node
-#
+#NOTE gin comment ko tanan kay basi need pa ni? pero gods naman ang bgm
 ## "Global" script
 ## The purpose is to manage the backgroud music (especially background music)
 #

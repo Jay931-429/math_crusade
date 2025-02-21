@@ -1,15 +1,16 @@
 [gd_scene load_steps=9 format=3 uid="uid://3wuq87vlgd5x"]
 
 [ext_resource type="Script" path="res://main_menu.gd" id="1_88mwd"]
-[ext_resource type="Texture2D" uid="uid://b7ipf2j260boq" path="res://asset/art/MainMenu.png" id="1_b5r7i"]
-[ext_resource type="Texture2D" uid="uid://d3ntnqih5pdip" path="res://asset/art/Start_BTN.png" id="3_btr6p"]
-[ext_resource type="Texture2D" uid="uid://duahp3hv42fex" path="res://asset/art/GameLogoN.png" id="3_nscwb"]
-[ext_resource type="Texture2D" uid="uid://du5kijj3ncnsv" path="res://asset/art/Exit_BTN.png" id="4_t70mv"]
-[ext_resource type="Texture2D" uid="uid://dutptnolt082l" path="res://asset/art/Info_BTN.png" id="5_7r241"]
-[ext_resource type="Texture2D" uid="uid://co0wuwt55wm3u" path="res://asset/art/Music_BTN.png" id="6_l10kb"]
+[ext_resource type="Texture2D" uid="uid://b4mftjq5u8te6" path="res://asset/art/mainbg.webp" id="2_umbg5"]
+[ext_resource type="Texture2D" uid="uid://bfml8ivoc7tvb" path="res://asset/UI/Start.png" id="3_rnymq"]
+[ext_resource type="Texture2D" uid="uid://um41fbxwush" path="res://asset/UI/Exit.png" id="4_aw5bf"]
+[ext_resource type="Texture2D" uid="uid://xl14v81v1kve" path="res://asset/UI/Settings.png" id="5_nd0n2"]
+[ext_resource type="Texture2D" uid="uid://b6o5c744rnjt" path="res://asset/UI/Music.png" id="6_diy2a"]
+[ext_resource type="Texture2D" uid="uid://c2ysb5bjbqsgp" path="res://asset/UI/Title.png" id="8_fptkf"]
 [ext_resource type="AudioStream" uid="uid://tdv6dhifuq6v" path="res://asset/music/Zachz Winner, Фрози, Joyful - Boogie  Discoplug  NCS - Copyright Free Music.mp3" id="8_m3cqd"]
 
 [node name="MainMenu" type="Node2D"]
+position = Vector2(703, 129)
 metadata/_edit_group_ = true
 
 [node name="UI Main_Menu" type="CanvasLayer" parent="."]
@@ -39,7 +40,7 @@ anchor_right = -12.975
 anchor_bottom = -23.375
 offset_right = 1080.0
 offset_bottom = 1912.0
-texture = ExtResource("1_b5r7i")
+texture = ExtResource("2_umbg5")
 metadata/_edit_use_anchors_ = true
 metadata/_edit_group_ = true
 
@@ -59,49 +60,55 @@ grow_vertical = 2
 theme_override_constants/separation = 40
 metadata/_edit_group_ = true
 
-[node name="TextureRect" type="TextureRect" parent="UI Main_Menu/Main Menu/Main_Menu_UI"]
-layout_direction = 1
-layout_mode = 2
-texture = ExtResource("3_nscwb")
-metadata/_edit_group_ = true
-
 [node name="Start" type="Button" parent="UI Main_Menu/Main Menu/Main_Menu_UI"]
 layout_mode = 2
 size_flags_horizontal = 4
-icon = ExtResource("3_btr6p")
+icon = ExtResource("3_rnymq")
 
 [node name="Exit" type="Button" parent="UI Main_Menu/Main Menu/Main_Menu_UI"]
 layout_mode = 2
 size_flags_horizontal = 4
-icon = ExtResource("4_t70mv")
+icon = ExtResource("4_aw5bf")
 
 [node name="Info_Music" type="HBoxContainer" parent="UI Main_Menu/Main Menu"]
+custom_minimum_size = Vector2(10, 10)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 8.913
-anchor_top = 16.136
-anchor_right = 8.913
-anchor_bottom = 16.136
-offset_left = -255.112
-offset_top = -28.6202
-offset_right = 184.888
-offset_bottom = 189.38
+anchor_left = 8.035
+anchor_top = 15.871
+anchor_right = 8.035
+anchor_bottom = 15.871
+offset_left = -253.31
+offset_top = 95.025
+offset_right = 412.69
+offset_bottom = 426.025
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.7, 0.7)
 alignment = 1
 
 [node name="Information" type="Button" parent="UI Main_Menu/Main Menu/Info_Music"]
 layout_mode = 2
-icon = ExtResource("5_7r241")
+icon = ExtResource("5_nd0n2")
 
 [node name="Music" type="Button" parent="UI Main_Menu/Main Menu/Info_Music"]
 layout_mode = 2
 action_mode = 0
-icon = ExtResource("6_l10kb")
+icon = ExtResource("6_diy2a")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="UI Main_Menu/Main Menu/Info_Music/Music"]
 stream = ExtResource("8_m3cqd")
 autoplay = true
+
+[node name="TextureRect" type="TextureRect" parent="UI Main_Menu/Main Menu"]
+layout_direction = 1
+layout_mode = 2
+offset_left = -940.0
+offset_top = -1058.61
+offset_right = 980.0
+offset_bottom = 21.385
+texture = ExtResource("8_fptkf")
+metadata/_edit_group_ = true
 
 [connection signal="pressed" from="UI Main_Menu/Main Menu/Main_Menu_UI/Start" to="UI Main_Menu/Main Menu" method="_on_start_pressed"]
 [connection signal="pressed" from="UI Main_Menu/Main Menu/Main_Menu_UI/Exit" to="UI Main_Menu/Main Menu" method="_on_exit_pressed"]
