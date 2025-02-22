@@ -10,7 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://tdv6dhifuq6v" path="res://asset/music/Zachz Winner, Фрози, Joyful - Boogie  Discoplug  NCS - Copyright Free Music.mp3" id="8_m3cqd"]
 
 [node name="MainMenu" type="Node2D"]
-position = Vector2(703, 129)
+position = Vector2(557, 1134)
 metadata/_edit_group_ = true
 
 [node name="UI Main_Menu" type="CanvasLayer" parent="."]
@@ -103,10 +103,10 @@ autoplay = true
 [node name="TextureRect" type="TextureRect" parent="UI Main_Menu/Main Menu"]
 layout_direction = 1
 layout_mode = 2
-offset_left = -940.0
-offset_top = -1058.61
-offset_right = 980.0
-offset_bottom = 21.385
+offset_left = -528.63
+offset_top = -900.0
+offset_right = 571.37
+offset_bottom = -399.485
 texture = ExtResource("8_fptkf")
 metadata/_edit_group_ = true
 

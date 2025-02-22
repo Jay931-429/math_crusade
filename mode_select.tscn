@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://cny2rx3cqhjav"]
+[gd_scene load_steps=9 format=3 uid="uid://cny2rx3cqhjav"]
 
 [ext_resource type="Script" path="res://mode_select.gd" id="1_6n8di"]
-[ext_resource type="Texture2D" uid="uid://b7ipf2j260boq" path="res://asset/art/MainMenu.png" id="1_85q76"]
-[ext_resource type="Texture2D" uid="uid://caifnlfmelihq" path="res://asset/art/Replay_BTN.png" id="2_4jvqy"]
+[ext_resource type="Texture2D" uid="uid://dfndgc7gtex1b" path="res://asset/UI/Summer6.webp" id="2_jei0u"]
+[ext_resource type="Texture2D" uid="uid://dfw4lwr8x88cr" path="res://asset/UI/Tutorial.png" id="3_5lgd7"]
+[ext_resource type="Texture2D" uid="uid://cle7hjq53e0t8" path="res://asset/UI/Campain.png" id="4_ui4jy"]
+[ext_resource type="Texture2D" uid="uid://b7lxc70xa4hxo" path="res://asset/UI/Stages.png" id="5_2tk07"]
+[ext_resource type="Texture2D" uid="uid://bvo5tqr726hoe" path="res://asset/UI/Custom.png" id="6_ly364"]
+[ext_resource type="Texture2D" uid="uid://b5c62fsc3wbw4" path="res://asset/UI/Back.png" id="7_umi8p"]
+[ext_resource type="Texture2D" uid="uid://c270r4vfiwrol" path="res://asset/UI/Mode Select.png" id="8_uod75"]
 
 [node name="Stage_Select" type="Node2D"]
 script = ExtResource("1_6n8di")
@@ -15,55 +20,63 @@ anchor_right = -12.975
 anchor_bottom = -23.375
 offset_right = 1080.0
 offset_bottom = 1912.0
-texture = ExtResource("1_85q76")
+texture = ExtResource("2_jei0u")
 metadata/_edit_use_anchors_ = true
 metadata/_edit_group_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Mode_Select_UI" type="VBoxContainer" parent="CanvasLayer"]
+layout_direction = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -437.5
-offset_top = 600.0
-offset_right = 437.5
-offset_bottom = 778.0
+offset_left = -433.0
+offset_top = 623.885
+offset_right = 434.0
+offset_bottom = 1565.89
 grow_horizontal = 2
 theme_override_constants/separation = 50
 
-[node name="Mode Select" type="Label" parent="CanvasLayer/Mode_Select_UI"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 130
-text = "MODE SELECT"
-
 [node name="tutorial" type="Button" parent="CanvasLayer/Mode_Select_UI"]
+clip_contents = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
-text = "Tutorial"
+icon = ExtResource("3_5lgd7")
+icon_alignment = 1
 
 [node name="campaign" type="Button" parent="CanvasLayer/Mode_Select_UI"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
-text = "Campaign"
+icon = ExtResource("4_ui4jy")
+icon_alignment = 1
 
 [node name="stages" type="Button" parent="CanvasLayer/Mode_Select_UI"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
-text = "Stages"
+icon = ExtResource("5_2tk07")
+icon_alignment = 1
 
 [node name="custom_stage" type="Button" parent="CanvasLayer/Mode_Select_UI"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
-text = "Custom"
+icon = ExtResource("6_ly364")
+icon_alignment = 1
 
 [node name="BackMainMenu" type="Button" parent="."]
-offset_left = 48.0
-offset_top = 1627.0
-offset_right = 146.0
-offset_bottom = 1725.0
-scale = Vector2(2, 2)
-icon = ExtResource("2_4jvqy")
+offset_left = 45.33
+offset_top = 1698.01
+offset_right = 377.33
+offset_bottom = 2029.01
+scale = Vector2(0.505, 0.505)
+icon = ExtResource("7_umi8p")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -10.415
+offset_top = 344.365
+offset_right = 1089.58
+offset_bottom = 624.365
+texture = ExtResource("8_uod75")
 
 [connection signal="pressed" from="CanvasLayer/Mode_Select_UI/campaign" to="." method="_on_campaign_pressed"]
 [connection signal="pressed" from="BackMainMenu" to="." method="_on_back_main_menu_pressed"]
