@@ -43,24 +43,28 @@ clip_contents = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 icon = ExtResource("3_5lgd7")
+flat = true
 icon_alignment = 1
 
 [node name="campaign" type="Button" parent="CanvasLayer/Mode_Select_UI"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 icon = ExtResource("4_ui4jy")
+flat = true
 icon_alignment = 1
 
 [node name="stages" type="Button" parent="CanvasLayer/Mode_Select_UI"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 icon = ExtResource("5_2tk07")
+flat = true
 icon_alignment = 1
 
 [node name="custom_stage" type="Button" parent="CanvasLayer/Mode_Select_UI"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 icon = ExtResource("6_ly364")
+flat = true
 icon_alignment = 1
 
 [node name="BackMainMenu" type="Button" parent="."]
@@ -70,6 +74,7 @@ offset_right = 377.33
 offset_bottom = 2029.01
 scale = Vector2(0.505, 0.505)
 icon = ExtResource("7_umi8p")
+flat = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_left = -10.415
