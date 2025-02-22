@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://3wuq87vlgd5x"]
+[gd_scene load_steps=8 format=3 uid="uid://3wuq87vlgd5x"]
 
 [ext_resource type="Script" path="res://main_menu.gd" id="1_88mwd"]
 [ext_resource type="Texture2D" uid="uid://b4mftjq5u8te6" path="res://asset/art/mainbg.webp" id="2_umbg5"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://xl14v81v1kve" path="res://asset/UI/Settings.png" id="5_nd0n2"]
 [ext_resource type="Texture2D" uid="uid://b6o5c744rnjt" path="res://asset/UI/Music.png" id="6_diy2a"]
 [ext_resource type="Texture2D" uid="uid://c2ysb5bjbqsgp" path="res://asset/UI/Title.png" id="8_fptkf"]
-[ext_resource type="AudioStream" uid="uid://tdv6dhifuq6v" path="res://asset/music/Zachz Winner, Фрози, Joyful - Boogie  Discoplug  NCS - Copyright Free Music.mp3" id="8_m3cqd"]
 
 [node name="MainMenu" type="Node2D"]
 position = Vector2(557, 1134)
@@ -95,10 +94,6 @@ icon = ExtResource("5_nd0n2")
 layout_mode = 2
 action_mode = 0
 icon = ExtResource("6_diy2a")
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="UI Main_Menu/Main Menu/Info_Music/Music"]
-stream = ExtResource("8_m3cqd")
-autoplay = true
 
 [node name="TextureRect" type="TextureRect" parent="UI Main_Menu/Main Menu"]
 layout_direction = 1

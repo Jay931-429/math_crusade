@@ -17,6 +17,7 @@ var total_problems: int = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	generate_new_problem()
+	AudioManager.change_music("stage")
 
 func generate_new_problem() -> void:
 	# Generate two random numbers between 1 and 20

@@ -18,6 +18,7 @@ func _on_exit_pressed() -> void:
 # toggles the music on or off
 func _on_music_pressed() -> void:
 	AudioManager.toggle_music()
+	AudioManager.change_music("menu")
 
 # Sends user to the info or credit page
 func _on_information_pressed() -> void:
