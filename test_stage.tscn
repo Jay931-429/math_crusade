@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dbd3jyt28pxdr"]
+[gd_scene load_steps=20 format=3 uid="uid://dbd3jyt28pxdr"]
 
 [ext_resource type="Script" path="res://test_stage.gd" id="1_lhojg"]
 [ext_resource type="Texture2D" uid="uid://t8byymesw73q" path="res://asset/art/1A.png" id="2_n7v2v"]
@@ -14,7 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://c47ly81oewps" path="res://asset/art/0.png" id="11_argfi"]
 [ext_resource type="Texture2D" uid="uid://caifnlfmelihq" path="res://asset/art/Replay_BTN.png" id="13_mwr50"]
 [ext_resource type="Texture2D" uid="uid://d0uuvgaahkeyb" path="res://asset/art/Idle(1).png" id="14_ae1g8"]
-[ext_resource type="AudioStream" uid="uid://b7ysc58jask10" path="res://asset/music/Zachz Winner - blu  Pluggnb  NCS - Copyright Free Music.mp3" id="15_hq4x7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ix5rx"]
 atlas = ExtResource("14_ae1g8")
@@ -182,10 +181,6 @@ offset_bottom = 874.0
 theme_override_font_sizes/font_size = 100
 text = "Pass
 "
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("15_hq4x7")
-autoplay = true
 
 [connection signal="pressed" from="Number_Button/num_row_123/one" to="." method="_on_one_pressed"]
 [connection signal="pressed" from="Number_Button/num_row_123/two" to="." method="_on_two_pressed"]
