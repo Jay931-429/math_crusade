@@ -5,11 +5,11 @@
 [ext_resource type="Texture2D" uid="uid://bfml8ivoc7tvb" path="res://asset/UI/Start.png" id="3_rnymq"]
 [ext_resource type="Texture2D" uid="uid://um41fbxwush" path="res://asset/UI/Exit.png" id="4_aw5bf"]
 [ext_resource type="Texture2D" uid="uid://xl14v81v1kve" path="res://asset/UI/Settings.png" id="5_nd0n2"]
-[ext_resource type="Texture2D" uid="uid://b6o5c744rnjt" path="res://asset/UI/Music.png" id="6_diy2a"]
+[ext_resource type="Texture2D" uid="uid://dutptnolt082l" path="res://asset/art/Info_BTN.png" id="6_kyjti"]
 [ext_resource type="Texture2D" uid="uid://c2ysb5bjbqsgp" path="res://asset/UI/Title.png" id="8_fptkf"]
 
 [node name="MainMenu" type="Node2D"]
-position = Vector2(557, 1134)
+position = Vector2(601, 1014)
 metadata/_edit_group_ = true
 
 [node name="UI Main_Menu" type="CanvasLayer" parent="."]
@@ -88,15 +88,15 @@ grow_vertical = 2
 scale = Vector2(0.7, 0.7)
 alignment = 1
 
-[node name="Information" type="Button" parent="UI Main_Menu/Main Menu/Info_Music"]
+[node name="Settings" type="Button" parent="UI Main_Menu/Main Menu/Info_Music"]
 layout_mode = 2
 icon = ExtResource("5_nd0n2")
 flat = true
 
-[node name="Music" type="Button" parent="UI Main_Menu/Main Menu/Info_Music"]
+[node name="Credits" type="Button" parent="UI Main_Menu/Main Menu/Info_Music"]
 layout_mode = 2
 action_mode = 0
-icon = ExtResource("6_diy2a")
+icon = ExtResource("6_kyjti")
 flat = true
 
 [node name="TextureRect" type="TextureRect" parent="UI Main_Menu/Main Menu"]
@@ -111,5 +111,5 @@ metadata/_edit_group_ = true
 
 [connection signal="pressed" from="UI Main_Menu/Main Menu/Main_Menu_UI/Start" to="UI Main_Menu/Main Menu" method="_on_start_pressed"]
 [connection signal="pressed" from="UI Main_Menu/Main Menu/Main_Menu_UI/Exit" to="UI Main_Menu/Main Menu" method="_on_exit_pressed"]
-[connection signal="pressed" from="UI Main_Menu/Main Menu/Info_Music/Information" to="UI Main_Menu/Main Menu" method="_on_information_pressed"]
-[connection signal="pressed" from="UI Main_Menu/Main Menu/Info_Music/Music" to="UI Main_Menu/Main Menu" method="_on_music_pressed"]
+[connection signal="pressed" from="UI Main_Menu/Main Menu/Info_Music/Settings" to="UI Main_Menu/Main Menu" method="_on_settings_pressed"]
+[connection signal="pressed" from="UI Main_Menu/Main Menu/Info_Music/Credits" to="UI Main_Menu/Main Menu" method="_on_credits_pressed"]

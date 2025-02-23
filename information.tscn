@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://talictwt8sxo"]
+[gd_scene load_steps=5 format=3 uid="uid://talictwt8sxo"]
 
 [ext_resource type="Script" path="res://information.gd" id="1_gyy28"]
 [ext_resource type="Texture2D" uid="uid://b7ipf2j260boq" path="res://asset/art/MainMenu.png" id="1_w0cky"]
 [ext_resource type="Texture2D" uid="uid://caifnlfmelihq" path="res://asset/art/Replay_BTN.png" id="2_jd3aw"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_ae3w0"]
 
 [node name="Information" type="Node2D"]
 script = ExtResource("1_gyy28")
@@ -48,26 +50,33 @@ offset_bottom = 593.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Placeholder" type="Label" parent="CanvasLayer/Credits"]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.02, 0.951, 1)
-theme_override_font_sizes/font_size = 48
-text = "Lorem ipsum odor amet,
- consectetuer adipiscing elit. 
-Praesent amet nibh ultricies dui 
-mollis. Potenti rhoncus fermentum 
-accumsan elit mauris magna lacinia 
-pharetra? Nisi lacus tellus est himenaeos 
-erat sem vestibulum ut. 
-Ullamcorper natoque ultricies volutpat
- nostra orci congue metus turpis. 
-Parturient lacus scelerisque eros 
-luctus vivamus. 
-Scelerisque conubia integer
- sit ad aptent ipsum lacinia nascetur.
- Pharetra semper dolor fringilla sem, c
-ubilia mi erat elit. 
-Orci vulputate sapien pretium leo erat.
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_right = 8.0
+offset_bottom = 8.0
+icon = SubResource("CanvasTexture_ae3w0")
+
+[node name="Credits Placeholder" type="Label" parent="CanvasLayer"]
+offset_left = 102.0
+offset_top = 402.0
+offset_right = 955.0
+offset_bottom = 1385.0
+theme_override_font_sizes/font_size = 40
+text = "Math Crusade: A PEMDAS Based Math Game
+
+Developed by: Team Arasaka - BSIT-4A
+Developers: 
+
+Johnny Silverhand
+Bruce Lee
+Donald J. Trump
+Joe Biden
+
+Music Credits:
+
+Skrillex
+50 Cent
+Michael Jackson
+Lebron James
 
 "
 
