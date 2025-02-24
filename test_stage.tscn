@@ -1,19 +1,23 @@
-[gd_scene load_steps=20 format=3 uid="uid://dbd3jyt28pxdr"]
+[gd_scene load_steps=24 format=3 uid="uid://dbd3jyt28pxdr"]
 
 [ext_resource type="Script" path="res://test_stage.gd" id="1_lhojg"]
-[ext_resource type="Texture2D" uid="uid://t8byymesw73q" path="res://asset/art/1A.png" id="2_n7v2v"]
-[ext_resource type="Texture2D" uid="uid://bto61yb0ctdib" path="res://asset/art/bg1.png" id="2_txhgw"]
-[ext_resource type="Texture2D" uid="uid://c33ngistdg0bs" path="res://asset/art/2A.png" id="3_xs24w"]
-[ext_resource type="Texture2D" uid="uid://bpstw7brdntee" path="res://asset/art/3A.png" id="4_q2egb"]
-[ext_resource type="Texture2D" uid="uid://b56d2qbvkjbf0" path="res://asset/art/4A.png" id="5_kyca0"]
-[ext_resource type="Texture2D" uid="uid://bpemwv245dve7" path="res://asset/art/5A.png" id="6_h38kp"]
-[ext_resource type="Texture2D" uid="uid://caovvwf3ru0cy" path="res://asset/art/6.png" id="7_ipuj7"]
-[ext_resource type="Texture2D" uid="uid://bwu8fnxacjbxm" path="res://asset/art/7.png" id="8_pl84t"]
-[ext_resource type="Texture2D" uid="uid://bxyoxrwsy2jyj" path="res://asset/art/8.png" id="9_o1y6k"]
-[ext_resource type="Texture2D" uid="uid://df0jfo46bb0vu" path="res://asset/art/9.png" id="10_eew4s"]
-[ext_resource type="Texture2D" uid="uid://c47ly81oewps" path="res://asset/art/0.png" id="11_argfi"]
-[ext_resource type="Texture2D" uid="uid://caifnlfmelihq" path="res://asset/art/Replay_BTN.png" id="13_mwr50"]
+[ext_resource type="Texture2D" uid="uid://bf53xdywvisuo" path="res://asset/UI/Summer2.png" id="2_rjlvf"]
+[ext_resource type="Texture2D" uid="uid://dwldsahsmum7d" path="res://asset/UI/1.png" id="3_y4x0p"]
+[ext_resource type="Texture2D" uid="uid://byifsb6867sav" path="res://asset/UI/2.png" id="4_c63q8"]
+[ext_resource type="Texture2D" uid="uid://c8rseeirdyqfk" path="res://asset/UI/3.png" id="5_4312s"]
+[ext_resource type="Texture2D" uid="uid://cu3m3ho7b3kno" path="res://asset/UI/4.png" id="6_j3iey"]
+[ext_resource type="Texture2D" uid="uid://mxvx0bwdcd3w" path="res://asset/UI/5.png" id="7_i536j"]
+[ext_resource type="Texture2D" uid="uid://c5dw3ydc1s4yr" path="res://asset/UI/6.png" id="8_mjho3"]
+[ext_resource type="Texture2D" uid="uid://bffoin8e0nw4" path="res://asset/UI/7.png" id="9_t08fq"]
+[ext_resource type="Texture2D" uid="uid://b3hia88v6t47b" path="res://asset/UI/8.png" id="10_4mkos"]
+[ext_resource type="Texture2D" uid="uid://d18k506xrmby4" path="res://asset/UI/9.png" id="11_k3khu"]
+[ext_resource type="Texture2D" uid="uid://d1m1q7ev7ot2i" path="res://asset/UI/Clear.png" id="12_of2y3"]
+[ext_resource type="Texture2D" uid="uid://dxetc5bv3s2kd" path="res://asset/UI/0.png" id="13_6f78d"]
 [ext_resource type="Texture2D" uid="uid://d0uuvgaahkeyb" path="res://asset/art/Idle(1).png" id="14_ae1g8"]
+[ext_resource type="Texture2D" uid="uid://k0bwslbq0k4d" path="res://asset/UI/backspace.png" id="14_ho8uo"]
+[ext_resource type="Texture2D" uid="uid://b5c62fsc3wbw4" path="res://asset/UI/Back.png" id="15_wp4yp"]
+[ext_resource type="Texture2D" uid="uid://dawnge3ejgh62" path="res://asset/UI/pass.png" id="17_8t0q8"]
+[ext_resource type="Texture2D" uid="uid://b2capxdpvd4vu" path="res://asset/UI/Transparent.png" id="18_ttwnj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ix5rx"]
 atlas = ExtResource("14_ae1g8")
@@ -62,15 +66,15 @@ anchor_right = -12.975
 anchor_bottom = -23.375
 offset_right = 1080.0
 offset_bottom = 1912.0
-texture = ExtResource("2_txhgw")
+texture = ExtResource("2_rjlvf")
 metadata/_edit_use_anchors_ = true
 metadata/_edit_group_ = true
 
 [node name="ProblemLabel" type="Label" parent="."]
 offset_left = 100.0
-offset_top = 360.0
+offset_top = 300.0
 offset_right = 954.0
-offset_bottom = 514.0
+offset_bottom = 454.0
 theme_override_font_sizes/font_size = 100
 
 [node name="Label" type="Label" parent="."]
@@ -81,11 +85,11 @@ offset_bottom = 833.0
 theme_override_font_sizes/font_size = 100
 
 [node name="Number_Button" type="VBoxContainer" parent="."]
-offset_left = 232.0
-offset_top = 920.0
-offset_right = 360.0
-offset_bottom = 1108.0
-scale = Vector2(5, 5)
+offset_left = 221.58
+offset_top = 932.78
+offset_right = 853.58
+offset_bottom = 1774.78
+scale = Vector2(0.935, 0.935)
 
 [node name="num_row_123" type="HBoxContainer" parent="Number_Button"]
 layout_mode = 2
@@ -93,45 +97,63 @@ layout_mode = 2
 [node name="one" type="Button" parent="Number_Button/num_row_123"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 1
-icon = ExtResource("2_n7v2v")
+icon = ExtResource("3_y4x0p")
+flat = true
+icon_alignment = 1
 
 [node name="two" type="Button" parent="Number_Button/num_row_123"]
 layout_mode = 2
-icon = ExtResource("3_xs24w")
+icon = ExtResource("4_c63q8")
+flat = true
+icon_alignment = 1
 
 [node name="three" type="Button" parent="Number_Button/num_row_123"]
 layout_mode = 2
-icon = ExtResource("4_q2egb")
+icon = ExtResource("5_4312s")
+flat = true
+icon_alignment = 1
 
 [node name="num_row_456" type="HBoxContainer" parent="Number_Button"]
 layout_mode = 2
 
 [node name="four" type="Button" parent="Number_Button/num_row_456"]
 layout_mode = 2
-icon = ExtResource("5_kyca0")
+icon = ExtResource("6_j3iey")
+flat = true
+icon_alignment = 1
 
 [node name="five" type="Button" parent="Number_Button/num_row_456"]
 layout_mode = 2
-icon = ExtResource("6_h38kp")
+icon = ExtResource("7_i536j")
+flat = true
+icon_alignment = 1
 
 [node name="six" type="Button" parent="Number_Button/num_row_456"]
 layout_mode = 2
-icon = ExtResource("7_ipuj7")
+icon = ExtResource("8_mjho3")
+flat = true
+icon_alignment = 1
 
 [node name="num_row_789" type="HBoxContainer" parent="Number_Button"]
 layout_mode = 2
 
 [node name="seven" type="Button" parent="Number_Button/num_row_789"]
 layout_mode = 2
-icon = ExtResource("8_pl84t")
+icon = ExtResource("9_t08fq")
+flat = true
+icon_alignment = 1
 
 [node name="eight" type="Button" parent="Number_Button/num_row_789"]
 layout_mode = 2
-icon = ExtResource("9_o1y6k")
+icon = ExtResource("10_4mkos")
+flat = true
+icon_alignment = 1
 
 [node name="nine" type="Button" parent="Number_Button/num_row_789"]
 layout_mode = 2
-icon = ExtResource("10_eew4s")
+icon = ExtResource("11_k3khu")
+flat = true
+icon_alignment = 1
 
 [node name="num_row_0_clear_bckspace" type="HBoxContainer" parent="Number_Button"]
 layout_mode = 2
@@ -139,25 +161,32 @@ size_flags_horizontal = 4
 
 [node name="clear" type="Button" parent="Number_Button/num_row_0_clear_bckspace"]
 layout_mode = 2
-text = "Clear"
+icon = ExtResource("12_of2y3")
+flat = true
+icon_alignment = 1
 
 [node name="zero" type="Button" parent="Number_Button/num_row_0_clear_bckspace"]
 layout_mode = 2
-icon = ExtResource("11_argfi")
+icon = ExtResource("13_6f78d")
+flat = true
 alignment = 0
 icon_alignment = 1
 
 [node name="back" type="Button" parent="Number_Button/num_row_0_clear_bckspace"]
 layout_mode = 2
-text = "back"
+icon = ExtResource("14_ho8uo")
+flat = true
+icon_alignment = 1
 
 [node name="Placeholder_BackButton" type="Button" parent="."]
-offset_left = 47.0
-offset_top = 1440.0
-offset_right = 145.0
-offset_bottom = 1538.0
-scale = Vector2(1.5, 1.5)
-icon = ExtResource("13_mwr50")
+offset_left = 20.895
+offset_top = 1762.67
+offset_right = 352.895
+offset_bottom = 2093.67
+scale = Vector2(0.4, 0.4)
+icon = ExtResource("15_wp4yp")
+flat = true
+icon_alignment = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(180, 718)
@@ -175,12 +204,23 @@ theme_override_font_sizes/font_size = 50
 
 [node name="Submit" type="Button" parent="."]
 offset_left = 822.0
-offset_top = 729.0
+offset_top = 925.485
 offset_right = 1047.0
-offset_bottom = 874.0
+offset_bottom = 1131.48
 theme_override_font_sizes/font_size = 100
-text = "Pass
+text = "
 "
+icon = ExtResource("17_8t0q8")
+flat = true
+icon_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 75.21
+offset_top = 282.12
+offset_right = 4491.21
+offset_bottom = 1362.12
+scale = Vector2(0.21, 0.21)
+texture = ExtResource("18_ttwnj")
 
 [connection signal="pressed" from="Number_Button/num_row_123/one" to="." method="_on_one_pressed"]
 [connection signal="pressed" from="Number_Button/num_row_123/two" to="." method="_on_two_pressed"]
