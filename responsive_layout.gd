@@ -1,5 +1,6 @@
 extends Node
 
+# Placed on Autoload tab
 # "Global" Script
 # Reference resolution (design resolution)
 const REFERENCE_WIDTH := 1080  # Common mobile width

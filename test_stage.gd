@@ -1,25 +1,32 @@
 extends Node2D
-
 # Stage for testing purpose only
 # Called when the node enters the scene tree for the first time.
-
-
 @onready var display_label = $Label
 @onready var problem_label = $ProblemLabel  # Add this Label node for showing the math problem
 @onready var score_label = $ScoreLabel      # Add this Label node for showing the score
-
 var current_text = ""
 var max_digits = 10
 var current_answer: int = 0  # Stores the correct answer
 var score: int = 0
 var total_problems: int = 0
+var target_score: int = 8    # Win condition: need 8 correct answers
+var max_problems: int = 10   # Total problems to attempt before game ends
+
+# Stage information for navigation
+var current_stage_path: String = "res://test_stage.tscn"  # Update with your actual path
+var next_stage_path: String = "res://test_stage_PEMDAS.tscn"    # Update with your next stage path
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	generate_new_problem()
 	AudioManager.change_music("stage")
-
+	
 func generate_new_problem() -> void:
+	# Check if game should end
+	if total_problems >= max_problems:
+		end_game()
+		return
+		
 	# Generate two random numbers between 1 and 20
 	var num1 = randi() % 20 + 1
 	var num2 = randi() % 20 + 1
@@ -45,7 +52,7 @@ func generate_new_problem() -> void:
 	
 	# Clear the answer display
 	clear_display()
-
+	
 func check_answer() -> void:
 	if current_text != "":
 		var player_answer = int(current_text)
@@ -58,65 +65,85 @@ func check_answer() -> void:
 		total_problems += 1
 		score_label.text = "Score: " + str(score) + "/" + str(total_problems)
 		
-		# Wait 2 seconds before next problem
-		await get_tree().create_timer(2.0).timeout
-		generate_new_problem()
+		# If we've reached max_problems, end the game
+		if total_problems >= max_problems:
+			await get_tree().create_timer(2.0).timeout
+			end_game()
+		else:
+			# Wait 2 seconds before next problem
+			await get_tree().create_timer(2.0).timeout
+			generate_new_problem()
+
+func end_game() -> void:
+	# Instead of handling the end game here, we'll transition to the results stage
+	var player_won = score >= target_score
+	
+	# Use autoload to store the game results data
+	# First, make sure you have a GameData autoload script set up
+	GameData.set_results_data({
+		"player_score": score,
+		"max_score": total_problems,
+		"player_won": player_won,
+		"current_stage": current_stage_path,
+		"next_stage": next_stage_path if player_won else ""
+	})
+	
+	# Transition to results stage
+	get_tree().change_scene_to_file("res://after_stage.tscn")
 
 func add_number(number: String) -> void:
 	if current_text.length() < max_digits:
 		current_text += number
 		display_label.text = current_text
-
+		
 func clear_display() -> void:
 	current_text = ""
 	display_label.text = ""
-
+	
 func backspace() -> void:
 	if current_text.length() > 0:
 		current_text = current_text.substr(0, current_text.length() - 1)
 		display_label.text = current_text if current_text != "" else ""
-
+		
 # Button handlers
 func _on_zero_pressed() -> void:
 	add_number("0")
-
+	
 func _on_one_pressed() -> void:
 	add_number("1")
-
+	
 func _on_two_pressed() -> void:
 	add_number("2")
-
+	
 func _on_three_pressed() -> void:
 	add_number("3")
-
+	
 func _on_four_pressed() -> void:
 	add_number("4")
-
+	
 func _on_five_pressed() -> void:
 	add_number("5")
-
+	
 func _on_six_pressed() -> void:
 	add_number("6")
-
+	
 func _on_seven_pressed() -> void:
 	add_number("7")
-
+	
 func _on_eight_pressed() -> void:
 	add_number("8")
-
+	
 func _on_nine_pressed() -> void:
 	add_number("9")
-
+	
 func _on_clear_pressed() -> void:
 	clear_display()
-
 	
 func _on_back_pressed() -> void:
 	backspace()
-
+	
 func _on_submit_pressed() -> void:
 	check_answer()
-
-
+	
 func _on_placeholder_back_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://mode_select.tscn")

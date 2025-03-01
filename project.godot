@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 AudioManager="*res://audio_manager.gd"
 ResponsiveLayout="*res://responsive_layout.gd"
+GameData="*res://game_data.gd"
 
 [display]
 

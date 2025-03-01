@@ -1,6 +1,11 @@
 # need pa ni, in fact diri ang ga manage bg music, bale no need na mag add music kada scene
 # diri n lng ma insert
 # tapos amoo ni ang mute sng music or ga play
+
+
+# Placed on Autoload tab
+# "Global" Script
+
 extends Node
 
 # Dictionary to store different music tracks
