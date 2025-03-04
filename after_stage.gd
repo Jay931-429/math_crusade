@@ -14,7 +14,15 @@ var current_stage: String = ""
 var next_stage: String = ""
 
 func _ready() -> void:
-	# Setup UI based on passed data
+	# Load data from GameData
+	var data = GameData.get_results_data()
+	player_score = data.player_score
+	max_score = data.max_score
+	player_won = data.player_won
+	current_stage = data.current_stage
+	next_stage = data.next_stage
+	
+	# Setup UI based on loaded data
 	setup_ui()
 	
 	# Play appropriate music based on outcome
