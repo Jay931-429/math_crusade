@@ -13,6 +13,8 @@ var max_digits = 10
 var current_answer: int = 0  # Stores the correct answer
 var score: int = 0
 var total_problems: int = 0
+var target_score: int = 8    # Win condition: need 8 correct answers
+var max_problems: int = 10   # Total problems to attempt before game ends
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -20,31 +22,70 @@ func _ready() -> void:
 	AudioManager.change_music("stage")
 
 func generate_new_problem() -> void:
-	# Generate two random numbers between 1 and 20
+	# Check if game should end
+	if total_problems >= max_problems:
+		end_game()
+		return
+
+	# Generate three random numbers between 1 and 20
 	var num1 = randi() % 20 + 1
 	var num2 = randi() % 20 + 1
-	
-	# Randomly choose operation (0: addition, 1: subtraction, 2: multiplication)
+	var num3 = randi() % 20 + 1
+
+	# Randomly choose operation (0: addition/subtraction, 1: multiplication/division, 2: parentheses)
 	var operation = randi() % 3
-	
+
 	match operation:
-		0:  # Addition
-			current_answer = num1 + num2
-			problem_label.text = str(num1) + " + " + str(num2) + " = ?"
-		1:  # Subtraction
-			# Ensure larger number comes first
-			if num2 > num1:
-				var temp = num1
-				num1 = num2
-				num2 = temp
-			current_answer = num1 - num2
-			problem_label.text = str(num1) + " - " + str(num2) + " = ?"
-		2:  # Multiplication
-			current_answer = num1 * num2
-			problem_label.text = str(num1) + " × " + str(num2) + " = ?"
-	
+		0:  # Addition and Subtraction
+			var sub_operation = randi() % 2
+			if sub_operation == 0:
+				current_answer = num1 + num2
+				problem_label.text = str(num1) + " + " + str(num2) + " = ?"
+			else:
+				if num2 > num1:
+					var temp = num1
+					num1 = num2
+					num2 = temp
+				current_answer = num1 - num2
+				problem_label.text = str(num1) + " - " + str(num2) + " = ?"
+		1:  # Multiplication and Division
+			var sub_operation = randi() % 2
+			if sub_operation == 0:
+				current_answer = num1 * num2
+				problem_label.text = str(num1) + " × " + str(num2) + " = ?"
+			else:
+				# Ensure the result is an integer
+				while num1 % num2 != 0:
+					num1 = randi() % 20 + 1
+					num2 = randi() % 20 + 1
+				current_answer = num1 / num2
+				problem_label.text = str(num1) + " ÷ " + str(num2) + " = ?"
+		2:  # Parentheses (Basic PEMDAS)
+			var sub_operation = randi() % 3
+			if sub_operation == 0:
+				current_answer = num1 + (num2 * num3)
+				problem_label.text = str(num1) + " + (" + str(num2) + " × " + str(num3) + ") = ?"
+			elif sub_operation == 1:
+				if num2 > num1:
+					var temp = num1
+					num1 = num2
+					num2 = temp
+				current_answer = (num1 - num2) * num3
+				problem_label.text = "(" + str(num1) + " - " + str(num2) + ") × " + str(num3) + " = ?"
+			elif sub_operation == 2:
+				if num3 > num1:
+					var temp = num1
+					num1 = num3
+					num3 = temp
+				current_answer = num1 / (num2 + num3)
+				problem_label.text = str(num1) + " ÷ (" + str(num2) + " + " + str(num3) + ") = ?"
+
 	# Clear the answer display
 	clear_display()
+	
+func end_game() -> void:
+	# Instead of handling the end game here, we'll transition to the results stage
+	var player_won = score >= target_score
 
 func check_answer() -> void:
 	if current_text != "":

@@ -36,10 +36,6 @@ func setup_ui() -> void:
 	score_label.text = "Final Score: " + str(player_score) + "/" + str(max_score)
 
 # Button handlers
-func _on_stage_select_button_pressed() -> void:
-	# Go back to stage selection
-	get_tree().change_scene_to_file("res://mode_select.tscn")
-
 func _on_next_stage_button_pressed() -> void:
 	# Only visible and functional if player won
 	if player_won and next_stage != "":
@@ -49,3 +45,8 @@ func _on_next_stage_button_pressed() -> void:
 func _on_replay_placeholder_pressed() -> void:
 	# Replay the current stage
 	get_tree().change_scene_to_file(current_stage)
+
+
+func _on_mode_select_placeholder_pressed() -> void:
+	# Go back to stage selection
+	get_tree().change_scene_to_file("res://mode_select.tscn")
