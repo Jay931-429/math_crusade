@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctsdfl1ber13f"]
+
+[ext_resource type="Script" path="res://map_stage.gd" id="1_4fwhm"]
+[ext_resource type="Texture2D" uid="uid://boql4rf4voubv" path="res://asset/art/MAP_2.webp" id="2_ykn3m"]
+
+[node name="Map_stage_placeholder" type="Node2D"]
+script = ExtResource("1_4fwhm")
+
+[node name="Stage_BG" type="TextureRect" parent="."]
+anchors_preset = -1
+anchor_left = -12.975
+anchor_top = -23.375
+anchor_right = -12.975
+anchor_bottom = -23.375
+offset_right = 1080.0
+offset_bottom = 1912.0
+texture = ExtResource("2_ykn3m")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_group_ = true

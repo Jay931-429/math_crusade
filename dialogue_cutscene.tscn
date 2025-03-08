@@ -1,0 +1,107 @@
+[gd_scene load_steps=11 format=3 uid="uid://bbjv22olmxfm4"]
+
+[ext_resource type="Script" path="res://dialogue_cutscene_placeholder.gd" id="1_bf4as"]
+[ext_resource type="Texture2D" uid="uid://bf53xdywvisuo" path="res://asset/UI/Summer2.png" id="2_dtm46"]
+[ext_resource type="Texture2D" uid="uid://we7f2dsdr1wg" path="res://asset/art/T_pLAYER.png" id="5_clv5t"]
+[ext_resource type="Texture2D" uid="uid://b5c62fsc3wbw4" path="res://asset/UI/Back.png" id="15_ye5qc"]
+[ext_resource type="Texture2D" uid="uid://d0uuvgaahkeyb" path="res://asset/art/Idle(1).png" id="16_sw0v6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ix5rx"]
+atlas = ExtResource("16_sw0v6")
+region = Rect2(9, 8, 67, 78)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_quq4l"]
+atlas = ExtResource("16_sw0v6")
+region = Rect2(76, 8, 67, 78)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qyu3c"]
+atlas = ExtResource("16_sw0v6")
+region = Rect2(143, 8, 67, 78)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q01dx"]
+atlas = ExtResource("16_sw0v6")
+region = Rect2(210, 8, 67, 78)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a242u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ix5rx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_quq4l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qyu3c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q01dx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[node name="dialogue_cutscene_Placeholder" type="Node2D"]
+script = ExtResource("1_bf4as")
+
+[node name="Stage_BG" type="TextureRect" parent="."]
+anchors_preset = -1
+anchor_left = -12.975
+anchor_top = -23.375
+anchor_right = -12.975
+anchor_bottom = -23.375
+offset_right = 1080.0
+offset_bottom = 1912.0
+texture = ExtResource("2_dtm46")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_group_ = true
+
+[node name="Placeholder_BackButton" type="Button" parent="."]
+offset_left = 20.895
+offset_top = 1762.67
+offset_right = 352.895
+offset_bottom = 2093.67
+scale = Vector2(0.4, 0.4)
+icon = ExtResource("15_ye5qc")
+flat = true
+icon_alignment = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(180, 718)
+scale = Vector2(5.24813, 4.37821)
+sprite_frames = SubResource("SpriteFrames_a242u")
+frame = 2
+frame_progress = 0.423047
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = 513.0
+offset_top = 55.0
+offset_right = 646.0
+offset_bottom = 167.0
+theme_override_font_sizes/font_size = 50
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 656.0
+offset_top = 395.0
+offset_right = 1039.0
+offset_bottom = 872.0
+texture = ExtResource("5_clv5t")
+flip_h = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = 67.0
+offset_top = 1006.0
+offset_right = 1120.0
+offset_bottom = 1691.0
+theme_override_font_sizes/font_size = 60
+text = "INSERT DIALOGUE HERE 
+OR DUNNO?
+DEPENDS ON THE FINAL UI
+STYLE OR DESIGN
+
+lOREM IPSUM DOLOR SIC AMET
+TO BE MODIFIED
+CUZ THIS IS A PLACEHOLDER"
+
+[connection signal="pressed" from="Placeholder_BackButton" to="." method="_on_placeholder_back_button_pressed"]
