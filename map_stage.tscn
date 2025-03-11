@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ctsdfl1ber13f"]
 
-[ext_resource type="Script" path="res://map_stage.gd" id="1_4fwhm"]
+[ext_resource type="Script" uid="uid://cjggi36kdj6eo" path="res://map_stage.gd" id="1_4fwhm"]
 [ext_resource type="Texture2D" uid="uid://boql4rf4voubv" path="res://asset/art/MAP_2.webp" id="2_ykn3m"]
 
 [node name="Map_stage_placeholder" type="Node2D"]

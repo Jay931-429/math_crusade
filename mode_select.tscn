@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://cny2rx3cqhjav"]
 
-[ext_resource type="Script" path="res://mode_select.gd" id="1_6n8di"]
+[ext_resource type="Script" uid="uid://coop7favf6qgx" path="res://mode_select.gd" id="1_6n8di"]
 [ext_resource type="Texture2D" uid="uid://dfndgc7gtex1b" path="res://asset/UI/Summer6.webp" id="2_jei0u"]
 [ext_resource type="Texture2D" uid="uid://dfw4lwr8x88cr" path="res://asset/UI/Tutorial.png" id="3_5lgd7"]
 [ext_resource type="Texture2D" uid="uid://cle7hjq53e0t8" path="res://asset/UI/Campain.png" id="4_ui4jy"]
