@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bfml8ivoc7tvb" path="res://asset/UI/Start.png" id="3_rnymq"]
 [ext_resource type="Texture2D" uid="uid://um41fbxwush" path="res://asset/UI/Exit.png" id="4_aw5bf"]
 [ext_resource type="Texture2D" uid="uid://xl14v81v1kve" path="res://asset/UI/Settings.png" id="5_nd0n2"]
-[ext_resource type="Texture2D" uid="uid://dutptnolt082l" path="res://asset/art/Info_BTN.png" id="6_kyjti"]
+[ext_resource type="Texture2D" uid="uid://csvpcklwpvxl2" path="res://asset/UI/Info.png" id="6_qe12f"]
 [ext_resource type="Texture2D" uid="uid://c2ysb5bjbqsgp" path="res://asset/UI/Title.png" id="8_fptkf"]
 
 [node name="MainMenu" type="Node2D"]
@@ -96,7 +96,7 @@ flat = true
 [node name="Credits" type="Button" parent="UI Main_Menu/Main Menu/Info_Music"]
 layout_mode = 2
 action_mode = 0
-icon = ExtResource("6_kyjti")
+icon = ExtResource("6_qe12f")
 flat = true
 
 [node name="TextureRect" type="TextureRect" parent="UI Main_Menu/Main Menu"]
