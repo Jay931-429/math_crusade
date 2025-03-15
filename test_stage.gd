@@ -4,6 +4,9 @@ extends Node2D
 @onready var display_label = $Label
 @onready var problem_label = $ProblemLabel  # Add this Label node for showing the math problem
 @onready var score_label = $ScoreLabel      # Add this Label node for showing the score
+@onready var hp_label = $HPLabel            # Add this Label node for showing the HP
+@onready var timer_label = $TimerLabel      # Add this Label node for showing the timer
+
 var current_text = ""
 var max_digits = 10
 var current_answer: int = 0  # Stores the correct answer
@@ -12,18 +15,96 @@ var total_problems: int = 0
 var target_score: int = 8    # Win condition: need 8 correct answers
 var max_problems: int = 10   # Total problems to attempt before game ends
 
+# HP System variables
+var max_hp: int = 10          # Maximum health points
+var current_hp: int = 10      # Current health points
+
+# Timer System variables
+var max_time: float = 10.0   # Time limit per question in seconds
+var current_time: float = 0.0 # Current time elapsed
+var timer_active: bool = false # Flag to track if timer is active
+
 # Stage information for navigation
 var current_stage_path: String = "res://test_stage.tscn"  # Update with your actual path
 var next_stage_path: String = "res://test_stage_PEMDAS.tscn"    # Update with your next stage path
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# Initialize HP display
+	update_hp_display()
+	
+	# Start the first problem
 	generate_new_problem()
 	AudioManager.change_music("stage")
+
+# Called every frame
+func _process(delta: float) -> void:
+	if timer_active:
+		# Update the timer
+		current_time -= delta
+		
+		# Update timer display
+		update_timer_display()
+		
+		# Check if time has run out
+		if current_time <= 0:
+			timer_active = false
+			time_up()
+
+func update_hp_display() -> void:
+	# Update the HP display with hearts or text
+	hp_label.text = "HP: " + "❤ ".repeat(current_hp)
+
+func update_timer_display() -> void:
+	# Update the timer display
+	var seconds = int(current_time) 
+	var milliseconds = int((current_time - seconds) * 10)
+	timer_label.text = "Time: %d.%d" % [seconds, milliseconds]
+	
+	# Change color based on remaining time
+	if current_time <= 3.0:
+		timer_label.add_theme_color_override("font_color", Color(1, 0, 0)) # Red
+	else:
+		timer_label.remove_theme_color_override("font_color") # Default color
+
+func start_timer() -> void:
+	# Reset and start the timer
+	current_time = max_time
+	timer_active = true
+	update_timer_display()
+
+func time_up() -> void:
+	# What happens when time is up for a question
+	problem_label.text = "Time's up! The answer was " + str(current_answer)
+	lose_hp()
+	total_problems += 1
+	score_label.text = "Score: " + str(score) + "/" + str(total_problems)
+	
+	# Check if game should end due to max problems
+	if total_problems >= max_problems:
+		await get_tree().create_timer(2.0).timeout
+		end_game()
+	else:
+		# Wait 2 seconds before next problem
+		await get_tree().create_timer(2.0).timeout
+		generate_new_problem()
+
+func lose_hp() -> void:
+	# Decrease HP and update display
+	current_hp -= 1
+	update_hp_display()
+	
+	# Play damage sound if available
+	# AudioManager.play_sound("damage")
+	
+	# Check if out of HP
+	if current_hp <= 0:
+		await get_tree().create_timer(1.0).timeout
+		end_game()
 	
 func generate_new_problem() -> void:
 	# Check if game should end
-	if total_problems >= max_problems:
+	if total_problems >= max_problems || current_hp <= 0:
 		end_game()
 		return
 		
@@ -53,20 +134,31 @@ func generate_new_problem() -> void:
 	# Clear the answer display
 	clear_display()
 	
+	# Start the timer for this question
+	start_timer()
+	
 func check_answer() -> void:
 	if current_text != "":
+		# Stop the timer
+		timer_active = false
+		
 		var player_answer = int(current_text)
 		if player_answer == current_answer:
 			score += 1
 			problem_label.text = "Correct!"
+			# Play correct sound if available
+			# AudioManager.play_sound("correct")
 		else:
 			problem_label.text = "Wrong! The answer was " + str(current_answer)
+			lose_hp()
+			# Play wrong sound if available
+			# AudioManager.play_sound("wrong")
 		
 		total_problems += 1
 		score_label.text = "Score: " + str(score) + "/" + str(total_problems)
 		
-		# If we've reached max_problems, end the game
-		if total_problems >= max_problems:
+		# If we've reached max_problems or out of HP, end the game
+		if total_problems >= max_problems || current_hp <= 0:
 			await get_tree().create_timer(2.0).timeout
 			end_game()
 		else:
@@ -75,17 +167,21 @@ func check_answer() -> void:
 			generate_new_problem()
 
 func end_game() -> void:
-	# Instead of handling the end game here, we'll transition to the results stage
-	var player_won = score >= target_score
+	# Stop the timer
+	timer_active = false
+	
+	# Check win condition: enough score AND still has HP
+	var player_won = score >= target_score && current_hp > 0
 	
 	# Use autoload to store the game results data
-	# First, make sure you have a GameData autoload script set up
 	GameData.set_results_data({
 		"player_score": score,
 		"max_score": total_problems,
 		"player_won": player_won,
 		"current_stage": current_stage_path,
-		"next_stage": next_stage_path if player_won else ""
+		"next_stage": next_stage_path if player_won else "",
+		"remaining_hp": current_hp,  # Pass HP information to results screen
+		"max_hp": max_hp
 	})
 	
 	# Transition to results stage

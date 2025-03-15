@@ -13,7 +13,9 @@ var results_data = {
 	"max_score": 0,
 	"player_won": false,
 	"current_stage": "",
-	"next_stage": ""
+	"next_stage": "",
+	"remaining_hp": 0,
+	"max_hp": 10
 }
 
 func set_results_data(data: Dictionary) -> void:

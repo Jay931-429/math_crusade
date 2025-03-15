@@ -214,6 +214,18 @@ icon = ExtResource("17_8t0q8")
 flat = true
 icon_alignment = 1
 
+[node name="HPLabel" type="Label" parent="."]
+offset_left = 97.0
+offset_top = 80.0
+offset_right = 137.0
+offset_bottom = 103.0
+
+[node name="TimerLabel" type="Label" parent="."]
+offset_left = 505.0
+offset_top = 100.0
+offset_right = 545.0
+offset_bottom = 123.0
+
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_left = 75.21
 offset_top = 282.12

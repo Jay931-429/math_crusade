@@ -6,12 +6,15 @@ extends Node2D
 @onready var score_label = $ScoreLabel
 @onready var next_stage_button = $NextStageButton
 
+
 # Variables to store passed data
 var player_score: int = 0
 var max_score: int = 10
 var player_won: bool = false
 var current_stage: String = ""
 var next_stage: String = ""
+var remaining_hp: int = 0
+var max_hp: int = 10
 
 func _ready() -> void:
 	# Load data from GameData
@@ -21,6 +24,8 @@ func _ready() -> void:
 	player_won = data.player_won
 	current_stage = data.current_stage
 	next_stage = data.next_stage
+	remaining_hp = data.remaining_hp
+	max_hp = data.max_hp
 	
 	# Setup UI based on loaded data
 	setup_ui()
