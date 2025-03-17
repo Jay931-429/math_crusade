@@ -84,4 +84,5 @@ offset_bottom = 624.365
 texture = ExtResource("8_uod75")
 
 [connection signal="pressed" from="CanvasLayer/Mode_Select_UI/campaign" to="." method="_on_campaign_pressed"]
+[connection signal="pressed" from="CanvasLayer/Mode_Select_UI/stages" to="." method="_on_stages_pressed"]
 [connection signal="pressed" from="BackMainMenu" to="." method="_on_back_main_menu_pressed"]

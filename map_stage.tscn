@@ -1,69 +1,49 @@
-[gd_scene load_steps=4 format=3 uid="uid://ctsdfl1ber13f"]
+[gd_scene load_steps=6 format=3 uid="uid://ctsdfl1ber13f"]
 
 [ext_resource type="Script" uid="uid://cjggi36kdj6eo" path="res://map_stage.gd" id="1_4fwhm"]
-[ext_resource type="Texture2D" uid="uid://boql4rf4voubv" path="res://asset/art/MAP_2.webp" id="2_ykn3m"]
-[ext_resource type="Texture2D" uid="uid://diii5jybxtthr" path="res://asset/art/Star_03.png" id="3_6l1xu"]
+[ext_resource type="Texture2D" uid="uid://byc5d0046dvgt" path="res://asset/art/MAP_2_2.png" id="2_wisy0"]
+[ext_resource type="Texture2D" uid="uid://jpw0irkdnm41" path="res://asset/art/Star_02.png" id="3_6l1xu"]
+[ext_resource type="Script" uid="uid://bd5sdgmdaq78r" path="res://stage_button_1.gd" id="3_78bqc"]
+[ext_resource type="Texture2D" uid="uid://diii5jybxtthr" path="res://asset/art/Star_03.png" id="4_naa6w"]
 
-[node name="Map_stage_placeholder" type="Node2D"]
+[node name="MapStage" type="Node2D"]
 script = ExtResource("1_4fwhm")
 
-[node name="Stage_BG" type="TextureRect" parent="."]
-anchors_preset = -1
-anchor_left = -12.975
-anchor_top = -23.375
-anchor_right = -12.975
-anchor_bottom = -23.375
-offset_right = 1080.0
-offset_bottom = 1912.0
-texture = ExtResource("2_ykn3m")
-metadata/_edit_use_anchors_ = true
-metadata/_edit_group_ = true
+[node name="MapContainer" type="Node2D" parent="."]
 
-[node name="Label" type="Label" parent="."]
-offset_left = 257.0
-offset_top = 57.0
-offset_right = 814.0
-offset_bottom = 216.0
+[node name="BackgroundImage" type="Sprite2D" parent="MapContainer"]
+position = Vector2(550, 967)
+scale = Vector2(1.12354, 1.24219)
+texture = ExtResource("2_wisy0")
+
+[node name="campaign_label" type="Label" parent="MapContainer"]
+offset_left = 266.0
+offset_top = 34.0
+offset_right = 823.0
+offset_bottom = 193.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 100
 text = "CAMPAIGN "
 
-[node name="stage_marker_placeholder" type="TextureRect" parent="."]
-offset_left = 173.0
-offset_top = 1087.0
-offset_right = 465.0
-offset_bottom = 1367.0
-scale = Vector2(0.5, 0.5)
+[node name="StageButton1" type="Button" parent="MapContainer"]
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("3_78bqc")
+
+[node name="StageLabel1" type="Label" parent="MapContainer/StageButton1"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="LockedIcon" type="Sprite2D" parent="MapContainer/StageButton1"]
+position = Vector2(418, 1153)
 texture = ExtResource("3_6l1xu")
 
-[node name="stage_marker_placeholder2" type="TextureRect" parent="."]
-offset_left = 588.0
-offset_top = 1140.0
-offset_right = 880.0
-offset_bottom = 1420.0
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_6l1xu")
+[node name="StageButton2" type="Button" parent="MapContainer"]
+offset_left = -381.0
+offset_top = 542.0
+offset_right = -81.0
+offset_bottom = 830.0
+icon = ExtResource("4_naa6w")
 
-[node name="stage_marker_placeholder3" type="TextureRect" parent="."]
-offset_left = 343.0
-offset_top = 404.0
-offset_right = 635.0
-offset_bottom = 684.0
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_6l1xu")
-
-[node name="stage_marker_placeholder4" type="TextureRect" parent="."]
-offset_left = 815.0
-offset_top = 634.0
-offset_right = 1107.0
-offset_bottom = 914.0
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_6l1xu")
-
-[node name="stage_marker_placeholder5" type="TextureRect" parent="."]
-offset_left = 845.0
-offset_top = 166.0
-offset_right = 1137.0
-offset_bottom = 446.0
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_6l1xu")
+[connection signal="pressed" from="MapContainer/StageButton1" to="." method="_on_stage_button_1_pressed"]
