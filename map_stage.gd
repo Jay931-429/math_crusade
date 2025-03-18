@@ -6,8 +6,8 @@ extends Node2D
 @onready var viewport_size = get_viewport_rect().size
 
 # Map dimensions
-var map_width: float = 550.0
-var map_height: float = 967.0
+var map_width: float = 618.374
+var map_height: float = 1097.75
 
 # Variables for tracking touch/drag input
 var touching: bool = false

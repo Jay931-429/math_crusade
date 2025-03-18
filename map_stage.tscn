@@ -12,8 +12,8 @@ script = ExtResource("1_4fwhm")
 [node name="MapContainer" type="Node2D" parent="."]
 
 [node name="BackgroundImage" type="Sprite2D" parent="MapContainer"]
-position = Vector2(550, 967)
-scale = Vector2(1.12354, 1.24219)
+position = Vector2(618.374, 1097.75)
+scale = Vector2(1.56799, 1.81934)
 texture = ExtResource("2_wisy0")
 
 [node name="campaign_label" type="Label" parent="MapContainer"]
@@ -36,14 +36,14 @@ offset_right = 40.0
 offset_bottom = 23.0
 
 [node name="LockedIcon" type="Sprite2D" parent="MapContainer/StageButton1"]
-position = Vector2(418, 1153)
+position = Vector2(367, 1429)
 texture = ExtResource("3_6l1xu")
 
 [node name="StageButton2" type="Button" parent="MapContainer"]
-offset_left = -381.0
-offset_top = 542.0
-offset_right = -81.0
-offset_bottom = 830.0
+offset_left = -657.0
+offset_top = 234.0
+offset_right = -357.0
+offset_bottom = 522.0
 icon = ExtResource("4_naa6w")
 
 [connection signal="pressed" from="MapContainer/StageButton1" to="." method="_on_stage_button_1_pressed"]
