@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://ctsdfl1ber13f"]
+[gd_scene load_steps=5 format=3 uid="uid://ctsdfl1ber13f"]
 
 [ext_resource type="Script" uid="uid://cjggi36kdj6eo" path="res://map_stage.gd" id="1_4fwhm"]
 [ext_resource type="Texture2D" uid="uid://byc5d0046dvgt" path="res://asset/art/MAP_2_2.png" id="2_wisy0"]
 [ext_resource type="Texture2D" uid="uid://jpw0irkdnm41" path="res://asset/art/Star_02.png" id="3_6l1xu"]
-[ext_resource type="Script" uid="uid://bd5sdgmdaq78r" path="res://stage_button_1.gd" id="3_78bqc"]
 [ext_resource type="Texture2D" uid="uid://diii5jybxtthr" path="res://asset/art/Star_03.png" id="4_naa6w"]
 
 [node name="MapStage" type="Node2D"]
@@ -12,8 +11,8 @@ script = ExtResource("1_4fwhm")
 [node name="MapContainer" type="Node2D" parent="."]
 
 [node name="BackgroundImage" type="Sprite2D" parent="MapContainer"]
-position = Vector2(618.374, 1097.75)
-scale = Vector2(1.56799, 1.81934)
+position = Vector2(549.438, 966.5)
+scale = Vector2(1.13238, 1.25456)
 texture = ExtResource("2_wisy0")
 
 [node name="campaign_label" type="Label" parent="MapContainer"]
@@ -26,9 +25,11 @@ theme_override_font_sizes/font_size = 100
 text = "CAMPAIGN "
 
 [node name="StageButton1" type="Button" parent="MapContainer"]
-offset_right = 8.0
-offset_bottom = 8.0
-script = ExtResource("3_78bqc")
+offset_left = 193.0
+offset_top = 1015.0
+offset_right = 493.0
+offset_bottom = 1303.0
+icon = ExtResource("3_6l1xu")
 
 [node name="StageLabel1" type="Label" parent="MapContainer/StageButton1"]
 layout_mode = 0
@@ -36,14 +37,14 @@ offset_right = 40.0
 offset_bottom = 23.0
 
 [node name="LockedIcon" type="Sprite2D" parent="MapContainer/StageButton1"]
-position = Vector2(367, 1429)
+position = Vector2(151, 142)
 texture = ExtResource("3_6l1xu")
 
 [node name="StageButton2" type="Button" parent="MapContainer"]
-offset_left = -657.0
-offset_top = 234.0
-offset_right = -357.0
-offset_bottom = 522.0
+offset_left = 671.0
+offset_top = 289.0
+offset_right = 971.0
+offset_bottom = 577.0
 icon = ExtResource("4_naa6w")
 
 [connection signal="pressed" from="MapContainer/StageButton1" to="." method="_on_stage_button_1_pressed"]
