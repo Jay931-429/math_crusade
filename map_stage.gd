@@ -36,34 +36,39 @@ func _ready() -> void:
 	
 	# Update all stage buttons
 	update_stage_buttons()
+	
+# Add this variable to your class
+var boundary_multiplier: float = 1.5  # Adjust this value to increase boundaries
 
 func calculate_boundaries() -> void:
 	# Get the effective map size (considering scale)
 	var effective_map_width = map_width * map_container.scale.x
 	var effective_map_height = map_height * map_container.scale.y
 	
-	# Calculate boundaries to keep the map visible
-	# This allows dragging the map to see all parts, but prevents dragging it completely off-screen
+	# Set boundaries to exactly match the map dimensions
+	var padding = 50.0
+	min_position = Vector2(-effective_map_width/2, -effective_map_height/2)
+	max_position = Vector2(effective_map_width/2, effective_map_height/2)
 	
-	# If map is smaller than viewport, center it and allow limited dragging
+	# Increase the allowed drag area by using the full map dimensions
 	if effective_map_width <= viewport_size.x:
-		# Small padding to allow some movement but keep map mostly centered
-		var x_padding = effective_map_width * 0.1
-		min_position = Vector2(-x_padding, 0)
-		max_position = Vector2(x_padding, 0)
+		# Allow full map dragging instead of limited padding
+		var x_excess = effective_map_width * 0.5
+		min_position = Vector2(-x_excess, 0)
+		max_position = Vector2(x_excess, 0)
 	else:
-		# Map is wider than screen, allow full exploration of map width
-		var x_excess = (effective_map_width - viewport_size.x) * 0.5
+		# Increase the excess to allow more dragging
+		var x_excess = effective_map_width * 0.75
 		min_position = Vector2(-x_excess, 0)
 		max_position = Vector2(x_excess, 0)
 	
-	# Same logic for height
+	# Same for height
 	if effective_map_height <= viewport_size.y:
-		var y_padding = effective_map_height * 0.1
-		min_position.y = -y_padding
-		max_position.y = y_padding
+		var y_excess = effective_map_height * 0.5
+		min_position.y = -y_excess
+		max_position.y = y_excess
 	else:
-		var y_excess = (effective_map_height - viewport_size.y) * 0.5
+		var y_excess = effective_map_height * 0.75
 		min_position.y = -y_excess
 		max_position.y = y_excess
 	
