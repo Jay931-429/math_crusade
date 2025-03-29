@@ -11,7 +11,7 @@ extends Node
 # Dictionary to store different music tracks
 var music_tracks = {
 	"menu": "res://asset/music/Zachz Winner, Фрози, Joyful - Boogie  Discoplug  NCS - Copyright Free Music.mp3",
-	"stage": "res://asset/music/Zachz Winner - blu  Pluggnb  NCS - Copyright Free Music.mp3",
+	"stage1": "res://asset/music/The Wild New World.mp3",
 	# Add more tracks as needed
 	#"game_over": "res://asset/music/game_over_music.mp3",
 	#"victory": "res://asset/music/victory_music.mp3"
