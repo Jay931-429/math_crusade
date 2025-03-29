@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://cny2rx3cqhjav"]
 
 [ext_resource type="Script" uid="uid://coop7favf6qgx" path="res://mode_select.gd" id="1_6n8di"]
-[ext_resource type="Texture2D" uid="uid://dfndgc7gtex1b" path="res://asset/UI/Summer6.webp" id="2_jei0u"]
+[ext_resource type="Texture2D" uid="uid://dhs5rlbdm23nl" path="res://asset/art/minmax-ai.jpeg" id="2_ynojf"]
 [ext_resource type="Texture2D" uid="uid://dfw4lwr8x88cr" path="res://asset/UI/Tutorial.png" id="3_5lgd7"]
 [ext_resource type="Texture2D" uid="uid://cle7hjq53e0t8" path="res://asset/UI/Campain.png" id="4_ui4jy"]
 [ext_resource type="Texture2D" uid="uid://b7lxc70xa4hxo" path="res://asset/UI/Stages.png" id="5_2tk07"]
@@ -20,7 +20,7 @@ anchor_right = -12.975
 anchor_bottom = -23.375
 offset_right = 1080.0
 offset_bottom = 1912.0
-texture = ExtResource("2_jei0u")
+texture = ExtResource("2_ynojf")
 metadata/_edit_use_anchors_ = true
 metadata/_edit_group_ = true
 
@@ -32,9 +32,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -433.0
-offset_top = 623.885
+offset_top = 723.885
 offset_right = 434.0
-offset_bottom = 1565.89
+offset_bottom = 1665.89
 grow_horizontal = 2
 theme_override_constants/separation = 50
 
@@ -78,9 +78,9 @@ flat = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_left = -10.415
-offset_top = 344.365
+offset_top = 444.365
 offset_right = 1089.58
-offset_bottom = 624.365
+offset_bottom = 724.365
 texture = ExtResource("8_uod75")
 
 [connection signal="pressed" from="CanvasLayer/Mode_Select_UI/campaign" to="." method="_on_campaign_pressed"]
