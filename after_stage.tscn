@@ -62,10 +62,10 @@ offset_bottom = 573.0
 theme_override_font_sizes/font_size = 50
 
 [node name="medal_star_placeholder" type="TextureRect" parent="."]
-offset_left = 65.0
-offset_top = 892.0
-offset_right = 357.0
-offset_bottom = 1172.0
+offset_left = 166.0
+offset_top = 966.0
+offset_right = 458.0
+offset_bottom = 1246.0
 texture = ExtResource("6_kk7r6")
 
 [node name="medal_star_placeholder2" type="TextureRect" parent="."]
@@ -76,10 +76,10 @@ offset_bottom = 1029.0
 texture = ExtResource("6_kk7r6")
 
 [node name="medal_star_placeholder3" type="TextureRect" parent="."]
-offset_left = 781.0
-offset_top = 869.0
-offset_right = 1073.0
-offset_bottom = 1149.0
+offset_left = 676.0
+offset_top = 979.0
+offset_right = 968.0
+offset_bottom = 1259.0
 texture = ExtResource("6_kk7r6")
 
 [connection signal="pressed" from="back_main_Mmenu_placeholder" to="." method="_on_back_main_mmenu_placeholder_pressed"]
