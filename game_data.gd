@@ -34,19 +34,19 @@ var stage_progress = {
 
 func set_results_data(data: Dictionary) -> void:
 	results_data = data
-	
+
 	# Update stage progress if player won
 	if data.player_won and data.current_stage != "":
 		# Mark current stage as completed
 		var current_stage_name = data.current_stage.get_file().get_basename()
 		if stage_progress.has(current_stage_name):
 			stage_progress[current_stage_name]["completed"] = true
-		
+
 		# Unlock next stage
 		var next_stage_name = data.next_stage.get_file().get_basename()
 		if stage_progress.has(next_stage_name):
 			stage_progress[next_stage_name]["unlocked"] = true
-	
+
 	# Save progress to disk
 	save_game()
 
@@ -68,7 +68,7 @@ func save_game() -> void:
 	var save_data = {
 		"stage_progress": stage_progress
 	}
-	
+
 	var save_file = FileAccess.open("user://savegame.save", FileAccess.WRITE)
 	var json_string = JSON.stringify(save_data)
 	save_file.store_line(json_string)
@@ -80,8 +80,8 @@ func load_game() -> void:
 		var save_file = FileAccess.open("user://savegame.save", FileAccess.READ)
 		var json_string = save_file.get_line()
 		var json_data = JSON.parse_string(json_string)
-		
+
 		if json_data is Dictionary and json_data.has("stage_progress"):
 			stage_progress = json_data["stage_progress"]
-		
+
 		save_file.close()

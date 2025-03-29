@@ -32,7 +32,7 @@ var next_stage_path: String = "res://test_stage_PEMDAS.tscn"    # Update with yo
 func _ready() -> void:
 	# Initialize HP display
 	update_hp_display()
-	
+
 	# Start the first problem
 	generate_new_problem()
 	AudioManager.change_music("stage")
@@ -42,10 +42,10 @@ func _process(delta: float) -> void:
 	if timer_active:
 		# Update the timer
 		current_time -= delta
-		
+
 		# Update timer display
 		update_timer_display()
-		
+
 		# Check if time has run out
 		if current_time <= 0:
 			timer_active = false
@@ -57,10 +57,10 @@ func update_hp_display() -> void:
 
 func update_timer_display() -> void:
 	# Update the timer display
-	var seconds = int(current_time) 
+	var seconds = int(current_time)
 	var milliseconds = int((current_time - seconds) * 10)
 	timer_label.text = "Time: %d.%d" % [seconds, milliseconds]
-	
+
 	# Change color based on remaining time
 	if current_time <= 3.0:
 		timer_label.add_theme_color_override("font_color", Color(1, 0, 0)) # Red
@@ -79,7 +79,7 @@ func time_up() -> void:
 	lose_hp()
 	total_problems += 1
 	score_label.text = "Score: " + str(score) + "/" + str(total_problems)
-	
+
 	# Check if game should end due to max problems
 	if total_problems >= max_problems:
 		await get_tree().create_timer(2.0).timeout
@@ -93,28 +93,28 @@ func lose_hp() -> void:
 	# Decrease HP and update display
 	current_hp -= 1
 	update_hp_display()
-	
+
 	# Play damage sound if available
 	# AudioManager.play_sound("damage")
-	
+
 	# Check if out of HP
 	if current_hp <= 0:
 		await get_tree().create_timer(1.0).timeout
 		end_game()
-	
+
 func generate_new_problem() -> void:
 	# Check if game should end
 	if total_problems >= max_problems || current_hp <= 0:
 		end_game()
 		return
-		
+
 	# Generate two random numbers between 1 and 20
 	var num1 = randi() % 20 + 1
 	var num2 = randi() % 20 + 1
-	
+
 	# Randomly choose operation (0: addition, 1: subtraction, 2: multiplication)
 	var operation = randi() % 3
-	
+
 	match operation:
 		0:  # Addition
 			current_answer = num1 + num2
@@ -130,18 +130,18 @@ func generate_new_problem() -> void:
 		2:  # Multiplication
 			current_answer = num1 * num2
 			problem_label.text = str(num1) + " × " + str(num2) + " = ?"
-	
+
 	# Clear the answer display
 	clear_display()
-	
+
 	# Start the timer for this question
 	start_timer()
-	
+
 func check_answer() -> void:
 	if current_text != "":
 		# Stop the timer
 		timer_active = false
-		
+
 		var player_answer = int(current_text)
 		if player_answer == current_answer:
 			score += 1
@@ -153,10 +153,10 @@ func check_answer() -> void:
 			lose_hp()
 			# Play wrong sound if available
 			# AudioManager.play_sound("wrong")
-		
+
 		total_problems += 1
 		score_label.text = "Score: " + str(score) + "/" + str(total_problems)
-		
+
 		# If we've reached max_problems or out of HP, end the game
 		if total_problems >= max_problems || current_hp <= 0:
 			await get_tree().create_timer(2.0).timeout
@@ -169,10 +169,10 @@ func check_answer() -> void:
 func end_game() -> void:
 	# Stop the timer
 	timer_active = false
-	
+
 	# Check win condition: enough score AND still has HP
 	var player_won = score >= target_score && current_hp > 0
-	
+
 	# Use autoload to store the game results data
 	GameData.set_results_data({
 		"player_score": score,
@@ -183,7 +183,7 @@ func end_game() -> void:
 		"remaining_hp": current_hp,  # Pass HP information to results screen
 		"max_hp": max_hp
 	})
-	
+
 	# Transition to results stage
 	get_tree().change_scene_to_file("res://after_stage.tscn")
 
@@ -191,55 +191,55 @@ func add_number(number: String) -> void:
 	if current_text.length() < max_digits:
 		current_text += number
 		display_label.text = current_text
-		
+
 func clear_display() -> void:
 	current_text = ""
 	display_label.text = ""
-	
+
 func backspace() -> void:
 	if current_text.length() > 0:
 		current_text = current_text.substr(0, current_text.length() - 1)
 		display_label.text = current_text if current_text != "" else ""
-		
+
 # Button handlers
 func _on_zero_pressed() -> void:
 	add_number("0")
-	
+
 func _on_one_pressed() -> void:
 	add_number("1")
-	
+
 func _on_two_pressed() -> void:
 	add_number("2")
-	
+
 func _on_three_pressed() -> void:
 	add_number("3")
-	
+
 func _on_four_pressed() -> void:
 	add_number("4")
-	
+
 func _on_five_pressed() -> void:
 	add_number("5")
-	
+
 func _on_six_pressed() -> void:
 	add_number("6")
-	
+
 func _on_seven_pressed() -> void:
 	add_number("7")
-	
+
 func _on_eight_pressed() -> void:
 	add_number("8")
-	
+
 func _on_nine_pressed() -> void:
 	add_number("9")
-	
+
 func _on_clear_pressed() -> void:
 	clear_display()
-	
+
 func _on_back_pressed() -> void:
 	backspace()
-	
+
 func _on_submit_pressed() -> void:
 	check_answer()
-	
+
 func _on_placeholder_back_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://mode_select.tscn")

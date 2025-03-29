@@ -82,7 +82,7 @@ func generate_new_problem() -> void:
 
 	# Clear the answer display
 	clear_display()
-	
+
 func end_game() -> void:
 	# Instead of handling the end game here, we'll transition to the results stage
 	var player_won = score >= target_score
@@ -95,10 +95,10 @@ func check_answer() -> void:
 			problem_label.text = "Correct!"
 		else:
 			problem_label.text = "Wrong! The answer was " + str(current_answer)
-		
+
 		total_problems += 1
 		score_label.text = "Score: " + str(score) + "/" + str(total_problems)
-		
+
 		# Wait 2 seconds before next problem
 		await get_tree().create_timer(2.0).timeout
 		generate_new_problem()
@@ -151,7 +151,7 @@ func _on_nine_pressed() -> void:
 func _on_clear_pressed() -> void:
 	clear_display()
 
-	
+
 func _on_back_pressed() -> void:
 	backspace()
 
