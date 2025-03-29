@@ -38,7 +38,7 @@ func _ready() -> void:
 	update_stage_buttons()
 	
 # Add this variable to your class
-var boundary_multiplier: float = 1.2  # Adjust this value to increase boundaries
+var boundary_multiplier: float = 1.5  # Adjust this value to increase boundaries
 
 func calculate_boundaries() -> void:
 	# Get the effective map size (considering current scale)
