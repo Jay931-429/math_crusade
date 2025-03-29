@@ -10,11 +10,6 @@ script = ExtResource("1_4fwhm")
 
 [node name="MapContainer" type="Node2D" parent="."]
 
-[node name="BackgroundImage" type="Sprite2D" parent="MapContainer"]
-position = Vector2(246, 320)
-scale = Vector2(3.44922, 3.61914)
-texture = ExtResource("2_wisy0")
-
 [node name="Control" type="Control" parent="MapContainer"]
 layout_mode = 3
 anchors_preset = 15
@@ -24,6 +19,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="campaign_label" type="Label" parent="MapContainer/Control"]
+layout_mode = 0
 offset_left = 262.0
 offset_top = 21.0
 offset_right = 819.0
@@ -31,6 +27,11 @@ offset_bottom = 180.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 100
 text = "CAMPAIGN "
+
+[node name="BackgroundImage" type="Sprite2D" parent="MapContainer"]
+position = Vector2(246, 320)
+scale = Vector2(3.44922, 3.61914)
+texture = ExtResource("2_wisy0")
 
 [node name="StageButton2" type="Button" parent="MapContainer"]
 offset_left = 1195.0
