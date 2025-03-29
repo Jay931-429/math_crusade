@@ -1,7 +1,7 @@
-[gd_scene load_steps=24 format=3 uid="uid://dbd3jyt28pxdr"]
+[gd_scene load_steps=26 format=3 uid="uid://dbd3jyt28pxdr"]
 
 [ext_resource type="Script" uid="uid://dr1awd2n5e6yi" path="res://test_stage.gd" id="1_lhojg"]
-[ext_resource type="Texture2D" uid="uid://bf53xdywvisuo" path="res://asset/UI/Summer2.png" id="2_rjlvf"]
+[ext_resource type="Texture2D" uid="uid://ch1lundolo0s1" path="res://asset/art/Yellow.png" id="2_ofmmg"]
 [ext_resource type="Texture2D" uid="uid://dwldsahsmum7d" path="res://asset/UI/1.png" id="3_y4x0p"]
 [ext_resource type="Texture2D" uid="uid://byifsb6867sav" path="res://asset/UI/2.png" id="4_c63q8"]
 [ext_resource type="Texture2D" uid="uid://c8rseeirdyqfk" path="res://asset/UI/3.png" id="5_4312s"]
@@ -18,6 +18,8 @@
 [ext_resource type="Texture2D" uid="uid://b5c62fsc3wbw4" path="res://asset/UI/Back.png" id="15_wp4yp"]
 [ext_resource type="Texture2D" uid="uid://dawnge3ejgh62" path="res://asset/UI/pass.png" id="17_8t0q8"]
 [ext_resource type="Texture2D" uid="uid://b2capxdpvd4vu" path="res://asset/UI/Transparent.png" id="18_ttwnj"]
+[ext_resource type="Texture2D" uid="uid://d05kwgnb6srhp" path="res://asset/art/Stage_4-6_BG.png" id="19_6f1ak"]
+[ext_resource type="Texture2D" uid="uid://we7f2dsdr1wg" path="res://asset/art/T_pLAYER.png" id="20_jo7k4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ix5rx"]
 atlas = ExtResource("14_ae1g8")
@@ -66,9 +68,15 @@ anchor_right = -12.975
 anchor_bottom = -23.375
 offset_right = 1080.0
 offset_bottom = 1912.0
-texture = ExtResource("2_rjlvf")
+texture = ExtResource("2_ofmmg")
 metadata/_edit_use_anchors_ = true
 metadata/_edit_group_ = true
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+offset_right = 1096.0
+offset_bottom = 904.0
+texture = ExtResource("19_6f1ak")
+metadata/_edit_use_anchors_ = true
 
 [node name="ProblemLabel" type="Label" parent="."]
 offset_left = 100.0
@@ -189,7 +197,7 @@ flat = true
 icon_alignment = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(180, 718)
+position = Vector2(184, 664)
 scale = Vector2(5.24813, 4.37821)
 sprite_frames = SubResource("SpriteFrames_a242u")
 frame = 2
@@ -227,12 +235,18 @@ offset_right = 545.0
 offset_bottom = 123.0
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_left = 75.21
-offset_top = 282.12
-offset_right = 4491.21
-offset_bottom = 1362.12
+offset_left = 80.0
+offset_top = 200.0
+offset_right = 4496.0
+offset_bottom = 1280.0
 scale = Vector2(0.21, 0.21)
 texture = ExtResource("18_ttwnj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(888, 600)
+scale = Vector2(3.92347, 3.40625)
+texture = ExtResource("20_jo7k4")
+flip_h = true
 
 [connection signal="pressed" from="Number_Button/num_row_123/one" to="." method="_on_one_pressed"]
 [connection signal="pressed" from="Number_Button/num_row_123/two" to="." method="_on_two_pressed"]
