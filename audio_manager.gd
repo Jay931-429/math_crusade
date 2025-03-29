@@ -12,6 +12,8 @@ extends Node
 var music_tracks = {
 	"menu": "res://asset/music/Zachz Winner, Фрози, Joyful - Boogie  Discoplug  NCS - Copyright Free Music.mp3",
 	"stage1": "res://asset/music/The Wild New World.mp3",
+	"correct": "res://asset/music/resp-correct.mp3",
+	"wrong": "res://asset/music/donald-trump-wrong-sound-effect.mp3"
 	# Add more tracks as needed
 	#"game_over": "res://asset/music/game_over_music.mp3",
 	#"victory": "res://asset/music/victory_music.mp3"
@@ -30,11 +32,11 @@ func change_music(track_name: String) -> void:
 	if track_name in music_tracks:
 		# Store current playback position if we want to resume later
 		var was_playing = !background_music.stream_paused
-		
+
 		# Load and play new track
 		background_music.stream = load(music_tracks[track_name])
 		current_track = track_name
-		
+
 		if was_playing:
 			background_music.play()
 
@@ -63,15 +65,15 @@ func fade_to_track(track_name: String, fade_duration: float = 1.0) -> void:
 		new_player.stream = load(music_tracks[track_name])
 		new_player.volume_db = -80  # Start silent
 		new_player.play()
-		
+
 		# Fade out current track
 		var tween = create_tween()
 		tween.tween_property(background_music, "volume_db", -80, fade_duration)
-		
+
 		# Fade in new track
 		var tween2 = create_tween()
 		tween2.tween_property(new_player, "volume_db", 0, fade_duration)
-		
+
 		# After fade, cleanup
 		await tween.finished
 		background_music.stop()

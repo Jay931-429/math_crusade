@@ -17,7 +17,7 @@ extends TextureButton
 func _ready() -> void:
 	# Set up the button appearance based on stage status
 	update_appearance()
-	
+
 	# Connect the button pressed signal
 	connect("pressed", _on_button_pressed)
 
@@ -37,10 +37,10 @@ func update_appearance() -> void:
 		texture_normal = locked_texture
 		locked_icon.visible = true
 		modulate = Color(1, 1, 1, 0.7)  # Slightly transparent
-	
+
 	# Set the stage name
 	stage_label.text = stage_name.capitalize()
-	
+
 	# Disable the button if it's locked
 	disabled = !stage_unlocked
 

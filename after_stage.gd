@@ -26,10 +26,10 @@ func _ready() -> void:
 	next_stage = data.next_stage
 	remaining_hp = data.remaining_hp
 	max_hp = data.max_hp
-	
+
 	# Setup UI based on loaded data
 	setup_ui()
-	
+
 	# Play appropriate music based on outcome
 	#if player_won:
 		#AudioManager.change_music("victory")
@@ -44,7 +44,7 @@ func setup_ui() -> void:
 	else:
 		result_label.text = "Game Over"
 		next_stage_button.visible = false
-	
+
 	# Set score display
 	score_label.text = "Final Score: " + str(player_score) + "/" + str(max_score)
 

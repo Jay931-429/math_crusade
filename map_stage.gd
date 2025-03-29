@@ -27,16 +27,16 @@ var zoom_speed: float = 0.1
 func _ready() -> void:
 	# Store the original position of the map container
 	original_position = map_container.position
-	
+
 	# Calculate the boundaries based on the map and screen size
 	calculate_boundaries()
-	
+
 	# Load game progress
 	GameData.load_game()
-	
+
 	# Update all stage buttons
 	update_stage_buttons()
-	
+
 # Add this variable to your class
 var boundary_multiplier: float = 1.5  # Adjust this value to increase boundaries
 
@@ -44,10 +44,10 @@ func calculate_boundaries() -> void:
 	# Get the effective map size (considering current scale)
 	var effective_map_width = map_width * map_container.scale.x
 	var effective_map_height = map_height * map_container.scale.y
-	
+
 	# Calculate how much the viewport can "see"
 	var half_viewport_size = viewport_size * 0.5
-	
+
 	# Ensure the boundaries cover the entire map plus additional movement space
 	min_position = Vector2(
 		-effective_map_width + half_viewport_size.x,
@@ -71,33 +71,33 @@ func _input(event: InputEvent) -> void:
 		else:
 			# Touch ended
 			touching = false
-	
+
 	# Handle drag motion
 	elif event is InputEventScreenDrag and touching:
 		# Calculate the drag distance
 		var drag_distance = event.position - drag_start_position
-		
+
 		# Move the map container (note the negative drag_distance to make map move in the direction of the finger)
 		var new_position = original_position + drag_distance
-		
+
 		# Clamp position within boundaries
 		new_position.x = clamp(new_position.x, min_position.x, max_position.x)
 		new_position.y = clamp(new_position.y, min_position.y, max_position.y)
-		
+
 		map_container.position = new_position
-	
+
 	# Handle pinch-to-zoom (optional)
 	elif event is InputEventMagnifyGesture:
 		# Calculate new scale based on magnify gesture
 		var new_scale = current_scale * event.factor
-		
+
 		# Clamp scale within bounds
 		new_scale = clamp(new_scale, min_scale, max_scale)
-		
+
 		# Apply new scale
 		map_container.scale = Vector2(new_scale, new_scale)
 		current_scale = new_scale
-		
+
 		# Recalculate boundaries after scaling
 		calculate_boundaries()
 
@@ -107,7 +107,7 @@ func _on_stage_button_pressed(stage_name: String) -> void:
 	get_tree().change_scene_to_file("res://test_stage_PEMDAS.tscn")
 func _on_stage_button_1_pressed() -> void:
 	get_tree().change_scene_to_file("res://test_stage_PEMDAS.tscn")
-	
+
 func update_stage_buttons() -> void:
 	# Find all StageButton nodes
 	for button in map_container.find_children("*", "TextureButton", true):
