@@ -11,8 +11,8 @@ script = ExtResource("1_4fwhm")
 [node name="MapContainer" type="Node2D" parent="."]
 
 [node name="BackgroundImage" type="Sprite2D" parent="MapContainer"]
-position = Vector2(246, 320)
-scale = Vector2(3.44922, 3.61914)
+position = Vector2(400, 969)
+scale = Vector2(0.969971, 1.25212)
 texture = ExtResource("2_wisy0")
 
 [node name="Control" type="Control" parent="MapContainer"]
@@ -34,17 +34,17 @@ theme_override_font_sizes/font_size = 100
 text = "CAMPAIGN "
 
 [node name="StageButton2" type="Button" parent="MapContainer"]
-offset_left = 1195.0
-offset_top = 865.0
-offset_right = 1495.0
-offset_bottom = 1153.0
+offset_left = 728.0
+offset_top = 1011.0
+offset_right = 1028.0
+offset_bottom = 1299.0
 icon = ExtResource("4_naa6w")
 
 [node name="StageButton1" type="Button" parent="MapContainer"]
-offset_left = -156.0
-offset_top = 833.0
-offset_right = 144.0
-offset_bottom = 1121.0
+offset_left = 45.0
+offset_top = 1034.0
+offset_right = 345.0
+offset_bottom = 1322.0
 icon = ExtResource("3_6l1xu")
 
 [node name="StageLabel1" type="Label" parent="MapContainer/StageButton1"]
