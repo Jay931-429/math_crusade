@@ -1,0 +1,213 @@
+[gd_scene load_steps=19 format=3 uid="uid://dwkbjv6kqqka4"]
+
+[ext_resource type="Script" uid="uid://deuxiybkptn3g" path="res://stage_1_3_normal_stage.gd" id="1_p3rlr"]
+[ext_resource type="Texture2D" uid="uid://dox6s2pdaah6p" path="res://asset/art/Gray.png" id="2_cwolx"]
+[ext_resource type="Texture2D" uid="uid://c8snlb1xuscnp" path="res://asset/art/stage1.png" id="3_cwolx"]
+[ext_resource type="Texture2D" uid="uid://dwldsahsmum7d" path="res://asset/UI/1.png" id="4_tyaph"]
+[ext_resource type="Texture2D" uid="uid://byifsb6867sav" path="res://asset/UI/2.png" id="5_0ta5e"]
+[ext_resource type="Texture2D" uid="uid://c8rseeirdyqfk" path="res://asset/UI/3.png" id="6_o0200"]
+[ext_resource type="Texture2D" uid="uid://cu3m3ho7b3kno" path="res://asset/UI/4.png" id="7_5m6x2"]
+[ext_resource type="Texture2D" uid="uid://mxvx0bwdcd3w" path="res://asset/UI/5.png" id="8_c0nor"]
+[ext_resource type="Texture2D" uid="uid://c5dw3ydc1s4yr" path="res://asset/UI/6.png" id="9_78tip"]
+[ext_resource type="Texture2D" uid="uid://bffoin8e0nw4" path="res://asset/UI/7.png" id="10_tikfd"]
+[ext_resource type="Texture2D" uid="uid://b3hia88v6t47b" path="res://asset/UI/8.png" id="11_fr1pm"]
+[ext_resource type="Texture2D" uid="uid://d18k506xrmby4" path="res://asset/UI/9.png" id="12_33o31"]
+[ext_resource type="Texture2D" uid="uid://d1m1q7ev7ot2i" path="res://asset/UI/Clear.png" id="13_osb4i"]
+[ext_resource type="Texture2D" uid="uid://dxetc5bv3s2kd" path="res://asset/UI/0.png" id="14_4ytn2"]
+[ext_resource type="Texture2D" uid="uid://k0bwslbq0k4d" path="res://asset/UI/backspace.png" id="15_4bs8p"]
+[ext_resource type="Texture2D" uid="uid://b5c62fsc3wbw4" path="res://asset/UI/Back.png" id="16_menxu"]
+[ext_resource type="Texture2D" uid="uid://dawnge3ejgh62" path="res://asset/UI/pass.png" id="18_ge3wv"]
+[ext_resource type="Texture2D" uid="uid://b2capxdpvd4vu" path="res://asset/UI/Transparent.png" id="19_hfele"]
+
+[node name="S1_3Normal" type="Node2D"]
+script = ExtResource("1_p3rlr")
+
+[node name="Stage_BG" type="TextureRect" parent="."]
+anchors_preset = -1
+anchor_left = -12.975
+anchor_top = -23.375
+anchor_right = -12.975
+anchor_bottom = -23.375
+offset_right = 1080.0
+offset_bottom = 1912.0
+texture = ExtResource("2_cwolx")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_group_ = true
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+offset_right = 1079.0
+offset_bottom = 904.0
+texture = ExtResource("3_cwolx")
+
+[node name="ProblemLabel" type="Label" parent="."]
+offset_left = 100.0
+offset_top = 300.0
+offset_right = 954.0
+offset_bottom = 454.0
+theme_override_font_sizes/font_size = 100
+
+[node name="Label" type="Label" parent="."]
+offset_left = 360.0
+offset_top = 696.0
+offset_right = 740.0
+offset_bottom = 833.0
+theme_override_font_sizes/font_size = 100
+metadata/_edit_use_anchors_ = true
+
+[node name="Number_Button" type="VBoxContainer" parent="."]
+offset_left = 221.58
+offset_top = 932.78
+offset_right = 853.58
+offset_bottom = 1774.78
+scale = Vector2(0.935, 0.935)
+
+[node name="num_row_123" type="HBoxContainer" parent="Number_Button"]
+layout_mode = 2
+
+[node name="one" type="Button" parent="Number_Button/num_row_123"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 1
+icon = ExtResource("4_tyaph")
+flat = true
+icon_alignment = 1
+
+[node name="two" type="Button" parent="Number_Button/num_row_123"]
+layout_mode = 2
+icon = ExtResource("5_0ta5e")
+flat = true
+icon_alignment = 1
+
+[node name="three" type="Button" parent="Number_Button/num_row_123"]
+layout_mode = 2
+icon = ExtResource("6_o0200")
+flat = true
+icon_alignment = 1
+
+[node name="num_row_456" type="HBoxContainer" parent="Number_Button"]
+layout_mode = 2
+
+[node name="four" type="Button" parent="Number_Button/num_row_456"]
+layout_mode = 2
+icon = ExtResource("7_5m6x2")
+flat = true
+icon_alignment = 1
+
+[node name="five" type="Button" parent="Number_Button/num_row_456"]
+layout_mode = 2
+icon = ExtResource("8_c0nor")
+flat = true
+icon_alignment = 1
+
+[node name="six" type="Button" parent="Number_Button/num_row_456"]
+layout_mode = 2
+icon = ExtResource("9_78tip")
+flat = true
+icon_alignment = 1
+
+[node name="num_row_789" type="HBoxContainer" parent="Number_Button"]
+layout_mode = 2
+
+[node name="seven" type="Button" parent="Number_Button/num_row_789"]
+layout_mode = 2
+icon = ExtResource("10_tikfd")
+flat = true
+icon_alignment = 1
+
+[node name="eight" type="Button" parent="Number_Button/num_row_789"]
+layout_mode = 2
+icon = ExtResource("11_fr1pm")
+flat = true
+icon_alignment = 1
+
+[node name="nine" type="Button" parent="Number_Button/num_row_789"]
+layout_mode = 2
+icon = ExtResource("12_33o31")
+flat = true
+icon_alignment = 1
+
+[node name="num_row_0_clear_bckspace" type="HBoxContainer" parent="Number_Button"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="clear" type="Button" parent="Number_Button/num_row_0_clear_bckspace"]
+layout_mode = 2
+icon = ExtResource("13_osb4i")
+flat = true
+icon_alignment = 1
+
+[node name="zero" type="Button" parent="Number_Button/num_row_0_clear_bckspace"]
+layout_mode = 2
+icon = ExtResource("14_4ytn2")
+flat = true
+alignment = 0
+icon_alignment = 1
+
+[node name="back" type="Button" parent="Number_Button/num_row_0_clear_bckspace"]
+layout_mode = 2
+icon = ExtResource("15_4bs8p")
+flat = true
+icon_alignment = 1
+
+[node name="Placeholder_BackButton" type="Button" parent="."]
+offset_left = 20.895
+offset_top = 1762.67
+offset_right = 352.895
+offset_bottom = 2093.67
+scale = Vector2(0.4, 0.4)
+icon = ExtResource("16_menxu")
+flat = true
+icon_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = 513.0
+offset_top = 55.0
+offset_right = 646.0
+offset_bottom = 167.0
+theme_override_font_sizes/font_size = 50
+
+[node name="Submit" type="Button" parent="."]
+offset_left = 822.0
+offset_top = 925.485
+offset_right = 1047.0
+offset_bottom = 1131.48
+theme_override_font_sizes/font_size = 100
+text = "
+"
+icon = ExtResource("18_ge3wv")
+flat = true
+icon_alignment = 1
+
+[node name="HPLabel" type="Label" parent="."]
+offset_left = 97.0
+offset_top = 80.0
+offset_right = 137.0
+offset_bottom = 103.0
+
+[node name="TimerLabel" type="Label" parent="."]
+offset_left = 505.0
+offset_top = 100.0
+offset_right = 545.0
+offset_bottom = 123.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 80.0
+offset_top = 200.0
+offset_right = 4496.0
+offset_bottom = 1280.0
+scale = Vector2(0.21, 0.21)
+texture = ExtResource("19_hfele")
+
+[connection signal="pressed" from="Number_Button/num_row_123/one" to="." method="_on_one_pressed"]
+[connection signal="pressed" from="Number_Button/num_row_123/two" to="." method="_on_two_pressed"]
+[connection signal="pressed" from="Number_Button/num_row_123/three" to="." method="_on_three_pressed"]
+[connection signal="pressed" from="Number_Button/num_row_456/four" to="." method="_on_four_pressed"]
+[connection signal="pressed" from="Number_Button/num_row_456/five" to="." method="_on_five_pressed"]
+[connection signal="pressed" from="Number_Button/num_row_456/six" to="." method="_on_six_pressed"]
+[connection signal="pressed" from="Number_Button/num_row_789/seven" to="." method="_on_seven_pressed"]
+[connection signal="pressed" from="Number_Button/num_row_789/eight" to="." method="_on_eight_pressed"]
+[connection signal="pressed" from="Number_Button/num_row_789/nine" to="." method="_on_nine_pressed"]
+[connection signal="pressed" from="Number_Button/num_row_0_clear_bckspace/clear" to="." method="_on_clear_pressed"]
+[connection signal="pressed" from="Number_Button/num_row_0_clear_bckspace/zero" to="." method="_on_zero_pressed"]
+[connection signal="pressed" from="Number_Button/num_row_0_clear_bckspace/back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Placeholder_BackButton" to="." method="_on_placeholder_back_button_pressed"]
+[connection signal="pressed" from="Submit" to="." method="_on_submit_pressed"]

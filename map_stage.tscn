@@ -11,7 +11,7 @@ script = ExtResource("1_4fwhm")
 [node name="MapContainer" type="Node2D" parent="."]
 
 [node name="BackgroundImage" type="Sprite2D" parent="MapContainer"]
-position = Vector2(400, 969)
+position = Vector2(532, 967)
 scale = Vector2(0.969971, 1.25212)
 texture = ExtResource("2_wisy0")
 
