@@ -1,7 +1,8 @@
-[gd_scene load_steps=24 format=3 uid="uid://djimjjn2shmka"]
+[gd_scene load_steps=26 format=3 uid="uid://djimjjn2shmka"]
 
 [ext_resource type="Script" uid="uid://bsm4hghap8dqp" path="res://test_stage_pemdas.gd" id="1_ue84q"]
-[ext_resource type="Texture2D" uid="uid://bf53xdywvisuo" path="res://asset/UI/Summer2.png" id="2_2wlat"]
+[ext_resource type="Texture2D" uid="uid://dox6s2pdaah6p" path="res://asset/art/Gray.png" id="2_bivsy"]
+[ext_resource type="Texture2D" uid="uid://c8snlb1xuscnp" path="res://asset/art/stage1.png" id="3_c7q2u"]
 [ext_resource type="Texture2D" uid="uid://dwldsahsmum7d" path="res://asset/UI/1.png" id="3_ju0fj"]
 [ext_resource type="Texture2D" uid="uid://byifsb6867sav" path="res://asset/UI/2.png" id="4_p6emn"]
 [ext_resource type="Texture2D" uid="uid://c8rseeirdyqfk" path="res://asset/UI/3.png" id="5_op4qp"]
@@ -18,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://d0uuvgaahkeyb" path="res://asset/art/Idle(1).png" id="16_lkbah"]
 [ext_resource type="Texture2D" uid="uid://dawnge3ejgh62" path="res://asset/UI/pass.png" id="17_2vkvq"]
 [ext_resource type="Texture2D" uid="uid://b2capxdpvd4vu" path="res://asset/UI/Transparent.png" id="18_d0315"]
+[ext_resource type="Texture2D" uid="uid://we7f2dsdr1wg" path="res://asset/art/T_pLAYER.png" id="20_c7q2u"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ix5rx"]
 atlas = ExtResource("16_lkbah")
@@ -58,6 +60,11 @@ animations = [{
 [node name="Test_Stage_PEMDAS" type="Node2D"]
 script = ExtResource("1_ue84q")
 
+[node name="TextureRect2" type="TextureRect" parent="."]
+offset_right = 1080.0
+offset_bottom = 1920.0
+texture = ExtResource("2_bivsy")
+
 [node name="Stage_BG" type="TextureRect" parent="."]
 anchors_preset = -1
 anchor_left = -12.975
@@ -65,23 +72,23 @@ anchor_top = -23.375
 anchor_right = -12.975
 anchor_bottom = -23.375
 offset_right = 1080.0
-offset_bottom = 1912.0
-texture = ExtResource("2_2wlat")
-metadata/_edit_use_anchors_ = true
+offset_bottom = 886.0
+texture = ExtResource("3_c7q2u")
 metadata/_edit_group_ = true
+metadata/_edit_use_anchors_ = true
 
 [node name="ProblemLabel" type="Label" parent="."]
 offset_left = 100.0
-offset_top = 300.0
+offset_top = 232.0
 offset_right = 954.0
-offset_bottom = 454.0
+offset_bottom = 400.0
 theme_override_font_sizes/font_size = 100
 
 [node name="Label" type="Label" parent="."]
 offset_left = 360.0
-offset_top = 696.0
+offset_top = 640.0
 offset_right = 740.0
-offset_bottom = 833.0
+offset_bottom = 784.0
 theme_override_font_sizes/font_size = 100
 
 [node name="Number_Button" type="VBoxContainer" parent="."]
@@ -189,17 +196,17 @@ flat = true
 icon_alignment = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(180, 718)
+position = Vector2(175, 652)
 scale = Vector2(5.24813, 4.37821)
 sprite_frames = SubResource("SpriteFrames_a242u")
 frame = 2
 frame_progress = 0.423047
 
 [node name="ScoreLabel" type="Label" parent="."]
-offset_left = 513.0
-offset_top = 55.0
-offset_right = 646.0
-offset_bottom = 167.0
+offset_left = 464.0
+offset_top = 48.0
+offset_right = 632.0
+offset_bottom = 152.0
 theme_override_font_sizes/font_size = 50
 
 [node name="Submit" type="Button" parent="."]
@@ -215,12 +222,18 @@ flat = true
 icon_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_left = 75.21
-offset_top = 282.12
-offset_right = 4491.21
-offset_bottom = 1362.12
+offset_left = 72.0
+offset_top = 224.0
+offset_right = 4488.0
+offset_bottom = 1304.0
 scale = Vector2(0.21, 0.21)
 texture = ExtResource("18_d0315")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(874.938, 565)
+scale = Vector2(3.85842, 3.67188)
+texture = ExtResource("20_c7q2u")
+flip_h = true
 
 [connection signal="pressed" from="Number_Button/num_row_123/one" to="." method="_on_one_pressed"]
 [connection signal="pressed" from="Number_Button/num_row_123/two" to="." method="_on_two_pressed"]

@@ -41,38 +41,24 @@ func _ready() -> void:
 var boundary_multiplier: float = 1.5  # Adjust this value to increase boundaries
 
 func calculate_boundaries() -> void:
-	# Get the effective map size (considering scale)
+	# Get the effective map size (considering current scale)
 	var effective_map_width = map_width * map_container.scale.x
 	var effective_map_height = map_height * map_container.scale.y
 	
-	# Set boundaries to exactly match the map dimensions
-	var padding = 50.0
-	min_position = Vector2(-effective_map_width/2, -effective_map_height/2)
-	max_position = Vector2(effective_map_width/2, effective_map_height/2)
+	# Calculate how much the viewport can "see"
+	var half_viewport_size = viewport_size * 0.5
 	
-	# Increase the allowed drag area by using the full map dimensions
-	if effective_map_width <= viewport_size.x:
-		# Allow full map dragging instead of limited padding
-		var x_excess = effective_map_width * 0.5
-		min_position = Vector2(-x_excess, 0)
-		max_position = Vector2(x_excess, 0)
-	else:
-		# Increase the excess to allow more dragging
-		var x_excess = effective_map_width * 0.75
-		min_position = Vector2(-x_excess, 0)
-		max_position = Vector2(x_excess, 0)
-	
-	# Same for height
-	if effective_map_height <= viewport_size.y:
-		var y_excess = effective_map_height * 0.5
-		min_position.y = -y_excess
-		max_position.y = y_excess
-	else:
-		var y_excess = effective_map_height * 0.75
-		min_position.y = -y_excess
-		max_position.y = y_excess
-	
-	print("Map boundaries set to: ", min_position, " to ", max_position)
+	# Ensure the boundaries cover the entire map plus additional movement space
+	min_position = Vector2(
+		-effective_map_width + half_viewport_size.x,
+		-effective_map_height + half_viewport_size.y
+	)
+	max_position = Vector2(
+		effective_map_width - half_viewport_size.x,
+		effective_map_height - half_viewport_size.y
+	)
+
+	print("Updated Map Boundaries: ", min_position, " to ", max_position)
 
 func _input(event: InputEvent) -> void:
 	# Handle touch input for dragging

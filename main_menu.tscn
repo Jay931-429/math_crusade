@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://3wuq87vlgd5x"]
 
 [ext_resource type="Script" uid="uid://dg62pb35tqw3v" path="res://main_menu.gd" id="1_88mwd"]
-[ext_resource type="Texture2D" uid="uid://b4mftjq5u8te6" path="res://asset/art/mainbg.webp" id="2_umbg5"]
+[ext_resource type="Texture2D" uid="uid://kfsblnp7h3a6" path="res://asset/art/new_bg.png1.png" id="2_qe12f"]
 [ext_resource type="Texture2D" uid="uid://bfml8ivoc7tvb" path="res://asset/UI/Start.png" id="3_rnymq"]
 [ext_resource type="Texture2D" uid="uid://um41fbxwush" path="res://asset/UI/Exit.png" id="4_aw5bf"]
 [ext_resource type="Texture2D" uid="uid://xl14v81v1kve" path="res://asset/UI/Settings.png" id="5_nd0n2"]
@@ -39,7 +39,7 @@ anchor_right = -12.975
 anchor_bottom = -23.375
 offset_right = 1080.0
 offset_bottom = 1912.0
-texture = ExtResource("2_umbg5")
+texture = ExtResource("2_qe12f")
 metadata/_edit_use_anchors_ = true
 metadata/_edit_group_ = true
 

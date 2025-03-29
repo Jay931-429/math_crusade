@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bq2mi31vh824u"]
+[gd_scene load_steps=8 format=3 uid="uid://bq2mi31vh824u"]
 
 [ext_resource type="Script" uid="uid://ckwms6hu7db6t" path="res://after_stage.gd" id="1_4ocfc"]
 [ext_resource type="Texture2D" uid="uid://bohbdc1vpbmnc" path="res://Summer5.webp" id="2_v0dbt"]
+[ext_resource type="Texture2D" uid="uid://b5c62fsc3wbw4" path="res://asset/UI/Back.png" id="3_gn5vl"]
 [ext_resource type="Texture2D" uid="uid://caifnlfmelihq" path="res://asset/art/Replay_BTN.png" id="3_nj2d6"]
 [ext_resource type="Texture2D" uid="uid://dnx6eea75arr6" path="res://asset/art/Menu_BTN.png" id="4_1slea"]
 [ext_resource type="Texture2D" uid="uid://dhwxrqfrtiwaf" path="res://asset/art/Forward_BTN.png" id="5_tc1uy"]
@@ -11,8 +12,8 @@
 script = ExtResource("1_4ocfc")
 
 [node name="Main_Menu_BG" type="TextureRect" parent="."]
-offset_right = 1080.0
-offset_bottom = 1920.0
+offset_right = 1123.0
+offset_bottom = 1906.0
 texture = ExtResource("2_v0dbt")
 
 [node name="ResultLabel" type="Label" parent="."]
@@ -23,33 +24,33 @@ offset_bottom = 542.0
 theme_override_font_sizes/font_size = 120
 
 [node name="back_main_Mmenu_placeholder" type="Button" parent="."]
-offset_left = 24.0
-offset_top = 1073.0
-offset_right = 122.0
-offset_bottom = 1201.0
-scale = Vector2(3, 3)
+offset_left = 75.0
+offset_top = 1362.0
+offset_right = 407.0
+offset_bottom = 1693.0
+scale = Vector2(0.7, 0.7)
 size_flags_vertical = 8
-icon = ExtResource("3_nj2d6")
+icon = ExtResource("3_gn5vl")
 
 [node name="mode_select_placeholder" type="Button" parent="."]
-offset_left = 330.0
-offset_top = 1137.0
-offset_right = 548.0
-offset_bottom = 1368.0
+offset_left = 335.0
+offset_top = 1362.0
+offset_right = 562.0
+offset_bottom = 1598.0
 icon = ExtResource("4_1slea")
 
 [node name="NextStageButton" type="Button" parent="."]
-offset_left = 837.0
-offset_top = 1137.0
-offset_right = 1055.0
-offset_bottom = 1355.0
+offset_left = 874.0
+offset_top = 1367.0
+offset_right = 1092.0
+offset_bottom = 1585.0
 icon = ExtResource("5_tc1uy")
 
 [node name="Replay_placeholder" type="Button" parent="."]
-offset_left = 544.0
-offset_top = 1049.0
-offset_right = 642.0
-offset_bottom = 1181.0
+offset_left = 581.0
+offset_top = 1270.0
+offset_right = 679.0
+offset_bottom = 1402.0
 scale = Vector2(3, 3)
 icon = ExtResource("3_nj2d6")
 
@@ -61,24 +62,24 @@ offset_bottom = 573.0
 theme_override_font_sizes/font_size = 50
 
 [node name="medal_star_placeholder" type="TextureRect" parent="."]
-offset_left = 111.0
-offset_top = 639.0
-offset_right = 403.0
-offset_bottom = 919.0
+offset_left = 65.0
+offset_top = 892.0
+offset_right = 357.0
+offset_bottom = 1172.0
 texture = ExtResource("6_kk7r6")
 
 [node name="medal_star_placeholder2" type="TextureRect" parent="."]
-offset_left = 424.0
-offset_top = 639.0
-offset_right = 716.0
-offset_bottom = 919.0
+offset_left = 258.0
+offset_top = 418.0
+offset_right = 895.0
+offset_bottom = 1029.0
 texture = ExtResource("6_kk7r6")
 
 [node name="medal_star_placeholder3" type="TextureRect" parent="."]
-offset_left = 730.0
-offset_top = 639.0
-offset_right = 1022.0
-offset_bottom = 919.0
+offset_left = 781.0
+offset_top = 869.0
+offset_right = 1073.0
+offset_bottom = 1149.0
 texture = ExtResource("6_kk7r6")
 
 [connection signal="pressed" from="back_main_Mmenu_placeholder" to="." method="_on_back_main_mmenu_placeholder_pressed"]

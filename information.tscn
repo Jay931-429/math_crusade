@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://talictwt8sxo"]
 
 [ext_resource type="Script" uid="uid://v6cd3d83eg18" path="res://information.gd" id="1_gyy28"]
-[ext_resource type="Texture2D" uid="uid://b7ipf2j260boq" path="res://asset/art/MainMenu.png" id="1_w0cky"]
-[ext_resource type="Texture2D" uid="uid://caifnlfmelihq" path="res://asset/art/Replay_BTN.png" id="2_jd3aw"]
+[ext_resource type="Texture2D" uid="uid://b4mftjq5u8te6" path="res://asset/art/mainbg.webp" id="2_jaie5"]
+[ext_resource type="Texture2D" uid="uid://b5c62fsc3wbw4" path="res://asset/UI/Back.png" id="3_k51pg"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_ae3w0"]
 
@@ -14,7 +14,16 @@ script = ExtResource("1_gyy28")
 [node name="Main_Menu_BG" type="TextureRect" parent="CanvasLayer"]
 offset_right = 1080.0
 offset_bottom = 1920.0
-texture = ExtResource("1_w0cky")
+texture = ExtResource("2_jaie5")
+
+[node name="back" type="Button" parent="CanvasLayer"]
+offset_left = 70.0
+offset_top = 1558.0
+offset_right = 402.0
+offset_bottom = 1889.0
+scale = Vector2(0.7, 0.7)
+size_flags_vertical = 8
+icon = ExtResource("3_k51pg")
 
 [node name="Backbutton" type="HBoxContainer" parent="CanvasLayer"]
 anchors_preset = -1
@@ -22,20 +31,15 @@ anchor_left = 0.187
 anchor_top = 0.891
 anchor_right = 0.187
 anchor_bottom = 0.891
-offset_left = -146.96
-offset_top = -146.72
-offset_right = -48.96
-offset_bottom = -48.7202
+offset_left = 409.04
+offset_top = -45.7198
+offset_right = 507.04
+offset_bottom = 52.2799
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(3, 3)
 size_flags_horizontal = 0
 size_flags_vertical = 4
-
-[node name="back" type="Button" parent="CanvasLayer/Backbutton"]
-layout_mode = 2
-size_flags_vertical = 8
-icon = ExtResource("2_jd3aw")
 
 [node name="Credits" type="VBoxContainer" parent="CanvasLayer"]
 anchors_preset = 8
@@ -43,10 +47,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -474.0
-offset_top = -593.5
-offset_right = 474.0
-offset_bottom = 593.5
+offset_left = -464.0
+offset_top = -588.0
+offset_right = 383.0
+offset_bottom = 599.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -58,7 +62,7 @@ icon = SubResource("CanvasTexture_ae3w0")
 [node name="Credits Placeholder" type="Label" parent="CanvasLayer"]
 offset_left = 102.0
 offset_top = 402.0
-offset_right = 955.0
+offset_right = 1251.0
 offset_bottom = 1385.0
 theme_override_font_sizes/font_size = 40
 text = "Math Crusade: A PEMDAS Based Math Game
@@ -66,18 +70,14 @@ text = "Math Crusade: A PEMDAS Based Math Game
 Developed by: Team Arasaka - BSIT-4A
 Developers: 
 
-Johnny Silverhand
-Bruce Lee
-Donald J. Trump
-Joe Biden
 
 Music Credits:
 
-Skrillex
-50 Cent
-Michael Jackson
-Lebron James
-
+Track: Zachz Winner - blu [NCS Release]
+Music provided by NoCopyrightSounds.
+Watch more NCS on YouTube: 
+https://ncs.lnk.to/YouTubeAT
+Free Download / Stream: http://ncs.io/blu
 "
 
-[connection signal="pressed" from="CanvasLayer/Backbutton/back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="CanvasLayer/back" to="." method="_on_back_pressed"]
