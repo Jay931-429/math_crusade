@@ -12,8 +12,10 @@ extends Node
 var music_tracks = {
 	"menu": "res://asset/music/Zachz Winner, Фрози, Joyful - Boogie  Discoplug  NCS - Copyright Free Music.mp3",
 	"stage1": "res://asset/music/The Wild New World.mp3",
+	"stage2": "res://asset/music/Stage 4-6 BGM MP3.mp3",
+	"stage4": "res://asset/music/Stage 4-6 BGM MP3.mp3",
 	"correct": "res://asset/music/resp-correct.mp3",
-	"wrong": "res://asset/music/donald-trump-wrong-sound-effect.mp3"
+	"wrong": "res://asset/music/Desert Battle.mp3"
 	# Add more tracks as needed
 	#"game_over": "res://asset/music/game_over_music.mp3",
 	#"victory": "res://asset/music/victory_music.mp3"

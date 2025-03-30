@@ -115,24 +115,15 @@ func generate_new_problem() -> void:
 	var num1 = randi() % 20 + 1
 	var num2 = randi() % 20 + 1
 
-	# Randomly choose operation (0: addition, 1: subtraction, 2: multiplication)
-	var operation = randi() % 3
+	# Only do addition problems
+	current_answer = num1 + num2
+	problem_label.text = str(num1) + " + " + str(num2) + " = ?"
 
-	match operation:
-		0:  # Addition
-			current_answer = num1 + num2
-			problem_label.text = str(num1) + " + " + str(num2) + " = ?"
-		1:  # Subtraction
-			# Ensure larger number comes first
-			if num2 > num1:
-				var temp = num1
-				num1 = num2
-				num2 = temp
-			current_answer = num1 - num2
-			problem_label.text = str(num1) + " - " + str(num2) + " = ?"
-		2:  # Multiplication
-			current_answer = num1 * num2
-			problem_label.text = str(num1) + " × " + str(num2) + " = ?"
+	# Clear the answer display
+	clear_display()
+
+	# Start the timer for this question
+	start_timer()
 
 	# Clear the answer display
 	clear_display()
