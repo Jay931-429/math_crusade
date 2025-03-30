@@ -162,11 +162,11 @@ func check_answer() -> void:
 
 		# If we've reached max_problems or out of HP, end the game
 		if total_problems >= max_problems || current_hp <= 0:
-			await get_tree().create_timer(2.0).timeout
+			await get_tree().create_timer(0.5).timeout
 			end_game()
 		else:
 			# Wait 2 seconds before next problem
-			await get_tree().create_timer(2.0).timeout
+			await get_tree().create_timer(0.5).timeout
 			generate_new_problem()
 
 func end_game() -> void:
