@@ -112,24 +112,35 @@ func generate_new_problem() -> void:
 	var num1 = randi() % 20 + 1
 	var num2 = randi() % 20 + 1
 
-	# Randomly choose operation (0: addition, 1: subtraction, 2: multiplication)
-	var operation = randi() % 3
+	# Ensure num1 is greater than num2 for subtraction and division
+	if num2 > num1:
+		var temp = num1
+		num1 = num2
+		num2 = temp
+
+	# Randomly choose operation (0: addition, 1: subtraction, 2: multiplication, 3: division)
+	var operation = randi() % 4
 
 	match operation:
 		0:  # Addition
 			current_answer = num1 + num2
 			problem_label.text = str(num1) + " + " + str(num2) + " = ?"
 		1:  # Subtraction
-			# Ensure larger number comes first
-			if num2 > num1:
-				var temp = num1
-				num1 = num2
-				num2 = temp
 			current_answer = num1 - num2
 			problem_label.text = str(num1) + " - " + str(num2) + " = ?"
 		2:  # Multiplication
 			current_answer = num1 * num2
 			problem_label.text = str(num1) + " × " + str(num2) + " = ?"
+		3:  # Division (Ensure a clean division with no remainder)
+			while num1 % num2 != 0:  # Keep finding numbers until num1 is divisible by num2
+				num1 = randi() % 20 + 1
+				num2 = randi() % 19 + 1  # Avoid division by zero
+				if num2 > num1:
+					var temp = num1
+					num1 = num2
+					num2 = temp
+			current_answer = num1 / num2
+			problem_label.text = str(num1) + " ÷ " + str(num2) + " = ?"
 
 	# Clear the answer display
 	clear_display()
