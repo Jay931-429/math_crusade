@@ -52,7 +52,7 @@ func setup_ui() -> void:
 func _on_next_stage_button_pressed() -> void:
 	# Only visible and functional if player won
 	if player_won and next_stage != "":
-		get_tree().change_scene_to_file("res://test_stage_PEMDAS.tscn")
+		get_tree().change_scene_to_file("res://test_stage.tscn")
 
 
 func _on_replay_placeholder_pressed() -> void:

@@ -17,8 +17,12 @@ func _on_back_main_menu_pressed() -> void:
 # When pressed, the user is sent to the opening scene or the opening stage of the game
 # For now,it just lead to a test stage.
 func _on_campaign_pressed() -> void:
-	get_tree().change_scene_to_file("res://Stage10_12_NormalStage.tscn")
+	get_tree().change_scene_to_file("res://campaign stages/Stage1_3_NormalStage.tscn")
 
 
 func _on_stages_pressed() -> void:
-	get_tree().change_scene_to_file("res://Stage13_15_NormalStage.tscn")
+	get_tree().change_scene_to_file("res://test_stage.tscn")
+
+
+func _on_tutorial_pressed() -> void:
+	get_tree().change_scene_to_file("res://tutorial_select.tscn")

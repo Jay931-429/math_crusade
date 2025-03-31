@@ -1,13 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cm3w56bl32p1j"]
+[gd_scene load_steps=4 format=3 uid="uid://cm3w56bl32p1j"]
 
 [ext_resource type="Script" uid="uid://dyqr4nl3mc7d2" path="res://tutorial_select.gd" id="1_1x41d"]
 [ext_resource type="Texture2D" uid="uid://dhs5rlbdm23nl" path="res://asset/art/minmax-ai.jpeg" id="2_262x3"]
-[ext_resource type="Texture2D" uid="uid://dfw4lwr8x88cr" path="res://asset/UI/Tutorial.png" id="3_cx1jt"]
-[ext_resource type="Texture2D" uid="uid://cle7hjq53e0t8" path="res://asset/UI/Campain.png" id="4_1rgvn"]
-[ext_resource type="Texture2D" uid="uid://b7lxc70xa4hxo" path="res://asset/UI/Stages.png" id="5_4l6hv"]
-[ext_resource type="Texture2D" uid="uid://bvo5tqr726hoe" path="res://asset/UI/Custom.png" id="6_wu8ix"]
 [ext_resource type="Texture2D" uid="uid://b5c62fsc3wbw4" path="res://asset/UI/Back.png" id="7_ofawt"]
-[ext_resource type="Texture2D" uid="uid://c270r4vfiwrol" path="res://asset/UI/Mode Select.png" id="8_jadee"]
 
 [node name="tutorial_select" type="Node2D"]
 script = ExtResource("1_1x41d")
@@ -23,6 +18,7 @@ offset_bottom = 1912.0
 texture = ExtResource("2_262x3")
 metadata/_edit_use_anchors_ = true
 metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -32,40 +28,42 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -433.0
-offset_top = 723.885
+offset_top = 613.0
 offset_right = 434.0
-offset_bottom = 1665.89
+offset_bottom = 1488.0
 grow_horizontal = 2
 theme_override_constants/separation = 50
+metadata/_edit_group_ = true
 
-[node name="tutorial" type="Button" parent="CanvasLayer/Mode_Select_UI"]
-clip_contents = true
+[node name="Addition" type="Button" parent="CanvasLayer/Mode_Select_UI"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
-icon = ExtResource("3_cx1jt")
-flat = true
-icon_alignment = 1
+theme_override_font_sizes/font_size = 70
+text = "ADDITION"
 
-[node name="campaign" type="Button" parent="CanvasLayer/Mode_Select_UI"]
+[node name="Subtraction" type="Button" parent="CanvasLayer/Mode_Select_UI"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
-icon = ExtResource("4_1rgvn")
-flat = true
-icon_alignment = 1
+theme_override_font_sizes/font_size = 60
+text = "SUBTRACTION"
 
-[node name="stages" type="Button" parent="CanvasLayer/Mode_Select_UI"]
+[node name="Multiplication" type="Button" parent="CanvasLayer/Mode_Select_UI"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
-icon = ExtResource("5_4l6hv")
-flat = true
-icon_alignment = 1
+theme_override_font_sizes/font_size = 70
+text = "MULTIPLICATION"
 
-[node name="custom_stage" type="Button" parent="CanvasLayer/Mode_Select_UI"]
+[node name="Division" type="Button" parent="CanvasLayer/Mode_Select_UI"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 50
-icon = ExtResource("6_wu8ix")
-flat = true
-icon_alignment = 1
+theme_override_font_sizes/font_size = 70
+text = "DIVISION"
+
+[node name="Exponent" type="Button" parent="CanvasLayer/Mode_Select_UI"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "EXPONENT"
+
+[node name="PEMDAS" type="Button" parent="CanvasLayer/Mode_Select_UI"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 70
+text = "PEMDAS"
 
 [node name="BackMainMenu" type="Button" parent="."]
 offset_left = 45.33
@@ -76,13 +74,13 @@ scale = Vector2(0.505, 0.505)
 icon = ExtResource("7_ofawt")
 flat = true
 
-[node name="TextureRect" type="TextureRect" parent="."]
-offset_left = -10.415
-offset_top = 444.365
-offset_right = 1089.58
-offset_bottom = 724.365
-texture = ExtResource("8_jadee")
+[node name="select_tutorial_plceholder" type="Label" parent="."]
+offset_left = 34.0
+offset_top = 305.0
+offset_right = 1051.0
+offset_bottom = 470.0
+theme_override_colors/font_color = Color(0.835718, 1.73271e-06, 4.81307e-07, 1)
+theme_override_font_sizes/font_size = 120
+text = "SELECT TUTORIAL"
 
-[connection signal="pressed" from="CanvasLayer/Mode_Select_UI/campaign" to="." method="_on_campaign_pressed"]
-[connection signal="pressed" from="CanvasLayer/Mode_Select_UI/stages" to="." method="_on_stages_pressed"]
 [connection signal="pressed" from="BackMainMenu" to="." method="_on_back_main_menu_pressed"]
