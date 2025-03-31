@@ -83,4 +83,10 @@ theme_override_colors/font_color = Color(0.835718, 1.73271e-06, 4.81307e-07, 1)
 theme_override_font_sizes/font_size = 120
 text = "SELECT TUTORIAL"
 
+[connection signal="pressed" from="CanvasLayer/Mode_Select_UI/Addition" to="." method="_on_addition_pressed"]
+[connection signal="pressed" from="CanvasLayer/Mode_Select_UI/Subtraction" to="." method="_on_subtraction_pressed"]
+[connection signal="pressed" from="CanvasLayer/Mode_Select_UI/Multiplication" to="." method="_on_multiplication_pressed"]
+[connection signal="pressed" from="CanvasLayer/Mode_Select_UI/Division" to="." method="_on_division_pressed"]
+[connection signal="pressed" from="CanvasLayer/Mode_Select_UI/Exponent" to="." method="_on_exponent_pressed"]
+[connection signal="pressed" from="CanvasLayer/Mode_Select_UI/PEMDAS" to="." method="_on_pemdas_pressed"]
 [connection signal="pressed" from="BackMainMenu" to="." method="_on_back_main_menu_pressed"]
