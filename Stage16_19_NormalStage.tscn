@@ -1,6 +1,6 @@
-[gd_scene load_steps=62 format=3 uid="uid://cvflw8aq3jj30"]
+[gd_scene load_steps=62 format=3 uid="uid://dg06wvk1pgukc"]
 
-[ext_resource type="Script" uid="uid://tf55q5doooxx" path="res://stage_16_19_normal_stage.gd" id="1_eaj5r"]
+[ext_resource type="Script" path="res://stage_16_19_normal_stage.gd" id="1_eaj5r"]
 [ext_resource type="Texture2D" uid="uid://dox6s2pdaah6p" path="res://asset/art/Gray.png" id="2_32uf5"]
 [ext_resource type="Texture2D" uid="uid://cw4qkbfese7jg" path="res://asset/art/Plan 3.png" id="3_eaj5r"]
 [ext_resource type="Texture2D" uid="uid://b2capxdpvd4vu" path="res://asset/UI/Transparent.png" id="4_142qp"]

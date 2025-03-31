@@ -1,6 +1,6 @@
-[gd_scene load_steps=62 format=3 uid="uid://bkv3wdit3o8j"]
+[gd_scene load_steps=62 format=3 uid="uid://cnak6emhv8lbx"]
 
-[ext_resource type="Script" path="res://stage_13_15_normal_stage.gd" id="1_kwdl7"]
+[ext_resource type="Script" path="res://campaign stages/stage_13_15_normal_stage.gd" id="1_4yx78"]
 [ext_resource type="Texture2D" uid="uid://dox6s2pdaah6p" path="res://asset/art/Gray.png" id="2_l23e6"]
 [ext_resource type="Texture2D" uid="uid://dmuv0mjmg6ihf" path="res://asset/art/pxArt.png" id="3_kwdl7"]
 [ext_resource type="Texture2D" uid="uid://b2capxdpvd4vu" path="res://asset/UI/Transparent.png" id="4_gobes"]
@@ -307,7 +307,7 @@ animations = [{
 }]
 
 [node name="S13_15Normal" type="Node2D"]
-script = ExtResource("1_kwdl7")
+script = ExtResource("1_4yx78")
 
 [node name="Stage_BG" type="TextureRect" parent="."]
 anchors_preset = -1
