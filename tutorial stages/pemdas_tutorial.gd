@@ -26,6 +26,46 @@ var max_time: float = 10.0   # Time limit per question in seconds
 var current_time: float = 0.0 # Current time elapsed
 var timer_active: bool = false # Flag to track if timer is active
 
+var tutorial_mode: bool = true  # Set to true for tutorial, false for normal mode
+var tutorial_questions = [
+	{
+		"expression": "2 + 3 × 4", 
+		"answer": 14, 
+		"explanation": "Multiplication before addition: (2 + (3 × 4)) = (2 + 12) = 14"
+	},
+	{
+		"expression": "8 - 4 ÷ 2", 
+		"answer": 6, 
+		"explanation": "Division before subtraction: (8 - (4 ÷ 2)) = (8 - 2) = 6"
+	},
+	{
+		"expression": "(6 + 2) × 3", 
+		"answer": 24, 
+		"explanation": "Parentheses first: ((6 + 2) × 3) = (8 × 3) = 24"
+	},
+	{
+		"expression": "4 + 2²", 
+		"answer": 8, 
+		"explanation": "Exponents before addition: (4 + (2²)) = (4 + 4) = 8"
+	},
+	{
+		"expression": "12 ÷ (3 + 1)", 
+		"answer": 3, 
+		"explanation": "Parentheses first: (12 ÷ (3 + 1)) = (12 ÷ 4) = 3"
+	},
+	{
+		"expression": "5 × 2 + 3²", 
+		"answer": 19, 
+		"explanation": "Exponents first, then multiplication, then addition: (5 × 2 + 3²) = (5 × 2 + 9) = (10 + 9) = 19"
+	},
+	{
+		"expression": "20 - 8 ÷ 4 + 2", 
+		"answer": 20, 
+		"explanation": "Division first, then subtraction and addition left to right: (20 - 8 ÷ 4 + 2) = (20 - 2 + 2) = 20"
+	}
+]
+var current_question_index: int = 0
+var show_pemdas_help: bool = true  # Show PEMDAS reminder
 
 # Stage information for navigation
 var current_stage_path: String = "res://Stage1_3_NormalStage.tscn"  # Update with your actual path
@@ -35,6 +75,9 @@ var next_stage_path: String = "res://test_stage_PEMDAS.tscn"    # Update with yo
 func _ready() -> void:
 	# Initialize HP display
 	update_hp_display()
+	 # Display initial PEMDAS instruction
+	problem_label.text = "Welcome to the PEMDAS Tutorial!\n\nPEMDAS stands for:\nParentheses ()\nExponents (²)\nMultiplication (×) and Division (÷)\nAddition (+) and Subtraction (-)\n\nPress any number to begin."
+	await get_tree().create_timer(7.0).timeout
 
 	# Start the first problem
 	generate_new_problem()
@@ -110,25 +153,35 @@ func generate_new_problem() -> void:
 	if total_problems >= max_problems || current_hp <= 0:
 		end_game()
 		return
-
-	# Generate two random numbers between 1 and 20
-	var num1 = randi() % 20 + 1
-	var num2 = randi() % 20 + 1
-
-	# Only do addition problems
-	current_answer = num1 + num2
-	problem_label.text = str(num1) + " + " + str(num2) + " = ?"
-
-	# Clear the answer display
+		
+	if tutorial_mode and current_question_index < tutorial_questions.size():
+		# Use predefined PEMDAS tutorial question
+		var question = tutorial_questions[current_question_index]
+		var expression = question["expression"]
+		current_answer = question["answer"]
+		
+		# Display the problem
+		problem_label.text = expression + " = ?"
+		
+		# Show PEMDAS reminder for the first few questions
+		if show_pemdas_help and current_question_index < 3:
+			problem_label.text += "\nRemember PEMDAS: Parentheses, Exponents, Multiplication/Division, Addition/Subtraction"
+			
+		current_question_index += 1
+	else:
+		# For non-tutorial mode, you could generate random PEMDAS problems
+		# But this would require a more complex expression evaluator
+		# Simplified example:
+		var num1 = randi() % 10 + 1
+		var num2 = randi() % 10 + 1
+		var num3 = randi() % 10 + 1
+		
+		# Create a simple PEMDAS expression
+		problem_label.text = str(num1) + " + " + str(num2) + " × " + str(num3) + " = ?"
+		current_answer = num1 + (num2 * num3)
+	
+	# Clear the answer display and start the timer
 	clear_display()
-
-	# Start the timer for this question
-	start_timer()
-
-	# Clear the answer display
-	clear_display()
-
-	# Start the timer for this question
 	start_timer()
 
 func check_answer() -> void:
@@ -139,25 +192,30 @@ func check_answer() -> void:
 		var player_answer = int(current_text)
 		if player_answer == current_answer:
 			score += 1
-			problem_label.text = "Correct!"
-			# Play correct sound if available
-			#AudioManager.play_sound("correct")
+			if tutorial_mode and current_question_index <= tutorial_questions.size():
+				# Show explanation for correct answer
+				problem_label.text = "Correct! " + tutorial_questions[current_question_index-1]["explanation"]
+			else:
+				problem_label.text = "Correct!"
 		else:
-			problem_label.text = "Wrong! The answer was " + str(current_answer)
+			if tutorial_mode and current_question_index <= tutorial_questions.size():
+				# Show explanation when incorrect
+				problem_label.text = "The answer was " + str(current_answer) + ".\n" + tutorial_questions[current_question_index-1]["explanation"]
+			else:
+				problem_label.text = "Wrong! The answer was " + str(current_answer)
 			lose_hp()
-			# Play wrong sound if available
-			#AudioManager.play_sound("wrong")
 
 		total_problems += 1
 		score_label.text = str(score) + "/" + str(total_problems)
 
 		# If we've reached max_problems or out of HP, end the game
 		if total_problems >= max_problems || current_hp <= 0:
-			await get_tree().create_timer(0.5).timeout
+			await get_tree().create_timer(3.0).timeout  # Longer wait time for PEMDAS explanations
 			end_game()
 		else:
-			# Wait 2 seconds before next problem
-			await get_tree().create_timer(0.5).timeout
+			# Wait longer for PEMDAS tutorial to read explanation
+			var wait_time = 3.5 if tutorial_mode else 0.5
+			await get_tree().create_timer(wait_time).timeout
 			generate_new_problem()
 
 func end_game() -> void:

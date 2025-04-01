@@ -254,3 +254,23 @@ func _on_submit_pressed() -> void:
 
 func _on_placeholder_back_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://mode_select.tscn")
+	
+	
+	# pOtentially useful code, but dont bother for now
+	#var tutorial_time_limit: float = 20.0  # More time for tutorial questions
+#var tutorial_max_hp: int = 999         # Essentially unlimited lives for tutorial
+
+#func _ready() -> void:
+	# Initialize HP display
+	#if tutorial_mode:
+		# Set tutorial-specific parameters
+		#max_hp = tutorial_max_hp
+		#current_hp = tutorial_max_hp
+		
+		# You might want to display a tutorial instruction
+		#problem_label.text = "Welcome to the tutorial! Press any number to begin."
+		#await get_tree().create_timer(3.0).timeout
+	
+	#update_hp_display()
+	#generate_new_problem()
+	#AudioManager.change_music("stage1")

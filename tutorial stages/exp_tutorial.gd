@@ -26,6 +26,17 @@ var max_time: float = 10.0   # Time limit per question in seconds
 var current_time: float = 0.0 # Current time elapsed
 var timer_active: bool = false # Flag to track if timer is active
 
+var tutorial_mode: bool = true  # Set to true for tutorial, false for normal mode
+var tutorial_questions = [
+	{"num1": 2, "num2": 3, "operator": "^", "answer": 8, "explanation": "2^3 means 2×2×2 = 8"},
+	{"num1": 3, "num2": 2, "operator": "^", "answer": 9, "explanation": "3^2 means 3×3 = 9"},
+	{"num1": 5, "num2": 2, "operator": "^", "answer": 25, "explanation": "5^2 means 5×5 = 25"},
+	{"num1": 10, "num2": 2, "operator": "^", "answer": 100, "explanation": "10^2 means 10×10 = 100"},
+	{"num1": 2, "num2": 4, "operator": "^", "answer": 16, "explanation": "2^4 means 2×2×2×2 = 16"}
+]
+var current_question_index: int = 0
+var show_explanation: bool = true  # Set to true to show explanations in tutorial mode
+
 
 # Stage information for navigation
 var current_stage_path: String = "res://Stage1_3_NormalStage.tscn"  # Update with your actual path
@@ -35,6 +46,10 @@ var next_stage_path: String = "res://test_stage_PEMDAS.tscn"    # Update with yo
 func _ready() -> void:
 	# Initialize HP display
 	update_hp_display()
+	
+	# You might want to display a tutorial instruction
+	problem_label.text = "Welcome to the tutorial! Press any number to begin."
+	await get_tree().create_timer(3.0).timeout
 
 	# Start the first problem
 	generate_new_problem()
@@ -110,25 +125,27 @@ func generate_new_problem() -> void:
 	if total_problems >= max_problems || current_hp <= 0:
 		end_game()
 		return
-
-	# Generate two random numbers between 1 and 20
-	var num1 = randi() % 20 + 1
-	var num2 = randi() % 20 + 1
-
-	# Only do addition problems
-	current_answer = num1 + num2
-	problem_label.text = str(num1) + " + " + str(num2) + " = ?"
-
-	# Clear the answer display
+		
+	if tutorial_mode and current_question_index < tutorial_questions.size():
+		# Use predefined tutorial question for exponents
+		var question = tutorial_questions[current_question_index]
+		var num1 = question["num1"]
+		var num2 = question["num2"]
+		var operator = question["operator"]
+		current_answer = question["answer"]
+		
+		# Display the problem with exponent notation
+		problem_label.text = str(num1) + operator + str(num2) + " = ?"
+		current_question_index += 1
+	else:
+		# Generate random exponent problem
+		var base = randi() % 10 + 2  # Base between 2 and 11
+		var exponent = randi() % 3 + 2  # Exponent between 2 and 4 to keep answers manageable
+		current_answer = pow(base, exponent)  # Using Godot's pow function for exponentiation
+		problem_label.text = str(base) + "^" + str(exponent) + " = ?"
+	
+	# Clear the answer display and start the timer
 	clear_display()
-
-	# Start the timer for this question
-	start_timer()
-
-	# Clear the answer display
-	clear_display()
-
-	# Start the timer for this question
 	start_timer()
 
 func check_answer() -> void:
@@ -139,11 +156,19 @@ func check_answer() -> void:
 		var player_answer = int(current_text)
 		if player_answer == current_answer:
 			score += 1
-			problem_label.text = "Correct!"
+			if tutorial_mode and show_explanation and current_question_index <= tutorial_questions.size():
+				# Show explanation for correct answer in tutorial
+				problem_label.text = "Correct! " + tutorial_questions[current_question_index-1]["explanation"]
+			else:
+				problem_label.text = "Correct!"
 			# Play correct sound if available
 			#AudioManager.play_sound("correct")
 		else:
-			problem_label.text = "Wrong! The answer was " + str(current_answer)
+			if tutorial_mode and show_explanation and current_question_index <= tutorial_questions.size():
+				# Show explanation when incorrect in tutorial
+				problem_label.text = "The answer was " + str(current_answer) + ". " + tutorial_questions[current_question_index-1]["explanation"]
+			else:
+				problem_label.text = "Wrong! The answer was " + str(current_answer)
 			lose_hp()
 			# Play wrong sound if available
 			#AudioManager.play_sound("wrong")
@@ -153,11 +178,12 @@ func check_answer() -> void:
 
 		# If we've reached max_problems or out of HP, end the game
 		if total_problems >= max_problems || current_hp <= 0:
-			await get_tree().create_timer(0.5).timeout
+			await get_tree().create_timer(2.0).timeout  # Longer wait time to read explanation
 			end_game()
 		else:
-			# Wait 2 seconds before next problem
-			await get_tree().create_timer(0.5).timeout
+			# Wait longer in tutorial mode to read explanation
+			var wait_time = 2.5 if tutorial_mode else 0.5
+			await get_tree().create_timer(wait_time).timeout
 			generate_new_problem()
 
 func end_game() -> void:

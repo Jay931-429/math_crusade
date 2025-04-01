@@ -306,7 +306,7 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="div_tutorial" type="Node2D"]
+[node name="multi_tutorial" type="Node2D"]
 script = ExtResource("1_4mmll")
 
 [node name="Stage_BG" type="TextureRect" parent="."]

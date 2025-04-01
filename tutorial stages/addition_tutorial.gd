@@ -31,10 +31,24 @@ var timer_active: bool = false # Flag to track if timer is active
 var current_stage_path: String = "res://Stage1_3_NormalStage.tscn"  # Update with your actual path
 var next_stage_path: String = "res://test_stage_PEMDAS.tscn"    # Update with your next stage path
 
-# Called when the node enters the scene tree for the first time.
+# Tutorial mode identifier
+var tutorial_mode: bool = true 
+# addition tutorial question
+var tutorial_questions = [
+	{"num1": 5, "num2": 3, "operator": "+", "answer": 8},
+	{"num1": 4, "num2": 6, "operator": "+", "answer": 10},
+	{"num1": 7, "num2": 2, "operator": "+", "answer": 9},
+	{"num1": 10, "num2": 5, "operator": "+", "answer": 15}
+]
+var current_question_index: int = 0
+
+# Called when the node enters the scene tree for the first tim
 func _ready() -> void:
 	# Initialize HP display
 	update_hp_display()
+	 # Display initial PEMDAS instruction
+	problem_label.text = "Welcome to the PEMDAS Tutorial!\n\nPEMDAS stands for:\nParentheses ()\nExponents (²)\nMultiplication (×) and Division (÷)\nAddition (+) and Subtraction (-)\n\nPress any number to begin."
+	await get_tree().create_timer(7.0).timeout
 
 	# Start the first problem
 	generate_new_problem()
@@ -110,25 +124,26 @@ func generate_new_problem() -> void:
 	if total_problems >= max_problems || current_hp <= 0:
 		end_game()
 		return
-
-	# Generate two random numbers between 1 and 20
-	var num1 = randi() % 20 + 1
-	var num2 = randi() % 20 + 1
-
-	# Only do addition problems
-	current_answer = num1 + num2
-	problem_label.text = str(num1) + " + " + str(num2) + " = ?"
-
-	# Clear the answer display
+		
+	if tutorial_mode and current_question_index < tutorial_questions.size():
+		# Use predefined tutorial question
+		var question = tutorial_questions[current_question_index]
+		var num1 = question["num1"]
+		var num2 = question["num2"]
+		var operator = question["operator"]
+		current_answer = question["answer"]
+		
+		problem_label.text = str(num1) + " " + operator + " " + str(num2) + " = ?"
+		current_question_index += 1
+	else:
+		# Generate random question (your existing code)
+		var num1 = randi() % 20 + 1
+		var num2 = randi() % 20 + 1
+		current_answer = num1 + num2
+		problem_label.text = str(num1) + " + " + str(num2) + " = ?"
+	
+	# Clear the answer display and start the timer
 	clear_display()
-
-	# Start the timer for this question
-	start_timer()
-
-	# Clear the answer display
-	clear_display()
-
-	# Start the timer for this question
 	start_timer()
 
 func check_answer() -> void:
