@@ -514,7 +514,7 @@ text = "TIME"
 position = Vector2(888, 496)
 scale = Vector2(3.03261, 2.87774)
 sprite_frames = SubResource("SpriteFrames_3iu3y")
-animation = &"Idle"
+animation = &"Hit"
 flip_h = true
 
 [node name="Player" type="AnimatedSprite2D" parent="."]

@@ -92,7 +92,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xd5ne")
 }],
-"loop": true,
+"loop": false,
 "name": &"Attack",
 "speed": 12.0
 }, {
@@ -106,7 +106,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3fmhi")
 }],
-"loop": true,
+"loop": false,
 "name": &"Hit",
 "speed": 4.0
 }, {
@@ -264,7 +264,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_y1tf0")
 }],
-"loop": true,
+"loop": false,
 "name": &"Attack",
 "speed": 20.0
 }, {
@@ -278,7 +278,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dt5uf")
 }],
-"loop": true,
+"loop": false,
 "name": &"Hit",
 "speed": 8.0
 }, {
@@ -514,14 +514,14 @@ text = "TIME"
 position = Vector2(888, 496)
 scale = Vector2(3.03261, 2.87774)
 sprite_frames = SubResource("SpriteFrames_3iu3y")
-animation = &"Attack"
+animation = &"Hit"
 flip_h = true
 
 [node name="Player" type="AnimatedSprite2D" parent="."]
 position = Vector2(192, 480)
 scale = Vector2(3.97076, 3.41458)
 sprite_frames = SubResource("SpriteFrames_ifmbh")
-animation = &"Hit"
+animation = &"Attack"
 
 [connection signal="pressed" from="Number_Button/num_row_123/one" to="." method="_on_one_pressed"]
 [connection signal="pressed" from="Number_Button/num_row_123/two" to="." method="_on_two_pressed"]
