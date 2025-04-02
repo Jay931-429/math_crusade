@@ -5,7 +5,6 @@
 # Placed on Autoload tab
 # "Global" Script
 
-# game_data.gd
 extends Node
 
 # Dictionary to store results data
@@ -14,38 +13,52 @@ var results_data = {
 	"max_score": 0,
 	"player_won": false,
 	"current_stage": "",
-	"next_stage": "",
 	"remaining_hp": 0,
 	"max_hp": 3
 }
 
-# Dictionary to track stage progress
-var stage_progress = {
-	"test_stage": {
-		"unlocked": true,  # First stage is unlocked by default
-		"completed": false
-	},
-	"test_stage_PEMDAS": {
-		"unlocked": false,
-		"completed": false
-	},
+# Ordered list of stages (ensures proper progression)
+var stage_order = [
+	"res://campaign stages/Stage1_3_NormalStage.tscn",
+	"res://campaign stages/Stage4_6_NormalStage.tscn",
+	"res://campaign stages/Stage7_9_NormalStage.tscn",
+	"res://campaign stages/Stage10_12_NormalStage.tscn",
+	"res://campaign stages/Stage13_15_NormalStage.tscn",
+	"res://campaign stages/Stage16_19_NormalStage.tscn",
 	# Add more stages here
-}
+]
+
+# Dictionary to track stage progress
+var stage_progress = {}
+
+func _ready() -> void:
+	# Initialize stage_progress dynamically from stage_order if not loaded
+	if stage_progress.is_empty():
+		for stage in stage_order:
+			var stage_name = stage.get_file().get_basename()
+			stage_progress[stage_name] = {
+				"unlocked": stage == stage_order[0],  # Unlock the first stage only
+				"completed": false
+			}
+	load_game()  # Load saved progress
 
 func set_results_data(data: Dictionary) -> void:
 	results_data = data
 
 	# Update stage progress if player won
 	if data.player_won and data.current_stage != "":
-		# Mark current stage as completed
 		var current_stage_name = data.current_stage.get_file().get_basename()
+		
+		# Mark current stage as completed
 		if stage_progress.has(current_stage_name):
 			stage_progress[current_stage_name]["completed"] = true
 
-		# Unlock next stage
-		var next_stage_name = data.next_stage.get_file().get_basename()
-		if stage_progress.has(next_stage_name):
-			stage_progress[next_stage_name]["unlocked"] = true
+		# Unlock the next stage dynamically
+		var next_stage = get_next_stage(data.current_stage)
+		if next_stage:
+			var next_stage_name = next_stage.get_file().get_basename()
+			if stage_progress.has(next_stage_name):
+				stage_progress[next_stage_name]["unlocked"] = true
 
 	# Save progress to disk
 	save_game()
@@ -53,15 +66,18 @@ func set_results_data(data: Dictionary) -> void:
 func get_results_data() -> Dictionary:
 	return results_data
 
+func get_next_stage(current_stage: String) -> String:
+	# Find the next stage in the order list
+	var index = stage_order.find(current_stage)
+	if index != -1 and index + 1 < stage_order.size():
+		return stage_order[index + 1]  # Return the next stage file path
+	return ""  # No more stages left
+
 func is_stage_unlocked(stage_name: String) -> bool:
-	if stage_progress.has(stage_name):
-		return stage_progress[stage_name]["unlocked"]
-	return false
+	return stage_progress.get(stage_name, {}).get("unlocked", false)
 
 func is_stage_completed(stage_name: String) -> bool:
-	if stage_progress.has(stage_name):
-		return stage_progress[stage_name]["completed"]
-	return false
+	return stage_progress.get(stage_name, {}).get("completed", false)
 
 # Save game progress to disk
 func save_game() -> void:

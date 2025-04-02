@@ -1,6 +1,6 @@
 [gd_scene load_steps=62 format=3 uid="uid://cl3y2t65k6cmk"]
 
-[ext_resource type="Script" path="res://campaign stages/stage_7_9_normal_stage.gd" id="1_1m0go"]
+[ext_resource type="Script" uid="uid://u1r1qpeevjpv" path="res://campaign stages/stage_7_9_normal_stage.gd" id="1_1m0go"]
 [ext_resource type="Texture2D" uid="uid://dox6s2pdaah6p" path="res://asset/art/Gray.png" id="2_p3b6c"]
 [ext_resource type="Texture2D" uid="uid://b2q0kd6qnedvt" path="res://asset/art/environment-preview.png" id="3_raty8"]
 [ext_resource type="Texture2D" uid="uid://b2capxdpvd4vu" path="res://asset/UI/Transparent.png" id="4_a7lre"]

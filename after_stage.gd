@@ -1,4 +1,4 @@
-# results_stage.gd
+# after_stage.gd
 extends Node2D
 
 # UI Elements
@@ -6,15 +6,12 @@ extends Node2D
 @onready var score_label = $ScoreLabel
 @onready var next_stage_button = $NextStageButton
 
-
-# Variables to store passed data
-var player_score: int = 0
-var max_score: int = 10
-var player_won: bool = false
-var current_stage: String = ""
-var next_stage: String = ""
-var remaining_hp: int = 0
-var max_hp: int = 10
+# Variables
+var player_score: int
+var max_score: int
+var player_won: bool
+var current_stage: String
+var next_stage: String
 
 func _ready() -> void:
 	# Load data from GameData
@@ -23,24 +20,18 @@ func _ready() -> void:
 	max_score = data.max_score
 	player_won = data.player_won
 	current_stage = data.current_stage
-	next_stage = data.next_stage
-	remaining_hp = data.remaining_hp
-	max_hp = data.max_hp
 
-	# Setup UI based on loaded data
+	# Get next stage dynamically
+	next_stage = GameData.get_next_stage(current_stage)
+
+	# Setup UI
 	setup_ui()
-
-	# Play appropriate music based on outcome
-	#if player_won:
-		#AudioManager.change_music("victory")
-	#else:
-		#AudioManager.change_music("defeat")
 
 func setup_ui() -> void:
 	# Set result message
 	if player_won:
 		result_label.text = "You Win!"
-		next_stage_button.visible = true
+		next_stage_button.visible = (next_stage != "")  # Hide if no next stage
 	else:
 		result_label.text = "Game Over"
 		next_stage_button.visible = false
@@ -50,16 +41,11 @@ func setup_ui() -> void:
 
 # Button handlers
 func _on_next_stage_button_pressed() -> void:
-	# Only visible and functional if player won
 	if player_won and next_stage != "":
-		get_tree().change_scene_to_file("res://test_stage.tscn")
-
+		get_tree().change_scene_to_file(next_stage)
 
 func _on_replay_placeholder_pressed() -> void:
-	# Replay the current stage
 	get_tree().change_scene_to_file(current_stage)
 
-
 func _on_mode_select_placeholder_pressed() -> void:
-	# Go back to stage selection
 	get_tree().change_scene_to_file("res://mode_select.tscn")

@@ -1,5 +1,5 @@
 extends Node2D
-# Stage for testing purpose only
+
 # Called when the node enters the scene tree for the first time.
 @onready var display_label = $AnswerLabel
 @onready var problem_label = $ProblemLabel  # Add this Label node for showing the math problem
@@ -27,12 +27,18 @@ var current_time: float = 0.0 # Current time elapsed
 var timer_active: bool = false # Flag to track if timer is active
 
 
-# Stage information for navigation
-var current_stage_path: String = "res://Stage1_3_NormalStage.tscn"  # Update with your actual path
-var next_stage_path: String = "res://test_stage_PEMDAS.tscn"    # Update with your next stage path
+# Stage Information
+var current_stage_path: String = ""  # Will be set dynamically
+var next_stage_path: String = ""
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# Get the current stage path dynamically
+	current_stage_path = get_tree().current_scene.scene_file_path
+	
+	# Determine the next stage dynamically
+	next_stage_path = GameData.get_next_stage(current_stage_path)
+	
 	# Initialize HP display
 	update_hp_display()
 
@@ -161,24 +167,19 @@ func check_answer() -> void:
 			generate_new_problem()
 
 func end_game() -> void:
-	# Stop the timer
 	timer_active = false
-
-	# Check win condition: enough score AND still has HP
 	var player_won = score >= target_score && current_hp > 0
 
-	# Use autoload to store the game results data
 	GameData.set_results_data({
 		"player_score": score,
 		"max_score": total_problems,
 		"player_won": player_won,
 		"current_stage": current_stage_path,
 		"next_stage": next_stage_path if player_won else "",
-		"remaining_hp": current_hp,  # Pass HP information to results screen
+		"remaining_hp": current_hp,
 		"max_hp": max_hp
 	})
 
-	# Transition to results stage
 	get_tree().change_scene_to_file("res://after_stage.tscn")
 
 func add_number(number: String) -> void:

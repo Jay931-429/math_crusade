@@ -28,11 +28,16 @@ var timer_active: bool = false # Flag to track if timer is active
 
 
 # Stage information for navigation
-var current_stage_path: String = "res://Stage1_3_NormalStage.tscn"  # Update with your actual path
-var next_stage_path: String = "res://test_stage_PEMDAS.tscn"    # Update with your next stage path
+var current_stage_path: String = ""  # Will be set dynamically
+var next_stage_path: String = ""
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# Get the current stage path dynamically
+	current_stage_path = get_tree().current_scene.scene_file_path
+	
+	# Determine the next stage dynamically
+	next_stage_path = GameData.get_next_stage(current_stage_path)
 	# Initialize HP display
 	update_hp_display()
 
