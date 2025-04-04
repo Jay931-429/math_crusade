@@ -123,6 +123,8 @@ func time_up() -> void:
 	# What happens when time is up for a question
 	problem_label.text = "Time's up! The answer was " + str(current_answer)
 	lose_hp()
+	player_animation.play("Hit")  # Player takes damage animation
+	enemy_animation.play("Attack")
 	total_problems += 1
 	score_label.text = str(score) + "/" + str(total_problems)
 
@@ -132,7 +134,7 @@ func time_up() -> void:
 		end_game()
 	else:
 		# Wait 2 seconds before next problem
-		await get_tree().create_timer(2.0).timeout
+		await get_tree().create_timer(0.5).timeout
 		generate_new_problem()
 
 func lose_hp() -> void:
@@ -186,36 +188,31 @@ func generate_new_problem() -> void:
 
 func check_answer() -> void:
 	if current_text != "":
-		# Stop the timer
 		timer_active = false
-
 		var player_answer = int(current_text)
+
 		if player_answer == current_answer:
 			score += 1
-			if tutorial_mode and current_question_index <= tutorial_questions.size():
-				# Show explanation for correct answer
-				problem_label.text = "Correct! " + tutorial_questions[current_question_index-1]["explanation"]
-			else:
-				problem_label.text = "Correct!"
+			problem_label.text = "Correct!"
+			player_animation.play("Attack")  # Play player's attack animation
+			enemy_animation.play("Hit")  # Play enemy hit animation
+			# AudioManager.play_sound("correct")  # Play correct answer sound
 		else:
-			if tutorial_mode and current_question_index <= tutorial_questions.size():
-				# Show explanation when incorrect
-				problem_label.text = "The answer was " + str(current_answer) + ".\n" + tutorial_questions[current_question_index-1]["explanation"]
-			else:
-				problem_label.text = "Wrong! The answer was " + str(current_answer)
+			problem_label.text = "Wrong! The answer was " + str(current_answer)
 			lose_hp()
+			player_animation.play("Hit")  # Player takes damage animation
+			enemy_animation.play("Attack")
+			# AudioManager.play_sound("wrong")  # Play incorrect answer sound
 
+		await get_tree().create_timer(0.5).timeout  # Wait before next question
 		total_problems += 1
 		score_label.text = str(score) + "/" + str(total_problems)
 
-		# If we've reached max_problems or out of HP, end the game
 		if total_problems >= max_problems || current_hp <= 0:
-			await get_tree().create_timer(3.0).timeout  # Longer wait time for PEMDAS explanations
+			await get_tree().create_timer(0.5).timeout
 			end_game()
 		else:
-			# Wait longer for PEMDAS tutorial to read explanation
-			var wait_time = 3.5 if tutorial_mode else 0.5
-			await get_tree().create_timer(wait_time).timeout
+			await get_tree().create_timer(0.5).timeout
 			generate_new_problem()
 
 func end_game() -> void:

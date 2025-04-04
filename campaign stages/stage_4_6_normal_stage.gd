@@ -87,6 +87,8 @@ func time_up() -> void:
 	# What happens when time is up for a question
 	problem_label.text = "Time's up! The answer was " + str(current_answer)
 	lose_hp()
+	player_animation.play("Hit")  # Player takes damage animation
+	enemy_animation.play("Attack")
 	total_problems += 1
 	score_label.text = str(score) + "/" + str(total_problems)
 
@@ -96,7 +98,7 @@ func time_up() -> void:
 		end_game()
 	else:
 		# Wait 2 seconds before next problem
-		await get_tree().create_timer(2.0).timeout
+		await get_tree().create_timer(0.5).timeout
 		generate_new_problem()
 
 func lose_hp() -> void:
@@ -146,30 +148,30 @@ func generate_new_problem() -> void:
 
 func check_answer() -> void:
 	if current_text != "":
-		# Stop the timer
 		timer_active = false
-
 		var player_answer = int(current_text)
+
 		if player_answer == current_answer:
 			score += 1
 			problem_label.text = "Correct!"
-			# Play correct sound if available
-			#AudioManager.play_sound("correct")
+			player_animation.play("Attack")  # Play player's attack animation
+			enemy_animation.play("Hit")  # Play enemy hit animation
+			# AudioManager.play_sound("correct")  # Play correct answer sound
 		else:
 			problem_label.text = "Wrong! The answer was " + str(current_answer)
 			lose_hp()
-			# Play wrong sound if available
-			#AudioManager.play_sound("wrong")
+			player_animation.play("Hit")  # Player takes damage animation
+			enemy_animation.play("Attack")
+			# AudioManager.play_sound("wrong")  # Play incorrect answer sound
 
+		await get_tree().create_timer(0.5).timeout  # Wait before next question
 		total_problems += 1
 		score_label.text = str(score) + "/" + str(total_problems)
 
-		# If we've reached max_problems or out of HP, end the game
 		if total_problems >= max_problems || current_hp <= 0:
 			await get_tree().create_timer(0.5).timeout
 			end_game()
 		else:
-			# Wait 2 seconds before next problem
 			await get_tree().create_timer(0.5).timeout
 			generate_new_problem()
 
