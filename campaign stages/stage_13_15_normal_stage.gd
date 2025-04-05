@@ -83,7 +83,7 @@ func start_timer() -> void:
 
 func time_up() -> void:
 	# What happens when time is up for a question
-	problem_label.text = "Time's up! The answer was " + str(current_answer)
+	problem_label.text = "Time's up! Answer: " + str(current_answer)
 	lose_hp()
 	player_animation.play("Hit")  # Player takes damage animation
 	enemy_animation.play("Attack")
@@ -134,13 +134,13 @@ func generate_new_problem() -> void:
 	match operation:
 		0:  # Addition
 			current_answer = num1 + num2
-			problem_label.text = str(num1) + " + " + str(num2) + " = ?"
+			problem_label.text = str(num1) + " + " + str(num2) + " = "
 		1:  # Subtraction
 			current_answer = num1 - num2
-			problem_label.text = str(num1) + " - " + str(num2) + " = ?"
+			problem_label.text = str(num1) + " - " + str(num2) + " = "
 		2:  # Multiplication
 			current_answer = num1 * num2
-			problem_label.text = str(num1) + " × " + str(num2) + " = ?"
+			problem_label.text = str(num1) + " × " + str(num2) + " = "
 		3:  # Division (Ensure a clean division with no remainder)
 			while num2 == 0 || num1 % num2 != 0:  # Avoid division by zero and ensure clean division
 				num1 = randi() % 20 + 1
@@ -150,12 +150,12 @@ func generate_new_problem() -> void:
 					num1 = num2
 					num2 = temp
 			current_answer = num1 / num2
-			problem_label.text = str(num1) + " ÷ " + str(num2) + " = ?"
+			problem_label.text = str(num1) + " ÷ " + str(num2) + " = "
 		4:  # Exponentiation
 			num1 = randi() % 10 + 1  # Base number (smaller to prevent huge results)
 			num2 = randi() % 4 + 1   # Exponent (limit to 1-4 to avoid very large numbers)
 			current_answer = int(pow(num1, num2))  # Convert result to int for proper display
-			problem_label.text = str(num1) + " ^ " + str(num2) + " = ?"
+			problem_label.text = str(num1) + " ^ " + str(num2) + " = "
 
 	# Clear the answer display
 	clear_display()
@@ -175,7 +175,7 @@ func check_answer() -> void:
 			enemy_animation.play("Hit")  # Play enemy hit animation
 			AudioManager.play_sfx("correct") # Play correct answer sound
 		else:
-			problem_label.text = "Wrong! The answer was " + str(current_answer)
+			problem_label.text = "Wrong! Answer: " + str(current_answer)
 			lose_hp()
 			player_animation.play("Hit")  # Player takes damage animation
 			enemy_animation.play("Attack")

@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://bq2mi31vh824u"]
+[gd_scene load_steps=10 format=3 uid="uid://bq2mi31vh824u"]
 
 [ext_resource type="Script" uid="uid://ckwms6hu7db6t" path="res://after_stage.gd" id="1_4ocfc"]
 [ext_resource type="Texture2D" uid="uid://dhcdkokk2w3px" path="res://asset/art/stage_clear_-_failed_gui1.png" id="2_gn5vl"]
+[ext_resource type="Texture2D" uid="uid://c4bop8t3m7ugh" path="res://asset/art/256x256 Pixel Textures/256x256/256_Checkered 01.png" id="2_j2cbo"]
 [ext_resource type="FontFile" uid="uid://ee0yrhutnoks" path="res://asset/font/ThaleahFat.ttf" id="3_g6jej"]
 [ext_resource type="Texture2D" uid="uid://cs7jejrn3fh6w" path="res://asset/art/stage_clear_-_failed_gui2.png" id="3_j2cbo"]
 [ext_resource type="Texture2D" uid="uid://caifnlfmelihq" path="res://asset/art/Replay_BTN.png" id="3_nj2d6"]
@@ -9,32 +10,25 @@
 [ext_resource type="Texture2D" uid="uid://dhwxrqfrtiwaf" path="res://asset/art/Forward_BTN.png" id="5_tc1uy"]
 [ext_resource type="Texture2D" uid="uid://diii5jybxtthr" path="res://asset/art/Star_03.png" id="6_kk7r6"]
 
-[sub_resource type="Gradient" id="Gradient_j2cbo"]
-offsets = PackedFloat32Array(0, 0.00245098)
-colors = PackedColorArray(0, 0, 0, 1, 0.509021, 0.383688, 0.274621, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_xpv0c"]
-gradient = SubResource("Gradient_j2cbo")
-
 [node name="After_Stage" type="Node2D"]
 script = ExtResource("1_4ocfc")
 
 [node name="Main_Menu_BG" type="TextureRect" parent="."]
 offset_right = 1078.0
 offset_bottom = 1918.0
-texture = SubResource("GradientTexture1D_xpv0c")
+texture = ExtResource("2_j2cbo")
 expand_mode = 1
 metadata/_edit_lock_ = true
 
 [node name="ui_win" type="Sprite2D" parent="."]
-position = Vector2(528, 960)
-scale = Vector2(3.42222, 5.02222)
+position = Vector2(528, 920)
+scale = Vector2(3.14444, 4.55556)
 texture = ExtResource("2_gn5vl")
 metadata/_edit_lock_ = true
 
 [node name="ui_lose" type="Sprite2D" parent="."]
-position = Vector2(528, 961.588)
-scale = Vector2(3.44444, 5.03104)
+position = Vector2(524.5, 917.5)
+scale = Vector2(3.175, 4.56389)
 texture = ExtResource("3_j2cbo")
 metadata/_edit_lock_ = true
 
@@ -80,24 +74,24 @@ theme_override_fonts/font = ExtResource("3_g6jej")
 theme_override_font_sizes/font_size = 50
 
 [node name="medal_star_placeholder" type="TextureRect" parent="."]
-offset_left = 104.0
-offset_top = 712.0
-offset_right = 396.0
-offset_bottom = 992.0
+offset_left = 408.0
+offset_top = 512.0
+offset_right = 700.0
+offset_bottom = 792.0
 texture = ExtResource("6_kk7r6")
 
 [node name="medal_star_placeholder2" type="TextureRect" parent="."]
-offset_left = 392.0
-offset_top = 712.0
-offset_right = 684.0
-offset_bottom = 992.0
+offset_left = 640.0
+offset_top = 704.0
+offset_right = 932.0
+offset_bottom = 984.0
 texture = ExtResource("6_kk7r6")
 
 [node name="medal_star_placeholder3" type="TextureRect" parent="."]
-offset_left = 688.0
-offset_top = 720.0
-offset_right = 980.0
-offset_bottom = 1000.0
+offset_left = 176.0
+offset_top = 704.0
+offset_right = 468.0
+offset_bottom = 984.0
 texture = ExtResource("6_kk7r6")
 
 [connection signal="pressed" from="mode_select_placeholder" to="." method="_on_mode_select_placeholder_pressed"]

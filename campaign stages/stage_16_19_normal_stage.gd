@@ -84,7 +84,7 @@ func start_timer() -> void:
 
 func time_up() -> void:
 	# What happens when time is up for a question
-	problem_label.text = "Time's up! The answer was " + str(current_answer)
+	problem_label.text = "Time's up! Answer: " + str(current_answer)
 	lose_hp()
 	player_animation.play("Hit")  # Player takes damage animation
 	enemy_animation.play("Attack")
@@ -143,43 +143,43 @@ func generate_new_problem() -> void:
 		match operation1:
 			0:
 				solution = num1 + num2
-				problem_text = str(num1) + " + " + str(num2) + " = ?"
+				problem_text = str(num1) + " + " + str(num2) + " = "
 			1:
 				solution = num1 - num2
-				problem_text = str(num1) + " - " + str(num2) + " = ?"
+				problem_text = str(num1) + " - " + str(num2) + " = "
 			2:
 				solution = num1 * num2
-				problem_text = str(num1) + " × " + str(num2) + " = ?"
+				problem_text = str(num1) + " × " + str(num2) + " = "
 			3:
 				while num2 == 0 || num1 % num2 != 0:  # Ensure clean division
 					num1 = randi() % 10 + 1
 					num2 = randi() % 9 + 1
 				solution = num1 / num2
-				problem_text = str(num1) + " ÷ " + str(num2) + " = ?"
+				problem_text = str(num1) + " ÷ " + str(num2) + " = "
 			4:
 				num1 = randi() % 5 + 1  # Keep base small
 				num2 = randi() % 3 + 1  # Keep exponent small
 				solution = int(pow(num1, num2))
-				problem_text = str(num1) + " ^ " + str(num2) + " = ?"
+				problem_text = str(num1) + " ^ " + str(num2) + " = "
 
 	elif problem_type == 1:
 		# Two-step expression (e.g., (3 + 2) × 5)
 		match operation1:
 			0:
 				solution = (num1 + num2) * num3
-				problem_text = "(" + str(num1) + " + " + str(num2) + ") × " + str(num3) + " = ?"
+				problem_text = "(" + str(num1) + " + " + str(num2) + ") × " + str(num3) + " = "
 			1:
 				solution = (num1 - num2) * num3
-				problem_text = "(" + str(num1) + " - " + str(num2) + ") × " + str(num3) + " = ?"
+				problem_text = "(" + str(num1) + " - " + str(num2) + ") × " + str(num3) + " = "
 			2:
 				solution = num1 * num2 + num3
-				problem_text = str(num1) + " × " + str(num2) + " + " + str(num3) + " = ?"
+				problem_text = str(num1) + " × " + str(num2) + " + " + str(num3) + " = "
 			3:
 				while num2 == 0 || num1 % num2 != 0:
 					num1 = randi() % 10 + 1
 					num2 = randi() % 9 + 1
 				solution = num1 / num2 + num3
-				problem_text = str(num1) + " ÷ " + str(num2) + " + " + str(num3) + " = ?"
+				problem_text = str(num1) + " ÷ " + str(num2) + " + " + str(num3) + " = "
 
 	else:
 		# Full PEMDAS question (e.g., (3 + 2) × (4 - 1) / 2)
@@ -188,7 +188,7 @@ func generate_new_problem() -> void:
 			num4 = randi() % 10 + 1
 
 		solution = ((num1 + num2) * (num3 - num4)) / num4
-		problem_text = "( " + str(num1) + " + " + str(num2) + " ) × ( " + str(num3) + " - " + str(num4) + " ) ÷ " + str(num4) + " = ?"
+		problem_text = "( " + str(num1) + " + " + str(num2) + " ) × ( " + str(num3) + " - " + str(num4) + " ) ÷ " + str(num4) + " = "
 
 	# Set problem and solution
 	current_answer = solution
@@ -212,7 +212,7 @@ func check_answer() -> void:
 			enemy_animation.play("Hit")  # Play enemy hit animation
 			AudioManager.play_sfx("correct") # Play correct answer sound
 		else:
-			problem_label.text = "Wrong! The answer was " + str(current_answer)
+			problem_label.text = "Wrong! Answer: " + str(current_answer)
 			lose_hp()
 			player_animation.play("Hit")  # Player takes damage animation
 			enemy_animation.play("Attack")

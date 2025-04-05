@@ -75,13 +75,14 @@ icon = ExtResource("7_ofawt")
 flat = true
 
 [node name="select_tutorial_plceholder" type="Label" parent="."]
-offset_left = 34.0
-offset_top = 305.0
-offset_right = 1051.0
-offset_bottom = 470.0
+offset_left = 71.0
+offset_top = 452.0
+offset_right = 1088.0
+offset_bottom = 562.0
 theme_override_colors/font_color = Color(0.835718, 1.73271e-06, 4.81307e-07, 1)
 theme_override_font_sizes/font_size = 120
 text = "SELECT TUTORIAL"
+horizontal_alignment = 1
 
 [connection signal="pressed" from="CanvasLayer/Mode_Select_UI/Addition" to="." method="_on_addition_pressed"]
 [connection signal="pressed" from="CanvasLayer/Mode_Select_UI/Subtraction" to="." method="_on_subtraction_pressed"]

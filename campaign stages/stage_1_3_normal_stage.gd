@@ -84,7 +84,7 @@ func start_timer() -> void:
 
 func time_up() -> void:
 	# What happens when time is up for a question
-	problem_label.text = "Time's up! The answer was " + str(current_answer)
+	problem_label.text = "Time's up! Answer: " + str(current_answer)
 	lose_hp()
 	player_animation.play("Hit")  # Player takes damage animation
 	enemy_animation.play("Attack")

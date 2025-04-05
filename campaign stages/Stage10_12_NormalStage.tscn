@@ -1,10 +1,11 @@
-[gd_scene load_steps=62 format=3 uid="uid://dp8dxs4x5ffrp"]
+[gd_scene load_steps=63 format=3 uid="uid://dp8dxs4x5ffrp"]
 
 [ext_resource type="Script" uid="uid://cgnjhi0beb0gq" path="res://campaign stages/stage_10_12_normal_stage.gd" id="1_mqysn"]
 [ext_resource type="Texture2D" uid="uid://dox6s2pdaah6p" path="res://asset/art/Gray.png" id="2_u8uy7"]
 [ext_resource type="Texture2D" uid="uid://ck4jb8si0uwy3" path="res://asset/art/background 3.png" id="3_ayuui"]
 [ext_resource type="Texture2D" uid="uid://b2capxdpvd4vu" path="res://asset/UI/Transparent.png" id="4_mquxe"]
 [ext_resource type="Texture2D" uid="uid://dwldsahsmum7d" path="res://asset/UI/1.png" id="5_rj8k8"]
+[ext_resource type="Texture2D" uid="uid://cyryl3jbnnu2k" path="res://asset/art/256x256 Pixel Textures/256x256/256_Sand 01.png" id="5_x3arr"]
 [ext_resource type="Texture2D" uid="uid://byifsb6867sav" path="res://asset/UI/2.png" id="6_mc4tc"]
 [ext_resource type="Texture2D" uid="uid://c8rseeirdyqfk" path="res://asset/UI/3.png" id="7_iem7j"]
 [ext_resource type="Texture2D" uid="uid://cu3m3ho7b3kno" path="res://asset/UI/4.png" id="8_3c0do"]
@@ -331,7 +332,7 @@ metadata/_edit_lock_ = true
 [node name="ProblemLabel" type="Label" parent="."]
 offset_left = 104.0
 offset_top = 152.0
-offset_right = 992.0
+offset_right = 664.0
 offset_bottom = 262.0
 theme_override_font_sizes/font_size = 80
 
@@ -344,12 +345,19 @@ scale = Vector2(0.21, 0.15)
 texture = ExtResource("4_mquxe")
 
 [node name="AnswerLabel" type="Label" parent="."]
-offset_left = 360.0
-offset_top = 616.0
-offset_right = 740.0
-offset_bottom = 753.0
+offset_left = 720.0
+offset_top = 136.0
+offset_right = 1100.0
+offset_bottom = 273.0
 theme_override_font_sizes/font_size = 100
 metadata/_edit_use_anchors_ = true
+
+[node name="numpad_bg" type="TextureRect" parent="."]
+offset_left = -8.0
+offset_top = 776.0
+offset_right = 1080.0
+offset_bottom = 1920.0
+texture = ExtResource("5_x3arr")
 
 [node name="Number_Button" type="VBoxContainer" parent="."]
 offset_left = 221.58
