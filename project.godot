@@ -43,6 +43,10 @@ project/assembly_name="Math_Crusade"
 
 enabled=PackedStringArray("res://addons/gdscript2all/plugin.cfg")
 
+[gui]
+
+theme/custom_font="uid://ee0yrhutnoks"
+
 [rendering]
 
 renderer/rendering_method="mobile"

@@ -173,13 +173,13 @@ func check_answer() -> void:
 			problem_label.text = "Correct!"
 			player_animation.play("Attack")  # Play player's attack animation
 			enemy_animation.play("Hit")  # Play enemy hit animation
-			# AudioManager.play_sound("correct")  # Play correct answer sound
+			AudioManager.play_sfx("correct") # Play correct answer sound
 		else:
 			problem_label.text = "Wrong! The answer was " + str(current_answer)
 			lose_hp()
 			player_animation.play("Hit")  # Player takes damage animation
 			enemy_animation.play("Attack")
-			# AudioManager.play_sound("wrong")  # Play incorrect answer sound
+			AudioManager.play_sfx("wrong")
 
 		await get_tree().create_timer(0.5).timeout  # Wait before next question
 		total_problems += 1
