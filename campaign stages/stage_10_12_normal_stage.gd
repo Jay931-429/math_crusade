@@ -110,6 +110,7 @@ func time_up() -> void:
 	# 3. Play Attack/Hit Anims and Apply HP Loss (Now that enemy arrived)
 	enemy_animation.play("Attack")
 	player_animation.play("Hit")
+	AudioManager.play_sfx("timeup")
 	lose_hp()
 
 	# 4. Wait for Attack/Hit animation to have some effect
@@ -147,7 +148,7 @@ func lose_hp() -> void:
 		update_hp_display()
 
 	# Play damage sound if available
-	# AudioManager.play_sfx("damage") # If you add a general damage sound
+	AudioManager.play_sfx("phit")
 
 	# Check if out of HP - NO LONGER CALLS END_GAME HERE
 	# The check and call to end_game() will happen after animations/movement
@@ -240,6 +241,7 @@ func check_answer() -> void:
 			player_animation.play("Attack")
 			enemy_animation.play("Hit")
 			AudioManager.play_sfx("correct")
+			AudioManager.play_sfx("phit")
 
 			# 4. Wait for Attack/Hit animation to have some effect
 			await get_tree().create_timer(0.4).timeout

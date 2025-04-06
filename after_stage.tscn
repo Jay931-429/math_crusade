@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bq2mi31vh824u"]
+[gd_scene load_steps=25 format=3 uid="uid://bq2mi31vh824u"]
 
 [ext_resource type="Script" uid="uid://ckwms6hu7db6t" path="res://after_stage.gd" id="1_4ocfc"]
 [ext_resource type="Texture2D" uid="uid://dhcdkokk2w3px" path="res://asset/art/stage_clear_-_failed_gui1.png" id="2_gn5vl"]
@@ -9,6 +9,106 @@
 [ext_resource type="Texture2D" uid="uid://dnx6eea75arr6" path="res://asset/art/Menu_BTN.png" id="4_1slea"]
 [ext_resource type="Texture2D" uid="uid://dhwxrqfrtiwaf" path="res://asset/art/Forward_BTN.png" id="5_tc1uy"]
 [ext_resource type="Texture2D" uid="uid://diii5jybxtthr" path="res://asset/art/Star_03.png" id="6_kk7r6"]
+[ext_resource type="Texture2D" uid="uid://ccqilhtoe3ppv" path="res://asset/art/Star.png" id="10_xpv0c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xpv0c"]
+atlas = ExtResource("10_xpv0c")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gdx5b"]
+atlas = ExtResource("10_xpv0c")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yn5wo"]
+atlas = ExtResource("10_xpv0c")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hr1sx"]
+atlas = ExtResource("10_xpv0c")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ou48i"]
+atlas = ExtResource("10_xpv0c")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6swk"]
+atlas = ExtResource("10_xpv0c")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mtjxp"]
+atlas = ExtResource("10_xpv0c")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvv1x"]
+atlas = ExtResource("10_xpv0c")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d24es"]
+atlas = ExtResource("10_xpv0c")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u4543"]
+atlas = ExtResource("10_xpv0c")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wo7ch"]
+atlas = ExtResource("10_xpv0c")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kmw53"]
+atlas = ExtResource("10_xpv0c")
+region = Rect2(352, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1gk8"]
+atlas = ExtResource("10_xpv0c")
+region = Rect2(384, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y4f3e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xpv0c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gdx5b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yn5wo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hr1sx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ou48i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t6swk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mtjxp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fvv1x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d24es")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u4543")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wo7ch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kmw53")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c1gk8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 11.0
+}]
 
 [node name="After_Stage" type="Node2D"]
 script = ExtResource("1_4ocfc")
@@ -34,13 +134,14 @@ metadata/_edit_lock_ = true
 
 [node name="ResultLabel" type="Label" parent="."]
 modulate = Color(2.21401e-06, 0.782992, 0.681764, 1)
-offset_left = 232.0
-offset_top = 1048.0
-offset_right = 840.0
-offset_bottom = 1213.0
+offset_left = 142.0
+offset_top = 986.0
+offset_right = 952.0
+offset_bottom = 1151.0
 theme_override_fonts/font = ExtResource("3_g6jej")
-theme_override_font_sizes/font_size = 180
+theme_override_font_sizes/font_size = 140
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="mode_select_placeholder" type="Button" parent="."]
 offset_left = 120.0
@@ -50,9 +151,9 @@ offset_bottom = 1636.0
 icon = ExtResource("4_1slea")
 
 [node name="NextStageButton" type="Button" parent="."]
-offset_left = 736.0
+offset_left = 720.0
 offset_top = 1416.0
-offset_right = 954.0
+offset_right = 938.0
 offset_bottom = 1634.0
 icon = ExtResource("5_tc1uy")
 
@@ -66,14 +167,16 @@ icon = ExtResource("3_nj2d6")
 
 [node name="ScoreLabel" type="Label" parent="."]
 modulate = Color(2.21401e-06, 0.782992, 0.681764, 1)
-offset_left = 344.0
-offset_top = 1224.0
-offset_right = 758.0
-offset_bottom = 1293.0
+offset_left = 334.0
+offset_top = 1106.0
+offset_right = 748.0
+offset_bottom = 1180.0
 theme_override_fonts/font = ExtResource("3_g6jej")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 80
+horizontal_alignment = 1
 
 [node name="medal_star_placeholder" type="TextureRect" parent="."]
+visible = false
 offset_left = 408.0
 offset_top = 512.0
 offset_right = 700.0
@@ -81,6 +184,7 @@ offset_bottom = 792.0
 texture = ExtResource("6_kk7r6")
 
 [node name="medal_star_placeholder2" type="TextureRect" parent="."]
+visible = false
 offset_left = 640.0
 offset_top = 704.0
 offset_right = 932.0
@@ -88,11 +192,34 @@ offset_bottom = 984.0
 texture = ExtResource("6_kk7r6")
 
 [node name="medal_star_placeholder3" type="TextureRect" parent="."]
+visible = false
 offset_left = 176.0
 offset_top = 704.0
 offset_right = 468.0
 offset_bottom = 984.0
 texture = ExtResource("6_kk7r6")
+
+[node name="Star1" type="AnimatedSprite2D" parent="."]
+position = Vector2(534, 754)
+scale = Vector2(12.375, 11.125)
+sprite_frames = SubResource("SpriteFrames_y4f3e")
+frame_progress = 0.376625
+
+[node name="Star2" type="AnimatedSprite2D" parent="."]
+position = Vector2(270, 754)
+scale = Vector2(12.375, 11.125)
+sprite_frames = SubResource("SpriteFrames_y4f3e")
+frame_progress = 0.41083
+
+[node name="Star3" type="AnimatedSprite2D" parent="."]
+position = Vector2(798, 762)
+scale = Vector2(12.375, 11.125)
+sprite_frames = SubResource("SpriteFrames_y4f3e")
+frame_progress = 0.971027
+
+[node name="StarContainer" type="HBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
 
 [connection signal="pressed" from="mode_select_placeholder" to="." method="_on_mode_select_placeholder_pressed"]
 [connection signal="pressed" from="NextStageButton" to="." method="_on_next_stage_button_pressed"]

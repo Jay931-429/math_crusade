@@ -23,7 +23,12 @@ var music_tracks = {
 # Dictionary for Sound Effects (SFX) - Use preload!
 var sfx_tracks = {
 	"correct": preload("res://asset/music/resp-correct.mp3"),
-	"wrong": preload("res://asset/music/donald-trump-wrong-sound-effect.mp3")
+	"wrong": preload("res://asset/music/donald-trump-wrong-sound-effect.mp3"),
+	"bling": preload("res://asset/music/ding-101492.mp3"),
+	"phit": preload("res://asset/music/mixkit-impact-of-a-strong-punch-2155.mp3"),
+	"ehit": preload("res://asset/music/mixkit-metallic-sword-strike-2160.wav"),
+	"timeup": preload("res://asset/music/single-church-bell-156463.mp3")
+	
 	# Add more SFX as needed (e.g., button clicks, damage sounds)
 }
 

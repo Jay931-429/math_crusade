@@ -20,11 +20,14 @@ var results_data = {
 # Ordered list of stages (ensures proper progression)
 var stage_order = [
 	"res://campaign stages/Stage1_3_NormalStage.tscn",
+	"res://campaign stages/Stage3_boss.tscn",
 	"res://campaign stages/Stage4_6_NormalStage.tscn",
+	"res://campaign stages/Stage6_boss.tscn",
 	"res://campaign stages/Stage7_9_NormalStage.tscn",
 	"res://campaign stages/Stage10_12_NormalStage.tscn",
 	"res://campaign stages/Stage13_15_NormalStage.tscn",
 	"res://campaign stages/Stage16_19_NormalStage.tscn",
+	"res://campaign stages/Final_Stage_Boss.tscn"
 	# Add more stages here
 ]
 
@@ -78,6 +81,7 @@ func is_stage_unlocked(stage_name: String) -> bool:
 
 func is_stage_completed(stage_name: String) -> bool:
 	return stage_progress.get(stage_name, {}).get("completed", false)
+	
 
 # Save game progress to disk
 func save_game() -> void:
