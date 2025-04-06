@@ -26,6 +26,12 @@ var max_time: float = 10.0   # Time limit per question in seconds
 var current_time: float = 0.0 # Current time elapsed
 var timer_active: bool = false # Flag to track if timer is active
 
+var player_original_pos: Vector2
+var enemy_original_pos: Vector2
+var attack_move_distance: float = 430.0 # How many pixels to move forward (adjust!)
+var attack_move_duration: float = 0.1 # How long the forward move takes (adjust!)
+var return_move_duration: float = 0.1 # How long the return move takes (adjust!)
+
 
 # Stage information for navigation
 # Stage Information
@@ -39,6 +45,10 @@ func _ready() -> void:
 	
 	# Determine the next stage dynamically
 	next_stage_path = GameData.get_next_stage(current_stage_path)
+	
+	# Store initial positions for movement
+	player_original_pos = player_animation.position
+	enemy_original_pos = enemy_animation.position
 	
 	# Initialize HP display
 	update_hp_display()
@@ -84,27 +94,63 @@ func start_timer() -> void:
 	update_timer_display()
 
 func time_up() -> void:
-	# What happens when time is up for a question
+	# --- TIME UP (Treated as Incorrect) ---
 	problem_label.text = "Time's up! Answer: " + str(current_answer)
-	lose_hp()
-	player_animation.play("Hit")  # Player takes damage animation
+
+	# 1. Start Enemy Run Anim & Move Forward Tween
+	enemy_animation.play("Run")
+	var enemy_target_pos = enemy_original_pos - Vector2(attack_move_distance, 0)
+	# Line 235 Correction:
+	var move_tween = create_tween().set_ease(Tween.EaseType.EASE_OUT).set_trans(Tween.TransitionType.TRANS_CUBIC)
+	move_tween.tween_property(enemy_animation, "position", enemy_target_pos, attack_move_duration)
+
+	# 2. Wait for Forward Movement (Running) to Finish
+	await move_tween.finished
+
+	# 3. Play Attack/Hit Anims and Apply HP Loss (Now that enemy arrived)
 	enemy_animation.play("Attack")
+	player_animation.play("Hit")
+	lose_hp()
+
+	# 4. Wait for Attack/Hit animation to have some effect
+	await get_tree().create_timer(0.4).timeout
+
+	# 5. Set enemy back to Idle before returning
+	enemy_animation.play("Idle")
+	# Line 252 Correction:
+	var return_tween = create_tween().set_ease(Tween.EaseType.EASE_IN).set_trans(Tween.TransitionType.TRANS_CUBIC)
+	return_tween.tween_property(enemy_animation, "position", enemy_original_pos, return_move_duration)
+	await return_tween.finished
+
+	# 6. Check if game ended due to HP loss AFTER animation/movement/return
+	if current_hp <= 0:
+		end_game()
+		return
+
+	# --- COMMON LOGIC ---
+	# (Code remains the same here)
 	total_problems += 1
 	score_label.text = str(score) + "/" + str(total_problems)
 
-	# Check if game should end due to max problems
-	if total_problems >= max_problems:
-		await get_tree().create_timer(2.0).timeout
+	if total_problems >= max_problems or current_hp <= 0:
+		await get_tree().create_timer(0.3).timeout
 		end_game()
 	else:
-		# Wait 2 seconds before next problem
-		await get_tree().create_timer(0.5).timeout
+		await get_tree().create_timer(0.1).timeout
 		generate_new_problem()
+		
 
 func lose_hp() -> void:
 	# Decrease HP and update display
-	current_hp -= 1
-	update_hp_display()
+	if current_hp > 0: # Prevent HP going below 0 visually
+		current_hp -= 1
+		update_hp_display()
+
+	# Play damage sound if available
+	# AudioManager.play_sfx("damage") # If you add a general damage sound
+
+	# Check if out of HP - NO LONGER CALLS END_GAME HERE
+	# The check and call to end_game() will happen after animations/movement
 
 	# Play damage sound if available
 	# AudioManager.play_sound("damage")
@@ -115,14 +161,24 @@ func lose_hp() -> void:
 		end_game()
 
 func generate_new_problem() -> void:
-	# Check if game should end
-	if total_problems >= max_problems || current_hp <= 0:
+	 # Check if game should end (handle HP=0 case here too)
+	if total_problems >= max_problems or current_hp <= 0:
+		# Ensure positions are reset before potential end game transition if HP was 0
+		player_animation.position = player_original_pos
+		enemy_animation.position = enemy_original_pos
 		end_game()
 		return
 
-	# Generate two random numbers between 1 and 20
-	var num1 = randi() % 20 + 1
-	var num2 = randi() % 20 + 1
+	# Reset positions before setting Idle animation
+	player_animation.position = player_original_pos
+	enemy_animation.position = enemy_original_pos
+
+	player_animation.play("Idle")
+	enemy_animation.play("Idle")
+
+	# Generate two random numbers between 1 and 10
+	var num1 = randi() % 10 + 1
+	var num2 = randi() % 10 + 1
 
 	# Ensure num1 is greater than num2 for subtraction and division
 	if num2 > num1:
@@ -136,23 +192,23 @@ func generate_new_problem() -> void:
 	match operation:
 		0:  # Addition
 			current_answer = num1 + num2
-			problem_label.text = str(num1) + " + " + str(num2) + " = "
+			problem_label.text = str(num1) + " + " + str(num2) + " = ?"
 		1:  # Subtraction
 			current_answer = num1 - num2
-			problem_label.text = str(num1) + " - " + str(num2) + " = "
+			problem_label.text = str(num1) + " - " + str(num2) + " = ?"
 		2:  # Multiplication
 			current_answer = num1 * num2
-			problem_label.text = str(num1) + " × " + str(num2) + " = "
+			problem_label.text = str(num1) + " × " + str(num2) + " = ?"
 		3:  # Division (Ensure a clean division with no remainder)
 			while num1 % num2 != 0:  # Keep finding numbers until num1 is divisible by num2
-				num1 = randi() % 20 + 1
-				num2 = randi() % 19 + 1  # Avoid division by zero
+				num1 = randi() % 10 + 1
+				num2 = randi() % 9 + 1  # Avoid division by zero
 				if num2 > num1:
 					var temp = num1
 					num1 = num2
 					num2 = temp
 			current_answer = num1 / num2
-			problem_label.text = str(num1) + " ÷ " + str(num2) + " = "
+			problem_label.text = str(num1) + " ÷ " + str(num2) + " = ?"
 
 	# Clear the answer display
 	clear_display()
@@ -166,27 +222,80 @@ func check_answer() -> void:
 		var player_answer = int(current_text)
 
 		if player_answer == current_answer:
+			# --- CORRECT ANSWER ---
 			score += 1
 			problem_label.text = "Correct!"
-			player_animation.play("Attack")  # Play player's attack animation
-			enemy_animation.play("Hit")  # Play enemy hit animation
-			AudioManager.play_sfx("correct") # Play correct answer sound
-		else:
-			problem_label.text = "Wrong! Answer: " + str(current_answer)
-			lose_hp()
-			player_animation.play("Hit")  # Player takes damage animation
-			enemy_animation.play("Attack")
-			AudioManager.play_sfx("wrong")
 
-		await get_tree().create_timer(0.5).timeout  # Wait before next question
+			# 1. Start Player Run Anim & Move Forward Tween
+			player_animation.play("Run")
+			var player_target_pos = player_original_pos + Vector2(attack_move_distance, 0)
+			# Line 104 Correction:
+			var move_tween = create_tween().set_ease(Tween.EaseType.EASE_OUT).set_trans(Tween.TransitionType.TRANS_CUBIC)
+			move_tween.tween_property(player_animation, "position", player_target_pos, attack_move_duration)
+
+			# 2. Wait for Forward Movement (Running) to Finish
+			await move_tween.finished
+
+			# 3. Play Attack/Hit Anims and Sound (Now that player arrived)
+			player_animation.play("Attack")
+			enemy_animation.play("Hit")
+			AudioManager.play_sfx("correct")
+
+			# 4. Wait for Attack/Hit animation to have some effect
+			await get_tree().create_timer(0.4).timeout
+
+			# 5. Set player back to Idle before returning
+			player_animation.play("Idle")
+			# Line 121 Correction:
+			var return_tween = create_tween().set_ease(Tween.EaseType.EASE_IN).set_trans(Tween.TransitionType.TRANS_CUBIC)
+			return_tween.tween_property(player_animation, "position", player_original_pos, return_move_duration)
+			await return_tween.finished
+
+		else:
+			# --- WRONG ANSWER ---
+			problem_label.text = "Wrong! Answer: " + str(current_answer)
+
+			# 1. Start Enemy Run Anim & Move Forward Tween
+			enemy_animation.play("Run")
+			var enemy_target_pos = enemy_original_pos - Vector2(attack_move_distance, 0)
+			 # Line 206 Correction:
+			var move_tween = create_tween().set_ease(Tween.EaseType.EASE_OUT).set_trans(Tween.TransitionType.TRANS_CUBIC)
+			move_tween.tween_property(enemy_animation, "position", enemy_target_pos, attack_move_duration)
+
+			# 2. Wait for Forward Movement (Running) to Finish
+			await move_tween.finished
+
+			# 3. Play Attack/Hit Anims, Sound, and Apply HP Loss (Now that enemy arrived)
+			enemy_animation.play("Attack")
+			player_animation.play("Hit")
+			AudioManager.play_sfx("wrong")
+			lose_hp()
+
+			# 4. Wait for Attack/Hit animation to have some effect
+			await get_tree().create_timer(0.4).timeout
+
+			# 5. Set enemy back to Idle before returning
+			enemy_animation.play("Idle")
+			# Line 223 Correction:
+			var return_tween = create_tween().set_ease(Tween.EaseType.EASE_IN).set_trans(Tween.TransitionType.TRANS_CUBIC)
+			return_tween.tween_property(enemy_animation, "position", enemy_original_pos, return_move_duration)
+			await return_tween.finished
+
+			# 6. Check if game ended due to HP loss AFTER animation/movement/return
+			if current_hp <= 0:
+				end_game()
+				return
+
+		# --- COMMON LOGIC ---
+		# (Code remains the same here)
 		total_problems += 1
 		score_label.text = str(score) + "/" + str(total_problems)
 
-		if total_problems >= max_problems || current_hp <= 0:
-			await get_tree().create_timer(0.5).timeout
+		if total_problems >= max_problems or current_hp <= 0:
+			await get_tree().create_timer(0.3).timeout
 			end_game()
 		else:
-			await get_tree().create_timer(0.5).timeout
+			await get_tree().create_timer(0.1).timeout
 			generate_new_problem()
 
 func end_game() -> void:

@@ -13,9 +13,10 @@ var music_tracks = {
 	"menu": preload("res://asset/music/Zachz Winner, Фрози, Joyful - Boogie  Discoplug  NCS - Copyright Free Music.mp3"),
 	"stage1": preload("res://asset/music/The Wild New World.mp3"),
 	"stage2": preload("res://asset/music/Stage 4-6 BGM MP3.mp3"),
+	"stage3": preload("res://asset/music/the-tournament-280277.mp3"),
 	"stage4": preload("res://asset/music/Desert Battle.mp3"),
 	"game_over": preload("res://asset/music/Game Over-Sibsonic.mp3"),
-	"victory": preload("res://asset/music/Jeremy Blake - Powerup!.mp3")
+	"victory": preload("res://asset/music/Victory.wav")
 	# Add more BGM tracks as needed
 }
 
