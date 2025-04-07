@@ -1,38 +1,28 @@
 [gd_scene load_steps=5 format=3 uid="uid://bqlm2rsqt4crn"]
 
 [ext_resource type="Script" uid="uid://ddyfg7et3b4av" path="res://settings.gd" id="1_8ym62"]
-[ext_resource type="Texture2D" uid="uid://bohbdc1vpbmnc" path="res://Summer5.webp" id="2_37a8j"]
-[ext_resource type="Texture2D" uid="uid://caifnlfmelihq" path="res://asset/art/Replay_BTN.png" id="3_75b2r"]
+[ext_resource type="Texture2D" uid="uid://dhs5rlbdm23nl" path="res://asset/art/minmax-ai.jpeg" id="2_37a8j"]
+[ext_resource type="Texture2D" uid="uid://b5c62fsc3wbw4" path="res://asset/UI/Back.png" id="3_sfvul"]
 [ext_resource type="Texture2D" uid="uid://b6o5c744rnjt" path="res://asset/UI/Music.png" id="4_brh15"]
 
 [node name="Settings" type="Node2D"]
 script = ExtResource("1_8ym62")
 
 [node name="Main_Menu_BG" type="TextureRect" parent="."]
-offset_right = 1080.0
+offset_right = 1075.0
 offset_bottom = 1920.0
 texture = ExtResource("2_37a8j")
+expand_mode = 1
+metadata/_edit_lock_ = true
 
-[node name="Backbutton" type="HBoxContainer" parent="."]
-anchors_preset = -1
-anchor_left = 0.187
-anchor_top = 0.891
-anchor_right = 0.187
-anchor_bottom = 0.891
-offset_left = 55.0
-offset_top = 1564.0
-offset_right = 153.0
-offset_bottom = 1662.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(3, 3)
-size_flags_horizontal = 0
-size_flags_vertical = 4
-
-[node name="back" type="Button" parent="Backbutton"]
-layout_mode = 2
+[node name="back" type="Button" parent="."]
+offset_left = 38.0
+offset_top = 1571.0
+offset_right = 370.0
+offset_bottom = 1902.0
+scale = Vector2(0.7, 0.7)
 size_flags_vertical = 8
-icon = ExtResource("3_75b2r")
+icon = ExtResource("3_sfvul")
 
 [node name="Settings UI" type="VBoxContainer" parent="."]
 anchors_preset = 8
@@ -48,6 +38,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.8, 0.8)
 theme_override_constants/separation = 50
+metadata/_edit_lock_ = true
 
 [node name="settings_ui_text" type="Label" parent="Settings UI"]
 layout_mode = 2
@@ -70,5 +61,5 @@ text = "Music"
 layout_mode = 2
 icon = ExtResource("4_brh15")
 
-[connection signal="pressed" from="Backbutton/back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="Settings UI/music section/toggle_music" to="." method="_on_toggle_music_pressed"]

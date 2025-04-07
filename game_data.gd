@@ -19,15 +19,25 @@ var results_data = {
 
 # Ordered list of stages (ensures proper progression)
 var stage_order = [
+	"res://campaign stages/addition_tutorial.tscn",
 	"res://campaign stages/Stage1_3_NormalStage.tscn",
 	"res://campaign stages/Stage3_boss.tscn",
+	"res://campaign stages/subtraction_tutorial.tscn",
 	"res://campaign stages/Stage4_6_NormalStage.tscn",
 	"res://campaign stages/Stage6_boss.tscn",
+	"res://campaign stages/multiplication_tutorial.tscn",
 	"res://campaign stages/Stage7_9_NormalStage.tscn",
+	"res://campaign stages/stage_9_boss.gd",
+	"res://campaign stages/division_tutorial.tscn",
 	"res://campaign stages/Stage10_12_NormalStage.tscn",
+	"res://campaign stages/Stage12_Boss.tscn",
+	"res://campaign stages/exp_tutorial.tscn",
 	"res://campaign stages/Stage13_15_NormalStage.tscn",
+	"res://campaign stages/Stage15_Boss.tscn",
+	"res://campaign stages/PEMDAS_tutorial.tscn",
 	"res://campaign stages/Stage16_19_NormalStage.tscn",
-	"res://campaign stages/Final_Stage_Boss.tscn"
+	"res://campaign stages/Final_Stage_Boss.tscn",
+	"res://campaign stages/end_credits.tscn"
 	# Add more stages here
 ]
 

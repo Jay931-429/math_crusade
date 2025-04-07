@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3vibjspiq30v"]
+
+[ext_resource type="Texture2D" uid="uid://dhs5rlbdm23nl" path="res://asset/art/minmax-ai.jpeg" id="1_cjuev"]
+
+[node name="opening" type="Node2D"]
+
+[node name="Main_Menu_BG" type="TextureRect" parent="."]
+offset_right = 1075.0
+offset_bottom = 1920.0
+texture = ExtResource("1_cjuev")
+expand_mode = 1
+metadata/_edit_lock_ = true
