@@ -1,5 +1,5 @@
 extends Node2D
-
+# Stage for testing purpose only
 # Called when the node enters the scene tree for the first time.
 @onready var display_label = $AnswerLabel
 @onready var problem_label = $ProblemLabel  # Add this Label node for showing the math problem
@@ -26,7 +26,6 @@ var max_time: float = 10.0   # Time limit per question in seconds
 var current_time: float = 0.0 # Current time elapsed
 var timer_active: bool = false # Flag to track if timer is active
 
-
 var player_original_pos: Vector2
 var enemy_original_pos: Vector2
 var attack_move_distance: float = 430.0 # How many pixels to move forward (adjust!)
@@ -34,7 +33,7 @@ var attack_move_duration: float = 0.1 # How long the forward move takes (adjust!
 var return_move_duration: float = 0.1 # How long the return move takes (adjust!)
 
 
-# Stage Information
+# Stage information for navigation
 var current_stage_path: String = ""  # Will be set dynamically
 var next_stage_path: String = ""
 
@@ -46,16 +45,16 @@ func _ready() -> void:
 	# Determine the next stage dynamically
 	next_stage_path = GameData.get_next_stage(current_stage_path)
 	
-	# Initialize HP display
-	update_hp_display()
-	
 	 # Store initial positions for movement
 	player_original_pos = player_animation.position
 	enemy_original_pos = enemy_animation.position
+	
+	# Initialize HP display
+	update_hp_display()
 
 	# Start the first problem
 	generate_new_problem()
-	AudioManager.change_music("stage1")
+	AudioManager.change_music("stage4")
 
 # Called every frame
 func _process(delta: float) -> void:
@@ -139,7 +138,7 @@ func time_up() -> void:
 	else:
 		await get_tree().create_timer(0.1).timeout
 		generate_new_problem()
-		
+
 func lose_hp() -> void:
 	# Decrease HP and update display
 	if current_hp > 0: # Prevent HP going below 0 visually
@@ -161,7 +160,7 @@ func lose_hp() -> void:
 		end_game()
 
 func generate_new_problem() -> void:
-	   # Check if game should end (handle HP=0 case here too)
+	  # Check if game should end (handle HP=0 case here too)
 	if total_problems >= max_problems or current_hp <= 0:
 		# Ensure positions are reset before potential end game transition if HP was 0
 		player_animation.position = player_original_pos
@@ -175,21 +174,87 @@ func generate_new_problem() -> void:
 
 	player_animation.play("Idle")
 	enemy_animation.play("Idle")
-	
-	# Generate two random numbers between 1 and 20
-	var num1 = randi() % 20 + 1
-	var num2 = randi() % 20 + 1
 
-	# Only do addition problems
-	current_answer = num1 + num2
-	problem_label.text = str(num1) + " + " + str(num2) + " = ?"
+	# Randomly decide on the type of problem
+	var problem_type = randi() % 3  # 0 = basic (single operation), 1 = two-step, 2 = PEMDAS
+
+	var num1 = randi() % 10 + 1  # Limit to 1-10 for manageable results
+	var num2 = randi() % 10 + 1
+	var num3 = randi() % 10 + 1  # Third number for multi-step problems
+
+	if num2 > num1:  # Ensure num1 is greater for subtraction/division
+		var temp = num1
+		num1 = num2
+		num2 = temp
+
+	var operation1 = randi() % 5  # First operation (0 = +, 1 = -, 2 = *, 3 = /, 4 = ^)
+	var operation2 = randi() % 4  # Second operation (excluding exponents for now)
+
+	# Store problem text and solution
+	var problem_text = ""
+	var solution = 0
+
+	if problem_type == 0:
+		# Basic single operation
+		match operation1:
+			0:
+				solution = num1 + num2
+				problem_text = str(num1) + " + " + str(num2) + " = ?"
+			1:
+				solution = num1 - num2
+				problem_text = str(num1) + " - " + str(num2) + " = ?"
+			2:
+				solution = num1 * num2
+				problem_text = str(num1) + " × " + str(num2) + " = ?"
+			3:
+				while num2 == 0 || num1 % num2 != 0:  # Ensure clean division
+					num1 = randi() % 10 + 1
+					num2 = randi() % 9 + 1
+				solution = num1 / num2
+				problem_text = str(num1) + " ÷ " + str(num2) + " = ?"
+			4:
+				num1 = randi() % 5 + 1  # Keep base small
+				num2 = randi() % 3 + 1  # Keep exponent small
+				solution = int(pow(num1, num2))
+				problem_text = str(num1) + " ^ " + str(num2) + " = ?"
+
+	elif problem_type == 1:
+		# Two-step expression (e.g., (3 + 2) × 5)
+		match operation1:
+			0:
+				solution = (num1 + num2) * num3
+				problem_text = "(" + str(num1) + " + " + str(num2) + ") × " + str(num3) + " = ?"
+			1:
+				solution = (num1 - num2) * num3
+				problem_text = "(" + str(num1) + " - " + str(num2) + ") × " + str(num3) + " = ?"
+			2:
+				solution = num1 * num2 + num3
+				problem_text = str(num1) + " × " + str(num2) + " + " + str(num3) + " = ?"
+			3:
+				while num2 == 0 || num1 % num2 != 0:
+					num1 = randi() % 10 + 1
+					num2 = randi() % 9 + 1
+				solution = num1 / num2 + num3
+				problem_text = str(num1) + " ÷ " + str(num2) + " + " + str(num3) + " = ?"
+
+	else:
+		# Full PEMDAS question (e.g., (3 + 2) × (4 - 1) / 2)
+		var num4 = randi() % 10 + 1
+		while num4 == 0 || (num1 + num2) * (num3 - num4) % num4 != 0:  # Ensure clean division
+			num4 = randi() % 10 + 1
+
+		solution = ((num1 + num2) * (num3 - num4)) / num4
+		problem_text = "( " + str(num1) + " + " + str(num2) + " ) × ( " + str(num3) + " - " + str(num4) + " ) ÷ " + str(num4) + " = ?"
+
+	# Set problem and solution
+	current_answer = solution
+	problem_label.text = problem_text
 
 	# Clear the answer display
 	clear_display()
 
 	# Start the timer for this question
 	start_timer()
-
 
 func check_answer() -> void:
 	if current_text != "":
@@ -215,7 +280,7 @@ func check_answer() -> void:
 			player_animation.play("Attack")
 			enemy_animation.play("Hit")
 			AudioManager.play_sfx("correct")
-			AudioManager.play_sfx("ehit")
+			AudioManager.play_sfx("phit")
 
 			# 4. Wait for Attack/Hit animation to have some effect
 			await get_tree().create_timer(0.4).timeout
@@ -274,21 +339,25 @@ func check_answer() -> void:
 			await get_tree().create_timer(0.1).timeout
 			generate_new_problem()
 
-
 func end_game() -> void:
+	# Stop the timer
 	timer_active = false
+
+	# Check win condition: enough score AND still has HP
 	var player_won = score >= target_score && current_hp > 0
 
+	# Use autoload to store the game results data
 	GameData.set_results_data({
 		"player_score": score,
 		"max_score": total_problems,
 		"player_won": player_won,
 		"current_stage": current_stage_path,
 		"next_stage": next_stage_path if player_won else "",
-		"remaining_hp": current_hp,
+		"remaining_hp": current_hp,  # Pass HP information to results screen
 		"max_hp": max_hp
 	})
 
+	# Transition to results stage
 	get_tree().change_scene_to_file("res://after_stage.tscn")
 
 func add_number(number: String) -> void:

@@ -1,3 +1,17 @@
-[gd_scene format=3 uid="uid://o2k80ylti321"]
+[gd_scene load_steps=2 format=3 uid="uid://o2k80ylti321"]
+
+[ext_resource type="Texture2D" uid="uid://cq4dr0anxd2vo" path="res://asset/art/minmax-ai3.jpeg" id="1_itm6u"]
 
 [node name="EndCredits" type="Node2D"]
+
+[node name="Stage_BG" type="TextureRect" parent="."]
+anchors_preset = -1
+anchor_left = -12.975
+anchor_top = -23.375
+anchor_right = -12.975
+anchor_bottom = -23.375
+offset_right = 1080.0
+offset_bottom = 1912.0
+texture = ExtResource("1_itm6u")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
