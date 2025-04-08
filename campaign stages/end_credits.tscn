@@ -20,6 +20,7 @@ metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
 [node name="backbutton" type="Button" parent="Stage_BG"]
+layout_mode = 0
 offset_left = 69.0
 offset_top = 1582.0
 offset_right = 401.0
