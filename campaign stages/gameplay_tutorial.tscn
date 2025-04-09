@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=3 uid="uid://yg7owheiy01m"]
+[gd_scene load_steps=97 format=3 uid="uid://yg7owheiy01m"]
 
 [ext_resource type="Script" uid="uid://c2v2jmr81un12" path="res://campaign stages/gameplay_tutorial.gd" id="1_1tecv"]
 [ext_resource type="Texture2D" uid="uid://dox6s2pdaah6p" path="res://asset/art/Gray.png" id="2_1etmi"]
@@ -64,6 +64,8 @@
 [ext_resource type="Texture2D" uid="uid://dphwdxwtbnyih" path="res://asset/npc/Warrior/Individual Sprite/Run/Warrior_Run_6.png" id="58_uimsr"]
 [ext_resource type="Texture2D" uid="uid://daxj8s7hrojl2" path="res://asset/npc/Warrior/Individual Sprite/Run/Warrior_Run_7.png" id="59_jlo2r"]
 [ext_resource type="Texture2D" uid="uid://bwdfx4cw26b2x" path="res://asset/npc/Warrior/Individual Sprite/Run/Warrior_Run_8.png" id="60_7lnpv"]
+[ext_resource type="Texture2D" uid="uid://bptlxq8s7nwq7" path="res://asset/npc/free_character_1_20_cogabushi/character/normal/A_3 - Copy.png" id="65_hmn3e"]
+[ext_resource type="Texture2D" uid="uid://bgqfa340fcj65" path="res://asset/npc/free_character_1_20_cogabushi/character/normal/A_8_1.png" id="66_45c8q"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_b3w2y"]
 animations = [{
@@ -458,7 +460,6 @@ expand_mode = 1
 metadata/_edit_lock_ = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
-visible = false
 offset_left = 64.0
 offset_top = 128.0
 offset_right = 4635.0
@@ -672,9 +673,76 @@ scale = Vector2(5.33594, 5.92045)
 sprite_frames = SubResource("SpriteFrames_b3w2y")
 animation = &"Idle"
 flip_h = true
+metadata/_edit_lock_ = true
 
 [node name="Player" type="AnimatedSprite2D" parent="."]
 position = Vector2(216, 480)
 scale = Vector2(3.97076, 3.41458)
 sprite_frames = SubResource("SpriteFrames_jf1du")
 animation = &"Idle"
+metadata/_edit_lock_ = true
+
+[node name="DialogueBox" type="ColorRect" parent="."]
+offset_left = -1.0
+offset_top = 424.0
+offset_right = 1081.0
+offset_bottom = 798.0
+color = Color(0, 0, 0, 0.843137)
+
+[node name="Buddy" type="Sprite2D" parent="DialogueBox"]
+position = Vector2(169, 207)
+scale = Vector2(0.382934, 0.321012)
+texture = ExtResource("65_hmn3e")
+
+[node name="Teacher" type="Sprite2D" parent="DialogueBox"]
+position = Vector2(185, 203.5)
+scale = Vector2(0.398157, 0.299735)
+texture = ExtResource("66_45c8q")
+
+[node name="NameLabel" type="Label" parent="DialogueBox"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 521.0
+offset_top = 27.0
+offset_right = 769.0
+offset_bottom = 74.0
+theme_override_font_sizes/font_size = 50
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="DialogueText" type="RichTextLabel" parent="DialogueBox"]
+layout_mode = 0
+offset_left = 371.0
+offset_top = 83.0
+offset_right = 937.0
+offset_bottom = 339.0
+theme_override_font_sizes/normal_font_size = 50
+fit_content = true
+metadata/_edit_lock_ = true
+
+[node name="ContinueButton" type="Button" parent="DialogueBox"]
+layout_mode = 0
+offset_left = 962.0
+offset_top = 286.0
+offset_right = 1081.0
+offset_bottom = 404.0
+scale = Vector2(0.7, 0.7)
+theme_override_font_sizes/font_size = 120
+text = ">>>"
+
+[connection signal="pressed" from="Number_Button/num_row_123/one" to="." method="_on_one_pressed"]
+[connection signal="pressed" from="Number_Button/num_row_123/two" to="." method="_on_two_pressed"]
+[connection signal="pressed" from="Number_Button/num_row_123/three" to="." method="_on_three_pressed"]
+[connection signal="pressed" from="Number_Button/num_row_456/four" to="." method="_on_four_pressed"]
+[connection signal="pressed" from="Number_Button/num_row_456/five" to="." method="_on_five_pressed"]
+[connection signal="pressed" from="Number_Button/num_row_456/six" to="." method="_on_six_pressed"]
+[connection signal="pressed" from="Number_Button/num_row_789/seven" to="." method="_on_seven_pressed"]
+[connection signal="pressed" from="Number_Button/num_row_789/eight" to="." method="_on_eight_pressed"]
+[connection signal="pressed" from="Number_Button/num_row_789/nine" to="." method="_on_nine_pressed"]
+[connection signal="pressed" from="Number_Button/num_row_0_clear_bckspace/clear" to="." method="_on_clear_pressed"]
+[connection signal="pressed" from="Number_Button/num_row_0_clear_bckspace/zero" to="." method="_on_zero_pressed"]
+[connection signal="pressed" from="Number_Button/num_row_0_clear_bckspace/back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Placeholder_BackButton" to="." method="_on_placeholder_back_button_pressed"]
+[connection signal="pressed" from="Submit" to="." method="_on_submit_pressed"]
+[connection signal="pressed" from="DialogueBox/ContinueButton" to="." method="_on_continue_button_pressed"]
