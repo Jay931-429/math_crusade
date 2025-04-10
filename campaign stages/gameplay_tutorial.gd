@@ -13,13 +13,17 @@ extends Node2D
 @onready var dialogue_text = $DialogueBox/DialogueText  # Label or RichTextLabel
 @onready var dialogue_name = $DialogueBox/NameLabel  # Label
 @onready var continue_button = $DialogueBox/ContinueButton  # TextureButton or Button
+@onready var dialogue_animator = $DialogueAnimator
+
+@onready var typewriter_timer = $TypewriterTimer # Adjust path
 
 # --- Add references for character sprites ---
 @onready var buddy_sprite = $DialogueBox/Buddy
 @onready var teacher_sprite = $DialogueBox/Teacher
 
 
-
+var full_dialogue_text: String = ""
+var typewriter_char_index: int = 0
 var dialogue_active: bool = false
 var current_dialogue = []
 var dialogue_index: int = 0
@@ -51,6 +55,8 @@ var return_move_duration: float = 0.1 # How long the return move takes (adjust!)
 
 # --- Dictionary to map speaker names to sprites ---
 var character_sprites: Dictionary = {}
+# --- Dictionary to map speaker IDs to DISPLAY NAMES ---
+var display_names: Dictionary = {}
 
 
 # Stage Information
@@ -80,13 +86,20 @@ func _ready() -> void:
 	# Add other characters here:
 	# character_sprites["AnotherNPC"] = another_npc_sprite
 	
+	# --- Populate the DISPLAY NAME dictionary ---
+	# Map Internal ID -> Display Name
+	display_names["Buddy"] = "Furrina" # Or maybe "Your Pal" if you want
+	display_names["Teacher"] = "Lady Hilda" # <--- CHANGE THIS to whatever you want displayed
+	# Add other characters if needed
+	# display_names["Boss"] = "Dark Lord Malakor"
+	
 # Show initial tutorial dialogue
 	show_tutorial_dialogue()
 	
 	if !tutorial_completed:
 		problem_label.text = ""  # Hide problem during tutorial
 	else:
-		generate_new_problem()	
+		generate_new_problem()
 	
 	
 	 # Store initial positions for movement
@@ -100,7 +113,6 @@ func _ready() -> void:
 # Called every frame
 func _process(delta: float) -> void:
 	if dialogue_active:
-		# Check for input to advance dialogue
 		if Input.is_action_just_pressed("ui_accept") or Input.is_action_just_pressed("ui_select"):
 			next_dialogue()
 		return  # Don't process game logic during dialogue
@@ -152,7 +164,7 @@ func show_tutorial_dialogue() -> void:
 # Start displaying dialogue
 	dialogue_active = true
 	dialogue_index = 0
-	dialogue_box.visible = true
+	dialogue_animator.play("dialogue_show")
 	display_dialogue()
 
 func display_dialogue() -> void:
@@ -161,46 +173,88 @@ func display_dialogue() -> void:
 		return
 
 	var current = current_dialogue[dialogue_index]
-	dialogue_name.text = current.name
-	dialogue_text.text = current.text
+	# KEEP using current.name as the INTERNAL identifier for sprite lookup
+	var speaker_id = current.name
+	dialogue_text.text = current.text # Text remains the same
 
-	# --- Logic to show/hide character sprites ---
+	# --- Set the DISPLAY NAME using the new dictionary ---
+	if display_names.has(speaker_id):
+		# If we have a specific display name mapped, use it
+		dialogue_name.text = display_names[speaker_id]
+	else:
+		# Otherwise, fall back to using the internal ID as the name
+		dialogue_name.text = speaker_id
+	# --- End setting display name ---
+
+
+	# --- Logic to show/hide character sprites (NO CHANGE NEEDED HERE) ---
+	# This part STILL uses the internal speaker_id ("Teacher", "Buddy")
+	# to find the correct sprite in character_sprites.
 	# 1. Hide all character sprites first
 	for sprite_node in character_sprites.values():
 		sprite_node.visible = false
 
-	# 2. Get the current speaker's name
-	var speaker_name = current.name
+	# 2. Get the current speaker's internal ID (already done above)
+	# var speaker_id = current.name
 
-	# 3. Check if this speaker has a mapped sprite and show it
-	if character_sprites.has(speaker_name):
-		var active_sprite = character_sprites[speaker_name]
+	# 3. Check if this speaker ID has a mapped sprite and show it
+	if character_sprites.has(speaker_id):
+		var active_sprite = character_sprites[speaker_id]
 		active_sprite.visible = true
-	# --- End sprite logic ---
 
-	# Optional: Add typewriter effect here if desired
+	# --- Start Typewriter Effect ---
+	# Don't start if text is empty
+	if full_dialogue_text.length() > 0:
+		typewriter_timer.start() # Use timer's wait_time
+	# --- End Start Typewriter ---
 
 func next_dialogue() -> void:
 	dialogue_index += 1
 	display_dialogue()
 
 func end_dialogue() -> void:
-	dialogue_active = false
-	dialogue_box.visible = false
+	# Don't set dialogue_active false yet
+	# dialogue_box.visible = false # Remove this
 
 	# --- Hide all character sprites when dialogue ends ---
 	for sprite_node in character_sprites.values():
 		sprite_node.visible = false
 	# --- End hide sprites ---
 
-	# Now that tutorial is done, start the game
+	# Play hide animation and wait for it
+	dialogue_animator.play("dialogue_hide")
+	await dialogue_animator.animation_finished # Wait here
+
+	# Now fully deactivate dialogue state
+	dialogue_active = false
+
+	# Now that tutorial is done, start the game (if needed)
 	if !tutorial_completed:
 		tutorial_completed = true
-		generate_new_problem() # Generate first problem after tutorial
+		generate_new_problem()
 		
 func _on_continue_button_pressed() -> void:
 	next_dialogue()
 
+func show_time_up_dialogue():
+	# Define the dialogue lines for running out of time
+	# You can have one or more characters speak
+	current_dialogue = [
+		{"name": "Teacher", "text": "Too slow! Time ran out on that one."},
+		{"name": "Teacher", "text": "As one Philosopeher once said:"},
+		{"name": "Teacher", "text": "'Speed defines the winner'"},
+		{"name": "Teacher", "text": "Move like that on the battlefield"},
+		{"name": "Teacher", "text": "You'd be a goner soon enough!"}
+		# Or just one speaker:
+		# {"name": "Teacher", "text": "Time's up! You need to answer faster."}
+	]
+
+	# --- Activate the dialogue system ---
+	dialogue_active = true
+	dialogue_index = 0 # Start from the beginning of this dialogue
+	dialogue_animator.play("dialogue_show") # Or use animation player later
+	display_dialogue() # Display the first line
+	
 func time_up() -> void:
 	# --- TIME UP (Treated as Incorrect) ---
 	problem_label.text = "Time's up! Answer: " + str(current_answer)
@@ -230,6 +284,18 @@ func time_up() -> void:
 	var return_tween = create_tween().set_ease(Tween.EaseType.EASE_IN).set_trans(Tween.TransitionType.TRANS_CUBIC)
 	return_tween.tween_property(enemy_animation, "position", enemy_original_pos, return_move_duration)
 	await return_tween.finished
+	
+	# --- ADD DIALOGUE CALL HERE ---
+	# Check if game hasn't already ended due to HP loss from this attack
+	if current_hp > 0:
+		show_time_up_dialogue()
+		 # Wait for the dialogue to finish before proceeding
+		 # (Important: Dialogue sets dialogue_active=true, _process handles advancing it)
+		while dialogue_active:
+			await get_tree().process_frame # Wait one frame
+		 # OR, if dialogue auto-advances/ends, await a signal or timer
+	# -----------------------------
+
 
 	# 6. Check if game ended due to HP loss AFTER animation/movement/return
 	if current_hp <= 0:
@@ -337,12 +403,12 @@ func check_answer() -> void:
 			# Optional Feedback Dialogues
 			if score == 1:
 				show_feedback_dialogue([
-					{"name": "Buddy", "text": "Great job, Bro! That's your first correct answer!"},
-					{"name": "Buddy", "text": "Keep it up! You need " + str(target_score) + " correct answers to win."}
+					{"name": "Teacher", "text": "Great job, Keep it Up"},
+					{"name": "Teacher", "text": "Keep it up! You need more correct answers to win."}
 				])
 			elif score == target_score - 1:
 				show_feedback_dialogue([
-					{"name": "Buddy", "text": "Good! Just one more to Complete the training!"}
+					{"name": "Teacher", "text": "Your Skills are impressive!"}
 				])
 
 			# 4. Wait for Attack/Hit animation to have some effect
@@ -377,8 +443,8 @@ func check_answer() -> void:
 			# Optional Feedback Dialogue
 			if current_hp <= 3 && current_hp > 0:
 				show_feedback_dialogue([
-					{"name": "Buddy", "text": "Be careful! Your health is getting low."},
-					{"name": "Buddy", "text": "Take your time with the next problem."}
+					{"name": "Teacher", "text": "Be careful! Your health is getting low."},
+					{"name": "Teacher", "text": "Take your time with the next problem."}
 				])
 
 			# 4. Wait for Attack/Hit animation to have some effect
@@ -419,7 +485,7 @@ func show_feedback_dialogue(dialogue_data) -> void:
 	current_dialogue = dialogue_data
 	dialogue_active = true
 	dialogue_index = 0
-	dialogue_box.visible = true
+	dialogue_animator.play("dialogue_show")
 	display_dialogue()
 	
 	# Pause timer while showing feedback
@@ -498,3 +564,13 @@ func _on_submit_pressed() -> void:
 
 func _on_placeholder_back_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://mode_select.tscn")
+
+
+func _on_typewriter_timer_timeout():
+	if typewriter_char_index < full_dialogue_text.length():
+		# Add next character
+		dialogue_text.text += full_dialogue_text[typewriter_char_index]
+		typewriter_char_index += 1
+		# Start timer again for the next character
+		typewriter_timer.start() # Uses its wait_time property
+	# else: # All characters displayed, do nothing, timer stays stopped.
