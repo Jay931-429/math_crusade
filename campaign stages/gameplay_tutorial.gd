@@ -114,8 +114,18 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if dialogue_active:
 		if Input.is_action_just_pressed("ui_accept") or Input.is_action_just_pressed("ui_select"):
-			next_dialogue()
-		return  # Don't process game logic during dialogue
+			# Check if typewriter is running
+			if typewriter_timer.time_left > 0:
+				 # If yes, stop timer and show full text instantly
+				typewriter_timer.stop()
+				dialogue_text.text = full_dialogue_text
+				 # Ensure index is at the end so next press advances dialogue
+				typewriter_char_index = full_dialogue_text.length()
+			else:
+				 # If typewriter finished, advance to next dialogue line
+				next_dialogue()
+		return # Don't process game logic during dialogue
+
 	
 	# Your existing timer logic
 	if timer_active:
@@ -169,6 +179,10 @@ func show_tutorial_dialogue() -> void:
 
 func display_dialogue() -> void:
 	if dialogue_index >= current_dialogue.size():
+		# If skipping animation, ensure full text is shown before ending
+		if typewriter_timer.time_left > 0:
+			typewriter_timer.stop()
+			dialogue_text.text = full_dialogue_text # Show full text instantly
 		end_dialogue()
 		return
 
@@ -176,6 +190,13 @@ func display_dialogue() -> void:
 	# KEEP using current.name as the INTERNAL identifier for sprite lookup
 	var speaker_id = current.name
 	dialogue_text.text = current.text # Text remains the same
+	
+	
+	# --- Store full text, clear label, reset index ---
+	full_dialogue_text = current.text
+	dialogue_text.text = "" # Clear text label
+	typewriter_char_index = 0
+	# --- End setup ---
 
 	# --- Set the DISPLAY NAME using the new dictionary ---
 	if display_names.has(speaker_id):
