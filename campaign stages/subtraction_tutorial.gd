@@ -42,7 +42,7 @@ var max_hp: int = 10          # Maximum health points
 var current_hp: int = 10      # Current health points
 
 # Timer System variables
-var max_time: float = 10.0   # Time limit per question in seconds
+var max_time: float = 20.0   # Time limit per question in seconds
 var current_time: float = 0.0 # Current time elapsed
 var timer_active: bool = false # Flag to track if timer is active
 
@@ -88,8 +88,8 @@ func _ready() -> void:
 	
 	# --- Populate the DISPLAY NAME dictionary ---
 	# Map Internal ID -> Display Name
-	display_names["Buddy"] = "Furrina" # Or maybe "Your Pal" if you want
-	display_names["Teacher"] = "Lady Hilda" # <--- CHANGE THIS to whatever you want displayed
+	display_names["Buddy"] = "Mathie" # Or maybe "Your Pal" if you want
+	display_names["Teacher"] = "Aric" # <--- CHANGE THIS to whatever you want displayed
 	# Add other characters if needed
 	# display_names["Boss"] = "Dark Lord Malakor"
 	
@@ -108,7 +108,7 @@ func _ready() -> void:
 
 	# Start the first problem
 	# generate_new_problem()
-	AudioManager.change_music("stage1")
+	AudioManager.change_music("stage2")
 
 # Called every frame
 func _process(delta: float) -> void:
@@ -160,16 +160,25 @@ func start_timer() -> void:
 func show_tutorial_dialogue() -> void:
 	# Set up tutorial dialogue
 	current_dialogue = [
-		{"name": "Teacher", "text": "Welcome to the Training Ground, Greenhorn!"},
-		{"name": "Teacher", "text": "Today, We will begin your combat training."},
-		{"name": "Teacher", "text": "Remember, to beat your enemy,give the correct answer."},
-		{"name": "Teacher", "text": "Use the number buttons to input your answer, then press Submit."},
-		{"name": "Teacher", "text": "Giving out the wrong answer cost you health points."},
-		{"name": "Teacher", "text": "Also, being too slow running out of time will cost you health points."},
-		{"name": "Teacher", "text": "Understood?"},
-		{"name": "Teacher", "text": "For now, i will be the one to spar with you"},
-		{"name": "Teacher", "text": "Don't Worry, Ill go easy on you"},
-		{"name": "Teacher", "text": "All right, Let's begin!"}
+		{"name": "Buddy", "text": "That was a hell of a fight!"},
+		{"name": "Teacher", "text": "Yeah, We beaten a powerful foe but not only that.."},
+		{"name": "Teacher", "text": "We also got lucky, as we got both the rest of Addition but also Subtraction."},
+		{"name": "Teacher", "text": "Speaking of Subtraction..."},
+		{"name": "Teacher", "text": "Can you tell me about it?"},
+		{"name": "Buddy", "text": "Ah yes, Subtraction."},
+		{"name": "Buddy", "text": "It refers to taking away one number or an amount from another."},
+		{"name": "Buddy", "text": "Like let's say i have 5 apples in my bag and we both ate 2."},
+		{"name": "Buddy", "text": "How many apples we got left?"},
+		{"name": "Teacher", "text": "3, I suppose."},
+		{"name": "Buddy", "text": "Yeah, you're right!"},
+		{"name": "Buddy", "text": "From 5 apples, we minus 2, therefore we got 3!"},
+		{"name": "Buddy", "text": "Amazing Right?"},
+		{"name": "Teacher", "text": "Yeah, we learned another beneficial Math Power!"},
+		{"name": "Buddy", "text": "Huh? (bush noise)"},
+		{"name": "Buddy", "text": "What's that noise?"},
+		{"name": "Teacher", "text": "It's in the bushes"},
+		{"name": "Buddy", "text": "EEEK! A Goblin!"},
+		{"name": "Teacher", "text": "Step back, Battlebuddy, lemme handle this."},
 	]
 # Start displaying dialogue
 	dialogue_active = true
@@ -179,6 +188,10 @@ func show_tutorial_dialogue() -> void:
 
 func display_dialogue() -> void:
 	if dialogue_index >= current_dialogue.size():
+		# If skipping animation, ensure full text is shown before ending
+		if typewriter_timer.time_left > 0:
+			typewriter_timer.stop()
+			dialogue_text.text = full_dialogue_text # Show full text instantly
 		end_dialogue()
 		return
 
@@ -186,6 +199,13 @@ func display_dialogue() -> void:
 	# KEEP using current.name as the INTERNAL identifier for sprite lookup
 	var speaker_id = current.name
 	dialogue_text.text = current.text # Text remains the same
+	
+	
+	# --- Store full text, clear label, reset index ---
+	full_dialogue_text = current.text
+	dialogue_text.text = "" # Clear text label
+	typewriter_char_index = 0
+	# --- End setup ---
 
 	# --- Set the DISPLAY NAME using the new dictionary ---
 	if display_names.has(speaker_id):
@@ -250,11 +270,8 @@ func show_time_up_dialogue():
 	# Define the dialogue lines for running out of time
 	# You can have one or more characters speak
 	current_dialogue = [
-		{"name": "Teacher", "text": "Too slow! Time ran out on that one."},
-		{"name": "Teacher", "text": "As one Philosopeher once said:"},
-		{"name": "Teacher", "text": "'Speed defines the winner'"},
-		{"name": "Teacher", "text": "Move like that on the battlefield"},
-		{"name": "Teacher", "text": "You'd be a goner soon enough!"}
+		{"name": "Buddy", "text": "You Ok Bud? You didnt answer in time."},
+		{"name": "Buddy", "text": "I guess you me hungry, here, grab some apples!"}
 		# Or just one speaker:
 		# {"name": "Teacher", "text": "Time's up! You need to answer faster."}
 	]
@@ -363,12 +380,12 @@ func generate_new_problem() -> void:
 	enemy_animation.play("Idle")
 	
 	# Generate two random numbers between 1 and 20
-	var num1 = randi() % 20 + 1
-	var num2 = randi() % 20 + 1
+	var num1 = randi() % 10 + 1
+	var num2 = randi() % 8 + 1
 
 	# Only do addition problems
-	current_answer = num1 + num2
-	problem_label.text = str(num1) + " + " + str(num2) + " = ?"
+	current_answer = num1 - num2
+	problem_label.text = str(num1) + " - " + str(num2) + " = ?"
 
 	# Clear the answer display
 	clear_display()
@@ -413,12 +430,12 @@ func check_answer() -> void:
 			# Optional Feedback Dialogues
 			if score == 1:
 				show_feedback_dialogue([
-					{"name": "Teacher", "text": "Great job, Keep it Up"},
-					{"name": "Teacher", "text": "Keep it up! You need more correct answers to win."}
+					{"name": "Buddy", "text": "Great job, Keep it Up"},
+					{"name": "Buddy", "text": "The more you practice, the more you master it!"}
 				])
 			elif score == target_score - 1:
 				show_feedback_dialogue([
-					{"name": "Teacher", "text": "Your Skills are impressive!"}
+					{"name": "Buddy", "text": "Impressive, As expect from a Royal Knight!"}
 				])
 
 			# 4. Wait for Attack/Hit animation to have some effect
@@ -453,8 +470,8 @@ func check_answer() -> void:
 			# Optional Feedback Dialogue
 			if current_hp <= 3 && current_hp > 0:
 				show_feedback_dialogue([
-					{"name": "Teacher", "text": "Be careful! Your health is getting low."},
-					{"name": "Teacher", "text": "Take your time with the next problem."}
+					{"name": "Buddy", "text": "Be careful! You Ok?"},
+					{"name": "Teacher", "text": "No Worries, I'm Alright"}
 				])
 
 			# 4. Wait for Attack/Hit animation to have some effect
@@ -501,6 +518,33 @@ func show_feedback_dialogue(dialogue_data) -> void:
 	# Pause timer while showing feedback
 	if timer_active:
 		timer_active = false
+		
+func show_end_stage_dialogue() -> void:
+	var player_won = score >= target_score && current_hp > 0
+
+	if player_won:
+		current_dialogue = [
+			{"name": "Buddy", "text": "Whew! I guess were safe."},
+			{"name": "Buddy", "text": "And its all thanks to the Power of Subtraction, right? "},
+			{"name": "Teacher", "text": "Yeah, all thanks to Subtraction."},
+			{"name": "Buddy", "text": "Wait.."},
+			{"name": "Buddy", "text": "What's that over there?!"},
+			{"name": "Teacher", "text": "It looks like a fiery red creature and its holding..."},
+			{"name": "Buddy", "text": "...Multiplication!"},
+			{"name": "Buddy", "text": "We should go after that beast!"},
+			{"name": "Teacher", "text": "Yes, Absolutely!"},
+			{"name": "Teacher", "text": "Alright, Let's Go! let's chase after it!"}
+		]
+	else:
+		current_dialogue = [
+			{"name": "Buddy", "text": "Hey Bud? Hey! Are you OK?"},
+			{"name": "Buddy", "text": "Time to get ourselves out of here, i suppose."}
+		]
+
+	dialogue_active = true
+	dialogue_index = 0
+	dialogue_animator.play("dialogue_show")
+	display_dialogue()
 
 func end_game() -> void:
 	timer_active = false
@@ -516,7 +560,19 @@ func end_game() -> void:
 		"max_hp": max_hp
 	})
 
+	# Show the end stage dialogue
+	show_end_stage_dialogue()
+
+	# Wait for the dialogue to finish
+	await _wait_for_dialogue_finish()
+
+	# Transition to the after_stage scene
 	get_tree().change_scene_to_file("res://after_stage.tscn")
+	
+# Helper function to wait for dialogue to finish
+func _wait_for_dialogue_finish() -> void:
+	while dialogue_active:
+		await get_tree().process_frame
 
 func add_number(number: String) -> void:
 	if current_text.length() < max_digits:

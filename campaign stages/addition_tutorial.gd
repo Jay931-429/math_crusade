@@ -42,7 +42,7 @@ var max_hp: int = 10          # Maximum health points
 var current_hp: int = 10      # Current health points
 
 # Timer System variables
-var max_time: float = 10.0   # Time limit per question in seconds
+var max_time: float = 20.0   # Time limit per question in seconds
 var current_time: float = 0.0 # Current time elapsed
 var timer_active: bool = false # Flag to track if timer is active
 
@@ -274,8 +274,8 @@ func show_time_up_dialogue():
 	# Define the dialogue lines for running out of time
 	# You can have one or more characters speak
 	current_dialogue = [
-		{"name": "Buddy", "text": "Ummm.... Are you still sleepy?"},
-		{"name": "Buddy", "text": "Come on bud, Wakey Wakey"}
+		{"name": "Buddy", "text": "Ummm....Wakey Wakey! Are you still sleepy?"},
+		{"name": "Buddy", "text": "Come on bud, Stay Alert!"}
 		# Or just one speaker:
 		# {"name": "Teacher", "text": "Time's up! You need to answer faster."}
 	]
@@ -384,8 +384,8 @@ func generate_new_problem() -> void:
 	enemy_animation.play("Idle")
 	
 	# Generate two random numbers between 1 and 20
-	var num1 = randi() % 20 + 1
-	var num2 = randi() % 20 + 1
+	var num1 = randi() % 10 + 1
+	var num2 = randi() % 10 + 1
 
 	# Only do addition problems
 	current_answer = num1 + num2
@@ -522,6 +522,35 @@ func show_feedback_dialogue(dialogue_data) -> void:
 	# Pause timer while showing feedback
 	if timer_active:
 		timer_active = false
+		
+func show_end_stage_dialogue() -> void:
+	var player_won = score >= target_score && current_hp > 0
+
+	if player_won:
+		current_dialogue = [
+			{"name": "Buddy", "text": "Haha! Run you bums!"},
+			{"name": "Buddy", "text": "See? The power of Addition and Math is wonderful, isn't it?"},
+			{"name": "Teacher", "text": "Agree"},
+			{"name": "Buddy", "text": "All we need to remember is..."},
+			{"name": "Buddy", "text": "In Addition, you put together two or more numbers together to find the total amount!"},
+			{"name": "Teacher", "text": "Got it, I'll keep that in mind"},
+			{"name": "Buddy", "text": ":) , so whats next?"},
+			{"name": "Teacher", "text": "I got a feeling that the power you gave me is just a fraction of it."},
+			{"name": "Teacher", "text": "The rest of it is right around here somewhere."},
+			{"name": "Buddy", "text": "So, time to search, then?"},
+			{"name": "Teacher", "text": "Yes"},
+			{"name": "Buddy", "text": "Understood, I'll be on my way!"}
+		]
+	else:
+		current_dialogue = [
+			{"name": "Buddy", "text": "Hey Bud? Hey! Are you OK?"},
+			{"name": "Buddy", "text": "Time to get out of here, i suppose."}
+		]
+
+	dialogue_active = true
+	dialogue_index = 0
+	dialogue_animator.play("dialogue_show")
+	display_dialogue()
 
 func end_game() -> void:
 	timer_active = false
@@ -537,7 +566,19 @@ func end_game() -> void:
 		"max_hp": max_hp
 	})
 
+	# Show the end stage dialogue
+	show_end_stage_dialogue()
+
+	# Wait for the dialogue to finish
+	await _wait_for_dialogue_finish()
+
+	# Transition to the after_stage scene
 	get_tree().change_scene_to_file("res://after_stage.tscn")
+	
+# Helper function to wait for dialogue to finish
+func _wait_for_dialogue_finish() -> void:
+	while dialogue_active:
+		await get_tree().process_frame
 
 func add_number(number: String) -> void:
 	if current_text.length() < max_digits:

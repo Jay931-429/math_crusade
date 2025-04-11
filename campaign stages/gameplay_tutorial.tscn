@@ -64,7 +64,7 @@
 [ext_resource type="Texture2D" uid="uid://dphwdxwtbnyih" path="res://asset/npc/Warrior/Individual Sprite/Run/Warrior_Run_6.png" id="58_uimsr"]
 [ext_resource type="Texture2D" uid="uid://daxj8s7hrojl2" path="res://asset/npc/Warrior/Individual Sprite/Run/Warrior_Run_7.png" id="59_jlo2r"]
 [ext_resource type="Texture2D" uid="uid://bwdfx4cw26b2x" path="res://asset/npc/Warrior/Individual Sprite/Run/Warrior_Run_8.png" id="60_7lnpv"]
-[ext_resource type="Texture2D" uid="uid://bptlxq8s7nwq7" path="res://asset/npc/free_character_1_20_cogabushi/character/normal/A_3 - Copy.png" id="65_hmn3e"]
+[ext_resource type="Texture2D" uid="uid://cjdfnsdc3c01c" path="res://asset/npc/free_character_1_20_cogabushi/character/normal/A_534235.png" id="65_45c8q"]
 [ext_resource type="Texture2D" uid="uid://bgqfa340fcj65" path="res://asset/npc/free_character_1_20_cogabushi/character/normal/A_8_1.png" id="66_45c8q"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_b3w2y"]
@@ -780,10 +780,9 @@ offset_bottom = 798.0
 color = Color(0, 0, 0, 0.843137)
 
 [node name="Buddy" type="Sprite2D" parent="DialogueBox"]
-visible = false
-position = Vector2(169, 207)
+position = Vector2(185, 215)
 scale = Vector2(0.382934, 0.321012)
-texture = ExtResource("65_hmn3e")
+texture = ExtResource("65_45c8q")
 
 [node name="Teacher" type="Sprite2D" parent="DialogueBox"]
 position = Vector2(185, 203.5)
@@ -811,6 +810,7 @@ offset_bottom = 339.0
 theme_override_font_sizes/normal_font_size = 50
 fit_content = true
 horizontal_alignment = 1
+vertical_alignment = 1
 metadata/_edit_lock_ = true
 
 [node name="ContinueButton" type="Button" parent="DialogueBox"]

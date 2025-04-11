@@ -42,7 +42,7 @@ var max_hp: int = 10          # Maximum health points
 var current_hp: int = 10      # Current health points
 
 # Timer System variables
-var max_time: float = 10.0   # Time limit per question in seconds
+var max_time: float = 30.0   # Time limit per question in seconds
 var current_time: float = 0.0 # Current time elapsed
 var timer_active: bool = false # Flag to track if timer is active
 
@@ -88,7 +88,7 @@ func _ready() -> void:
 	
 	# --- Populate the DISPLAY NAME dictionary ---
 	# Map Internal ID -> Display Name
-	display_names["Buddy"] = "Furrina" # Or maybe "Your Pal" if you want
+	display_names["Buddy"] = "Aric" # Or maybe "Your Pal" if you want
 	display_names["Teacher"] = "Lady Hilda" # <--- CHANGE THIS to whatever you want displayed
 	# Add other characters if needed
 	# display_names["Boss"] = "Dark Lord Malakor"
@@ -160,15 +160,17 @@ func start_timer() -> void:
 func show_tutorial_dialogue() -> void:
 	# Set up tutorial dialogue
 	current_dialogue = [
-		{"name": "Teacher", "text": "Welcome to the Training Ground, Greenhorn!"},
+		{"name": "Teacher", "text": "Welcome to the Training Ground, Aric!"},
 		{"name": "Teacher", "text": "Today, We will begin your combat training."},
 		{"name": "Teacher", "text": "Remember, to beat your enemy,give the correct answer."},
 		{"name": "Teacher", "text": "Use the number buttons to input your answer, then press Submit."},
 		{"name": "Teacher", "text": "Giving out the wrong answer cost you health points."},
 		{"name": "Teacher", "text": "Also, being too slow running out of time will cost you health points."},
 		{"name": "Teacher", "text": "Understood?"},
-		{"name": "Teacher", "text": "For now, i will be the one to spar with you"},
+		{"name": "Buddy", "text": "Yes, Lady Hilda!"},
+		{"name": "Teacher", "text": "For now, i will spar with you"},
 		{"name": "Teacher", "text": "Don't Worry, Ill go easy on you"},
+		{"name": "Buddy", "text": "Yes, Lady Hilda!"},
 		{"name": "Teacher", "text": "All right, Let's begin!"}
 	]
 # Start displaying dialogue
@@ -262,7 +264,6 @@ func show_time_up_dialogue():
 	# You can have one or more characters speak
 	current_dialogue = [
 		{"name": "Teacher", "text": "Too slow! Time ran out on that one."},
-		{"name": "Teacher", "text": "As one Philosopeher once said:"},
 		{"name": "Teacher", "text": "'Speed defines the winner'"},
 		{"name": "Teacher", "text": "Move like that on the battlefield"},
 		{"name": "Teacher", "text": "You'd be a goner soon enough!"}
@@ -374,8 +375,8 @@ func generate_new_problem() -> void:
 	enemy_animation.play("Idle")
 	
 	# Generate two random numbers between 1 and 20
-	var num1 = randi() % 20 + 1
-	var num2 = randi() % 20 + 1
+	var num1 = randi() % 5 + 1
+	var num2 = randi() % 5 + 1
 
 	# Only do addition problems
 	current_answer = num1 + num2
@@ -513,6 +514,30 @@ func show_feedback_dialogue(dialogue_data) -> void:
 	if timer_active:
 		timer_active = false
 
+func show_end_stage_dialogue() -> void:
+	var player_won = score >= target_score && current_hp > 0
+
+	if player_won:
+		current_dialogue = [
+			{"name": "Teacher", "text": "Congratulations, you've completed your training today."},
+			{"name": "Teacher", "text": "You're Dismissed, Knight!"},
+			{"name": "Teacher", "text": "Wait....."},
+			{"name": "Buddy", "text": "What is it, Lady Hilda?"},
+			{"name": "Teacher", "text": "I received a message from the King."},
+			{"name": "Teacher", "text": "You are to report to him immediately!"},
+			{"name": "Buddy", "text": "Understood, I'll be on my way!"}
+		]
+	else:
+		current_dialogue = [
+			{"name": "Teacher", "text": "Well, maybe you still need time to train"},
+			{"name": "Teacher", "text": "Let's review your performance and try again."}
+		]
+
+	dialogue_active = true
+	dialogue_index = 0
+	dialogue_animator.play("dialogue_show")
+	display_dialogue()
+
 func end_game() -> void:
 	timer_active = false
 	var player_won = score >= target_score && current_hp > 0
@@ -527,7 +552,19 @@ func end_game() -> void:
 		"max_hp": max_hp
 	})
 
+	# Show the end stage dialogue
+	show_end_stage_dialogue()
+
+	# Wait for the dialogue to finish
+	await _wait_for_dialogue_finish()
+
+	# Transition to the after_stage scene
 	get_tree().change_scene_to_file("res://after_stage.tscn")
+
+# Helper function to wait for dialogue to finish
+func _wait_for_dialogue_finish() -> void:
+	while dialogue_active:
+		await get_tree().process_frame
 
 func add_number(number: String) -> void:
 	if current_text.length() < max_digits:
