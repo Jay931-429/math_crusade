@@ -106,7 +106,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("31_g6v3w")
 }],
-"loop": false,
+"loop": true,
 "name": &"Attack",
 "speed": 20.0
 }, {
@@ -213,7 +213,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("60_7lnpv")
 }],
-"loop": false,
+"loop": true,
 "name": &"Run",
 "speed": 20.0
 }]
@@ -372,7 +372,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_y1tf0")
 }],
-"loop": false,
+"loop": true,
 "name": &"Attack",
 "speed": 30.0
 }, {
@@ -432,7 +432,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_peqg7")
 }],
-"loop": false,
+"loop": true,
 "name": &"Run",
 "speed": 20.0
 }]
@@ -762,6 +762,7 @@ position = Vector2(831, 521.125)
 scale = Vector2(5.33594, 6.36932)
 sprite_frames = SubResource("SpriteFrames_b3w2y")
 animation = &"Idle"
+frame_progress = 0.634744
 flip_h = true
 metadata/_edit_lock_ = true
 
@@ -770,6 +771,7 @@ position = Vector2(216, 480)
 scale = Vector2(3.97076, 3.41458)
 sprite_frames = SubResource("SpriteFrames_jf1du")
 animation = &"Idle"
+frame_progress = 0.271531
 metadata/_edit_lock_ = true
 
 [node name="DialogueBox" type="ColorRect" parent="."]

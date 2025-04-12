@@ -8,6 +8,7 @@ extends Node2D
 @onready var timer_label = $TimerLabel      # Add this Label node for showing the timer
 @onready var player_animation = $Player  # Adjust the path based on your scene structure
 @onready var enemy_animation = $Enemy2   # Adjust the path based on your scene structure
+@onready var buddy_animation = $Buddy   
 
 @onready var dialogue_box = $DialogueBox  # Panel or ColorRect
 @onready var dialogue_text = $DialogueBox/DialogueText  # Label or RichTextLabel
@@ -48,9 +49,10 @@ var timer_active: bool = false # Flag to track if timer is active
 
 
 var player_original_pos: Vector2
+var buddy_original_pos: Vector2
 var enemy_original_pos: Vector2
 var attack_move_distance: float = 430.0 # How many pixels to move forward (adjust!)
-var attack_move_duration: float = 0.1 # How long the forward move takes (adjust!)
+var attack_move_duration: float = 0.12 # How long the forward move takes (adjust!)
 var return_move_duration: float = 0.1 # How long the return move takes (adjust!)
 
 # --- Dictionary to map speaker names to sprites ---
@@ -104,6 +106,7 @@ func _ready() -> void:
 	
 	 # Store initial positions for movement
 	player_original_pos = player_animation.position
+	buddy_original_pos = buddy_animation.position
 	enemy_original_pos = enemy_animation.position
 
 	# Start the first problem
@@ -366,6 +369,7 @@ func generate_new_problem() -> void:
 	if total_problems >= max_problems or current_hp <= 0:
 		# Ensure positions are reset before potential end game transition if HP was 0
 		player_animation.position = player_original_pos
+		buddy_animation.position = buddy_original_pos
 		enemy_animation.position = enemy_original_pos
 		end_game()
 		return
@@ -374,14 +378,22 @@ func generate_new_problem() -> void:
 
 	# Reset positions before setting Idle animation
 	player_animation.position = player_original_pos
+	buddy_animation.position = buddy_original_pos
 	enemy_animation.position = enemy_original_pos
 
 	player_animation.play("Idle")
 	enemy_animation.play("Idle")
+	buddy_animation.play("Idle")
 	
 	# Generate two random numbers between 1 and 20
 	var num1 = randi() % 10 + 1
-	var num2 = randi() % 8 + 1
+	var num2 = randi() % 10 + 1
+
+	# Ensure num1 is greater than num2 for subtraction and division
+	if num2 > num1:
+		var temp = num1
+		num1 = num2
+		num2 = temp
 
 	# Only do addition problems
 	current_answer = num1 - num2
@@ -407,45 +419,39 @@ func check_answer() -> void:
 			# 1. Start Player Run Anim & Move Forward Tween
 			player_animation.play("Run")
 			var player_target_pos = player_original_pos + Vector2(attack_move_distance, 0)
-			var move_tween = create_tween().set_ease(Tween.EaseType.EASE_OUT).set_trans(Tween.TransitionType.TRANS_CUBIC)
-			move_tween.tween_property(player_animation, "position", player_target_pos, attack_move_duration)
+			var player_move_tween = create_tween().set_ease(Tween.EaseType.EASE_OUT).set_trans(Tween.TransitionType.TRANS_CUBIC)
+			player_move_tween.tween_property(player_animation, "position", player_target_pos, attack_move_duration)
 
-			# 2. Wait for Forward Movement (Running) to Finish
-			await move_tween.finished
+			# 2. Wait for Player Forward Movement to Finish
+			await player_move_tween.finished
 
-			# 3. Play Attack/Hit Anims and Sound (Now that player arrived)
+			# 3. Start Buddy Run Anim & Move Forward Tween (AFTER Player)
+			buddy_animation.play("Run")
+			var buddy_target_pos = buddy_animation.position + Vector2(attack_move_distance, 0)
+			var buddy_move_tween = create_tween().set_ease(Tween.EaseType.EASE_OUT).set_trans(Tween.TransitionType.TRANS_CUBIC)
+			buddy_move_tween.tween_property(buddy_animation, "position", buddy_target_pos, attack_move_duration)
+
+			# 4. Wait for Buddy Forward Movement to Finish
+			await buddy_move_tween.finished
+
+			# 5. Play Attack/Hit Anims and Sound
 			player_animation.play("Attack")
-			enemy_animation.play("Hit") # Enemy *reacts* (Hit), but doesn't *attack*
-			AudioManager.play_sfx("correct")
+			buddy_animation.play("Run")
+			enemy_animation.play("Hit")
 			AudioManager.play_sfx("ehit")
 
-			# --- REMOVE ANY ENEMY ATTACK LOGIC FROM HERE ---
-			# Make sure there are NO lines here like:
-			# enemy_animation.play("Run")
-			# move_tween.tween_property(enemy_animation, ...)
-			# enemy_animation.play("Attack")
-			# lose_hp()
-			# --- END REMOVAL ZONE ---
-
-			# Optional Feedback Dialogues
-			if score == 1:
-				show_feedback_dialogue([
-					{"name": "Buddy", "text": "Great job, Keep it Up"},
-					{"name": "Buddy", "text": "The more you practice, the more you master it!"}
-				])
-			elif score == target_score - 1:
-				show_feedback_dialogue([
-					{"name": "Buddy", "text": "Impressive, As expect from a Royal Knight!"}
-				])
-
-			# 4. Wait for Attack/Hit animation to have some effect
+			# 6. Wait for Attack/Hit animation to have some effect
 			await get_tree().create_timer(0.4).timeout
 
-			# 5. Set player back to Idle before returning
+			# 7. Set player and buddy back to Idle before returning
 			player_animation.play("Idle")
+			buddy_animation.play("Idle")
 			var return_tween = create_tween().set_ease(Tween.EaseType.EASE_IN).set_trans(Tween.TransitionType.TRANS_CUBIC)
 			return_tween.tween_property(player_animation, "position", player_original_pos, return_move_duration)
+			var buddy_return_tween = create_tween().set_ease(Tween.EaseType.EASE_IN).set_trans(Tween.TransitionType.TRANS_CUBIC)
+			buddy_return_tween.tween_property(buddy_animation, "position", buddy_original_pos, return_move_duration)
 			await return_tween.finished
+			await buddy_return_tween.finished
 
 		else:
 			# --- WRONG ANSWER ---

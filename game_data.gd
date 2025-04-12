@@ -25,7 +25,7 @@ var stage_order = [
 	"res://campaign stages/subtraction_tutorial.tscn",
 	"res://campaign stages/Stage4_6_NormalStage.tscn",
 	"res://campaign stages/Stage6_boss.tscn",
-	"res://campaign stages/multiplication_tutorial.tscn",
+	"res://campaign stages/mult_tutorial.tscn",
 	"res://campaign stages/Stage7_9_NormalStage.tscn",
 	"res://campaign stages/stage_9_boss.gd",
 	"res://campaign stages/division_tutorial.tscn",

@@ -50,7 +50,7 @@ var timer_active: bool = false # Flag to track if timer is active
 var player_original_pos: Vector2
 var enemy_original_pos: Vector2
 var attack_move_distance: float = 430.0 # How many pixels to move forward (adjust!)
-var attack_move_duration: float = 0.1 # How long the forward move takes (adjust!)
+var attack_move_duration: float = 0.2 # How long the forward move takes (adjust!)
 var return_move_duration: float = 0.1 # How long the return move takes (adjust!)
 
 # --- Dictionary to map speaker names to sprites ---

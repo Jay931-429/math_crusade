@@ -7,7 +7,8 @@ extends Node2D
 @onready var hp_label = $HPLabel            # Add this Label node for showing the HP
 @onready var timer_label = $TimerLabel      # Add this Label node for showing the timer
 @onready var player_animation = $Player  # Adjust the path based on your scene structure
-@onready var enemy_animation = $Enemy2   # Adjust the path based on your scene structure
+@onready var enemy_animation = $Enemy2 
+@onready var buddy_animation = $Buddy   # Adjust the path based on your scene structure
 
 @onready var dialogue_box = $DialogueBox  # Panel or ColorRect
 @onready var dialogue_text = $DialogueBox/DialogueText  # Label or RichTextLabel
@@ -20,7 +21,8 @@ extends Node2D
 # --- Add references for character sprites ---
 @onready var buddy_sprite = $DialogueBox/Buddy
 @onready var teacher_sprite = $DialogueBox/Teacher
-
+@onready var rebmil_sprite = $DialogueBox/RebMil
+@onready var rebkn_sprite = $DialogueBox/Rebkn
 
 var full_dialogue_text: String = ""
 var typewriter_char_index: int = 0
@@ -42,15 +44,16 @@ var max_hp: int = 10          # Maximum health points
 var current_hp: int = 10      # Current health points
 
 # Timer System variables
-var max_time: float = 10.0   # Time limit per question in seconds
+var max_time: float = 20.0   # Time limit per question in seconds
 var current_time: float = 0.0 # Current time elapsed
 var timer_active: bool = false # Flag to track if timer is active
 
 
 var player_original_pos: Vector2
 var enemy_original_pos: Vector2
+var buddy_original_pos: Vector2
 var attack_move_distance: float = 430.0 # How many pixels to move forward (adjust!)
-var attack_move_duration: float = 0.1 # How long the forward move takes (adjust!)
+var attack_move_duration: float = 0.12 # How long the forward move takes (adjust!)
 var return_move_duration: float = 0.1 # How long the return move takes (adjust!)
 
 # --- Dictionary to map speaker names to sprites ---
@@ -83,13 +86,20 @@ func _ready() -> void:
 		character_sprites["Buddy"] = buddy_sprite
 	if teacher_sprite: # Check if the node exists
 		character_sprites["Teacher"] = teacher_sprite
+	if rebmil_sprite: # Check if the node exists
+		character_sprites["RebMil"] = rebmil_sprite
+	if rebkn_sprite: # Check if the node exists
+		character_sprites["Rebkn"] = rebkn_sprite 
+
 	# Add other characters here:
 	# character_sprites["AnotherNPC"] = another_npc_sprite
 	
 	# --- Populate the DISPLAY NAME dictionary ---
 	# Map Internal ID -> Display Name
-	display_names["Buddy"] = "Furrina" # Or maybe "Your Pal" if you want
-	display_names["Teacher"] = "Lady Hilda" # <--- CHANGE THIS to whatever you want displayed
+	display_names["Buddy"] = "Mathie" # Or maybe "Your Pal" if you want
+	display_names["Teacher"] = "Aric"
+	display_names["RebMil"] = "Rebel Militia"
+	display_names["Rebkn"] = "Rebel Captain" # <--- CHANGE THIS to whatever you want displayed
 	# Add other characters if needed
 	# display_names["Boss"] = "Dark Lord Malakor"
 	
@@ -104,11 +114,12 @@ func _ready() -> void:
 	
 	 # Store initial positions for movement
 	player_original_pos = player_animation.position
+	buddy_original_pos = buddy_animation.position
 	enemy_original_pos = enemy_animation.position
 
 	# Start the first problem
 	# generate_new_problem()
-	AudioManager.change_music("stage1")
+	AudioManager.change_music("stage3")
 
 # Called every frame
 func _process(delta: float) -> void:
@@ -160,16 +171,27 @@ func start_timer() -> void:
 func show_tutorial_dialogue() -> void:
 	# Set up tutorial dialogue
 	current_dialogue = [
-		{"name": "Teacher", "text": "Welcome to the Training Ground, Greenhorn!"},
-		{"name": "Teacher", "text": "Today, We will begin your combat training."},
-		{"name": "Teacher", "text": "Remember, to beat your enemy,give the correct answer."},
-		{"name": "Teacher", "text": "Use the number buttons to input your answer, then press Submit."},
-		{"name": "Teacher", "text": "Giving out the wrong answer cost you health points."},
-		{"name": "Teacher", "text": "Also, being too slow running out of time will cost you health points."},
-		{"name": "Teacher", "text": "Understood?"},
-		{"name": "Teacher", "text": "For now, i will be the one to spar with you"},
-		{"name": "Teacher", "text": "Don't Worry, Ill go easy on you"},
-		{"name": "Teacher", "text": "All right, Let's begin!"}
+		{"name": "Teacher", "text": "After wandering in the woods for some time..."},
+		{"name": "Teacher", "text": "Finally, a town. Let us rest here before we move on."},
+		{"name": "Buddy", "text": "Alright, your call."},
+		{"name": "", "text": "After some time, while walking through the town..."},
+		{"name": "Teacher", "text": "Mathie, before we encounter any more trouble, let's learn about Multiplication."},
+		{"name": "Buddy", "text": "Ok then, Let Me tell you about..."},
+		{"name": "Buddy", "text": "Multiplication."},
+		{"name": "Buddy", "text": "Multiplication is a method of finding the product of two or more numbers."},
+		{"name": "Buddy", "text": "or simply, it is repeated addition of groups of equal sizes."},
+		{"name": "Buddy", "text": "For example, 3 multiplied by 4 means adding 3 four times: 3 + 3 + 3 + 3."},
+		{"name": "Teacher", "text": "So, that's like saying, how many groups of something there are?"},
+		{"name": "Buddy", "text": "Exactly! If you have 4 groups of 3 apples, you have 12 apples in total."},
+		{"name": "Teacher", "text": "Got it! So, 3 x 4 = 12."},
+		{"name": "Buddy", "text": "Precisely. This will be very useful in our journey."},
+		{"name": "Buddy", "text": "Wait, something feels off about this town..."},
+		{"name": "Teacher", "text": "You're right. I feel it too."},
+		{"name": "", "text": "Suddenly, A squad of rebels appeared."},
+		{"name": "Rebkn", "text": "You two won't be leaving this town so easily!"},
+		{"name": "RebMil", "text": "YEAH! Advance brothers!"},
+		{"name": "Buddy", "text": "Alright, let's show these Rebels what we've learned!"},
+		{"name": "Teacher", "text": "Get Ready!"}
 	]
 # Start displaying dialogue
 	dialogue_active = true
@@ -179,6 +201,10 @@ func show_tutorial_dialogue() -> void:
 
 func display_dialogue() -> void:
 	if dialogue_index >= current_dialogue.size():
+		# If skipping animation, ensure full text is shown before ending
+		if typewriter_timer.time_left > 0:
+			typewriter_timer.stop()
+			dialogue_text.text = full_dialogue_text # Show full text instantly
 		end_dialogue()
 		return
 
@@ -186,6 +212,18 @@ func display_dialogue() -> void:
 	# KEEP using current.name as the INTERNAL identifier for sprite lookup
 	var speaker_id = current.name
 	dialogue_text.text = current.text # Text remains the same
+	
+	
+	# --- Store full text, clear label, reset index ---
+	full_dialogue_text = current.text
+	dialogue_text.text = "" # Clear text label
+	typewriter_char_index = 0
+	# --- End setup ---
+	
+		# Play SFX if specified
+	if current.has("sfx") and current.sfx != "":
+		AudioManager.play_sfx(current.sfx)
+
 
 	# --- Set the DISPLAY NAME using the new dictionary ---
 	if display_names.has(speaker_id):
@@ -250,11 +288,8 @@ func show_time_up_dialogue():
 	# Define the dialogue lines for running out of time
 	# You can have one or more characters speak
 	current_dialogue = [
-		{"name": "Teacher", "text": "Too slow! Time ran out on that one."},
-		{"name": "Teacher", "text": "As one Philosopeher once said:"},
-		{"name": "Teacher", "text": "'Speed defines the winner'"},
-		{"name": "Teacher", "text": "Move like that on the battlefield"},
-		{"name": "Teacher", "text": "You'd be a goner soon enough!"}
+		{"name": "Buddy", "text": "Ummm....Wakey Wakey! Are you still sleepy?"},
+		{"name": "Buddy", "text": "Come on bud, Stay Alert!"}
 		# Or just one speaker:
 		# {"name": "Teacher", "text": "Time's up! You need to answer faster."}
 	]
@@ -349,6 +384,7 @@ func generate_new_problem() -> void:
 	if total_problems >= max_problems or current_hp <= 0:
 		# Ensure positions are reset before potential end game transition if HP was 0
 		player_animation.position = player_original_pos
+		buddy_animation.position = buddy_original_pos
 		enemy_animation.position = enemy_original_pos
 		end_game()
 		return
@@ -358,17 +394,19 @@ func generate_new_problem() -> void:
 	# Reset positions before setting Idle animation
 	player_animation.position = player_original_pos
 	enemy_animation.position = enemy_original_pos
+	buddy_animation.position = buddy_original_pos
 
 	player_animation.play("Idle")
 	enemy_animation.play("Idle")
+	buddy_animation.play("Idle")
 	
 	# Generate two random numbers between 1 and 20
-	var num1 = randi() % 20 + 1
-	var num2 = randi() % 20 + 1
+	var num1 = randi() % 10 + 1
+	var num2 = randi() % 10 + 1
 
 	# Only do addition problems
-	current_answer = num1 + num2
-	problem_label.text = str(num1) + " + " + str(num2) + " = ?"
+	current_answer = num1 * num2
+	problem_label.text = str(num1) + " * " + str(num2) + " = ?"
 
 	# Clear the answer display
 	clear_display()
@@ -386,53 +424,47 @@ func check_answer() -> void:
 			# --- CORRECT ANSWER ---
 			score += 1
 			problem_label.text = "Correct!"
+			AudioManager.play_sfx("correct")
 
 			# 1. Start Player Run Anim & Move Forward Tween
 			player_animation.play("Run")
 			var player_target_pos = player_original_pos + Vector2(attack_move_distance, 0)
-			var move_tween = create_tween().set_ease(Tween.EaseType.EASE_OUT).set_trans(Tween.TransitionType.TRANS_CUBIC)
-			move_tween.tween_property(player_animation, "position", player_target_pos, attack_move_duration)
+			var player_move_tween = create_tween().set_ease(Tween.EaseType.EASE_OUT).set_trans(Tween.TransitionType.TRANS_CUBIC)
+			player_move_tween.tween_property(player_animation, "position", player_target_pos, attack_move_duration)
 
-			# 2. Wait for Forward Movement (Running) to Finish
-			await move_tween.finished
+			# 2. Wait for Player Forward Movement to Finish
+			await player_move_tween.finished
 
-			# 3. Play Attack/Hit Anims and Sound (Now that player arrived)
+			# 3. Start Buddy Run Anim & Move Forward Tween (AFTER Player)
+			buddy_animation.play("Run")
+			var buddy_target_pos = buddy_animation.position + Vector2(attack_move_distance, 0)
+			var buddy_move_tween = create_tween().set_ease(Tween.EaseType.EASE_OUT).set_trans(Tween.TransitionType.TRANS_CUBIC)
+			buddy_move_tween.tween_property(buddy_animation, "position", buddy_target_pos, attack_move_duration)
+
+			# 4. Wait for Buddy Forward Movement to Finish
+			await buddy_move_tween.finished
+
+			# 5. Play Attack/Hit Anims and Sound
 			player_animation.play("Attack")
-			enemy_animation.play("Hit") # Enemy *reacts* (Hit), but doesn't *attack*
-			AudioManager.play_sfx("correct")
+			buddy_animation.play("Run")
+			enemy_animation.play("Hit")
 			AudioManager.play_sfx("ehit")
 
-			# --- REMOVE ANY ENEMY ATTACK LOGIC FROM HERE ---
-			# Make sure there are NO lines here like:
-			# enemy_animation.play("Run")
-			# move_tween.tween_property(enemy_animation, ...)
-			# enemy_animation.play("Attack")
-			# lose_hp()
-			# --- END REMOVAL ZONE ---
-
-			# Optional Feedback Dialogues
-			if score == 1:
-				show_feedback_dialogue([
-					{"name": "Teacher", "text": "Great job, Keep it Up"},
-					{"name": "Teacher", "text": "Keep it up! You need more correct answers to win."}
-				])
-			elif score == target_score - 1:
-				show_feedback_dialogue([
-					{"name": "Teacher", "text": "Your Skills are impressive!"}
-				])
-
-			# 4. Wait for Attack/Hit animation to have some effect
+			# 6. Wait for Attack/Hit animation to have some effect
 			await get_tree().create_timer(0.4).timeout
 
-			# 5. Set player back to Idle before returning
+			# 7. Set player and buddy back to Idle before returning
 			player_animation.play("Idle")
+			buddy_animation.play("Idle")
 			var return_tween = create_tween().set_ease(Tween.EaseType.EASE_IN).set_trans(Tween.TransitionType.TRANS_CUBIC)
 			return_tween.tween_property(player_animation, "position", player_original_pos, return_move_duration)
+			var buddy_return_tween = create_tween().set_ease(Tween.EaseType.EASE_IN).set_trans(Tween.TransitionType.TRANS_CUBIC)
+			buddy_return_tween.tween_property(buddy_animation, "position", buddy_original_pos, return_move_duration)
 			await return_tween.finished
+			await buddy_return_tween.finished
 
 		else:
 			# --- WRONG ANSWER ---
-			# (This block should *only* contain the enemy attack logic)
 			problem_label.text = "Wrong! Answer: " + str(current_answer)
 
 			# 1. Start Enemy Run Anim & Move Forward Tween
@@ -444,17 +476,17 @@ func check_answer() -> void:
 			# 2. Wait for Forward Movement (Running) to Finish
 			await move_tween.finished
 
-			# 3. Play Attack/Hit Anims, Sound, and Apply HP Loss (Now that enemy arrived)
+			# 3. Play Attack/Hit Anims, Sound, and Apply HP Loss
 			enemy_animation.play("Attack")
-			player_animation.play("Hit") # Player gets hit
+			player_animation.play("Hit")
 			AudioManager.play_sfx("wrong")
-			lose_hp() # Player loses HP
+			lose_hp()
 
 			# Optional Feedback Dialogue
 			if current_hp <= 3 && current_hp > 0:
 				show_feedback_dialogue([
-					{"name": "Teacher", "text": "Be careful! Your health is getting low."},
-					{"name": "Teacher", "text": "Take your time with the next problem."}
+					{"name": "Buddy", "text": "Be careful! You Ok?"},
+					{"name": "Teacher", "text": "No Worries, I'm Alright"}
 				])
 
 			# 4. Wait for Attack/Hit animation to have some effect
@@ -467,24 +499,21 @@ func check_answer() -> void:
 			await return_tween.finished
 
 			# 6. Check if game ended due to HP loss AFTER animation/movement/return
-			#    (This check might be redundant with the one in COMMON LOGIC, but ok for now)
 			if current_hp <= 0:
 				end_game()
-				return # Important: return here to avoid common logic if game ended
+				return
 
-		# --- COMMON LOGIC --- (This runs after EITHER correct or wrong answer logic finishes)
+		# --- COMMON LOGIC ---
 		total_problems += 1
 		score_label.text = str(score) + "/" + str(total_problems)
 
-		# Check end conditions (Ran out of problems OR ran out of HP)
 		if total_problems >= max_problems or current_hp <= 0:
-			# Short delay before ending allows animations to fully finish visually
 			await get_tree().create_timer(0.3).timeout
 			end_game()
 		else:
-			# Short delay before generating next problem
 			await get_tree().create_timer(0.1).timeout
 			generate_new_problem()
+			
 			
 # New function for contextual feedback
 func show_feedback_dialogue(dialogue_data) -> void:
@@ -501,6 +530,42 @@ func show_feedback_dialogue(dialogue_data) -> void:
 	# Pause timer while showing feedback
 	if timer_active:
 		timer_active = false
+		
+func show_end_stage_dialogue() -> void:
+	var player_won = score >= target_score && current_hp > 0
+
+	if player_won:
+		current_dialogue = [
+			{"name": "RebMil", "text": "The Captain is a goner!"},
+			{"name": "RebMil", "text": "And some of friends! What do We do now?"},
+			{"name": "RebMi", "text": "RUN!"},
+			{"name": "", "text": "The remaining rebels ran"},
+			{"name": "Buddy", "text": "Haha, Take that traitors!"},
+			{"name": "Buddy", "text": "Go Cowards.....Wait a minute..."},
+			{"name": "", "text": "Mathie discovers the deceased Rebel Captains body and retrieved something"},
+			{"name": "Buddy", "text": "Hmm... Hey over here! I got something!"},
+			{"name": "", "text": "Aric Immediately heads to Mathie, got the letter from her hand and read it."},
+			{"name": "Teacher", "text": "So it says here, Not only Division is not far from here...."},
+			{"name": "Teacher", "text": "It's also in the hands of a dangerous individual."},
+			{"name": "Buddy", "text": "Understood, Lets go get them then!"},
+			{"name": "Teacher", "text": "I Like your enthusiasm, Lets go then!"}
+		]
+	else:
+		current_dialogue = [
+			{"name": "Buddy", "text": "Hey Bud? Hey! Are you OK?"},
+			{"name": "Buddy", "text": "Time for us to get out of here, i suppose."}
+		]
+
+	dialogue_active = true
+	dialogue_index = 0
+	dialogue_animator.play("dialogue_show")
+	display_dialogue()
+
+
+	dialogue_active = true
+	dialogue_index = 0
+	dialogue_animator.play("dialogue_show")
+	display_dialogue()
 
 func end_game() -> void:
 	timer_active = false
@@ -516,7 +581,19 @@ func end_game() -> void:
 		"max_hp": max_hp
 	})
 
+	# Show the end stage dialogue
+	show_end_stage_dialogue()
+
+	# Wait for the dialogue to finish
+	await _wait_for_dialogue_finish()
+
+	# Transition to the after_stage scene
 	get_tree().change_scene_to_file("res://after_stage.tscn")
+	
+# Helper function to wait for dialogue to finish
+func _wait_for_dialogue_finish() -> void:
+	while dialogue_active:
+		await get_tree().process_frame
 
 func add_number(number: String) -> void:
 	if current_text.length() < max_digits:

@@ -550,6 +550,7 @@ offset_bottom = 258.0
 theme_override_font_sizes/font_size = 80
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_lock_ = true
 
 [node name="TextureRect2" type="TextureRect" parent="."]
 offset_left = 416.0
@@ -738,8 +739,8 @@ theme_override_font_sizes/font_size = 40
 text = "TIME"
 
 [node name="Boss" type="AnimatedSprite2D" parent="."]
-position = Vector2(848, 448)
-scale = Vector2(3.03261, 2.87774)
+position = Vector2(864, 344)
+scale = Vector2(3.93297, 4.18887)
 sprite_frames = SubResource("SpriteFrames_ce2c8")
 animation = &"Idle"
 
