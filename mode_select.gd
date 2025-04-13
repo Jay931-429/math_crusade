@@ -21,7 +21,7 @@ func _on_campaign_pressed() -> void:
 
 
 func _on_stages_pressed() -> void:
-	get_tree().change_scene_to_file("res://campaign stages/mult_tutorial.tscn")
+	get_tree().change_scene_to_file("res://campaign stages/expo_tutorial.tscn")
 
 
 func _on_tutorial_pressed() -> void:

@@ -204,6 +204,7 @@ func generate_new_problem() -> void:
 					var temp = num1
 					num1 = num2
 					num2 = temp
+			@warning_ignore("integer_division")
 			current_answer = num1 / num2
 			problem_label.text = str(num1) + " ÷ " + str(num2) + " = ?"
 		4:  # Exponentiation
