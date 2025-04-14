@@ -44,7 +44,7 @@ var max_hp: int = 10          # Maximum health points
 var current_hp: int = 10      # Current health points
 
 # Timer System variables
-var max_time: float = 20.0   # Time limit per question in seconds
+var max_time: float = 60.0   # Time limit per question in seconds
 var current_time: float = 0.0 # Current time elapsed
 var timer_active: bool = false # Flag to track if timer is active
 
@@ -188,11 +188,30 @@ func display_dialogue() -> void:
 			dialogue_text.text = full_dialogue_text # Show full text instantly
 		end_dialogue()
 		return
+		
+		
+	
 
 	var current = current_dialogue[dialogue_index]
 	# KEEP using current.name as the INTERNAL identifier for sprite lookup
 	var speaker_id = current.name
 	dialogue_text.text = current.text # Text remains the same
+	
+	if current.has("video") and current.video != "":
+		# Play video
+		dialogue_box.visible = false
+		dialogue_text.visible = false
+		dialogue_name.visible = false
+		play_video(current.video) # Call function to play video
+		
+	else:
+		# Display dialogue text (existing code)
+		dialogue_box.visible = true
+		dialogue_text.visible = true
+		dialogue_name.visible = true
+		full_dialogue_text = current.text
+		dialogue_text.text = ""
+		typewriter_char_index = 0
 	
 	
 	# --- Store full text, clear label, reset index ---
@@ -236,6 +255,7 @@ func display_dialogue() -> void:
 	if full_dialogue_text.length() > 0:
 		typewriter_timer.start() # Use timer's wait_time
 	# --- End Start Typewriter ---
+	
 
 func next_dialogue() -> void:
 	dialogue_index += 1
@@ -623,7 +643,7 @@ func show_end_stage_dialogue() -> void:
 			{"name": "wizard", "text": "Ok Knight, Let me tell you of the point of all of this."},
 			{"name": "wizard", "text": "I created all of this so i can assess your qualities and prepare you for this...."},
 			{"name": "", "text": "The Architect's eyes widen in disbelief as he verifies knight's answer."},
-			{"name": "", "text": "* insert video here *"},
+			{"name": "", "text": "* insert video here * ", "video": "res://asset/video/Ending Cutscene2.ogv"},
 			{"name": "", "text": "The Architect's eyes widen in disbelief as he verifies knight's answer."},
 			{"name": "wizard", "text": "This, Knight, is the true threat. Not mere beasts or rogue sorcerers, but a fundamental unraveling."},
 			{"name": "wizard", "text": "Observe how this information spreads, not randomly, but according to a precise, although terrifying, mathematical progression."},
@@ -737,3 +757,18 @@ func _on_typewriter_timer_timeout():
 		# Start timer again for the next character
 		typewriter_timer.start() # Uses its wait_time property
 	# else: # All characters displayed, do nothing, timer stays stopped.
+	
+	
+func play_video(video_path: String) -> void:
+	var video_player = VideoStreamPlayer.new()
+	add_child(video_player)
+	video_player.stream = load(video_path)
+	video_player.play()
+	video_player.finished.connect(_on_video_finished.bind(video_player))
+
+func _on_video_finished(video_player):
+	video_player.queue_free() # Remove video player
+	dialogue_index += 1 # Advance dialogue
+	display_dialogue() # Resume dialogue
+	
+	

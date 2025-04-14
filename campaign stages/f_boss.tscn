@@ -1,4 +1,4 @@
-[gd_scene load_steps=123 format=3 uid="uid://ch2b8edguw280"]
+[gd_scene load_steps=124 format=3 uid="uid://ch2b8edguw280"]
 
 [ext_resource type="Script" uid="uid://btgu2c3pjnd8i" path="res://campaign stages/f_boss.gd" id="1_w84bs"]
 [ext_resource type="Texture2D" uid="uid://dox6s2pdaah6p" path="res://asset/art/Gray.png" id="2_w84bs"]
@@ -35,6 +35,7 @@
 [ext_resource type="Texture2D" uid="uid://bskhtf2opvoko" path="res://asset/npc/free_character_1_20_cogabushi/character/normal/CLOAK-1.png" id="33_js277"]
 [ext_resource type="Texture2D" uid="uid://cjdfnsdc3c01c" path="res://asset/npc/free_character_1_20_cogabushi/character/normal/A_534235.png" id="34_06am4"]
 [ext_resource type="Texture2D" uid="uid://4ix3u3e03yis" path="res://asset/npc/usedportraits/276dsad.png" id="35_w84bs"]
+[ext_resource type="VideoStream" path="res://asset/video/Ending Cutscene2.ogv" id="36_ehtmn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o21j7"]
 atlas = ExtResource("20_t5h1o")
@@ -1014,8 +1015,7 @@ self_modulate = Color(0.82, 0.7216, 0.7462, 1)
 position = Vector2(856, 520)
 scale = Vector2(5.98482, 4.9061)
 sprite_frames = SubResource("SpriteFrames_wnwqy")
-animation = &"Idle"
-frame_progress = 0.682086
+animation = &"Attack"
 flip_h = true
 
 [node name="DialogueBox" type="ColorRect" parent="."]
@@ -1083,6 +1083,13 @@ libraries = {
 [node name="TypewriterTimer" type="Timer" parent="."]
 wait_time = 0.05
 one_shot = true
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+stream = ExtResource("36_ehtmn")
+expand = true
 
 [connection signal="pressed" from="Number_Button/num_row_123/one" to="." method="_on_one_pressed"]
 [connection signal="pressed" from="Number_Button/num_row_123/two" to="." method="_on_two_pressed"]
