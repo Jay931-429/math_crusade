@@ -36,7 +36,7 @@ var stage_order = [
 	"res://campaign stages/Stage15_Boss.tscn",
 	"res://campaign stages/PEMDAS_Tutorial1.tscn",
 	"res://campaign stages/Stage16_19_NormalStage.tscn",
-	"res://campaign stages/Final_Stage_Boss.tscn",
+	"res://campaign stages/f_boss.tscn",
 	"res://campaign stages/end_credits.tscn"
 	# Add more stages here
 ]

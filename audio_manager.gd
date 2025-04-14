@@ -17,6 +17,7 @@ var music_tracks = {
 	"stage4": preload("res://asset/music/Desert Battle.mp3"),
 	"stage5": preload("res://asset/music/epic-dungeon-beat-259883.mp3"),
 	"stage6": preload("res://asset/music/medieval-epic-adventure-action-heroic-powerful-opener-intro-117935.mp3"),
+	"fboss": preload("res://asset/music/Final Boss.mp3"),
 	"game_over": preload("res://asset/music/Game Over-Sibsonic.mp3"),
 	"victory": preload("res://asset/music/Victory.wav")
 	# Add more BGM tracks as needed

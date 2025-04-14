@@ -95,7 +95,7 @@ func _ready() -> void:
 	# Map Internal ID -> Display Name
 	display_names["Buddy"] = "Mathie" # Or maybe "Your Pal" if you want
 	display_names["Teacher"] = "Aric"
-	display_names["wizard"] = "Old Wizard" # <--- CHANGE THIS to whatever you want displayed
+	display_names["wizard"] = "The Architect" # <--- CHANGE THIS to whatever you want displayed
 	# Add other characters if needed
 	# display_names["Boss"] = "Dark Lord Malakor"
 	
@@ -115,7 +115,7 @@ func _ready() -> void:
 
 	# Start the first problem
 	# generate_new_problem()
-	AudioManager.change_music("stage6")
+	AudioManager.change_music("fboss")
 
 # Called every frame
 func _process(delta: float) -> void:
@@ -167,36 +167,11 @@ func start_timer() -> void:
 func show_tutorial_dialogue() -> void:
 	# Set up tutorial dialogue
 	current_dialogue = [
-	{"name": "Buddy", "text": "Damn, that was tough, but we made it!"},
-	{"name": "Teacher", "text": "Yeah, but what is this place? It feels as though time itself holds its breath within these walls."},
-	{"name": "", "text": "(A ghostly voice echoes through the chamber.)"},
-	{"name": "wizard", "text": "Welcome, young knight. I am the wizard of this tower, a guardian of forgotten knowledge. You have been drawn here for a purpose!"},
-	{"name": "Teacher", "text": "(Startled, drawing his sword) Who speaks? Show yourself!"},
-	{"name": "wizard", "text": "Fear not, brave warrior."},
-	{"name": "wizard", "text": "My physical form has long since faded, but my essence remains within these walls, bound to the knowledge they contain."},
-	{"name": "wizard", "text": "You seek the power to defeat the invading darkness, do you not?"},
-	{"name": "Teacher", "text": "I do. The lost village of arithmancers spoke of ancient prophecies and the need to understand them."},
-	{"name": "wizard", "text": "Indeed. And the key to deciphering those prophecies lies within the advanced principles of arithmancy."},
-	{"name": "wizard", "text": "Seek the truth within these scrolls, and you shall unlock........."},
-	{"name": "Buddy", "text": "Hey, Old man, enough yapping and make it quick."},
-	{"name": "Buddy", "text": "The more we spend time talking, The more The Architech is getting stronger."},
-	{"name": "wizard", "text": "What?! Ughh... Fine."},
-	{"name": "wizard", "text": "The ancient arithmancers discovered a sacred order for solving complex calculations, known as PEMDAS."},
-	{"name": "Teacher", "text": "PEMDAS? What does that mean?"},
-	{"name": "wizard", "text": "It is the Order of Operations - the very foundation of advanced arithmancy."},
-	{"name": "wizard", "text": "First, solve what's in Parentheses ( )."},
-	{"name": "wizard", "text": "Next, calculate Exponents like squares and cubes."},
-	{"name": "wizard", "text": "Then perform Multiplication and Division, from left to right."},
-	{"name": "wizard", "text": "Finally, complete Addition and Subtraction, also from left to right."},
-	{"name": "Buddy", "text": "So if I see something like 2 + 3 × 4, I should multiply first, then add?"},
-	{"name": "wizard", "text": "Precisely! You would get 14, not 20, because multiplication comes before addition in PEMDAS."},
-	{"name": "wizard", "text": "The Architech uses this knowledge to create complex magical traps. Understanding PEMDAS will let you disarm them."},
-	{"name": "Teacher", "text": "And if there are parentheses like (2 + 3) × 4?"},
-	{"name": "wizard", "text": "Then you solve inside the parentheses first: (2 + 3) = 5, then multiply: 5 × 4 = 20."},
-	{"name": "wizard", "text": "Remember: Parentheses, Exponents, Multiplication/Division, Addition/Subtraction - PEMDAS!"},
-	{"name": "Buddy", "text": "Hmm, this actually seems pretty useful."},
-	{"name": "wizard", "text": "It is the key to unlocking the most powerful arithmantic spells. Master PEMDAS, and you will overcome the challenges ahead."},
-	{"name": "Teacher", "text": "All right, Let's begin!"}
+	{"name": "wizard", "text": " (A cruel smile twisting his lips) So, the knight and companion has finally arrived. I see you have bested my guardians."},
+	{"name": "wizard", "text": "Did you truly believe you could stand against me, a mind that bends the very laws of mathematics to its will?"},
+	{"name": "wizard", "text": "How amusing!"},
+	{"name": "Teacher", "text": "This ends NOW!"},
+	{"name": "Buddy", "text": "All right, Let's go!"}
 ]
 
 # Start displaying dialogue
@@ -294,7 +269,7 @@ func show_time_up_dialogue():
 	# Define the dialogue lines for running out of time
 	# You can have one or more characters speak
 	current_dialogue = [
-		{"name": "Buddy", "text": "Ummm....Wakey Wakey! Are you still sleepy?"},
+		{"name": "Buddy", "text": "Hey, You Good?"},
 		{"name": "Buddy", "text": "Come on bud, Stay Alert!"}
 		# Or just one speaker:
 		# {"name": "Teacher", "text": "Time's up! You need to answer faster."}
@@ -353,8 +328,9 @@ func time_up() -> void:
 		end_game()
 		return
 
-	# --- COMMON LOGIC ---
-	# (Code remains the same here)
+	# Wait for dialogue to finish, if any
+	await _wait_for_dialogue_finish()
+
 	total_problems += 1
 	score_label.text = str(score) + "/" + str(total_problems)
 
@@ -386,13 +362,13 @@ func lose_hp() -> void:
 		end_game()
 
 func generate_new_problem() -> void:
-	if total_problems >= max_problems or current_hp <= 0:
+	if current_hp <= 0 or total_problems >= max_problems:
 		player_animation.position = player_original_pos
 		buddy_animation.position = buddy_original_pos
 		enemy_animation.position = enemy_original_pos
 		end_game()
 		return
-	
+
 	if !tutorial_completed:
 		return
 
@@ -404,87 +380,102 @@ func generate_new_problem() -> void:
 	enemy_animation.play("Idle")
 	buddy_animation.play("Idle")
 
-	# Random numbers
-	var num1 = randi() % 5 + 1
-	var num2 = randi() % 5 + 1
-	var num3 = randi() % 5 + 1
-	var num4 = randi() % 5 + 1
+	# Randomly decide on the type of problem
+	var problem_type = randi() % 3  # 0 = basic (single operation), 1 = two-step, 2 = PEMDAS
 
-	# Random operations
-	var operation1 = randi() % 4  # 0:+, 1:-, 2:*, 3:/
-	var operation2 = randi() % 4
-	var operation3 = randi() % 4
+	var num1 = randi() % 10 + 1  # Limit to 1-10 for manageable results
+	var num2 = randi() % 10 + 1
+	var num3 = randi() % 10 + 1  # Third number for multi-step problems
 
-	var op1_str = "+"
-	var op2_str = "+"
-	var op3_str = "+"
+	if num2 > num1:  # Ensure num1 is greater for subtraction/division
+		var temp = num1
+		num1 = num2
+		num2 = temp
 
-	var op1_func = func(a, b): return a + b
-	var op2_func = func(a, b): return a + b
-	var op3_func = func(a, b): return a + b
+	var operation1 = randi() % 5  # First operation (0 = +, 1 = -, 2 = *, 3 = /, 4 = ^)
+	var operation2 = randi() % 4  # Second operation (excluding exponents for now)
 
-	# Assign operation 1
-	if operation1 == 1:
-		op1_str = "-"
-		if num1 < num2:
-			var temp = num1
-			num1 = num2
-			num2 = temp
-		op1_func = func(a, b): return a - b
-	elif operation1 == 2:
-		op1_str = "*"
-		op1_func = func(a, b): return a * b
-	elif operation1 == 3:
-		op1_str = "/"
-		num2 = max(1, num2)
-		while num1 % num2 != 0:
-			num1 = randi() % 5 + 1
-			num2 = randi() % 5 + 1
-		op1_func = func(a, b): return a / b
+	# Store problem text and solution
+	var problem_text = ""
+	var solution = 0
 
-	var temp_result = op1_func.call(num1, num2)
+	if problem_type == 0:
+		# Basic single operation
+		match operation1:
+			0:
+				solution = num1 + num2
+				problem_text = str(num1) + " + " + str(num2) + " = ?"
+			1:
+				solution = num1 - num2
+				problem_text = str(num1) + " - " + str(num2) + " = ?"
+			2:
+				solution = num1 * num2
+				problem_text = str(num1) + " × " + str(num2) + " = ?"
+			3:
+				var division_attempts = 0
+				while (num2 == 0 || num1 % num2 != 0) && division_attempts < 10:
+					num1 = randi() % 10 + 1
+					num2 = randi() % 9 + 1
+					division_attempts += 1
+				if num2 != 0:
+					solution = num1 / num2
+					problem_text = str(num1) + " ÷ " + str(num2) + " = ?"
+				else:
+					generate_new_problem() #re-generate if division by zero occurs.
+					return
+			4:
+				num1 = randi() % 5 + 1  # Keep base small
+				num2 = randi() % 3 + 1  # Keep exponent small
+				solution = int(pow(num1, num2))
+				problem_text = str(num1) + " ^ " + str(num2) + " = ?"
 
-	# Assign operation 2
-	if operation2 == 1:
-		op2_str = "-"
-		if temp_result < num3:
-			num3 = int(temp_result)
-		op2_func = func(a, b): return a - b
-	elif operation2 == 2:
-		op2_str = "*"
-		op2_func = func(a, b): return a * b
-	elif operation2 == 3:
-		op2_str = "/"
-		num3 = max(1, num3)
-		while int(temp_result) % num3 != 0:
-			num3 = randi() % 5 + 1
-		op2_func = func(a, b): return a / b
+	elif problem_type == 1:
+		# Two-step expression (e.g., (3 + 2) × 5)
+		match operation1:
+			0:
+				solution = (num1 + num2) * num3
+				problem_text = "(" + str(num1) + " + " + str(num2) + ") × " + str(num3) + " = ?"
+			1:
+				solution = (num1 - num2) * num3
+				problem_text = "(" + str(num1) + " - " + str(num2) + ") × " + str(num3) + " = ?"
+			2:
+				solution = num1 * num2 + num3
+				problem_text = str(num1) + " × " + str(num2) + " + " + str(num3) + " = ?"
+			3:
+				var division_attempts = 0
+				while (num2 == 0 || num1 % num2 != 0) && division_attempts < 10:
+					num1 = randi() % 10 + 1
+					num2 = randi() % 9 + 1
+					division_attempts += 1
+				if num2 != 0:
+					solution = num1 / num2 + num3
+					problem_text = str(num1) + " ÷ " + str(num2) + " + " + str(num3) + " = ?"
+				else:
+					generate_new_problem()
+					return
 
-	temp_result = op2_func.call(temp_result, num3)
+	else:
+		# Full PEMDAS question (e.g., (3 + 2) × (4 - 1) / 2)
+		var num4 = randi() % 10 + 1
+		var division_attempts = 0
+		while (num4 == 0 || ((num1 + num2) * (num3 - num4)) % num4 != 0) && division_attempts < 10:
+			num4 = randi() % 10 + 1
+			division_attempts += 1
+		if num4 != 0:
+			solution = ((num1 + num2) * (num3 - num4)) / num4
+			problem_text = "( " + str(num1) + " + " + str(num2) + " ) × ( " + str(num3) + " - " + str(num4) + " ) ÷ " + str(num4) + " = ?"
+		else:
+			generate_new_problem()
+			return
 
-	# Assign operation 3
-	if operation3 == 1:
-		op3_str = "-"
-		if temp_result < num4:
-			num4 = int(temp_result)
-		op3_func = func(a, b): return a - b
-	elif operation3 == 2:
-		op3_str = "*"
-		op3_func = func(a, b): return a * b
-	elif operation3 == 3:
-		op3_str = "/"
-		num4 = max(1, num4)
-		while int(temp_result) % num4 != 0:
-			num4 = randi() % 5 + 1
-		op3_func = func(a, b): return a / b
+	# Set problem and solution
+	current_answer = solution
+	problem_label.text = problem_text
 
-	current_answer = int(op3_func.call(temp_result, num4))
-
-	# Final problem display
-	problem_label.text = "( ( " + str(num1) + " " + op1_str + " " + str(num2) + " ) " + op2_str + " " + str(num3) + " ) " + op3_str + " " + str(num4) + " = ?"
-
-	# Clear the answer display and start timer
+	# Clear the answer display
 	clear_display()
+
+	# Start the timer for this question
 	start_timer()
 
 
@@ -585,6 +576,8 @@ func check_answer() -> void:
 			await get_tree().create_timer(0.3).timeout
 			end_game()
 		else:
+			# Wait for dialogue to finish, if any
+			await _wait_for_dialogue_finish()
 			await get_tree().create_timer(0.1).timeout
 			generate_new_problem()
 			
@@ -610,17 +603,39 @@ func show_end_stage_dialogue() -> void:
 
 	if player_won:
 		current_dialogue = [
-			{"name": "Buddy", "text": "Finally, One step closer to the Architect!"},
-			{"name": "Teacher", "text": "Agree."},
-			{"name": "wizard", "text": "With these new skills, you will be able to solve even the most difficult mathematical puzzles."},
-			{"name": "wizard", "text": "Now, go forth and use your newfound knowledge to defeat the Architect and save Numeria!
-"},
-			{"name": "Teacher", "text": "Understood, We'll be on our way!"}
+			{"name": "", "text": "The Architect's eyes widen in disbelief as he verifies knight's answer."},
+			{"name": "", "text": "The vortex of numbers collapses, and the Architect's grip on the Calculator weakens."},
+			{"name": "Teacher", "text": "You wanted to control it through darkness and twisted logic. But evil shall not prevail. Your reign of shadows ends now."},
+			{"name": "Teacher", "text": "I have finally obtained the Calculator of Light!"},
+			{"name": "wizard", "text": "Congratulations, young knight. You have passed the test."},
+			{"name": "Teacher", "text": "What?!"},
+			{"name": "Buddy", "text": "What?!"},
+			{"name": "Teacher", "text": "How are you still alive? And What do you mean?... What test?"},
+			{"name": "wizard", "text": "You… you have done it. You have truly done it."},
+			{"name": "Teacher", "text": "Done What?!"},
+			{"name": "wizard", "text": "Oh, brave knight… you have overcome a far greater challenge than you realize."},
+			{"name": "wizard", "text": "Numeria… the danger… the Calculator… it was all… a construct. An intricate design."},
+			{"name": "Teacher", "text": "What do you mean?!"},
+			{"name": "wizard", "text": "Your entire quest… your adventure… it was just a test. A meticulously crafted trial to see if you were truly qualified."},
+			{"name": "wizard", "text": "They are all simulations. Designed to assess your courage, your intellect…"},
+			{"name": "Teacher", "text": "ENOUGH! Just Get to point already!"},
+			{"name": "Buddy", "text": "Hey, come down bud."},
+			{"name": "wizard", "text": "Ok Knight, Let me tell you of the point of all of this."},
+			{"name": "wizard", "text": "I created all of this so i can assess your qualities and prepare you for this...."},
+			{"name": "", "text": "The Architect's eyes widen in disbelief as he verifies knight's answer."},
+			{"name": "", "text": "* insert video here *"},
+			{"name": "", "text": "The Architect's eyes widen in disbelief as he verifies knight's answer."},
+			{"name": "wizard", "text": "This, Knight, is the true threat. Not mere beasts or rogue sorcerers, but a fundamental unraveling."},
+			{"name": "wizard", "text": "Observe how this information spreads, not randomly, but according to a precise, although terrifying, mathematical progression."},
+			{"name": "wizard", "text": "Each celestial body consumed weakens the fabric of reality in a predictable, quantifiable way."},
+			{"name": "Buddy", "text": "So this is really why huh?"},
+			{"name": "wizard", "text": "Yes, So knight and Companion, now that you have understood everything.... are you ready to face the real challenge?"},
+			{"name": "wizard", "text": "Are you ready to face the real challenge?"}
 		]
 	else:
 		current_dialogue = [
-			{"name": "Buddy", "text": "Hey Bud? Hey! Are you OK?"},
-			{"name": "Buddy", "text": "Time for us to get out of here, i suppose."}
+			{"name": "Buddy", "text": "Hey Bud? Hey! Wake Up!"},
+			{"name": "Buddy", "text": "Damn It!"}
 		]
 
 	dialogue_active = true
