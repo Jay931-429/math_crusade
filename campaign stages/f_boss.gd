@@ -23,6 +23,8 @@ extends Node2D
 @onready var teacher_sprite = $DialogueBox/Teacher
 @onready var wiz_sprite = $DialogueBox/wizard
 
+@onready var video_container = $VideoContainer
+
 
 var full_dialogue_text: String = ""
 var typewriter_char_index: int = 0

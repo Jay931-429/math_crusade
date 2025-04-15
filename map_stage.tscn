@@ -1,59 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://ctsdfl1ber13f"]
+[gd_scene load_steps=3 format=3 uid="uid://ctsdfl1ber13f"]
 
 [ext_resource type="Script" uid="uid://cjggi36kdj6eo" path="res://map_stage.gd" id="1_4fwhm"]
 [ext_resource type="Texture2D" uid="uid://byc5d0046dvgt" path="res://asset/art/MAP_2_2.png" id="2_wisy0"]
-[ext_resource type="Texture2D" uid="uid://jpw0irkdnm41" path="res://asset/art/Star_02.png" id="3_6l1xu"]
-[ext_resource type="Texture2D" uid="uid://diii5jybxtthr" path="res://asset/art/Star_03.png" id="4_naa6w"]
 
-[node name="MapStage" type="Node2D"]
+[node name="CampaignMapScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_4fwhm")
 
-[node name="MapContainer" type="Node2D" parent="."]
-
-[node name="BackgroundImage" type="Sprite2D" parent="MapContainer"]
-position = Vector2(532, 967)
-scale = Vector2(0.969971, 1.25212)
-texture = ExtResource("2_wisy0")
-
-[node name="Control" type="Control" parent="MapContainer"]
-layout_mode = 3
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="campaign_label" type="Label" parent="MapContainer/Control"]
-layout_mode = 0
-offset_left = 262.0
-offset_top = 21.0
-offset_right = 819.0
-offset_bottom = 180.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 100
-text = "CAMPAIGN "
-
-[node name="StageButton2" type="Button" parent="MapContainer"]
-offset_left = 728.0
-offset_top = 1011.0
-offset_right = 1028.0
-offset_bottom = 1299.0
-icon = ExtResource("4_naa6w")
-
-[node name="StageButton1" type="Button" parent="MapContainer"]
-offset_left = 45.0
-offset_top = 1034.0
-offset_right = 345.0
-offset_bottom = 1322.0
-icon = ExtResource("3_6l1xu")
-
-[node name="StageLabel1" type="Label" parent="MapContainer/StageButton1"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-
-[node name="LockedIcon" type="Sprite2D" parent="MapContainer/StageButton1"]
-position = Vector2(154, 143)
-texture = ExtResource("3_6l1xu")
-
-[connection signal="pressed" from="MapContainer/StageButton1" to="." method="_on_stage_button_1_pressed"]
+[node name="BackgroundImage" type="Sprite2D" parent="ScrollContainer"]
+position = Vector2(507, 958)
+scale = Vector2(0.969971, 1.25212)
+texture = ExtResource("2_wisy0")

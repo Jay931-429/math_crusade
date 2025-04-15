@@ -1,0 +1,241 @@
+[gd_scene load_steps=4 format=3 uid="uid://8qt2u2jf018p"]
+
+[ext_resource type="Script" uid="uid://bllvsukw310mn" path="res://campaign stages/campaign_map_container.gd" id="1_7rd28"]
+[ext_resource type="Texture2D" uid="uid://b5c62fsc3wbw4" path="res://asset/UI/Back.png" id="1_qicr5"]
+[ext_resource type="Texture2D" uid="uid://byc5d0046dvgt" path="res://asset/art/MAP_2_2.png" id="2_7rd28"]
+
+[node name="CampaignMapContainer" type="Node2D"]
+script = ExtResource("1_7rd28")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+modulate = Color(0.960938, 0.720703, 0, 1)
+offset_left = 224.0
+offset_top = 40.0
+offset_right = 885.0
+offset_bottom = 150.0
+theme_override_font_sizes/font_size = 120
+text = "CAMPAIGN MAP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="back" type="Button" parent="CanvasLayer"]
+offset_left = 56.0
+offset_top = 1688.0
+offset_right = 388.0
+offset_bottom = 2019.0
+scale = Vector2(0.5, 0.5)
+icon = ExtResource("1_qicr5")
+
+[node name="Map" type="Sprite2D" parent="."]
+position = Vector2(1176, 960)
+scale = Vector2(1.14453, 1.25)
+texture = ExtResource("2_7rd28")
+metadata/_edit_group_ = true
+
+[node name="s1" type="Button" parent="Map"]
+offset_left = -810.812
+offset_top = -665.6
+offset_right = -730.812
+offset_bottom = -583.6
+theme_override_font_sizes/font_size = 80
+text = "1"
+metadata/_edit_lock_ = true
+
+[node name="s2" type="Button" parent="Map"]
+offset_left = -810.812
+offset_top = -569.6
+offset_right = -722.812
+offset_bottom = -487.6
+theme_override_font_sizes/font_size = 80
+text = "2"
+metadata/_edit_lock_ = true
+
+[node name="s3" type="Button" parent="Map"]
+modulate = Color(1, 0.0703125, 0.0703125, 1)
+offset_left = -691.986
+offset_top = -563.2
+offset_right = -603.986
+offset_bottom = -481.2
+theme_override_font_sizes/font_size = 80
+text = "3"
+metadata/_edit_lock_ = true
+
+[node name="s4" type="Button" parent="Map"]
+offset_left = -789.843
+offset_top = -454.4
+offset_right = -701.843
+offset_bottom = -372.4
+theme_override_font_sizes/font_size = 80
+text = "4"
+metadata/_edit_lock_ = true
+
+[node name="s5" type="Button" parent="Map"]
+offset_left = -664.027
+offset_top = -416.0
+offset_right = -576.027
+offset_bottom = -334.0
+theme_override_font_sizes/font_size = 80
+text = "5"
+metadata/_edit_lock_ = true
+
+[node name="s6" type="Button" parent="Map"]
+modulate = Color(1, 0.0703125, 0.0703125, 1)
+offset_left = -545.201
+offset_top = -377.6
+offset_right = -449.201
+offset_bottom = -295.6
+theme_override_font_sizes/font_size = 80
+text = "6"
+metadata/_edit_lock_ = true
+
+[node name="s7" type="Button" parent="Map"]
+offset_left = -684.997
+offset_top = -288.0
+offset_right = -596.997
+offset_bottom = -206.0
+theme_override_font_sizes/font_size = 80
+text = "7"
+metadata/_edit_lock_ = true
+
+[node name="s8" type="Button" parent="Map"]
+offset_left = -817.802
+offset_top = -236.8
+offset_right = -721.802
+offset_bottom = -154.8
+theme_override_font_sizes/font_size = 80
+text = "8"
+metadata/_edit_lock_ = true
+
+[node name="s9" type="Button" parent="Map"]
+modulate = Color(1, 0.0703125, 0.0703125, 1)
+offset_left = -775.864
+offset_top = -134.4
+offset_right = -679.864
+offset_bottom = -52.4
+theme_override_font_sizes/font_size = 80
+text = "9"
+metadata/_edit_lock_ = true
+
+[node name="s10" type="Button" parent="Map"]
+offset_left = -356.478
+offset_top = 44.8
+offset_right = -260.478
+offset_bottom = 126.8
+theme_override_font_sizes/font_size = 80
+text = "10
+"
+metadata/_edit_lock_ = true
+
+[node name="s11" type="Button" parent="Map"]
+offset_left = -293.57
+offset_top = 198.4
+offset_right = -197.57
+offset_bottom = 280.4
+theme_override_font_sizes/font_size = 80
+text = "11"
+metadata/_edit_lock_ = true
+
+[node name="s12" type="Button" parent="Map"]
+modulate = Color(1, 0.0703125, 0.0703125, 1)
+offset_left = -160.765
+offset_top = 57.6
+offset_right = -56.7646
+offset_bottom = 161.6
+theme_override_font_sizes/font_size = 80
+text = "12
+"
+metadata/_edit_lock_ = true
+
+[node name="s13" type="Button" parent="Map"]
+offset_left = -83.8772
+offset_top = 185.6
+offset_right = 28.1228
+offset_bottom = 297.6
+theme_override_font_sizes/font_size = 80
+text = "13
+"
+metadata/_edit_lock_ = true
+
+[node name="s14" type="Button" parent="Map"]
+offset_left = 83.8771
+offset_top = 185.6
+offset_right = 187.877
+offset_bottom = 281.6
+theme_override_font_sizes/font_size = 80
+text = "14
+"
+metadata/_edit_lock_ = true
+
+[node name="s15" type="Button" parent="Map"]
+modulate = Color(1, 0.0703125, 0.0703125, 1)
+offset_left = 384.437
+offset_top = 390.4
+offset_right = 488.437
+offset_bottom = 478.4
+theme_override_font_sizes/font_size = 80
+text = "15
+"
+metadata/_edit_lock_ = true
+
+[node name="s16" type="Button" parent="Map"]
+offset_left = 307.549
+offset_top = 249.6
+offset_right = 395.549
+offset_bottom = 345.6
+theme_override_font_sizes/font_size = 80
+text = "16
+"
+metadata/_edit_lock_ = true
+
+[node name="s17" type="Button" parent="Map"]
+offset_left = 230.662
+offset_top = 128.0
+offset_right = 326.662
+offset_bottom = 216.0
+theme_override_font_sizes/font_size = 80
+text = "17
+"
+metadata/_edit_lock_ = true
+
+[node name="s18" type="Button" parent="Map"]
+offset_left = 384.437
+offset_top = 147.2
+offset_right = 480.437
+offset_bottom = 243.2
+theme_override_font_sizes/font_size = 80
+text = "18
+"
+metadata/_edit_lock_ = true
+
+[node name="s19" type="Button" parent="Map"]
+modulate = Color(1, 0, 0, 1)
+offset_left = 545.201
+offset_top = 102.4
+offset_right = 649.201
+offset_bottom = 206.4
+theme_override_font_sizes/font_size = 80
+text = "19"
+metadata/_edit_lock_ = true
+
+[connection signal="pressed" from="CanvasLayer/back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Map/s1" to="." method="_on_s_1_pressed"]
+[connection signal="pressed" from="Map/s2" to="." method="_on_s_2_pressed"]
+[connection signal="pressed" from="Map/s3" to="." method="_on_s_3_pressed"]
+[connection signal="pressed" from="Map/s4" to="." method="_on_s_4_pressed"]
+[connection signal="pressed" from="Map/s5" to="." method="_on_s_5_pressed"]
+[connection signal="pressed" from="Map/s6" to="." method="_on_s_6_pressed"]
+[connection signal="pressed" from="Map/s7" to="." method="_on_s_7_pressed"]
+[connection signal="pressed" from="Map/s8" to="." method="_on_s_8_pressed"]
+[connection signal="pressed" from="Map/s9" to="." method="_on_s_9_pressed"]
+[connection signal="pressed" from="Map/s10" to="." method="_on_s_10_pressed"]
+[connection signal="pressed" from="Map/s11" to="." method="_on_s_11_pressed"]
+[connection signal="pressed" from="Map/s12" to="." method="_on_s_12_pressed"]
+[connection signal="pressed" from="Map/s13" to="." method="_on_s_13_pressed"]
+[connection signal="pressed" from="Map/s14" to="." method="_on_s_14_pressed"]
+[connection signal="pressed" from="Map/s15" to="." method="_on_s_15_pressed"]
+[connection signal="pressed" from="Map/s16" to="." method="_on_s_16_pressed"]
+[connection signal="pressed" from="Map/s17" to="." method="_on_s_17_pressed"]
+[connection signal="pressed" from="Map/s18" to="." method="_on_s_18_pressed"]
+[connection signal="pressed" from="Map/s19" to="." method="_on_s_19_pressed"]

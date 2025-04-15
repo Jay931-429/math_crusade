@@ -1,5 +1,5 @@
 extends Node2D
-# note! This is for placeholder for now!
+
 
 # The map container that will be dragged
 @onready var map_container = $MapContainer

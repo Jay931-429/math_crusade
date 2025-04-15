@@ -35,7 +35,7 @@
 [ext_resource type="Texture2D" uid="uid://bskhtf2opvoko" path="res://asset/npc/free_character_1_20_cogabushi/character/normal/CLOAK-1.png" id="33_js277"]
 [ext_resource type="Texture2D" uid="uid://cjdfnsdc3c01c" path="res://asset/npc/free_character_1_20_cogabushi/character/normal/A_534235.png" id="34_06am4"]
 [ext_resource type="Texture2D" uid="uid://4ix3u3e03yis" path="res://asset/npc/usedportraits/276dsad.png" id="35_w84bs"]
-[ext_resource type="VideoStream" path="res://asset/video/Ending Cutscene2.ogv" id="36_ehtmn"]
+[ext_resource type="VideoStream" uid="uid://ysu834o6bfb" path="res://asset/video/Ending Cutscene2.ogv" id="36_ehtmn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o21j7"]
 atlas = ExtResource("20_t5h1o")
@@ -1015,7 +1015,7 @@ self_modulate = Color(0.82, 0.7216, 0.7462, 1)
 position = Vector2(856, 520)
 scale = Vector2(5.98482, 4.9061)
 sprite_frames = SubResource("SpriteFrames_wnwqy")
-animation = &"Attack"
+animation = &"Idle"
 flip_h = true
 
 [node name="DialogueBox" type="ColorRect" parent="."]
