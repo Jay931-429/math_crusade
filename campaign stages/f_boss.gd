@@ -645,7 +645,7 @@ func show_end_stage_dialogue() -> void:
 			{"name": "wizard", "text": "Ok Knight, Let me tell you of the point of all of this."},
 			{"name": "wizard", "text": "I created all of this so i can assess your qualities and prepare you for this...."},
 			{"name": "", "text": "The Architect's eyes widen in disbelief as he verifies knight's answer."},
-			{"name": "", "text": "* insert video here * ", "video": "res://asset/video/Ending Cutscene2.ogv"},
+			{"name": "", "text": "* insert video here * ", "video": "res://asset/video/Ending Cutscene - RESIZE - Videobolt.net.ogv"},
 			{"name": "", "text": "The Architect's eyes widen in disbelief as he verifies knight's answer."},
 			{"name": "wizard", "text": "This, Knight, is the true threat. Not mere beasts or rogue sorcerers, but a fundamental unraveling."},
 			{"name": "wizard", "text": "Observe how this information spreads, not randomly, but according to a precise, although terrifying, mathematical progression."},

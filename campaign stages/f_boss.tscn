@@ -1086,8 +1086,8 @@ one_shot = true
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
 visible = false
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 1076.0
+offset_bottom = 799.0
 stream = ExtResource("36_ehtmn")
 expand = true
 

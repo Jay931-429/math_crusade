@@ -14,12 +14,11 @@ func _ready():
 	var map_width = map_sprite.get_rect().size.x * map_sprite.scale.x
 	var screen_width = get_viewport_rect().size.x
 
-	# Set the minimum and maximum X positions for dragging
 	min_drag_x = screen_width - map_width
 	max_drag_x = 0.0
 
-	# Ensure the container starts at a valid position (e.g., left edge)
-	position.x = min(0.0, min_drag_x)
+	# Start the map at the beginning of the campaign
+	position.x = max_drag_x
 
 func _input(event):
 	if event is InputEventMouseButton:
@@ -78,11 +77,11 @@ func _on_s_4_pressed() -> void:
 
 
 func _on_s_5_pressed() -> void:
-	get_tree().change_scene_to_file("res://campaign stages/addition_tutorial.tscn")
+	get_tree().change_scene_to_file("res://campaign stages/Stage4_6_NormalStage.tscn")
 
 
 func _on_s_6_pressed() -> void:
-	get_tree().change_scene_to_file("res://campaign stages/addition_tutorial.tscn")
+	get_tree().change_scene_to_file("res://campaign stages/Stage6_boss.tscn")
 
 
 func _on_s_7_pressed() -> void:
@@ -90,11 +89,11 @@ func _on_s_7_pressed() -> void:
 
 
 func _on_s_8_pressed() -> void:
-	get_tree().change_scene_to_file("res://campaign stages/addition_tutorial.tscn")
+	get_tree().change_scene_to_file("res://campaign stages/Stage7_9_NormalStage.tscn")
 
 
 func _on_s_9_pressed() -> void:
-	get_tree().change_scene_to_file("res://campaign stages/addition_tutorial.tscn")
+	get_tree().change_scene_to_file("res://campaign stages/Stage9_Boss.tscn")
 
 
 func _on_s_10_pressed() -> void:
@@ -102,11 +101,11 @@ func _on_s_10_pressed() -> void:
 
 
 func _on_s_11_pressed() -> void:
-	get_tree().change_scene_to_file("res://campaign stages/addition_tutorial.tscn")
+	get_tree().change_scene_to_file("res://campaign stages/Stage10_12_NormalStage.tscn")
 
 
 func _on_s_12_pressed() -> void:
-	get_tree().change_scene_to_file("res://campaign stages/addition_tutorial.tscn")
+	get_tree().change_scene_to_file("res://campaign stages/Stage12_Boss.tscn")
 
 
 func _on_s_13_pressed() -> void:
@@ -114,11 +113,11 @@ func _on_s_13_pressed() -> void:
 
 
 func _on_s_14_pressed() -> void:
-	get_tree().change_scene_to_file("res://campaign stages/addition_tutorial.tscn")
+	get_tree().change_scene_to_file("res://campaign stages/Stage13_15_NormalStage.tscn")
 
 
 func _on_s_15_pressed() -> void:
-	get_tree().change_scene_to_file("res://campaign stages/addition_tutorial.tscn")
+	get_tree().change_scene_to_file("res://campaign stages/Stage15_Boss.tscn")
 
 
 func _on_s_16_pressed() -> void:
@@ -126,12 +125,12 @@ func _on_s_16_pressed() -> void:
 
 
 func _on_s_17_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://campaign stages/Stage16_19_NormalStage.tscn")
 
 
 func _on_s_18_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://campaign stages/Stage18_Preboss.tscn")
 
 
 func _on_s_19_pressed() -> void:
-	get_tree().change_scene_to_file("res://campaign stages/addition_tutorial.tscn")
+	get_tree().change_scene_to_file("res://campaign stages/f_boss.tscn")
