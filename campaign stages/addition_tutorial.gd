@@ -163,28 +163,32 @@ func start_timer() -> void:
 func show_tutorial_dialogue() -> void:
 	# Set up tutorial dialogue
 	current_dialogue = [
-		{"name": "Buddy", "text": "(pant) Hey! Sir Aric! (pant) Wait! (pant)"},
+		{"name": "Buddy", "text": "Hey! Sir Aric! (pant) Wait!"},
 		{"name": "Teacher", "text": "Who's That? Who are You?!"},
-		{"name": "Buddy", "text": "(pants) Me? Oh, I forgot, I'm Mathie!"},
+		{"name": "Buddy", "text": "Me? Oh, I forgot, I'm Mathie!"},
 		{"name": "Buddy", "text": "I heard King Eldrin Sent you to Retreive the Golden Calculator!"},
 		{"name": "Buddy", "text": "So I've figured, i want to help you, both as your guide and battlebuddy!"},
-		{"name": "Teacher", "text": "Wait, you know how where is it and how we can retrieve it?"},
-		{"name": "Buddy", "text": "Yeah"},
-		{"name": "Teacher", "text": "You know what, fine, Come along, but i got a question for you, do you know how to fight?"},
-		{"name": "Buddy", "text": "Umm, no, actually, but i can help you with anything else tho...like this!"},
-		{"name": "Buddy", "text": "(Magic Noises)", "sfx": "magic2"},
+		{"name": "Teacher", "text": "Well then, Before i let you tag along, i would like to know your skills."},
+		{"name": "Teacher", "text": "Because if you dont have anything useful at all, your just a liability."},
+		{"name": "Buddy", "text": "Speaking of my skills..."},
+		{"name": "Buddy", "text": "Well... I do know a bit about fighting, but my most important skill is.."},
+		{"name": "Buddy", "text": "The knowledge and Mastery of the power of Math."},
+		{"name": "Buddy", "text": "I can help you learn and master Math concepts and how to utilize it."},
+		{"name": "Teacher", "text": "Well then, can you show me?"},
+		{"name": "Buddy", "text": "Sure!"},
+		{"name": "", "text": "(Magic Noises)", "sfx": "magic2"},
 		{"name": "Buddy", "text": "The power of ADDITION!", "sfx": "magic"},
-		{"name": "Teacher", "text": "Whoa, this, power i can feel it, but i could utilise this?"},
-		{"name": "Buddy", "text": "Yes! When enemies appear, they'll challenge you with addition problems!"},
-		{"name": "Buddy", "text": "You'll see two numbers, and you need to find their sum."},
-		{"name": "Buddy", "text": "Use the number buttons to input your answer, then hit Submit."},
-		{"name": "Buddy", "text": "Answer correctly, and you'll deal damage to your enemies!"},
+		{"name": "Buddy", "text": "Addition"},
+		{"name": "Buddy", "text": "It is the process of adding two or more numbers together to get their sum"},
 		{"name": "Buddy", "text": "Like for example: What's 3 + 4?"},
 		{"name": "Teacher", "text": "That would be 7."},
 		{"name": "Buddy", "text": "Perfect! You're already getting the hang of it!"},
 		{"name": "Teacher", "text": "Well, that was easy."},
-		{"name": "Buddy", "text": "Well, see those bandits over there?, Why don't we use them as practice dummies"},
-		{"name": "Buddy", "text": "to hone it! hehehe"},
+		{"name": "Teacher", "text": "You know what, fine, Come along."},
+		{"name": "Buddy", "text": "Alright! But wait! Before we go."},
+		{"name": "Teacher", "text": "What is it?"},
+		{"name": "Buddy", "text": "We should practice first and hone our math skills."},
+		{"name": "Buddy", "text": "See those bandits over there, why dont we use them as practice dummies!"},
 		{"name": "Teacher", "text": "All right, Let's begin!"}
 	]
 # Start displaying dialogue
@@ -282,8 +286,7 @@ func show_time_up_dialogue():
 	# Define the dialogue lines for running out of time
 	# You can have one or more characters speak
 	current_dialogue = [
-		{"name": "Buddy", "text": "Ummm....Wakey Wakey! Are you still sleepy?"},
-		{"name": "Buddy", "text": "Come on bud, Stay Alert!"}
+		{"name": "Buddy", "text": "Ummm....Wakey Wakey! Are you still sleepy?"}
 		# Or just one speaker:
 		# {"name": "Teacher", "text": "Time's up! You need to answer faster."}
 	]
@@ -536,12 +539,15 @@ func show_end_stage_dialogue() -> void:
 			{"name": "Buddy", "text": "All we need to remember is..."},
 			{"name": "Buddy", "text": "In Addition, you put together two or more numbers together to find the total amount!"},
 			{"name": "Teacher", "text": "Got it, I'll keep that in mind"},
-			{"name": "Buddy", "text": ":) , so whats next?"},
-			{"name": "Teacher", "text": "I got a feeling that the power you gave me is just a fraction of it."},
-			{"name": "Teacher", "text": "The rest of it is right around here somewhere."},
-			{"name": "Buddy", "text": "So, time to search, then?"},
-			{"name": "Teacher", "text": "Yes"},
-			{"name": "Buddy", "text": "Understood, I'll be on my way!"}
+			{"name": "Teacher", "text": "So, whats next?"},
+			{"name": "Buddy", "text": "Since we already got addition, We now have to look Subtraction."},
+			{"name": "Buddy", "text": "Lucky for us, Its right around here somewhere."},
+			{"name": "Teacher", "text": "Can you share me more info?"},
+			{"name": "Buddy", "text": "Well, According from what i can gather..."},
+			{"name": "Buddy", "text": "It's in the possesion of Perturabo."},
+			{"name": "Buddy", "text": "The boss of 'Iron Warriors' bandit group'."},
+			{"name": "Buddy", "text": "The said bandit group is known to be operating in this area."},
+			{"name": "Teacher", "text": "Understood, Let's get going!"}
 		]
 	else:
 		current_dialogue = [

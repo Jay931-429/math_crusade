@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://byc5d0046dvgt" path="res://asset/art/MAP_2_2.png" id="2_7rd28"]
 
 [node name="CampaignMapContainer" type="Node2D"]
+top_level = true
 script = ExtResource("1_7rd28")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
