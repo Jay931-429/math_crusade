@@ -178,7 +178,7 @@ func show_tutorial_dialogue() -> void:
 		{"name": "Teacher", "text": "So, it's like asking, 'How many groups of this size fit into the total?'"},
 		{"name": "Buddy", "text": "Perfectly put. This skill will be crucial on beating The Architect."},
 		{"name": "Teacher", "text": "Wait... I hear something..."},
-		{"name": "", "text": "Suddenly, a group of ragged thieves surround them!"},
+		{"name": "", "text": "(Suddenly, a group of ragged thieves surround them!)"},
 		{"name": "tbandit", "text": "Well, well, look what we have here. Two travelers, and they seem to know math!"},
 		{"name": "tbandit", "text": "We've heard tales of your... 'mathematical powers.' We'll be taking those!"},
 		{"name": "Buddy", "text": "Oh no, not again!"},
@@ -193,60 +193,61 @@ func show_tutorial_dialogue() -> void:
 
 func display_dialogue() -> void:
 	if dialogue_index >= current_dialogue.size():
-		# If skipping animation, ensure full text is shown before ending
 		if typewriter_timer.time_left > 0:
 			typewriter_timer.stop()
-			dialogue_text.text = full_dialogue_text # Show full text instantly
+			dialogue_text.text = full_dialogue_text
 		end_dialogue()
 		return
 
 	var current = current_dialogue[dialogue_index]
-	# KEEP using current.name as the INTERNAL identifier for sprite lookup
 	var speaker_id = current.name
-	dialogue_text.text = current.text # Text remains the same
-	
-	
-	# --- Store full text, clear label, reset index ---
-	full_dialogue_text = current.text
-	dialogue_text.text = "" # Clear text label
-	typewriter_char_index = 0
-	# --- End setup ---
-	
-		# Play SFX if specified
+	dialogue_text.text = current.text
+
+	if current.has("video") and current.video != "":
+		dialogue_box.visible = false
+		dialogue_text.visible = false
+		dialogue_name.visible = false
+		play_video(current.video)
+	else:
+		dialogue_box.visible = true
+		dialogue_text.visible = true
+		
+		#  NARRATION CHECK
+		if speaker_id == "":
+			# Narration: center the text and hide the name
+			dialogue_name.visible = false
+			dialogue_text.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+			dialogue_text.position = Vector2(273.0, 83.0) # Change to fit your layout
+		else:
+			# Regular dialogue
+			dialogue_name.visible = true
+			dialogue_text.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+			dialogue_text.position = Vector2(379.0, 83.0) # Change to your default position
+
+		full_dialogue_text = current.text
+		dialogue_text.text = ""
+		typewriter_char_index = 0
+
 	if current.has("sfx") and current.sfx != "":
 		AudioManager.play_sfx(current.sfx)
 
-
-	# --- Set the DISPLAY NAME using the new dictionary ---
+	# Set speaker name
 	if display_names.has(speaker_id):
-		# If we have a specific display name mapped, use it
 		dialogue_name.text = display_names[speaker_id]
 	else:
-		# Otherwise, fall back to using the internal ID as the name
 		dialogue_name.text = speaker_id
-	# --- End setting display name ---
 
-
-	# --- Logic to show/hide character sprites (NO CHANGE NEEDED HERE) ---
-	# This part STILL uses the internal speaker_id ("Teacher", "Buddy")
-	# to find the correct sprite in character_sprites.
-	# 1. Hide all character sprites first
+	# Character sprite visibility
 	for sprite_node in character_sprites.values():
 		sprite_node.visible = false
 
-	# 2. Get the current speaker's internal ID (already done above)
-	# var speaker_id = current.name
-
-	# 3. Check if this speaker ID has a mapped sprite and show it
 	if character_sprites.has(speaker_id):
 		var active_sprite = character_sprites[speaker_id]
 		active_sprite.visible = true
 
-	# --- Start Typewriter Effect ---
-	# Don't start if text is empty
 	if full_dialogue_text.length() > 0:
-		typewriter_timer.start() # Use timer's wait_time
-	# --- End Start Typewriter ---
+		typewriter_timer.start()
+	
 
 func next_dialogue() -> void:
 	dialogue_index += 1
@@ -530,13 +531,13 @@ func show_end_stage_dialogue() -> void:
 		current_dialogue = [
 			{"name": "tbandit", "text": "(ahem) These fellas are too strong!"},
 			{"name": "tbandit", "text": "Umm... Run!"},
-			{"name": "", "text": "The bandits flee from the two"},
+			{"name": "", "text": "(The bandits flee from the two)"},
 			{"name": "Buddy", "text": "Run and don't bother us again."},
 			{"name": "Teacher", "text": "Wait, it seems some of our stuff is gone!"},
 			{"name": "Buddy", "text": "Wait WHAT! Those cheeky fellas..."},
 			{"name": "Buddy", "text": "They literally divided our attention to steal our stuff."},
 			{"name": "Teacher", "text": "Indeed. They took advantage of the chaos. Let's see what's missing."},
-			{"name": "", "text": "Alric went to their bags to see."},
+			{"name": "", "text": "(Alric went to their bags to see.)"},
 			{"name": "Teacher", "text": "Damnit, they not only took the 4 Math Operations, but also our provisions..."},
 			{"name": "Teacher", "text": "..Some personal items and most importantly, our map."},
 			{"name": "Buddy", "text": "Oh no! What are we gonna do now?!"},
@@ -648,3 +649,15 @@ func _on_typewriter_timer_timeout():
 		# Start timer again for the next character
 		typewriter_timer.start() # Uses its wait_time property
 	# else: # All characters displayed, do nothing, timer stays stopped.
+	
+func play_video(video_path: String) -> void:
+	var video_player = VideoStreamPlayer.new()
+	add_child(video_player)
+	video_player.stream = load(video_path)
+	video_player.play()
+	video_player.finished.connect(_on_video_finished.bind(video_player))
+#
+func _on_video_finished(video_player):
+	video_player.queue_free() # Remove video player
+	dialogue_index += 1 # Advance dialogue
+	display_dialogue() # Resume dialogue

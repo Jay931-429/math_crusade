@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c2v2jmr81un12" path="res://campaign stages/gameplay_tutorial.gd" id="1_1tecv"]
 [ext_resource type="Texture2D" uid="uid://dox6s2pdaah6p" path="res://asset/art/Gray.png" id="2_1etmi"]
-[ext_resource type="Texture2D" uid="uid://vqqjowhqw47x" path="res://asset/art/Summer1.png" id="3_ldg3q"]
+[ext_resource type="Texture2D" uid="uid://bodvk3odff4rq" path="res://asset/art/freepik__expand__12614.png" id="3_45c8q"]
 [ext_resource type="Texture2D" uid="uid://b2capxdpvd4vu" path="res://asset/UI/Transparent.png" id="4_chsww"]
 [ext_resource type="Texture2D" uid="uid://dwldsahsmum7d" path="res://asset/UI/1.png" id="5_i6hvg"]
 [ext_resource type="Texture2D" uid="uid://bphrxf2hyox74" path="res://asset/art/GUI_frame__BG.png" id="5_ldg3q"]
@@ -64,8 +64,8 @@
 [ext_resource type="Texture2D" uid="uid://dphwdxwtbnyih" path="res://asset/npc/Warrior/Individual Sprite/Run/Warrior_Run_6.png" id="58_uimsr"]
 [ext_resource type="Texture2D" uid="uid://daxj8s7hrojl2" path="res://asset/npc/Warrior/Individual Sprite/Run/Warrior_Run_7.png" id="59_jlo2r"]
 [ext_resource type="Texture2D" uid="uid://bwdfx4cw26b2x" path="res://asset/npc/Warrior/Individual Sprite/Run/Warrior_Run_8.png" id="60_7lnpv"]
-[ext_resource type="Texture2D" uid="uid://cjdfnsdc3c01c" path="res://asset/npc/free_character_1_20_cogabushi/character/normal/A_534235.png" id="65_45c8q"]
-[ext_resource type="Texture2D" uid="uid://bgqfa340fcj65" path="res://asset/npc/free_character_1_20_cogabushi/character/normal/A_8_1.png" id="66_45c8q"]
+[ext_resource type="Texture2D" uid="uid://4lpfjpnhoeqr" path="res://asset/npc/usedportraits/wabbajack12.png" id="66_8lo0q"]
+[ext_resource type="Texture2D" uid="uid://bgqfa340fcj65" path="res://asset/npc/usedportraits/A_8_1.png" id="66_45c8q"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_b3w2y"]
 animations = [{
@@ -543,9 +543,10 @@ metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
 [node name="Stage1_3BG" type="TextureRect" parent="."]
+modulate = Color(0.8125, 0.8125, 0.8125, 1)
 offset_right = 1080.0
 offset_bottom = 776.0
-texture = ExtResource("3_ldg3q")
+texture = ExtResource("3_45c8q")
 expand_mode = 1
 metadata/_edit_lock_ = true
 
@@ -758,20 +759,22 @@ theme_override_font_sizes/font_size = 40
 text = "TIME"
 
 [node name="Enemy2" type="AnimatedSprite2D" parent="."]
-position = Vector2(831, 521.125)
+modulate = Color(0.76, 0.76, 0.76, 1)
+position = Vector2(864, 576)
 scale = Vector2(5.33594, 6.36932)
 sprite_frames = SubResource("SpriteFrames_b3w2y")
 animation = &"Idle"
-frame_progress = 0.634744
+frame_progress = 0.238002
 flip_h = true
 metadata/_edit_lock_ = true
 
 [node name="Player" type="AnimatedSprite2D" parent="."]
-position = Vector2(216, 480)
+modulate = Color(0.76, 0.76, 0.76, 1)
+position = Vector2(216, 552)
 scale = Vector2(3.97076, 3.41458)
 sprite_frames = SubResource("SpriteFrames_jf1du")
 animation = &"Idle"
-frame_progress = 0.271531
+frame_progress = 0.679635
 metadata/_edit_lock_ = true
 
 [node name="DialogueBox" type="ColorRect" parent="."]
@@ -781,15 +784,15 @@ offset_right = 1081.0
 offset_bottom = 798.0
 color = Color(0, 0, 0, 0.843137)
 
-[node name="Buddy" type="Sprite2D" parent="DialogueBox"]
-position = Vector2(185, 215)
-scale = Vector2(0.382934, 0.321012)
-texture = ExtResource("65_45c8q")
-
 [node name="Teacher" type="Sprite2D" parent="DialogueBox"]
 position = Vector2(185, 203.5)
 scale = Vector2(0.398157, 0.299735)
 texture = ExtResource("66_45c8q")
+
+[node name="Buddy" type="Sprite2D" parent="DialogueBox"]
+position = Vector2(181, 204)
+scale = Vector2(0.48913, 0.450262)
+texture = ExtResource("66_8lo0q")
 
 [node name="NameLabel" type="Label" parent="DialogueBox"]
 layout_mode = 1

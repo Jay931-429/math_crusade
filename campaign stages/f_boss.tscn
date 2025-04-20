@@ -32,7 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://d1mhgk38we2m3" path="res://asset/enemy/Evil Wizard/Sprites/Idle.png" id="31_fcqrg"]
 [ext_resource type="Texture2D" uid="uid://6fkjaxweqoi0" path="res://asset/Main Character/Crusader-4-Running.png" id="32_kl8oi"]
 [ext_resource type="Texture2D" uid="uid://d1c1wgg3lt355" path="res://asset/enemy/Evil Wizard/Sprites/Move.png" id="32_w84bs"]
-[ext_resource type="Texture2D" uid="uid://bskhtf2opvoko" path="res://asset/npc/free_character_1_20_cogabushi/character/normal/CLOAK-1.png" id="33_js277"]
+[ext_resource type="Texture2D" uid="uid://bskhtf2opvoko" path="res://asset/npc/usedportraits/CLOAK-1.png" id="33_js277"]
 [ext_resource type="Texture2D" uid="uid://cjdfnsdc3c01c" path="res://asset/npc/free_character_1_20_cogabushi/character/normal/A_534235.png" id="34_06am4"]
 [ext_resource type="Texture2D" uid="uid://4ix3u3e03yis" path="res://asset/npc/usedportraits/276dsad.png" id="35_w84bs"]
 [ext_resource type="VideoStream" uid="uid://ysu834o6bfb" path="res://asset/video/Ending Cutscene2.ogv" id="36_ehtmn"]

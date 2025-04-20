@@ -20,6 +20,7 @@ extends Node2D
 
 # --- Add references for character sprites ---
 @onready var buddy_sprite = $DialogueBox/Buddy
+@onready var hbuddy_sprite = $DialogueBox/hBuddy
 @onready var teacher_sprite = $DialogueBox/Teacher
 
 
@@ -85,6 +86,8 @@ func _ready() -> void:
 		character_sprites["Buddy"] = buddy_sprite
 	if teacher_sprite: # Check if the node exists
 		character_sprites["Teacher"] = teacher_sprite
+	if hbuddy_sprite: # Check if the node exists
+		character_sprites["hBuddy"] = hbuddy_sprite
 	# Add other characters here:
 	# character_sprites["AnotherNPC"] = another_npc_sprite
 	
@@ -92,6 +95,7 @@ func _ready() -> void:
 	# Map Internal ID -> Display Name
 	display_names["Buddy"] = "Mathie" # Or maybe "Your Pal" if you want
 	display_names["Teacher"] = "Aric" # <--- CHANGE THIS to whatever you want displayed
+	display_names["hBuddy"] = "Mathie"
 	# Add other characters if needed
 	# display_names["Boss"] = "Dark Lord Malakor"
 	
@@ -163,25 +167,26 @@ func start_timer() -> void:
 func show_tutorial_dialogue() -> void:
 	# Set up tutorial dialogue
 	current_dialogue = [
-		{"name": "Buddy", "text": "That was a hell of a fight!"},
-		{"name": "Teacher", "text": "Yeah, We beaten a powerful foe but not only that.."},
-		{"name": "Teacher", "text": "We also got lucky, as we got both the rest of Addition but also Subtraction."},
-		{"name": "Teacher", "text": "Speaking of Subtraction..."},
-		{"name": "Teacher", "text": "Can you tell me about it?"},
-		{"name": "Buddy", "text": "Ah yes, Subtraction."},
-		{"name": "Buddy", "text": "It refers to taking away one number or an amount from another."},
-		{"name": "Buddy", "text": "Like let's say i have 5 apples in my bag and we both ate 2."},
-		{"name": "Buddy", "text": "How many apples we got left?"},
-		{"name": "Teacher", "text": "3, I suppose."},
-		{"name": "Buddy", "text": "Yeah, you're right!"},
-		{"name": "Buddy", "text": "From 5 apples, we minus 2, therefore we got 3!"},
-		{"name": "Buddy", "text": "Amazing Right?"},
-		{"name": "Teacher", "text": "Yeah, we learned another beneficial Math Power!"},
-		{"name": "Buddy", "text": "Huh? (bush noise)"},
-		{"name": "Buddy", "text": "What's that noise?"},
-		{"name": "Teacher", "text": "It's in the bushes"},
-		{"name": "Buddy", "text": "EEEK! A Goblin!"},
-		{"name": "Teacher", "text": "Step back, Battlebuddy, lemme handle this."},
+		{"name": "", "text": "(After defeating Perturabo, Mathie and Alric venture into the eerie forest known as the Grunwald...)"},
+		{"name": "Buddy", "text": "We're now at The Grunwald!"},
+		{"name": "Teacher", "text": "You said the Multiplication was located here, right?"},
+		{"name": "hBuddy", "text": "Yeah, deep within the forest. Is there a problem?"},
+		{"name": "Teacher", "text": "...I don't know. This place gives me the chills."},
+		{"name": "Teacher", "text": "It feels like something's watching us... we need to be ready."},
+		{"name": "Teacher", "text": "Can you teach me the power of Subtraction? We might need it."},
+		{"name": "hBuddy", "text": "Good idea! We gained it after defeating Perturabo, right? Alright, listen closely."},
+		{"name": "", "text": "(Mathie begins explaining the fundamentals of Subtraction magic to Alric...)"},
+		{"name": "Buddy", "text": "Subtraction", "sfx": "magic"},
+		{"name": "Buddy", "text": "It is the process of taking one number or amount away from another."},
+		{"name": "Buddy", "text": "It is also about finding what's left when you take something away."},
+		{"name": "Buddy", "text": "Let say if we have 10 apples and ate 3, how many do you have left?"},
+		{"name": "Teacher", "text": "...That's 7!"},
+		{"name": "Buddy", "text": "Exactly! Wait, i hear something."},
+		{"name": "", "text": "(Suddenly, rustling sounds echo through the bushes...)"},
+		{"name": "Teacher", "text": "Did you hear that...?"},
+		{"name": "Buddy", "text": "Get ready, Bud — we're not alone!"},
+		{"name": "", "text": "(Goblins leap from the shadows, snarling and ready to strike!)"},
+		{"name": "Teacher", "text": "Ambush!"}
 	]
 # Start displaying dialogue
 	dialogue_active = true
@@ -191,55 +196,60 @@ func show_tutorial_dialogue() -> void:
 
 func display_dialogue() -> void:
 	if dialogue_index >= current_dialogue.size():
-		# If skipping animation, ensure full text is shown before ending
 		if typewriter_timer.time_left > 0:
 			typewriter_timer.stop()
-			dialogue_text.text = full_dialogue_text # Show full text instantly
+			dialogue_text.text = full_dialogue_text
 		end_dialogue()
 		return
 
 	var current = current_dialogue[dialogue_index]
-	# KEEP using current.name as the INTERNAL identifier for sprite lookup
 	var speaker_id = current.name
-	dialogue_text.text = current.text # Text remains the same
-	
-	
-	# --- Store full text, clear label, reset index ---
-	full_dialogue_text = current.text
-	dialogue_text.text = "" # Clear text label
-	typewriter_char_index = 0
-	# --- End setup ---
+	dialogue_text.text = current.text
 
-	# --- Set the DISPLAY NAME using the new dictionary ---
+	if current.has("video") and current.video != "":
+		dialogue_box.visible = false
+		dialogue_text.visible = false
+		dialogue_name.visible = false
+		play_video(current.video)
+	else:
+		dialogue_box.visible = true
+		dialogue_text.visible = true
+		
+		#  NARRATION CHECK
+		if speaker_id == "":
+			# Narration: center the text and hide the name
+			dialogue_name.visible = false
+			dialogue_text.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+			dialogue_text.position = Vector2(273.0, 83.0) # Change to fit your layout
+		else:
+			# Regular dialogue
+			dialogue_name.visible = true
+			dialogue_text.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+			dialogue_text.position = Vector2(379.0, 83.0) # Change to your default position
+
+		full_dialogue_text = current.text
+		dialogue_text.text = ""
+		typewriter_char_index = 0
+
+	if current.has("sfx") and current.sfx != "":
+		AudioManager.play_sfx(current.sfx)
+
+	# Set speaker name
 	if display_names.has(speaker_id):
-		# If we have a specific display name mapped, use it
 		dialogue_name.text = display_names[speaker_id]
 	else:
-		# Otherwise, fall back to using the internal ID as the name
 		dialogue_name.text = speaker_id
-	# --- End setting display name ---
 
-
-	# --- Logic to show/hide character sprites (NO CHANGE NEEDED HERE) ---
-	# This part STILL uses the internal speaker_id ("Teacher", "Buddy")
-	# to find the correct sprite in character_sprites.
-	# 1. Hide all character sprites first
+	# Character sprite visibility
 	for sprite_node in character_sprites.values():
 		sprite_node.visible = false
 
-	# 2. Get the current speaker's internal ID (already done above)
-	# var speaker_id = current.name
-
-	# 3. Check if this speaker ID has a mapped sprite and show it
 	if character_sprites.has(speaker_id):
 		var active_sprite = character_sprites[speaker_id]
 		active_sprite.visible = true
 
-	# --- Start Typewriter Effect ---
-	# Don't start if text is empty
 	if full_dialogue_text.length() > 0:
-		typewriter_timer.start() # Use timer's wait_time
-	# --- End Start Typewriter ---
+		typewriter_timer.start()
 
 func next_dialogue() -> void:
 	dialogue_index += 1
@@ -274,7 +284,7 @@ func show_time_up_dialogue():
 	# You can have one or more characters speak
 	current_dialogue = [
 		{"name": "Buddy", "text": "You Ok Bud? You didnt answer in time."},
-		{"name": "Buddy", "text": "I guess you me hungry, here, grab some apples!"}
+		{"name": "hBuddy", "text": "I guess you are hungry, here, grab some apples!","sfx": "correct"}
 		# Or just one speaker:
 		# {"name": "Teacher", "text": "Time's up! You need to answer faster."}
 	]
@@ -530,16 +540,12 @@ func show_end_stage_dialogue() -> void:
 
 	if player_won:
 		current_dialogue = [
-			{"name": "Buddy", "text": "Whew! I guess were safe."},
+			{"name": "Teacher", "text": "We've beaten them back for now."},
 			{"name": "Buddy", "text": "And its all thanks to the Power of Subtraction, right? "},
 			{"name": "Teacher", "text": "Yeah, all thanks to Subtraction."},
-			{"name": "Buddy", "text": "Wait.."},
-			{"name": "Buddy", "text": "What's that over there?!"},
-			{"name": "Teacher", "text": "It looks like a fiery red creature and its holding..."},
-			{"name": "Buddy", "text": "...Multiplication!"},
-			{"name": "Buddy", "text": "We should go after that beast!"},
-			{"name": "Teacher", "text": "Yes, Absolutely!"},
-			{"name": "Teacher", "text": "Alright, Let's Go! let's chase after it!"}
+			{"name": "Teacher", "text": "But for now, we have to move deeper in this forest."},
+			{"name": "Teacher", "text": "We just need to be alert for any more threats."},
+			{"name": "Buddy", "text": "Got it, Let's go!"}
 		]
 	else:
 		current_dialogue = [
@@ -646,3 +652,15 @@ func _on_typewriter_timer_timeout():
 		# Start timer again for the next character
 		typewriter_timer.start() # Uses its wait_time property
 	# else: # All characters displayed, do nothing, timer stays stopped.
+
+func play_video(video_path: String) -> void:
+	var video_player = VideoStreamPlayer.new()
+	add_child(video_player)
+	video_player.stream = load(video_path)
+	video_player.play()
+	video_player.finished.connect(_on_video_finished.bind(video_player))
+#
+func _on_video_finished(video_player):
+	video_player.queue_free() # Remove video player
+	dialogue_index += 1 # Advance dialogue
+	display_dialogue() # Resume dialogue

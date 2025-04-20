@@ -1,4 +1,4 @@
-[gd_scene load_steps=117 format=3 uid="uid://261hvorkyq2n"]
+[gd_scene load_steps=118 format=3 uid="uid://261hvorkyq2n"]
 
 [ext_resource type="Script" uid="uid://byn7t80ih0cgq" path="res://campaign stages/addition_tutorial.gd" id="1_vecps"]
 [ext_resource type="Texture2D" uid="uid://dox6s2pdaah6p" path="res://asset/art/Gray.png" id="2_qpcii"]
@@ -29,11 +29,12 @@
 [ext_resource type="Texture2D" uid="uid://msivu6nn77gg" path="res://asset/Main Character/Crusader-4-Idle.png" id="24_7wu1t"]
 [ext_resource type="Texture2D" uid="uid://6fkjaxweqoi0" path="res://asset/Main Character/Crusader-4-Running.png" id="27_k5vx7"]
 [ext_resource type="Texture2D" uid="uid://dkfm567sbgft2" path="res://asset/Main Character/Knight_player/Attack_KG_2.png" id="29_e1vrr"]
-[ext_resource type="Texture2D" uid="uid://cjdfnsdc3c01c" path="res://asset/npc/free_character_1_20_cogabushi/character/normal/A_534235.png" id="29_xd6it"]
 [ext_resource type="Texture2D" uid="uid://c6i8m5ii8pr7w" path="res://asset/Main Character/Knight_player/Hurt_KG_1.png" id="30_ho0xa"]
-[ext_resource type="Texture2D" uid="uid://bskhtf2opvoko" path="res://asset/npc/free_character_1_20_cogabushi/character/normal/CLOAK-1.png" id="30_twiqn"]
+[ext_resource type="Texture2D" uid="uid://bskhtf2opvoko" path="res://asset/npc/usedportraits/CLOAK-1.png" id="30_twiqn"]
 [ext_resource type="Texture2D" uid="uid://vpm3j5rsg7us" path="res://asset/Main Character/Knight_player/Idle_KG_1.png" id="31_2r4is"]
 [ext_resource type="Texture2D" uid="uid://cql6vrmroylir" path="res://asset/Main Character/Knight_player/Attack_KG_4.png" id="32_hax5k"]
+[ext_resource type="Texture2D" uid="uid://4lpfjpnhoeqr" path="res://asset/npc/usedportraits/wabbajack12.png" id="34_ho0xa"]
+[ext_resource type="Texture2D" uid="uid://blwpegxj3nxiy" path="res://asset/npc/usedportraits/CLOAK-4 .png" id="35_ho0xa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o21j7"]
 atlas = ExtResource("29_e1vrr")
@@ -527,7 +528,7 @@ region = Rect2(448, 0, 112, 96)
 atlas = ExtResource("27_k5vx7")
 region = Rect2(560, 0, 112, 96)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_0abe8"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_ho0xa"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -740,6 +741,7 @@ metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
 [node name="Stage1_3BG" type="TextureRect" parent="."]
+modulate = Color(0.75, 0.75, 0.75, 1)
 offset_right = 1080.0
 offset_bottom = 776.0
 texture = ExtResource("3_p64yp")
@@ -970,13 +972,14 @@ sprite_frames = SubResource("SpriteFrames_wnwqy")
 animation = &"Idle"
 frame_progress = 0.256731
 flip_h = true
+metadata/_edit_lock_ = true
 
 [node name="Player" type="AnimatedSprite2D" parent="."]
 position = Vector2(216, 480)
 scale = Vector2(3.97076, 3.41458)
-sprite_frames = SubResource("SpriteFrames_0abe8")
+sprite_frames = SubResource("SpriteFrames_ho0xa")
 animation = &"Idle"
-frame_progress = 0.0485392
+frame_progress = 0.474874
 metadata/_edit_lock_ = true
 
 [node name="DialogueBox" type="ColorRect" parent="."]
@@ -992,9 +995,14 @@ scale = Vector2(0.72449, 0.778761)
 texture = ExtResource("30_twiqn")
 
 [node name="Teacher" type="Sprite2D" parent="DialogueBox"]
-position = Vector2(183.5, 204)
-scale = Vector2(0.378631, 0.362105)
-texture = ExtResource("29_xd6it")
+position = Vector2(185, 192)
+scale = Vector2(0.5, 0.481675)
+texture = ExtResource("34_ho0xa")
+
+[node name="hBuddy" type="Sprite2D" parent="DialogueBox"]
+position = Vector2(185, 195.5)
+scale = Vector2(0.75102, 0.794248)
+texture = ExtResource("35_ho0xa")
 
 [node name="NameLabel" type="Label" parent="DialogueBox"]
 layout_mode = 1

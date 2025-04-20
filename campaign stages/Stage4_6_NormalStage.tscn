@@ -1,11 +1,11 @@
-[gd_scene load_steps=87 format=3 uid="uid://dqh70foevyu4f"]
+[gd_scene load_steps=118 format=3 uid="uid://dqh70foevyu4f"]
 
 [ext_resource type="Script" uid="uid://c3y4cso3r4xki" path="res://campaign stages/stage_4_6_normal_stage.gd" id="1_1rs8j"]
 [ext_resource type="Texture2D" uid="uid://dox6s2pdaah6p" path="res://asset/art/Gray.png" id="2_aieop"]
 [ext_resource type="Texture2D" uid="uid://5ftttr7nvnve" path="res://asset/art/Stage 4-6 BG.png" id="3_2tf2b"]
 [ext_resource type="Texture2D" uid="uid://b2capxdpvd4vu" path="res://asset/UI/Transparent.png" id="4_aseqi"]
 [ext_resource type="Texture2D" uid="uid://dwldsahsmum7d" path="res://asset/UI/1.png" id="5_fwg0n"]
-[ext_resource type="Texture2D" uid="uid://bnhxhmc1uhwym" path="res://asset/art/256x256 Pixel Textures/256x256/256_Dirt Cracked 01.png" id="5_kmffo"]
+[ext_resource type="Texture2D" uid="uid://bphrxf2hyox74" path="res://asset/art/GUI_frame__BG.png" id="5_vrdw4"]
 [ext_resource type="Texture2D" uid="uid://byifsb6867sav" path="res://asset/UI/2.png" id="6_c445p"]
 [ext_resource type="Texture2D" uid="uid://c8rseeirdyqfk" path="res://asset/UI/3.png" id="7_noicd"]
 [ext_resource type="Texture2D" uid="uid://cu3m3ho7b3kno" path="res://asset/UI/4.png" id="8_jdrn8"]
@@ -27,7 +27,14 @@
 [ext_resource type="Texture2D" uid="uid://bsyijo2ly4qhp" path="res://asset/enemy/Goblin Sprite-20250407T060630Z-001/Goblin Sprite/Idle.png" id="23_l1wwy"]
 [ext_resource type="Texture2D" uid="uid://d3ygocc20macx" path="res://asset/enemy/Goblin Sprite-20250407T060630Z-001/Goblin Sprite/Run.png" id="24_6dvmw"]
 [ext_resource type="Texture2D" uid="uid://msivu6nn77gg" path="res://asset/Main Character/Crusader-4-Idle.png" id="24_kbtog"]
+[ext_resource type="Texture2D" uid="uid://dkfm567sbgft2" path="res://asset/Main Character/Knight_player/Attack_KG_2.png" id="25_47qit"]
 [ext_resource type="Texture2D" uid="uid://6fkjaxweqoi0" path="res://asset/Main Character/Crusader-4-Running.png" id="26_a36aq"]
+[ext_resource type="Texture2D" uid="uid://c6i8m5ii8pr7w" path="res://asset/Main Character/Knight_player/Hurt_KG_1.png" id="26_yjnfl"]
+[ext_resource type="Texture2D" uid="uid://vpm3j5rsg7us" path="res://asset/Main Character/Knight_player/Idle_KG_1.png" id="27_145la"]
+[ext_resource type="Texture2D" uid="uid://cql6vrmroylir" path="res://asset/Main Character/Knight_player/Attack_KG_4.png" id="28_p8ntu"]
+[ext_resource type="Texture2D" uid="uid://bskhtf2opvoko" path="res://asset/npc/usedportraits/CLOAK-1.png" id="33_mfi3t"]
+[ext_resource type="Texture2D" uid="uid://4lpfjpnhoeqr" path="res://asset/npc/usedportraits/wabbajack12.png" id="34_nmonm"]
+[ext_resource type="Texture2D" uid="uid://blwpegxj3nxiy" path="res://asset/npc/usedportraits/CLOAK-4 .png" id="35_jvjsg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i28v1"]
 atlas = ExtResource("20_tdos0")
@@ -141,7 +148,7 @@ region = Rect2(900, 0, 150, 150)
 atlas = ExtResource("24_6dvmw")
 region = Rect2(1050, 0, 150, 150)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_ce2c8"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_y1ugn"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -251,6 +258,162 @@ animations = [{
 "loop": false,
 "name": &"Run",
 "speed": 20.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o21j7"]
+atlas = ExtResource("25_47qit")
+region = Rect2(0, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wrj3v"]
+atlas = ExtResource("25_47qit")
+region = Rect2(100, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gls56"]
+atlas = ExtResource("25_47qit")
+region = Rect2(200, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xe6xx"]
+atlas = ExtResource("25_47qit")
+region = Rect2(300, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d1dtq"]
+atlas = ExtResource("25_47qit")
+region = Rect2(400, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7x14b"]
+atlas = ExtResource("25_47qit")
+region = Rect2(500, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pijmu"]
+atlas = ExtResource("26_yjnfl")
+region = Rect2(0, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7177"]
+atlas = ExtResource("26_yjnfl")
+region = Rect2(100, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_slkcc"]
+atlas = ExtResource("26_yjnfl")
+region = Rect2(200, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_87ymn"]
+atlas = ExtResource("26_yjnfl")
+region = Rect2(300, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjmpj"]
+atlas = ExtResource("27_145la")
+region = Rect2(0, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ww2i6"]
+atlas = ExtResource("27_145la")
+region = Rect2(100, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ah3s"]
+atlas = ExtResource("27_145la")
+region = Rect2(200, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3wmro"]
+atlas = ExtResource("27_145la")
+region = Rect2(300, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_alfb2"]
+atlas = ExtResource("28_p8ntu")
+region = Rect2(0, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ai3w2"]
+atlas = ExtResource("28_p8ntu")
+region = Rect2(100, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_023d8"]
+atlas = ExtResource("28_p8ntu")
+region = Rect2(200, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tf2d5"]
+atlas = ExtResource("28_p8ntu")
+region = Rect2(300, 0, 100, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0djqs"]
+atlas = ExtResource("28_p8ntu")
+region = Rect2(400, 0, 100, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_egps7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o21j7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wrj3v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gls56")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xe6xx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d1dtq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7x14b")
+}],
+"loop": true,
+"name": &"Attack",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pijmu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l7177")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_slkcc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_87ymn")
+}],
+"loop": false,
+"name": &"Hit",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bjmpj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ww2i6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ah3s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3wmro")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_alfb2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ai3w2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_023d8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tf2d5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0djqs")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 19.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sfoa5"]
@@ -365,7 +528,7 @@ region = Rect2(448, 0, 112, 96)
 atlas = ExtResource("26_a36aq")
 region = Rect2(560, 0, 112, 96)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_a36aq"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_2xd5r"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -472,6 +635,96 @@ animations = [{
 "speed": 20.0
 }]
 
+[sub_resource type="Animation" id="Animation_8lo0q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DialogueBox:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, 424)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DialogueBox:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_v2pdm"]
+resource_name = "dialogue_hide"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DialogueBox:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.366667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-0.1, 424), Vector2(1150, 424)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DialogueBox:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.366667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_45c8q"]
+resource_name = "dialogue_show"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DialogueBox:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.366667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1100, 424), Vector2(-1, 424)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DialogueBox:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v2pdm"]
+_data = {
+&"RESET": SubResource("Animation_8lo0q"),
+&"dialogue_hide": SubResource("Animation_v2pdm"),
+&"dialogue_show": SubResource("Animation_45c8q")
+}
+
 [node name="S4_6Normal2" type="Node2D"]
 script = ExtResource("1_1rs8j")
 
@@ -488,6 +741,7 @@ metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
 [node name="Stage1_3BG" type="TextureRect" parent="."]
+modulate = Color(0.74585, 0.917969, 0.768709, 1)
 offset_right = 1080.0
 offset_bottom = 776.0
 texture = ExtResource("3_2tf2b")
@@ -537,13 +791,13 @@ metadata/_edit_lock_ = true
 offset_top = 768.0
 offset_right = 1088.0
 offset_bottom = 1912.0
-texture = ExtResource("5_kmffo")
+texture = ExtResource("5_vrdw4")
 
 [node name="Number_Button" type="VBoxContainer" parent="."]
-offset_left = 221.58
-offset_top = 932.78
-offset_right = 853.58
-offset_bottom = 1774.78
+offset_left = 246.0
+offset_top = 912.0
+offset_right = 895.0
+offset_bottom = 1776.0
 scale = Vector2(0.935, 0.935)
 
 [node name="num_row_123" type="HBoxContainer" parent="Number_Button"]
@@ -634,12 +888,25 @@ flat = true
 icon_alignment = 1
 
 [node name="Placeholder_BackButton" type="Button" parent="."]
-offset_left = 20.895
-offset_top = 1762.67
-offset_right = 352.895
-offset_bottom = 2093.67
+offset_left = 81.0
+offset_top = 1702.0
+offset_right = 413.0
+offset_bottom = 2033.0
 scale = Vector2(0.4, 0.4)
 icon = ExtResource("17_nmkbb")
+flat = true
+icon_alignment = 1
+
+[node name="Submit" type="Button" parent="."]
+offset_left = 869.0
+offset_top = 1695.0
+offset_right = 1075.0
+offset_bottom = 1901.0
+scale = Vector2(0.7, 0.7)
+theme_override_font_sizes/font_size = 100
+text = "
+"
+icon = ExtResource("18_gheqn")
 flat = true
 icon_alignment = 1
 
@@ -657,18 +924,6 @@ offset_right = 1026.0
 offset_bottom = 76.0
 theme_override_font_sizes/font_size = 40
 text = "SCORE:"
-
-[node name="Submit" type="Button" parent="."]
-offset_left = 822.0
-offset_top = 925.485
-offset_right = 1047.0
-offset_bottom = 1131.48
-theme_override_font_sizes/font_size = 100
-text = "
-"
-icon = ExtResource("18_gheqn")
-flat = true
-icon_alignment = 1
 
 [node name="HPLabel" type="Label" parent="."]
 offset_left = 72.0
@@ -701,15 +956,90 @@ text = "TIME"
 [node name="Enemy2" type="AnimatedSprite2D" parent="."]
 position = Vector2(848, 608)
 scale = Vector2(3.03261, 2.87774)
-sprite_frames = SubResource("SpriteFrames_ce2c8")
+sprite_frames = SubResource("SpriteFrames_y1ugn")
 animation = &"Attack"
 flip_h = true
+
+[node name="Buddy" type="AnimatedSprite2D" parent="."]
+position = Vector2(112, 584)
+scale = Vector2(2.58769, 3.10365)
+sprite_frames = SubResource("SpriteFrames_egps7")
+animation = &"Idle"
+metadata/_edit_lock_ = true
 
 [node name="Player" type="AnimatedSprite2D" parent="."]
 position = Vector2(224, 512)
 scale = Vector2(3.97076, 3.54062)
-sprite_frames = SubResource("SpriteFrames_a36aq")
+sprite_frames = SubResource("SpriteFrames_2xd5r")
 animation = &"Idle"
+metadata/_edit_lock_ = true
+
+[node name="DialogueBox" type="ColorRect" parent="."]
+offset_left = -1.0
+offset_top = 424.0
+offset_right = 1081.0
+offset_bottom = 798.0
+color = Color(0, 0, 0, 0.843137)
+
+[node name="Buddy" type="Sprite2D" parent="DialogueBox"]
+position = Vector2(182.5, 212)
+scale = Vector2(0.72449, 0.725664)
+texture = ExtResource("33_mfi3t")
+metadata/_edit_lock_ = true
+
+[node name="Teacher" type="Sprite2D" parent="DialogueBox"]
+position = Vector2(185, 204)
+scale = Vector2(0.478261, 0.450262)
+texture = ExtResource("34_nmonm")
+metadata/_edit_lock_ = true
+
+[node name="hBuddy" type="Sprite2D" parent="DialogueBox"]
+position = Vector2(180, 204)
+scale = Vector2(0.738776, 0.761062)
+texture = ExtResource("35_jvjsg")
+
+[node name="NameLabel" type="Label" parent="DialogueBox"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 548.0
+offset_top = 52.0
+offset_right = 796.0
+offset_bottom = 99.0
+theme_override_font_sizes/font_size = 50
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="DialogueText" type="RichTextLabel" parent="DialogueBox"]
+layout_mode = 0
+offset_left = 379.0
+offset_top = 83.0
+offset_right = 946.0
+offset_bottom = 339.0
+theme_override_font_sizes/normal_font_size = 50
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="ContinueButton" type="Button" parent="DialogueBox"]
+layout_mode = 0
+offset_left = 928.0
+offset_top = 232.0
+offset_right = 1113.0
+offset_bottom = 421.0
+scale = Vector2(0.7, 0.7)
+theme_override_font_sizes/font_size = 120
+text = ">>>"
+
+[node name="DialogueAnimator" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_v2pdm")
+}
+
+[node name="TypewriterTimer" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true
 
 [connection signal="pressed" from="Number_Button/num_row_123/one" to="." method="_on_one_pressed"]
 [connection signal="pressed" from="Number_Button/num_row_123/two" to="." method="_on_two_pressed"]
@@ -725,3 +1055,5 @@ animation = &"Idle"
 [connection signal="pressed" from="Number_Button/num_row_0_clear_bckspace/back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="Placeholder_BackButton" to="." method="_on_placeholder_back_button_pressed"]
 [connection signal="pressed" from="Submit" to="." method="_on_submit_pressed"]
+[connection signal="pressed" from="DialogueBox/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="timeout" from="TypewriterTimer" to="." method="_on_typewriter_timer_timeout"]

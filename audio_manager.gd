@@ -11,6 +11,7 @@ extends Node
 # Dictionary to store different music tracks (BGM)
 var music_tracks = {
 	"menu": preload("res://asset/music/Zachz Winner, Фрози, Joyful - Boogie  Discoplug  NCS - Copyright Free Music.mp3"),
+	"regboss": preload("res://asset/music/to-the-death-159171.mp3"),
 	"stage1": preload("res://asset/music/The Wild New World.mp3"),
 	"stage2": preload("res://asset/music/Stage 4-6 BGM MP3.mp3"),
 	"stage3": preload("res://asset/music/the-tournament-280277.mp3"),

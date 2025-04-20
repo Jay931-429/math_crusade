@@ -36,10 +36,9 @@
 [ext_resource type="Texture2D" uid="uid://msivu6nn77gg" path="res://asset/Main Character/Crusader-4-Idle.png" id="31_xo3ly"]
 [ext_resource type="Texture2D" uid="uid://6fkjaxweqoi0" path="res://asset/Main Character/Crusader-4-Running.png" id="32_h66xu"]
 [ext_resource type="Texture2D" uid="uid://nm1rg30kq7o3" path="res://asset/enemy/elementals_wind_hashashin_FREE_v1.1/PNG/3_atk/3_atk_9.png" id="32_jdhrw"]
-[ext_resource type="Texture2D" uid="uid://bskhtf2opvoko" path="res://asset/npc/free_character_1_20_cogabushi/character/normal/CLOAK-1.png" id="33_85iv3"]
+[ext_resource type="Texture2D" uid="uid://bskhtf2opvoko" path="res://asset/npc/usedportraits/CLOAK-1.png" id="33_85iv3"]
 [ext_resource type="Texture2D" uid="uid://cgcbkj0johhc3" path="res://asset/enemy/elementals_wind_hashashin_FREE_v1.1/PNG/3_atk/3_atk_10.png" id="33_gw5np"]
 [ext_resource type="Texture2D" uid="uid://bhmj35sqgasvk" path="res://asset/enemy/elementals_wind_hashashin_FREE_v1.1/PNG/3_atk/3_atk_11.png" id="34_sp2bs"]
-[ext_resource type="Texture2D" uid="uid://cjdfnsdc3c01c" path="res://asset/npc/free_character_1_20_cogabushi/character/normal/A_534235.png" id="34_tmwp3"]
 [ext_resource type="Texture2D" uid="uid://cm62rm2a66f7b" path="res://asset/enemy/elementals_wind_hashashin_FREE_v1.1/PNG/3_atk/3_atk_12.png" id="35_vcjry"]
 [ext_resource type="Texture2D" uid="uid://cwq4qubsffj4v" path="res://asset/enemy/elementals_wind_hashashin_FREE_v1.1/PNG/3_atk/3_atk_13.png" id="36_rswar"]
 [ext_resource type="Texture2D" uid="uid://dpnpr8pqs8yp5" path="res://asset/enemy/elementals_wind_hashashin_FREE_v1.1/PNG/3_atk/3_atk_14.png" id="37_8y88l"]
@@ -96,7 +95,8 @@
 [ext_resource type="Texture2D" uid="uid://bfncx05172vtn" path="res://asset/enemy/elementals_wind_hashashin_FREE_v1.1/PNG/run/run_6.png" id="88_cuxl7"]
 [ext_resource type="Texture2D" uid="uid://cwy3pspf1p2jc" path="res://asset/enemy/elementals_wind_hashashin_FREE_v1.1/PNG/run/run_7.png" id="89_5t6b7"]
 [ext_resource type="Texture2D" uid="uid://csijmctbbl44h" path="res://asset/enemy/elementals_wind_hashashin_FREE_v1.1/PNG/run/run_8.png" id="90_t3rbr"]
-[ext_resource type="Texture2D" uid="uid://tcmm6qniu3nr" path="res://asset/enemy/elementals_wind_hashashin_FREE_v1.1/wind_hashashin.png" id="97_dikeq"]
+[ext_resource type="Texture2D" uid="uid://4lpfjpnhoeqr" path="res://asset/npc/usedportraits/wabbajack12.png" id="96_dikeq"]
+[ext_resource type="Texture2D" uid="uid://rgn41jsopg4l" path="res://asset/npc/usedportraits/desert warrior 1.png" id="97_dikeq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o21j7"]
 atlas = ExtResource("20_blku8")
@@ -1060,13 +1060,13 @@ scale = Vector2(0.72449, 0.778761)
 texture = ExtResource("33_85iv3")
 
 [node name="Teacher" type="Sprite2D" parent="DialogueBox"]
-position = Vector2(183.5, 204)
-scale = Vector2(0.378631, 0.362105)
-texture = ExtResource("34_tmwp3")
+position = Vector2(185, 192)
+scale = Vector2(0.478261, 0.481675)
+texture = ExtResource("96_dikeq")
 
 [node name="tbandit" type="Sprite2D" parent="DialogueBox"]
-position = Vector2(153.5, 202.437)
-scale = Vector2(5.70312, 5.35742)
+position = Vector2(194.567, 192)
+scale = Vector2(1.44816, 1.6)
 texture = ExtResource("97_dikeq")
 
 [node name="NameLabel" type="Label" parent="DialogueBox"]

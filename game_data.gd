@@ -27,7 +27,7 @@ var stage_order = [
 	"res://campaign stages/Stage6_boss.tscn",
 	"res://campaign stages/mult_tutorial.tscn",
 	"res://campaign stages/Stage7_9_NormalStage.tscn",
-	"res://campaign stages/stage_9_boss.gd",
+	"res://campaign stages/Stage9_Boss.tscn",
 	"res://campaign stages/div_tutorial.tscn",
 	"res://campaign stages/Stage10_12_NormalStage.tscn",
 	"res://campaign stages/Stage12_Boss.tscn",

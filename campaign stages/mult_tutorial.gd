@@ -20,9 +20,11 @@ extends Node2D
 
 # --- Add references for character sprites ---
 @onready var buddy_sprite = $DialogueBox/Buddy
+@onready var hbuddy_sprite = $DialogueBox/hBuddy
 @onready var teacher_sprite = $DialogueBox/Teacher
 @onready var rebmil_sprite = $DialogueBox/RebMil
 @onready var rebkn_sprite = $DialogueBox/Rebkn
+@onready var rebmil2_sprite = $DialogueBox/RebMil2
 
 var full_dialogue_text: String = ""
 var typewriter_char_index: int = 0
@@ -90,6 +92,10 @@ func _ready() -> void:
 		character_sprites["RebMil"] = rebmil_sprite
 	if rebkn_sprite: # Check if the node exists
 		character_sprites["Rebkn"] = rebkn_sprite 
+	if rebmil2_sprite: # Check if the node exists
+		character_sprites["RebMil2"] = rebmil2_sprite
+	if hbuddy_sprite: # Check if the node exists
+		character_sprites["hBuddy"] = hbuddy_sprite
 
 	# Add other characters here:
 	# character_sprites["AnotherNPC"] = another_npc_sprite
@@ -98,8 +104,10 @@ func _ready() -> void:
 	# Map Internal ID -> Display Name
 	display_names["Buddy"] = "Mathie" # Or maybe "Your Pal" if you want
 	display_names["Teacher"] = "Aric"
-	display_names["RebMil"] = "Rebel Militia"
+	display_names["RebMil"] = "Rebel 1"
 	display_names["Rebkn"] = "Rebel Captain" # <--- CHANGE THIS to whatever you want displayed
+	display_names["RebMil2"] = "Rebel 2"
+	display_names["hBuddy"] = "Mathie"
 	# Add other characters if needed
 	# display_names["Boss"] = "Dark Lord Malakor"
 	
@@ -171,27 +179,39 @@ func start_timer() -> void:
 func show_tutorial_dialogue() -> void:
 	# Set up tutorial dialogue
 	current_dialogue = [
-		{"name": "Teacher", "text": "After wandering in the woods for some time..."},
-		{"name": "Teacher", "text": "Finally, a town. Let us rest here before we move on."},
-		{"name": "Buddy", "text": "Alright, your call."},
-		{"name": "", "text": "After some time, while walking through the town..."},
-		{"name": "Teacher", "text": "Mathie, before we encounter any more trouble, let's learn about Multiplication."},
-		{"name": "Buddy", "text": "Ok then, Let Me tell you about..."},
-		{"name": "Buddy", "text": "Multiplication."},
+		{"name": "", "text": "(After escaping the depths of the Grunwald and defeating the demon Angron...)"},
+		{"name": "", "text": "(Alric and Mathie emerged with the power of Multiplication in hand.)"},
+		{"name": "", "text": "(Wounded and weary, they headed toward the nearest town to rest and resupply.)"},
+		{"name": "Buddy", "text": "We made it out… barely. That demon was no joke."},
+		{"name": "Teacher", "text": "Yeah. I don't think I’ve ever felt fear like that before."},
+		{"name": "", "text": "(As they approached the town gates, they noticed something strange...)"},
+		{"name": "", "text": "(The town was silent. No sounds of chatter, no children playing, not even merchants shouting in the market.)"},
+		{"name": "Buddy", "text": "This place… it’s deserted."},
+		{"name": "Teacher", "text": "Too quiet. Let’s look around, but stay alert."},
+		
+		# Multiplication lesson begins
+		{"name": "", "text": "While wandering through the empty streets, Mathie decided to take a moment to teach."},
+		{"name": "hBuddy", "text": "Alric, now that we’ve recovered Multiplication, you need to understand how it works."},
+		{"name": "Teacher", "text": "Alright. Hit me with it."},
+		{"name": "hBuddy", "text": "Multiplication", "sfx": "magic"},
 		{"name": "Buddy", "text": "Multiplication is a method of finding the product of two or more numbers."},
-		{"name": "Buddy", "text": "or simply, it is repeated addition of groups of equal sizes."},
-		{"name": "Buddy", "text": "For example, 3 multiplied by 4 means adding 3 four times: 3 + 3 + 3 + 3."},
-		{"name": "Teacher", "text": "So, that's like saying, how many groups of something there are?"},
-		{"name": "Buddy", "text": "Exactly! If you have 4 groups of 3 apples, you have 12 apples in total."},
-		{"name": "Teacher", "text": "Got it! So, 3 x 4 = 12."},
-		{"name": "Buddy", "text": "Precisely. This will be very useful in our journey."},
-		{"name": "Buddy", "text": "Wait, something feels off about this town..."},
-		{"name": "Teacher", "text": "You're right. I feel it too."},
-		{"name": "", "text": "Suddenly, A squad of rebels appeared."},
-		{"name": "Rebkn", "text": "You two won't be leaving this town so easily!"},
-		{"name": "RebMil", "text": "YEAH! Advance brothers!"},
-		{"name": "Buddy", "text": "Alright, let's show these Rebels what we've learned!"},
-		{"name": "Teacher", "text": "Get Ready!"}
+		{"name": "Buddy", "text": "Or simply, it is just repeated addition—it's a way of scaling."},
+		{"name": "hBuddy", "text": "If you multiply 3 by 4, it’s like having 4 groups of 3. Like this: 3 + 3 + 3 + 3."},
+		{"name": "Teacher", "text": "So that’s 12. Okay, that makes sense."},
+		{"name": "hBuddy", "text": "Exactly. It’s quick, efficient, and powerful—perfect for battle tactics too."},
+		{"name": "Teacher", "text": "Good. I need every edge I can get after what we just faced."},
+		
+		# Tension building
+		{"name": "", "text": "Suddenly, they heard the echo of boots against cobblestone."},
+		{"name": "Rebkn", "text": "Well, well… what do we have here?"},
+		{"name": "Teacher", "text": "Are you the town militia? What happened to this town?"},
+		{"name": "RebMil", "text": "You're in no place to ask questions."},
+		{"name": "Buddy", "text": "They're not just patrol. Look at their insignias—rebel soldiers."},
+		{"name": "Rebkn", "text": "This town no longer recognizes King Eldrin. Get Lost."},
+		{"name": "RebMil2", "text": "Captain, how about we deal with them?"}, 
+		{"name": "Rebkn", "text": "Right. Let’s make an example out of them."},
+		{"name": "Teacher", "text": "So much for rest. Looks like we’re doing this the hard way."},
+		{"name": "Buddy", "text": "Let’s show them what Multiplication can do!"}
 	]
 # Start displaying dialogue
 	dialogue_active = true
@@ -201,60 +221,60 @@ func show_tutorial_dialogue() -> void:
 
 func display_dialogue() -> void:
 	if dialogue_index >= current_dialogue.size():
-		# If skipping animation, ensure full text is shown before ending
 		if typewriter_timer.time_left > 0:
 			typewriter_timer.stop()
-			dialogue_text.text = full_dialogue_text # Show full text instantly
+			dialogue_text.text = full_dialogue_text
 		end_dialogue()
 		return
 
 	var current = current_dialogue[dialogue_index]
-	# KEEP using current.name as the INTERNAL identifier for sprite lookup
 	var speaker_id = current.name
-	dialogue_text.text = current.text # Text remains the same
-	
-	
-	# --- Store full text, clear label, reset index ---
-	full_dialogue_text = current.text
-	dialogue_text.text = "" # Clear text label
-	typewriter_char_index = 0
-	# --- End setup ---
-	
-		# Play SFX if specified
+	dialogue_text.text = current.text
+
+	if current.has("video") and current.video != "":
+		dialogue_box.visible = false
+		dialogue_text.visible = false
+		dialogue_name.visible = false
+		play_video(current.video)
+	else:
+		dialogue_box.visible = true
+		dialogue_text.visible = true
+		
+		#  NARRATION CHECK
+		if speaker_id == "":
+			# Narration: center the text and hide the name
+			dialogue_name.visible = false
+			dialogue_text.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+			dialogue_text.position = Vector2(273.0, 83.0) # Change to fit your layout
+		else:
+			# Regular dialogue
+			dialogue_name.visible = true
+			dialogue_text.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+			dialogue_text.position = Vector2(379.0, 83.0) # Change to your default position
+
+		full_dialogue_text = current.text
+		dialogue_text.text = ""
+		typewriter_char_index = 0
+
 	if current.has("sfx") and current.sfx != "":
 		AudioManager.play_sfx(current.sfx)
 
-
-	# --- Set the DISPLAY NAME using the new dictionary ---
+	# Set speaker name
 	if display_names.has(speaker_id):
-		# If we have a specific display name mapped, use it
 		dialogue_name.text = display_names[speaker_id]
 	else:
-		# Otherwise, fall back to using the internal ID as the name
 		dialogue_name.text = speaker_id
-	# --- End setting display name ---
 
-
-	# --- Logic to show/hide character sprites (NO CHANGE NEEDED HERE) ---
-	# This part STILL uses the internal speaker_id ("Teacher", "Buddy")
-	# to find the correct sprite in character_sprites.
-	# 1. Hide all character sprites first
+	# Character sprite visibility
 	for sprite_node in character_sprites.values():
 		sprite_node.visible = false
 
-	# 2. Get the current speaker's internal ID (already done above)
-	# var speaker_id = current.name
-
-	# 3. Check if this speaker ID has a mapped sprite and show it
 	if character_sprites.has(speaker_id):
 		var active_sprite = character_sprites[speaker_id]
 		active_sprite.visible = true
 
-	# --- Start Typewriter Effect ---
-	# Don't start if text is empty
 	if full_dialogue_text.length() > 0:
-		typewriter_timer.start() # Use timer's wait_time
-	# --- End Start Typewriter ---
+		typewriter_timer.start()
 
 func next_dialogue() -> void:
 	dialogue_index += 1
@@ -288,7 +308,7 @@ func show_time_up_dialogue():
 	# Define the dialogue lines for running out of time
 	# You can have one or more characters speak
 	current_dialogue = [
-		{"name": "Buddy", "text": "Ummm....Wakey Wakey! Are you still sleepy?"},
+		{"name": "Buddy", "text": "Ummm... Are you OK?"},
 		{"name": "Buddy", "text": "Come on bud, Stay Alert!"}
 		# Or just one speaker:
 		# {"name": "Teacher", "text": "Time's up! You need to answer faster."}
@@ -537,18 +557,23 @@ func show_end_stage_dialogue() -> void:
 	if player_won:
 		current_dialogue = [
 			{"name": "RebMil", "text": "The Captain is a goner!"},
-			{"name": "RebMil", "text": "And some of friends! What do We do now?"},
-			{"name": "RebMi", "text": "RUN!"},
-			{"name": "", "text": "The remaining rebels ran"},
+			{"name": "RebMil2", "text": "And some of our friends! What do We do now?"},
+			{"name": "RebMil", "text": "RUN!"},
+			{"name": "", "text": "(The remaining rebels ran)"},
 			{"name": "Buddy", "text": "Haha, Take that traitors!"},
-			{"name": "Buddy", "text": "Go Cowards.....Wait a minute..."},
-			{"name": "", "text": "Mathie discovers the deceased Rebel Captains body and retrieved something"},
+			{"name": "hBuddy", "text": "Go Cowards.....Wait a minute..."},
+			{"name": "", "text": "(Mathie discovers the deceased Rebel Captains body and retrieved something)"},
 			{"name": "Buddy", "text": "Hmm... Hey over here! I got something!"},
-			{"name": "", "text": "Aric Immediately heads to Mathie, got the letter from her hand and read it."},
-			{"name": "Teacher", "text": "So it says here, Not only Division is not far from here...."},
-			{"name": "Teacher", "text": "It's also in the hands of a dangerous individual."},
-			{"name": "Buddy", "text": "Understood, Lets go get them then!"},
-			{"name": "Teacher", "text": "I Like your enthusiasm, Lets go then!"}
+			{"name": "", "text": "(Aric Immediately heads to Mathie, got the letter from her hand and read it.)"},
+			{"name": "Teacher", "text": "So it says here, The Lord of this town, Countess Alatea..."},
+			{"name": "Teacher", "text": "Not only raised her banner and soldiers in rebellion..."},
+			{"name": "Teacher", "text": "She also had Division in her possesion."},
+			{"name": "Buddy", "text": "This is not good."},
+			{"name": "Buddy", "text": "A potent power like that in her hands could make Numeria's situation worse."},
+			{"name": "Buddy", "text": "What do we do now?"},
+			{"name": "Teacher", "text": "We barely got enough rest and supply but regardless..."},
+			{"name": "Teacher", "text": "We got to stop her before things get worse!"},
+			{"name": "Buddy", "text": "Ok, Lets go then!"}
 		]
 	else:
 		current_dialogue = [
@@ -661,3 +686,16 @@ func _on_typewriter_timer_timeout():
 		# Start timer again for the next character
 		typewriter_timer.start() # Uses its wait_time property
 	# else: # All characters displayed, do nothing, timer stays stopped.
+	
+func play_video(video_path: String) -> void:
+	var video_player = VideoStreamPlayer.new()
+	add_child(video_player)
+	video_player.stream = load(video_path)
+	video_player.play()
+	video_player.finished.connect(_on_video_finished.bind(video_player))
+#
+func _on_video_finished(video_player):
+	video_player.queue_free() # Remove video player
+	dialogue_index += 1 # Advance dialogue
+	display_dialogue() # Resume dialogue
+	

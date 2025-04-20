@@ -32,9 +32,8 @@
 [ext_resource type="Texture2D" uid="uid://msivu6nn77gg" path="res://asset/Main Character/Crusader-4-Idle.png" id="31_fatg4"]
 [ext_resource type="Texture2D" uid="uid://bi5ipr85irb25" path="res://asset/enemy/HeroandOpponents_v1/1 Enemy/PNG/attack-A5.png" id="32_npb2s"]
 [ext_resource type="Texture2D" uid="uid://6fkjaxweqoi0" path="res://asset/Main Character/Crusader-4-Running.png" id="32_tm6pl"]
-[ext_resource type="Texture2D" uid="uid://bskhtf2opvoko" path="res://asset/npc/free_character_1_20_cogabushi/character/normal/CLOAK-1.png" id="33_l26pc"]
+[ext_resource type="Texture2D" uid="uid://bskhtf2opvoko" path="res://asset/npc/usedportraits/CLOAK-1.png" id="33_l26pc"]
 [ext_resource type="Texture2D" uid="uid://bwfo5172512x1" path="res://asset/enemy/HeroandOpponents_v1/1 Enemy/PNG/attack-A6.png" id="33_nuxm5"]
-[ext_resource type="Texture2D" uid="uid://cjdfnsdc3c01c" path="res://asset/npc/free_character_1_20_cogabushi/character/normal/A_534235.png" id="34_2mhya"]
 [ext_resource type="Texture2D" uid="uid://dy4pdmqbnf6w4" path="res://asset/enemy/HeroandOpponents_v1/1 Enemy/PNG/attack-A7.png" id="34_ckal5"]
 [ext_resource type="Texture2D" uid="uid://bsm6gyxbkqpqc" path="res://asset/enemy/HeroandOpponents_v1/1 Enemy/PNG/attack-A8.png" id="35_rmnb7"]
 [ext_resource type="Texture2D" uid="uid://dt3agr5gskwot" path="res://asset/enemy/HeroandOpponents_v1/1 Enemy/PNG/attack-B1.png" id="36_u8dcp"]
@@ -65,6 +64,7 @@
 [ext_resource type="Texture2D" uid="uid://digsl7cdybtks" path="res://asset/enemy/HeroandOpponents_v1/1 Enemy/PNG/walk-4.png" id="61_t1att"]
 [ext_resource type="Texture2D" uid="uid://bg4wmir6onpjo" path="res://asset/enemy/HeroandOpponents_v1/1 Enemy/PNG/walk-5.png" id="62_jyhi4"]
 [ext_resource type="Texture2D" uid="uid://ekigty2qj8wd" path="res://asset/enemy/HeroandOpponents_v1/1 Enemy/PNG/walk-6.png" id="63_2egn3"]
+[ext_resource type="Texture2D" uid="uid://4lpfjpnhoeqr" path="res://asset/npc/usedportraits/wabbajack12.png" id="65_tm6pl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o21j7"]
 atlas = ExtResource("20_6m41u")
@@ -938,9 +938,9 @@ scale = Vector2(0.72449, 0.778761)
 texture = ExtResource("33_l26pc")
 
 [node name="Teacher" type="Sprite2D" parent="DialogueBox"]
-position = Vector2(183.5, 204)
-scale = Vector2(0.378631, 0.362105)
-texture = ExtResource("34_2mhya")
+position = Vector2(181, 192)
+scale = Vector2(0.48913, 0.481675)
+texture = ExtResource("65_tm6pl")
 
 [node name="NameLabel" type="Label" parent="DialogueBox"]
 layout_mode = 1
