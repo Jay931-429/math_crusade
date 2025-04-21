@@ -29,4 +29,52 @@ scale = Vector2(0.7, 0.7)
 size_flags_vertical = 8
 icon = ExtResource("3_b7bnf")
 
+[node name="Label" type="Label" parent="."]
+offset_left = 232.0
+offset_top = 150.0
+offset_right = 883.0
+offset_bottom = 411.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 200
+text = "THE END"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+offset_left = -32.0
+offset_top = 294.0
+offset_right = 1149.0
+offset_bottom = 423.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 120
+text = "tHANKS FOR PLAYING!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="."]
+offset_left = -40.0
+offset_top = 526.0
+offset_right = 1141.0
+offset_bottom = 749.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 110
+text = "Math Crusades: 
+A Pemdas based game"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="."]
+offset_left = -57.0
+offset_top = 760.0
+offset_right = 1124.0
+offset_bottom = 1282.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 110
+text = "bY:
+jULES rvin lopez
+john lloyd leonor
+jay c. colada
+ic jadulos"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="pressed" from="Stage_BG/backbutton" to="." method="_on_backbutton_pressed"]

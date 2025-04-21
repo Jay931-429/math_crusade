@@ -1,4 +1,4 @@
-[gd_scene load_steps=118 format=3 uid="uid://261hvorkyq2n"]
+[gd_scene load_steps=119 format=3 uid="uid://261hvorkyq2n"]
 
 [ext_resource type="Script" uid="uid://byn7t80ih0cgq" path="res://campaign stages/addition_tutorial.gd" id="1_vecps"]
 [ext_resource type="Texture2D" uid="uid://dox6s2pdaah6p" path="res://asset/art/Gray.png" id="2_qpcii"]
@@ -35,6 +35,7 @@
 [ext_resource type="Texture2D" uid="uid://cql6vrmroylir" path="res://asset/Main Character/Knight_player/Attack_KG_4.png" id="32_hax5k"]
 [ext_resource type="Texture2D" uid="uid://4lpfjpnhoeqr" path="res://asset/npc/usedportraits/wabbajack12.png" id="34_ho0xa"]
 [ext_resource type="Texture2D" uid="uid://blwpegxj3nxiy" path="res://asset/npc/usedportraits/CLOAK-4 .png" id="35_ho0xa"]
+[ext_resource type="VideoStream" path="res://asset/video/aspose_video_133896895066492131_out.ogv" id="36_2r4is"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o21j7"]
 atlas = ExtResource("29_e1vrr")
@@ -1047,6 +1048,13 @@ libraries = {
 [node name="TypewriterTimer" type="Timer" parent="."]
 wait_time = 0.03
 one_shot = true
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+visible = false
+offset_right = 1076.0
+offset_bottom = 799.0
+stream = ExtResource("36_2r4is")
+expand = true
 
 [connection signal="pressed" from="Number_Button/num_row_123/one" to="." method="_on_one_pressed"]
 [connection signal="pressed" from="Number_Button/num_row_123/two" to="." method="_on_two_pressed"]

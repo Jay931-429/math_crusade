@@ -46,6 +46,7 @@ var stage_order = [
 var stage_progress = {}
 
 func _ready() -> void:
+	load_data()
 	# Initialize stage_progress dynamically from stage_order if not loaded
 	if stage_progress.is_empty():
 		for stage in stage_order:
@@ -116,3 +117,41 @@ func load_game() -> void:
 			stage_progress = json_data["stage_progress"]
 
 		save_file.close()
+		
+func save_data() -> void:
+	var config = ConfigFile.new()
+	for stage_name in stage_progress.keys():
+		var progress = stage_progress[stage_name]
+		config.set_value("stages", stage_name + "_unlocked", progress.unlocked)
+		config.set_value("stages", stage_name + "_completed", progress.completed)
+	var error = config.save("user://progress.cfg")
+	if error != OK:
+		print("Failed to save progress.")
+		
+func load_data() -> void:
+	var config = ConfigFile.new()
+	var err = config.load("user://progress.cfg")
+	if err != OK:
+		print("No save file found. Starting fresh.")
+		stage_progress.clear()
+		stage_progress["addition_tutorial"] = { "unlocked": true, "completed": false }
+		save_data()
+		return
+	
+	stage_progress.clear()
+	for section_key in config.get_section_keys("stages"):
+		if section_key.ends_with("_unlocked"):
+			var stage_name = section_key.replace("_unlocked", "")
+			if !stage_progress.has(stage_name):
+				stage_progress[stage_name] = {}
+			stage_progress[stage_name].unlocked = config.get_value("stages", section_key, false)
+		elif section_key.ends_with("_completed"):
+			var stage_name = section_key.replace("_completed", "")
+			if !stage_progress.has(stage_name):
+				stage_progress[stage_name] = {}
+			stage_progress[stage_name].completed = config.get_value("stages", section_key, false)
+			
+func reset_progress():
+	stage_progress.clear()
+	stage_progress["addition_tutorial"] = { "unlocked": true, "completed": false }
+	save_data()

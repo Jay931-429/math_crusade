@@ -1,8 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://8qt2u2jf018p"]
+[gd_scene load_steps=23 format=3 uid="uid://8qt2u2jf018p"]
 
 [ext_resource type="Script" uid="uid://bllvsukw310mn" path="res://campaign stages/campaign_map_container.gd" id="1_7rd28"]
 [ext_resource type="Texture2D" uid="uid://b5c62fsc3wbw4" path="res://asset/UI/Back.png" id="1_qicr5"]
 [ext_resource type="Texture2D" uid="uid://byc5d0046dvgt" path="res://asset/art/MAP_2_2.png" id="2_7rd28"]
+[ext_resource type="Texture2D" uid="uid://dmxfl3qklw58l" path="res://asset/UI/imagy-splitted-images(1)/image1x1.png" id="4_m1x6p"]
+[ext_resource type="Texture2D" uid="uid://bipa3l0gouevv" path="res://asset/UI/imagy-splitted-images(1)/image2x1.png" id="5_87ehg"]
+[ext_resource type="Texture2D" uid="uid://dh2euf7lmfc0n" path="res://asset/UI/imagy-splitted-images(1)/image3x1.png" id="6_wrdu8"]
+[ext_resource type="Texture2D" uid="uid://b43bkuvlk5xnk" path="res://asset/UI/imagy-splitted-images(1)/image4x1.png" id="7_tb7ny"]
+[ext_resource type="Texture2D" uid="uid://cm3qrip75ww8u" path="res://asset/UI/imagy-splitted-images(1)/image5x1.png" id="8_msggt"]
+[ext_resource type="Texture2D" uid="uid://cbq7jxk31b75m" path="res://asset/UI/imagy-splitted-images(1)/image6x1.png" id="9_y2u6n"]
+[ext_resource type="Texture2D" uid="uid://cdehhsjf3c6ka" path="res://asset/UI/imagy-splitted-images(1)/image7x1.png" id="10_8rqm2"]
+[ext_resource type="Texture2D" uid="uid://14jjrfl3l3du" path="res://asset/UI/imagy-splitted-images(1)/image1x2.png" id="11_7tkfc"]
+[ext_resource type="Texture2D" uid="uid://bc47ycnr7yo1m" path="res://asset/UI/imagy-splitted-images(1)/image2x2.png" id="12_uloqy"]
+[ext_resource type="Texture2D" uid="uid://bbm3gwfxd736e" path="res://asset/UI/imagy-splitted-images(1)/image3x2.png" id="13_auu4g"]
+[ext_resource type="Texture2D" uid="uid://fjqv3xlmcn7r" path="res://asset/UI/imagy-splitted-images(1)/image4x2.png" id="14_6yapf"]
+[ext_resource type="Texture2D" uid="uid://deujon4fa42nu" path="res://asset/UI/imagy-splitted-images(1)/image5x2.png" id="15_qfpql"]
+[ext_resource type="Texture2D" uid="uid://d02a4snw6uh76" path="res://asset/UI/imagy-splitted-images(1)/image6x2.png" id="16_jb74f"]
+[ext_resource type="Texture2D" uid="uid://1jf561u8j2rq" path="res://asset/UI/imagy-splitted-images(1)/image7x2.png" id="17_ei7i4"]
+[ext_resource type="Texture2D" uid="uid://b8061edk4gysg" path="res://asset/UI/imagy-splitted-images(1)/image1x3.png" id="18_h1act"]
+[ext_resource type="Texture2D" uid="uid://bnq5dvs8xjfks" path="res://asset/UI/imagy-splitted-images(1)/image2x3.png" id="19_w8ffb"]
+[ext_resource type="Texture2D" uid="uid://dw5kfskq4ng2j" path="res://asset/UI/imagy-splitted-images(1)/image3x3.png" id="20_ifajt"]
+[ext_resource type="Texture2D" uid="uid://dqhbpt84pnt3" path="res://asset/UI/imagy-splitted-images(1)/image4x3.png" id="21_bemo5"]
+[ext_resource type="Texture2D" uid="uid://bfpjvb7mjh8si" path="res://asset/UI/imagy-splitted-images(1)/image5x3.png" id="22_2n5fh"]
 
 [node name="CampaignMapContainer" type="Node2D"]
 top_level = true
@@ -12,10 +31,10 @@ script = ExtResource("1_7rd28")
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 modulate = Color(0.960938, 0.720703, 0, 1)
-offset_left = 915.495
-offset_top = 40.0
-offset_right = 1576.49
-offset_bottom = 150.0
+offset_left = 184.0
+offset_top = 32.0
+offset_right = 844.995
+offset_bottom = 142.0
 theme_override_font_sizes/font_size = 120
 text = "NUMERIA"
 horizontal_alignment = 1
@@ -34,14 +53,16 @@ position = Vector2(1176, 960)
 scale = Vector2(1.14453, 1.25)
 texture = ExtResource("2_7rd28")
 metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="s1" type="Button" parent="Map"]
-offset_left = -810.812
-offset_top = -665.6
-offset_right = -730.812
-offset_bottom = -583.6
+offset_left = -811.0
+offset_top = -666.0
+offset_right = -531.0
+offset_bottom = -391.0
+scale = Vector2(0.4, 0.4)
 theme_override_font_sizes/font_size = 80
-text = "1"
+icon = ExtResource("4_m1x6p")
 metadata/_edit_lock_ = true
 
 [node name="s2" type="Button" parent="Map"]
@@ -49,8 +70,9 @@ offset_left = -810.812
 offset_top = -569.6
 offset_right = -722.812
 offset_bottom = -487.6
+scale = Vector2(0.4, 0.4)
 theme_override_font_sizes/font_size = 80
-text = "2"
+icon = ExtResource("5_87ehg")
 metadata/_edit_lock_ = true
 
 [node name="s3" type="Button" parent="Map"]
@@ -59,8 +81,9 @@ offset_left = -691.986
 offset_top = -563.2
 offset_right = -603.986
 offset_bottom = -481.2
+scale = Vector2(0.4, 0.4)
 theme_override_font_sizes/font_size = 80
-text = "3"
+icon = ExtResource("6_wrdu8")
 metadata/_edit_lock_ = true
 
 [node name="s4" type="Button" parent="Map"]
@@ -68,8 +91,9 @@ offset_left = -789.843
 offset_top = -454.4
 offset_right = -701.843
 offset_bottom = -372.4
+scale = Vector2(0.4, 0.4)
 theme_override_font_sizes/font_size = 80
-text = "4"
+icon = ExtResource("7_tb7ny")
 metadata/_edit_lock_ = true
 
 [node name="s5" type="Button" parent="Map"]
@@ -77,8 +101,9 @@ offset_left = -664.027
 offset_top = -416.0
 offset_right = -576.027
 offset_bottom = -334.0
+scale = Vector2(0.4, 0.4)
 theme_override_font_sizes/font_size = 80
-text = "5"
+icon = ExtResource("8_msggt")
 metadata/_edit_lock_ = true
 
 [node name="s6" type="Button" parent="Map"]
@@ -87,8 +112,9 @@ offset_left = -545.201
 offset_top = -377.6
 offset_right = -449.201
 offset_bottom = -295.6
+scale = Vector2(0.4, 0.4)
 theme_override_font_sizes/font_size = 80
-text = "6"
+icon = ExtResource("9_y2u6n")
 metadata/_edit_lock_ = true
 
 [node name="s7" type="Button" parent="Map"]
@@ -96,8 +122,9 @@ offset_left = -684.997
 offset_top = -288.0
 offset_right = -596.997
 offset_bottom = -206.0
+scale = Vector2(0.4, 0.4)
 theme_override_font_sizes/font_size = 80
-text = "7"
+icon = ExtResource("10_8rqm2")
 metadata/_edit_lock_ = true
 
 [node name="s8" type="Button" parent="Map"]
@@ -105,8 +132,9 @@ offset_left = -817.802
 offset_top = -236.8
 offset_right = -721.802
 offset_bottom = -154.8
+scale = Vector2(0.4, 0.4)
 theme_override_font_sizes/font_size = 80
-text = "8"
+icon = ExtResource("11_7tkfc")
 metadata/_edit_lock_ = true
 
 [node name="s9" type="Button" parent="Map"]
@@ -115,8 +143,9 @@ offset_left = -775.864
 offset_top = -134.4
 offset_right = -679.864
 offset_bottom = -52.4
+scale = Vector2(0.4, 0.4)
 theme_override_font_sizes/font_size = 80
-text = "9"
+icon = ExtResource("12_uloqy")
 metadata/_edit_lock_ = true
 
 [node name="s10" type="Button" parent="Map"]
@@ -124,9 +153,9 @@ offset_left = -356.478
 offset_top = 44.8
 offset_right = -260.478
 offset_bottom = 126.8
+scale = Vector2(0.4, 0.4)
 theme_override_font_sizes/font_size = 80
-text = "10
-"
+icon = ExtResource("13_auu4g")
 metadata/_edit_lock_ = true
 
 [node name="s11" type="Button" parent="Map"]
@@ -134,8 +163,9 @@ offset_left = -293.57
 offset_top = 198.4
 offset_right = -197.57
 offset_bottom = 280.4
+scale = Vector2(0.4, 0.4)
 theme_override_font_sizes/font_size = 80
-text = "11"
+icon = ExtResource("14_6yapf")
 metadata/_edit_lock_ = true
 
 [node name="s12" type="Button" parent="Map"]
@@ -144,9 +174,9 @@ offset_left = -160.765
 offset_top = 57.6
 offset_right = -56.7646
 offset_bottom = 161.6
+scale = Vector2(0.4, 0.4)
 theme_override_font_sizes/font_size = 80
-text = "12
-"
+icon = ExtResource("15_qfpql")
 metadata/_edit_lock_ = true
 
 [node name="s13" type="Button" parent="Map"]
@@ -154,9 +184,9 @@ offset_left = -83.8772
 offset_top = 185.6
 offset_right = 28.1228
 offset_bottom = 297.6
+scale = Vector2(0.4, 0.4)
 theme_override_font_sizes/font_size = 80
-text = "13
-"
+icon = ExtResource("16_jb74f")
 metadata/_edit_lock_ = true
 
 [node name="s14" type="Button" parent="Map"]
@@ -164,9 +194,9 @@ offset_left = 83.8771
 offset_top = 185.6
 offset_right = 187.877
 offset_bottom = 281.6
+scale = Vector2(0.4, 0.4)
 theme_override_font_sizes/font_size = 80
-text = "14
-"
+icon = ExtResource("17_ei7i4")
 metadata/_edit_lock_ = true
 
 [node name="s15" type="Button" parent="Map"]
@@ -175,9 +205,9 @@ offset_left = 384.437
 offset_top = 390.4
 offset_right = 488.437
 offset_bottom = 478.4
+scale = Vector2(0.4, 0.4)
 theme_override_font_sizes/font_size = 80
-text = "15
-"
+icon = ExtResource("18_h1act")
 metadata/_edit_lock_ = true
 
 [node name="s16" type="Button" parent="Map"]
@@ -185,9 +215,9 @@ offset_left = 307.549
 offset_top = 249.6
 offset_right = 395.549
 offset_bottom = 345.6
+scale = Vector2(0.4, 0.4)
 theme_override_font_sizes/font_size = 80
-text = "16
-"
+icon = ExtResource("19_w8ffb")
 metadata/_edit_lock_ = true
 
 [node name="s17" type="Button" parent="Map"]
@@ -195,9 +225,9 @@ offset_left = 230.662
 offset_top = 128.0
 offset_right = 326.662
 offset_bottom = 216.0
+scale = Vector2(0.4, 0.4)
 theme_override_font_sizes/font_size = 80
-text = "17
-"
+icon = ExtResource("20_ifajt")
 metadata/_edit_lock_ = true
 
 [node name="s18" type="Button" parent="Map"]
@@ -205,9 +235,9 @@ offset_left = 384.437
 offset_top = 147.2
 offset_right = 480.437
 offset_bottom = 243.2
+scale = Vector2(0.4, 0.4)
 theme_override_font_sizes/font_size = 80
-text = "18
-"
+icon = ExtResource("21_bemo5")
 metadata/_edit_lock_ = true
 
 [node name="s19" type="Button" parent="Map"]
@@ -216,8 +246,9 @@ offset_left = 545.201
 offset_top = 102.4
 offset_right = 649.201
 offset_bottom = 206.4
+scale = Vector2(0.4, 0.4)
 theme_override_font_sizes/font_size = 80
-text = "19"
+icon = ExtResource("22_2n5fh")
 metadata/_edit_lock_ = true
 
 [connection signal="pressed" from="CanvasLayer/back" to="." method="_on_back_pressed"]

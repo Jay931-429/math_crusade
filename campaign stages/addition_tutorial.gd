@@ -169,6 +169,7 @@ func start_timer() -> void:
 func show_tutorial_dialogue() -> void:
 	# Set up tutorial dialogue
 	current_dialogue = [
+		{"name": "", "text": "* insert video here * ", "video": "C:/Users/USER/Documents/math_crusade/asset/video/aspose_video_133896895066492131_out.ogv"},
 		{"name": "Buddy", "text": "Hey! Sir Aric! (pant) Wait!"},
 		{"name": "Teacher", "text": "Who's That? Who are You?!"},
 		{"name": "hBuddy", "text": "Me? Oh, I forgot, I'm Mathie!"},

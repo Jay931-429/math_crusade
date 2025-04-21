@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bqlm2rsqt4crn"]
 
-[ext_resource type="Script" uid="uid://buelgitt1rr08" path="res://settings.gd" id="1_8ym62"]
+[ext_resource type="Script" uid="uid://ddyfg7et3b4av" path="res://settings.gd" id="1_8ym62"]
 [ext_resource type="Texture2D" uid="uid://dhs5rlbdm23nl" path="res://asset/art/minmax-ai.jpeg" id="2_37a8j"]
 [ext_resource type="Texture2D" uid="uid://b5c62fsc3wbw4" path="res://asset/UI/Back.png" id="3_sfvul"]
 [ext_resource type="Texture2D" uid="uid://b6o5c744rnjt" path="res://asset/UI/Music.png" id="4_brh15"]
