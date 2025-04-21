@@ -12,12 +12,12 @@ script = ExtResource("1_7rd28")
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 modulate = Color(0.960938, 0.720703, 0, 1)
-offset_left = 224.0
+offset_left = 915.495
 offset_top = 40.0
-offset_right = 885.0
+offset_right = 1576.49
 offset_bottom = 150.0
 theme_override_font_sizes/font_size = 120
-text = "CAMPAIGN MAP"
+text = "NUMERIA"
 horizontal_alignment = 1
 vertical_alignment = 1
 

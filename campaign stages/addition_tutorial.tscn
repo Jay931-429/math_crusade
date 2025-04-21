@@ -5,20 +5,20 @@
 [ext_resource type="Texture2D" uid="uid://c8snlb1xuscnp" path="res://asset/art/stage1.png" id="3_p64yp"]
 [ext_resource type="Texture2D" uid="uid://b2capxdpvd4vu" path="res://asset/UI/Transparent.png" id="4_afivy"]
 [ext_resource type="Texture2D" uid="uid://bphrxf2hyox74" path="res://asset/art/GUI_frame__BG.png" id="5_blfht"]
-[ext_resource type="Texture2D" uid="uid://dwldsahsmum7d" path="res://asset/UI/1.png" id="5_huqu0"]
-[ext_resource type="Texture2D" uid="uid://byifsb6867sav" path="res://asset/UI/2.png" id="6_k5vx7"]
-[ext_resource type="Texture2D" uid="uid://c8rseeirdyqfk" path="res://asset/UI/3.png" id="7_wnwqy"]
-[ext_resource type="Texture2D" uid="uid://cu3m3ho7b3kno" path="res://asset/UI/4.png" id="8_0abe8"]
-[ext_resource type="Texture2D" uid="uid://mxvx0bwdcd3w" path="res://asset/UI/5.png" id="9_s1f22"]
-[ext_resource type="Texture2D" uid="uid://c5dw3ydc1s4yr" path="res://asset/UI/6.png" id="10_bwtmg"]
-[ext_resource type="Texture2D" uid="uid://bffoin8e0nw4" path="res://asset/UI/7.png" id="11_21gi1"]
-[ext_resource type="Texture2D" uid="uid://b3hia88v6t47b" path="res://asset/UI/8.png" id="12_f2j42"]
-[ext_resource type="Texture2D" uid="uid://d18k506xrmby4" path="res://asset/UI/9.png" id="13_cetda"]
-[ext_resource type="Texture2D" uid="uid://d1m1q7ev7ot2i" path="res://asset/UI/Clear.png" id="14_bk68a"]
-[ext_resource type="Texture2D" uid="uid://dxetc5bv3s2kd" path="res://asset/UI/0.png" id="15_q2eg7"]
-[ext_resource type="Texture2D" uid="uid://k0bwslbq0k4d" path="res://asset/UI/backspace.png" id="16_v0wav"]
-[ext_resource type="Texture2D" uid="uid://b5c62fsc3wbw4" path="res://asset/UI/Back.png" id="17_27khr"]
-[ext_resource type="Texture2D" uid="uid://dawnge3ejgh62" path="res://asset/UI/pass.png" id="18_ffblm"]
+[ext_resource type="Texture2D" uid="uid://cnr7hr0iw27th" path="res://asset/Math UI/1.png" id="6_ho0xa"]
+[ext_resource type="Texture2D" uid="uid://cvh1rmgamehv6" path="res://asset/Math UI/2.png" id="7_2r4is"]
+[ext_resource type="Texture2D" uid="uid://30sacfx76oy4" path="res://asset/Math UI/3.png" id="8_hax5k"]
+[ext_resource type="Texture2D" uid="uid://c5mmu5jwoe355" path="res://asset/Math UI/4.png" id="9_o21j7"]
+[ext_resource type="Texture2D" uid="uid://bwhrb2tv4g0tc" path="res://asset/Math UI/5.png" id="10_wrj3v"]
+[ext_resource type="Texture2D" uid="uid://cfweklryeadlv" path="res://asset/Math UI/6.png" id="11_gls56"]
+[ext_resource type="Texture2D" uid="uid://udkaa4lecn3p" path="res://asset/Math UI/7.png" id="12_xe6xx"]
+[ext_resource type="Texture2D" uid="uid://boum6mplv8qtd" path="res://asset/Math UI/8.png" id="13_d1dtq"]
+[ext_resource type="Texture2D" uid="uid://b3uiukuny7i6t" path="res://asset/Math UI/9.png" id="14_7x14b"]
+[ext_resource type="Texture2D" uid="uid://cadgeshn6hgsq" path="res://asset/Math UI/Clear.png" id="15_pijmu"]
+[ext_resource type="Texture2D" uid="uid://bwylpmqh048oi" path="res://asset/Math UI/0.png" id="16_l7177"]
+[ext_resource type="Texture2D" uid="uid://cv1d5y2t3bayu" path="res://asset/Math UI/backspace.png" id="17_slkcc"]
+[ext_resource type="Texture2D" uid="uid://cs6snx0add4x6" path="res://asset/Math UI/Back.png" id="18_87ymn"]
+[ext_resource type="Texture2D" uid="uid://b62occi1b8lwg" path="res://asset/Math UI/pass.png" id="19_bjmpj"]
 [ext_resource type="Texture2D" uid="uid://cyvlmlqo1o0cq" path="res://asset/enemy/Enemy2/Attack1.png" id="19_g4jr1"]
 [ext_resource type="Texture2D" uid="uid://buacpjdw30mk8" path="res://asset/enemy/Enemy2/Death.png" id="20_afivy"]
 [ext_resource type="Texture2D" uid="uid://c3inusvn4yt3w" path="res://asset/enemy/Enemy2/Hit.png" id="20_bpvcu"]
@@ -810,19 +810,19 @@ layout_mode = 2
 [node name="one" type="Button" parent="Number_Button/num_row_123"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 1
-icon = ExtResource("5_huqu0")
+icon = ExtResource("6_ho0xa")
 flat = true
 icon_alignment = 1
 
 [node name="two" type="Button" parent="Number_Button/num_row_123"]
 layout_mode = 2
-icon = ExtResource("6_k5vx7")
+icon = ExtResource("7_2r4is")
 flat = true
 icon_alignment = 1
 
 [node name="three" type="Button" parent="Number_Button/num_row_123"]
 layout_mode = 2
-icon = ExtResource("7_wnwqy")
+icon = ExtResource("8_hax5k")
 flat = true
 icon_alignment = 1
 
@@ -831,19 +831,19 @@ layout_mode = 2
 
 [node name="four" type="Button" parent="Number_Button/num_row_456"]
 layout_mode = 2
-icon = ExtResource("8_0abe8")
+icon = ExtResource("9_o21j7")
 flat = true
 icon_alignment = 1
 
 [node name="five" type="Button" parent="Number_Button/num_row_456"]
 layout_mode = 2
-icon = ExtResource("9_s1f22")
+icon = ExtResource("10_wrj3v")
 flat = true
 icon_alignment = 1
 
 [node name="six" type="Button" parent="Number_Button/num_row_456"]
 layout_mode = 2
-icon = ExtResource("10_bwtmg")
+icon = ExtResource("11_gls56")
 flat = true
 icon_alignment = 1
 
@@ -852,19 +852,19 @@ layout_mode = 2
 
 [node name="seven" type="Button" parent="Number_Button/num_row_789"]
 layout_mode = 2
-icon = ExtResource("11_21gi1")
+icon = ExtResource("12_xe6xx")
 flat = true
 icon_alignment = 1
 
 [node name="eight" type="Button" parent="Number_Button/num_row_789"]
 layout_mode = 2
-icon = ExtResource("12_f2j42")
+icon = ExtResource("13_d1dtq")
 flat = true
 icon_alignment = 1
 
 [node name="nine" type="Button" parent="Number_Button/num_row_789"]
 layout_mode = 2
-icon = ExtResource("13_cetda")
+icon = ExtResource("14_7x14b")
 flat = true
 icon_alignment = 1
 
@@ -874,20 +874,20 @@ size_flags_horizontal = 4
 
 [node name="clear" type="Button" parent="Number_Button/num_row_0_clear_bckspace"]
 layout_mode = 2
-icon = ExtResource("14_bk68a")
+icon = ExtResource("15_pijmu")
 flat = true
 icon_alignment = 1
 
 [node name="zero" type="Button" parent="Number_Button/num_row_0_clear_bckspace"]
 layout_mode = 2
-icon = ExtResource("15_q2eg7")
+icon = ExtResource("16_l7177")
 flat = true
 alignment = 0
 icon_alignment = 1
 
 [node name="back" type="Button" parent="Number_Button/num_row_0_clear_bckspace"]
 layout_mode = 2
-icon = ExtResource("16_v0wav")
+icon = ExtResource("17_slkcc")
 flat = true
 icon_alignment = 1
 
@@ -897,7 +897,7 @@ offset_top = 1702.0
 offset_right = 413.0
 offset_bottom = 2033.0
 scale = Vector2(0.4, 0.4)
-icon = ExtResource("17_27khr")
+icon = ExtResource("18_87ymn")
 flat = true
 icon_alignment = 1
 
@@ -910,7 +910,7 @@ scale = Vector2(0.7, 0.7)
 theme_override_font_sizes/font_size = 100
 text = "
 "
-icon = ExtResource("18_ffblm")
+icon = ExtResource("19_bjmpj")
 flat = true
 icon_alignment = 1
 

@@ -1,12 +1,12 @@
 [gd_scene load_steps=8 format=3 uid="uid://3wuq87vlgd5x"]
 
-[ext_resource type="Script" uid="uid://dg62pb35tqw3v" path="res://main_menu.gd" id="1_88mwd"]
+[ext_resource type="Script" uid="uid://bdtlvq2vv44kq" path="res://main_menu.gd" id="1_88mwd"]
 [ext_resource type="Texture2D" uid="uid://kfsblnp7h3a6" path="res://asset/art/new_bg.png1.png" id="2_qe12f"]
-[ext_resource type="Texture2D" uid="uid://bfml8ivoc7tvb" path="res://asset/UI/Start.png" id="3_rnymq"]
-[ext_resource type="Texture2D" uid="uid://um41fbxwush" path="res://asset/UI/Exit.png" id="4_aw5bf"]
-[ext_resource type="Texture2D" uid="uid://xl14v81v1kve" path="res://asset/UI/Settings.png" id="5_nd0n2"]
+[ext_resource type="Texture2D" uid="uid://d2qkkta6ygxix" path="res://asset/Math UI/Start.png" id="3_qe12f"]
+[ext_resource type="Texture2D" uid="uid://biwjcc4ujrbmy" path="res://asset/Math UI/Exit.png" id="4_8qtwp"]
+[ext_resource type="Texture2D" uid="uid://bqndwfem45am6" path="res://asset/Math UI/Settings.png" id="5_dy7ct"]
 [ext_resource type="Texture2D" uid="uid://csvpcklwpvxl2" path="res://asset/UI/Info.png" id="6_qe12f"]
-[ext_resource type="Texture2D" uid="uid://c2ysb5bjbqsgp" path="res://asset/UI/Title.png" id="8_fptkf"]
+[ext_resource type="Texture2D" uid="uid://b07cxxbf0rhv3" path="res://asset/Math UI/Title.png" id="7_0o4t1"]
 
 [node name="MainMenu" type="Node2D"]
 position = Vector2(601, 1014)
@@ -62,13 +62,13 @@ metadata/_edit_group_ = true
 [node name="Start" type="Button" parent="UI Main_Menu/Main Menu/Main_Menu_UI"]
 layout_mode = 2
 size_flags_horizontal = 4
-icon = ExtResource("3_rnymq")
+icon = ExtResource("3_qe12f")
 flat = true
 
 [node name="Exit" type="Button" parent="UI Main_Menu/Main Menu/Main_Menu_UI"]
 layout_mode = 2
 size_flags_horizontal = 4
-icon = ExtResource("4_aw5bf")
+icon = ExtResource("4_8qtwp")
 flat = true
 
 [node name="Info_Music" type="HBoxContainer" parent="UI Main_Menu/Main Menu"]
@@ -90,7 +90,7 @@ alignment = 1
 
 [node name="Settings" type="Button" parent="UI Main_Menu/Main Menu/Info_Music"]
 layout_mode = 2
-icon = ExtResource("5_nd0n2")
+icon = ExtResource("5_dy7ct")
 flat = true
 
 [node name="Credits" type="Button" parent="UI Main_Menu/Main Menu/Info_Music"]
@@ -106,7 +106,7 @@ offset_left = -528.625
 offset_top = -580.985
 offset_right = 571.375
 offset_bottom = -80.47
-texture = ExtResource("8_fptkf")
+texture = ExtResource("7_0o4t1")
 metadata/_edit_group_ = true
 
 [connection signal="pressed" from="UI Main_Menu/Main Menu/Main_Menu_UI/Start" to="UI Main_Menu/Main Menu" method="_on_start_pressed"]
