@@ -58,6 +58,7 @@ var character_sprites: Dictionary = {}
 # --- Dictionary to map speaker IDs to DISPLAY NAMES ---
 var display_names: Dictionary = {}
 
+var question_answered: bool = false
 
 # Stage Information
 var current_stage_path: String = ""  # Will be set dynamically
@@ -137,7 +138,7 @@ func _process(delta: float) -> void:
 
 func update_hp_display() -> void:
 	# Update the HP display with hearts or text
-	hp_label.text = "❤ ".repeat(current_hp)
+	hp_label.text = "❤".repeat(current_hp)
 
 func update_timer_display() -> void:
 	# Update the timer display
@@ -257,14 +258,21 @@ func end_dialogue() -> void:
 		generate_new_problem()
 		
 func _on_continue_button_pressed() -> void:
-	next_dialogue()
+	if typewriter_timer.time_left > 0:
+		# Typewriter is still running — complete the text instantly
+		typewriter_timer.stop()
+		dialogue_text.text = full_dialogue_text
+		typewriter_char_index = full_dialogue_text.length()
+	else:
+		# Text is fully shown — move to next line
+		next_dialogue()
 
 func show_time_up_dialogue():
 	# Define the dialogue lines for running out of time
 	# You can have one or more characters speak
 	current_dialogue = [
 		{"name": "Teacher", "text": "Too slow! Time ran out on that one."},
-		{"name": "Teacher", "text": "'Speed defines the winner'"},
+		{"name": "Teacher", "text": "'Speed defines the winner' as they say."},
 		{"name": "Teacher", "text": "Move like that on the battlefield"},
 		{"name": "Teacher", "text": "You'd be a goner soon enough!"}
 		# Or just one speaker:
@@ -366,6 +374,8 @@ func generate_new_problem() -> void:
 		return
 	if !tutorial_completed:
 		return  # Don't generate problems if tutorial isn't finished
+		
+	question_answered = false # <<< Reset answer state for new problem
 
 	# Reset positions before setting Idle animation
 	player_animation.position = player_original_pos
@@ -390,9 +400,14 @@ func generate_new_problem() -> void:
 
 
 func check_answer() -> void:
+	if question_answered:
+		return # Prevent double-answering the same question
+
 	if current_text != "":
 		timer_active = false
 		var player_answer = int(current_text)
+		
+		question_answered = true # Lock the current question once answered
 
 		if player_answer == current_answer:
 			# --- CORRECT ANSWER ---

@@ -858,6 +858,7 @@ metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
 [node name="Stage1_3BG" type="TextureRect" parent="."]
+modulate = Color(0.707031, 0.707031, 0.707031, 1)
 offset_right = 1080.0
 offset_bottom = 776.0
 texture = ExtResource("3_6yoe1")
@@ -1164,7 +1165,7 @@ libraries = {
 }
 
 [node name="TypewriterTimer" type="Timer" parent="."]
-wait_time = 0.05
+wait_time = 0.03
 one_shot = true
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]

@@ -1090,7 +1090,7 @@ libraries = {
 }
 
 [node name="TypewriterTimer" type="Timer" parent="."]
-wait_time = 0.05
+wait_time = 0.03
 one_shot = true
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]

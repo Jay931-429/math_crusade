@@ -1042,7 +1042,7 @@ libraries = {
 }
 
 [node name="TypewriterTimer" type="Timer" parent="."]
-wait_time = 0.05
+wait_time = 0.03
 one_shot = true
 
 [connection signal="pressed" from="Number_Button/num_row_123/one" to="." method="_on_one_pressed"]

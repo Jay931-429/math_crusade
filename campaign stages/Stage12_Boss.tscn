@@ -1,8 +1,9 @@
-[gd_scene load_steps=144 format=3 uid="uid://tj2u5m727beq"]
+[gd_scene load_steps=145 format=3 uid="uid://tj2u5m727beq"]
 
 [ext_resource type="Script" uid="uid://cl7gx70qty3xd" path="res://campaign stages/stage_12_boss.gd" id="1_6e26d"]
 [ext_resource type="Texture2D" uid="uid://dox6s2pdaah6p" path="res://asset/art/Gray.png" id="2_rla1x"]
 [ext_resource type="Texture2D" uid="uid://ck4jb8si0uwy3" path="res://asset/art/background 3.png" id="3_04gws"]
+[ext_resource type="Texture2D" uid="uid://qslpxdoig4jd" path="res://asset/art/pixel_art_largevd.png" id="4_jrl78"]
 [ext_resource type="Texture2D" uid="uid://b2capxdpvd4vu" path="res://asset/UI/Transparent.png" id="4_y8p64"]
 [ext_resource type="Texture2D" uid="uid://bphrxf2hyox74" path="res://asset/art/GUI_frame__BG.png" id="5_p5o68"]
 [ext_resource type="Texture2D" uid="uid://dwldsahsmum7d" path="res://asset/UI/1.png" id="6_04gws"]
@@ -941,6 +942,26 @@ texture = ExtResource("3_04gws")
 metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
+[node name="TextureRect3" type="TextureRect" parent="."]
+modulate = Color(0.76878, 0.769531, 0.763519, 1)
+offset_left = 348.0
+offset_top = 430.0
+offset_right = 769.0
+offset_bottom = 605.0
+texture = ExtResource("4_jrl78")
+expand_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="TextureRect4" type="TextureRect" parent="."]
+modulate = Color(0.76878, 0.769531, 0.763519, 1)
+offset_left = 594.0
+offset_top = 432.0
+offset_right = 1015.0
+offset_bottom = 607.0
+texture = ExtResource("4_jrl78")
+expand_mode = 1
+metadata/_edit_lock_ = true
+
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_left = 64.0
 offset_top = 128.0
@@ -1180,7 +1201,6 @@ offset_bottom = 798.0
 color = Color(0, 0, 0, 0.843137)
 
 [node name="Buddy" type="Sprite2D" parent="DialogueBox"]
-visible = false
 position = Vector2(184.25, 208)
 scale = Vector2(0.754082, 0.743363)
 texture = ExtResource("30_nlsgb")
@@ -1196,7 +1216,6 @@ scale = Vector2(0.538657, 0.467983)
 texture = ExtResource("31_04gws")
 
 [node name="hBuddy" type="Sprite2D" parent="DialogueBox"]
-visible = false
 position = Vector2(183, 204)
 scale = Vector2(0.759184, 0.761062)
 texture = ExtResource("31_2cgxn")
@@ -1243,7 +1262,7 @@ libraries = {
 }
 
 [node name="TypewriterTimer" type="Timer" parent="."]
-wait_time = 0.05
+wait_time = 0.03
 one_shot = true
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]

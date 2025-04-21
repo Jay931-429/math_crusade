@@ -43,9 +43,11 @@ var max_hp: int = 10          # Maximum health points
 var current_hp: int = 10      # Current health points
 
 # Timer System variables
-var max_time: float = 20.0   # Time limit per question in seconds
+var max_time: float = 22.0   # Time limit per question in seconds
 var current_time: float = 0.0 # Current time elapsed
 var timer_active: bool = false # Flag to track if timer is active
+
+var question_answered: bool = false
 
 
 var player_original_pos: Vector2
@@ -255,7 +257,14 @@ func end_dialogue() -> void:
 		generate_new_problem()
 		
 func _on_continue_button_pressed() -> void:
-	next_dialogue()
+	if typewriter_timer.time_left > 0:
+		# Typewriter is still running — complete the text instantly
+		typewriter_timer.stop()
+		dialogue_text.text = full_dialogue_text
+		typewriter_char_index = full_dialogue_text.length()
+	else:
+		# Text is fully shown — move to next line
+		next_dialogue()
 
 func show_time_up_dialogue():
 	# Define the dialogue lines for running out of time
@@ -363,6 +372,8 @@ func generate_new_problem() -> void:
 		return
 	if !tutorial_completed:
 		return  # Don't generate problems if tutorial isn't finished
+	
+	question_answered = false # <<< Reset answer state for new problem
 
 	# Reset positions before setting Idle animation
 	player_animation.position = player_original_pos
@@ -373,27 +384,93 @@ func generate_new_problem() -> void:
 	enemy_animation.play("Idle")
 	buddy_animation.play("Idle")
 	
-	# Generate two random numbers for base and exponent
-	var base = randi() % 3 + 2  # Base between 2 and 6 (to keep results manageable)
-	var exponent = randi() % 2 + 1 # Exponent between 2 and 4 (to keep results manageable)
+	var max_operand = 10  # Adjust the difficulty as needed.
+	
+	# Randomly decide the operation type (addition, subtraction, multiplication, etc.)
+	var operation_type = randi() % 5  # We have 6 operation types now (addition, subtraction, multiplication, division, exponentiation, PEMDAS)
 
-	# Calculate the exponent result
-	current_answer = pow(base, exponent) #pow is the power function in godot
+	var num1 = 0
+	var num2 = 0
 
-	# Display the exponent problem
-	problem_label.text = str(base) + " ^ " + str(exponent) + " = ?"
+	match operation_type:
+		0: # Addition
+			num1 = randi() % max_operand + 1
+			num2 = randi() % max_operand + 1
+			current_answer = num1 + num2
+			problem_label.text = str(num1) + " + " + str(num2) + " = ?"
 
-		# Clear the answer display
+		1: # Subtraction (ensure no negative results)
+			num1 = randi() % max_operand + 1
+			num2 = randi() % max_operand + 1
+			# Ensure num1 is greater than num2 to prevent negative results
+			if num2 > num1:
+				var temp = num1
+				num1 = num2
+				num2 = temp
+			current_answer = num1 - num2
+			problem_label.text = str(num1) + " - " + str(num2) + " = ?"
+
+		2: # Multiplication
+			num1 = randi() % max_operand + 1
+			num2 = randi() % max_operand + 1
+			current_answer = num1 * num2
+			problem_label.text = str(num1) + " x " + str(num2) + " = ?"
+
+		3: # Division (ensure whole number result)
+			var quotient = randi() % max_operand + 1
+			num2 = randi() % max_operand + 1
+			num1 = quotient * num2  # Ensure it's divisible without a remainder
+			current_answer = quotient
+			problem_label.text = str(num1) + " ÷ " + str(num2) + " = ?"
+
+		4: # Exponentiation
+			num1 = randi() % 5 + 1  # Base (1 to 5)
+			num2 = randi() % 3 + 2  # Exponent (2 to 4)
+			current_answer = pow(num1, num2)
+			problem_label.text = str(num1) + " ^ " + str(num2) + " = ?"
+
+		5: # PEMDAS (Combine operations randomly)
+			# Create random math expression based on PEMDAS rules
+			var a = randi() % max_operand + 1
+			var b = randi() % max_operand + 1
+			var c = randi() % max_operand + 1
+			var pem_type = randi() % 3  # Decide on the PEMDAS structure (could be addition, multiplication, etc.)
+
+			if pem_type == 0:
+				# Example: (a + b) × c
+				current_answer = (a + b) * c
+				problem_label.text = "(" + str(a) + " + " + str(b) + ") × " + str(c) + " = ?"
+			elif pem_type == 1:
+				# Example: (a × b) - c
+				if a * b >= c:
+					current_answer = (a * b) - c
+					problem_label.text = "(" + str(a) + " x " + str(b) + ") - " + str(c) + " = ?"
+				else:
+					# Make sure it doesn't generate a negative result
+					current_answer = (a + c) - b
+					problem_label.text = "(" + str(a + c) + " - " + str(b) + ") = ?"
+			else:
+				# Example: a + b ÷ c
+				var divisor = randi() % max_operand + 1
+				var dividend = divisor * (a + b)  # Ensure clean division
+				current_answer = dividend / divisor
+				problem_label.text = str(dividend) + " ÷ " + str(divisor) + " + " + str(b) + " - " + str(a) + " = ?"
+				current_answer += b - a
+
+	# Ensure that everything is ready to go for the user
 	clear_display()
-
-		# Start the timer for this question
 	start_timer()
 
 
 func check_answer() -> void:
+	if question_answered:
+		return # Prevent double-answering the same question
+
 	if current_text != "":
 		timer_active = false
 		var player_answer = int(current_text)
+
+		question_answered = true # Lock the current question once answered
 
 		if player_answer == current_answer:
 			# --- CORRECT ANSWER ---

@@ -9,7 +9,6 @@ extends Node2D
 @onready var player_animation = $Player  # Adjust the path based on your scene structure
 @onready var enemy_animation = $Enemy2 
 @onready var buddy_animation = $Buddy   # Adjust the path based on your scene structure
-@onready var buddy2_animation = $Buddy2
 
 @onready var dialogue_box = $DialogueBox  # Panel or ColorRect
 @onready var dialogue_text = $DialogueBox/DialogueText  # Label or RichTextLabel
@@ -23,9 +22,10 @@ extends Node2D
 @onready var buddy_sprite = $DialogueBox/Buddy
 @onready var hbuddy_sprite = $DialogueBox/hBuddy
 @onready var teacher_sprite = $DialogueBox/Teacher
-@onready var rebmil_sprite = $DialogueBox/RebMil
-@onready var rebkn_sprite = $DialogueBox/Rebkn
-@onready var rebmil2_sprite = $DialogueBox/RebMil2
+@onready var bdt_sprite = $DialogueBox/bandit
+
+#@onready var video_container = $VideoContainer
+
 
 var full_dialogue_text: String = ""
 var typewriter_char_index: int = 0
@@ -47,7 +47,7 @@ var max_hp: int = 10          # Maximum health points
 var current_hp: int = 10      # Current health points
 
 # Timer System variables
-var max_time: float = 20.0   # Time limit per question in seconds
+var max_time: float = 8.0   # Time limit per question in seconds
 var current_time: float = 0.0 # Current time elapsed
 var timer_active: bool = false # Flag to track if timer is active
 
@@ -55,7 +55,6 @@ var timer_active: bool = false # Flag to track if timer is active
 var player_original_pos: Vector2
 var enemy_original_pos: Vector2
 var buddy_original_pos: Vector2
-var buddy2_original_pos: Vector2
 var attack_move_distance: float = 430.0 # How many pixels to move forward (adjust!)
 var attack_move_duration: float = 0.12 # How long the forward move takes (adjust!)
 var return_move_duration: float = 0.1 # How long the return move takes (adjust!)
@@ -64,6 +63,8 @@ var return_move_duration: float = 0.1 # How long the return move takes (adjust!)
 var character_sprites: Dictionary = {}
 # --- Dictionary to map speaker IDs to DISPLAY NAMES ---
 var display_names: Dictionary = {}
+
+var question_answered: bool = false
 
 
 # Stage Information
@@ -90,15 +91,10 @@ func _ready() -> void:
 		character_sprites["Buddy"] = buddy_sprite
 	if teacher_sprite: # Check if the node exists
 		character_sprites["Teacher"] = teacher_sprite
-	if rebmil_sprite: # Check if the node exists
-		character_sprites["RebMil"] = rebmil_sprite
-	if rebkn_sprite: # Check if the node exists
-		character_sprites["Rebkn"] = rebkn_sprite 
-	if rebmil2_sprite: # Check if the node exists
-		character_sprites["RebMil2"] = rebmil2_sprite
+	if bdt_sprite: # Check if the node exists
+		character_sprites["bandit"] = bdt_sprite
 	if hbuddy_sprite: # Check if the node exists
 		character_sprites["hBuddy"] = hbuddy_sprite
-
 	# Add other characters here:
 	# character_sprites["AnotherNPC"] = another_npc_sprite
 	
@@ -106,10 +102,8 @@ func _ready() -> void:
 	# Map Internal ID -> Display Name
 	display_names["Buddy"] = "Mathie" # Or maybe "Your Pal" if you want
 	display_names["Teacher"] = "Aric"
-	display_names["RebMil"] = "Atalea"
-	display_names["Rebkn"] = "Lady Hilda" # <--- CHANGE THIS to whatever you want displayed
-	display_names["RebMil2"] = "Knight"
-	display_names["hBuddy"] = "Mathie"
+	display_names["bandit"] = "Bandit Queen" # <--- CHANGE THIS to whatever you want displayed
+	display_names["hBuddy"] = "Mathie" # Or maybe "Your Pal" if you want
 	# Add other characters if needed
 	# display_names["Boss"] = "Dark Lord Malakor"
 	
@@ -126,7 +120,6 @@ func _ready() -> void:
 	player_original_pos = player_animation.position
 	buddy_original_pos = buddy_animation.position
 	enemy_original_pos = enemy_animation.position
-	buddy2_original_pos = buddy2_animation.position
 
 	# Start the first problem
 	# generate_new_problem()
@@ -182,24 +175,21 @@ func start_timer() -> void:
 func show_tutorial_dialogue() -> void:
 	# Set up tutorial dialogue
 	current_dialogue = [
-		{"name": "", "text": "(At last, Aric, Mathie, and Lady Hilda's forces arrived at the gates of the rebel stronghold.)"},
-		{"name": "", "text": "(The skies darkened as storm clouds gathered—an omen of the battle to come.)"},
-		{"name": "Buddy", "text": "This is it... The heart of the rebellion."},
-		{"name": "Teacher", "text": "She’s in there. I can feel the power of Division behind those walls."},
-		{"name": "Rebkn", "text": "Be on guard. Countess Atalea is no fool. She won’t hand it over without a fight."},
-		{"name": "", "text": "(The heavy gates creaked open. Atop the stone steps stood Countess Atalea, clad in armor.)"},
-		{"name": "RebMil", "text": "So, the king finally sends his hounds... and a couple of children no less."},
-		{"name": "Teacher", "text": "Atalea! This ends here. Surrender the Division and cease this madness!"},
-		{"name": "RebMil", "text": "Surrender? How amusing."},
-		{"name": "Buddy", "text": "Your rebellion is nothing."},
-		{"name": "RebMil", "text": "Brave words... but you misunderstand, girl."},
-		{"name": "RebMil", "text": "Division is the key to a new world. With it... "},
-		{"name": "RebMil", "text": "I will cleave the old kingdom apart and build something better from the fragments."},
-		{"name": "Rebkn", "text": "You would burn a nation just to play queen of the ashes."},
-		{"name": "RebMil", "text": "Call it what you will. I call it rebirth."},
-		{"name": "Teacher", "text": "Then we’ll stop you here and now. For the kingdom. For the people."},
-		{"name": "RebMil", "text": "So be it. Let the final act begin!"}
-	]
+		{ "name": "Buddy", "text": "Alright, this should be the place. Look! Is that... our stuff?!" },
+		{ "name": "Teacher", "text": "Indeed. Just as the scout reported. Stay alert, Mathie. Bandit camps are never truly quiet." },
+		{ "name": "Bandit", "text": "(Chuckles loudly, emerging from behind) Well, well. Speak of the devils. Looking for something?" },
+		{ "name": "Bandit", "text": "Took us a bit of effort to haul all this lovely stuff. Especially these Math Powers...." },
+		{ "name": "Buddy", "text": "Hey! We fought hard for those! Give it back, along with everything else you stole!" },
+		{ "name": "Bandit", "text": "Stole? We prefer 'aggressively borrowed'. Finders keepers, you know? Unless... you plan on taking it back?" },
+		{ "name": "Teacher", "text": "Save your breath. Pleading won't sway someone like this. Their actions speak clearly enough." },
+		{ "name": "Bandit", "text": "This one speaks sense! Actions DO speak louder than words. So?" },
+		{ "name": "Teacher", "text": "We require our property returned. If force is the only way to achieve that, then so be it." },
+		{ "name": "Bandit", "text": "Hah! Force? Is that a challenge? Finally, some entertainment! Been bored just counting rusty nails all morning." },
+		{ "name": "Bandit", "text": "Alright then, 'heroes'. Show me what you've got!" },
+		{ "name": "Buddy", "text": "You have no idea who you're messing with! Challenge accepted!" },
+		{ "name": "Teacher", "text": "Focus, Buddy. Remember your training. Let's reclaim what's ours and end this foolishness." }
+]
+
 # Start displaying dialogue
 	dialogue_active = true
 	dialogue_index = 0
@@ -262,6 +252,7 @@ func display_dialogue() -> void:
 
 	if full_dialogue_text.length() > 0:
 		typewriter_timer.start()
+	
 
 func next_dialogue() -> void:
 	dialogue_index += 1
@@ -289,13 +280,20 @@ func end_dialogue() -> void:
 		generate_new_problem()
 		
 func _on_continue_button_pressed() -> void:
-	next_dialogue()
+	if typewriter_timer.time_left > 0:
+		# Typewriter is still running — complete the text instantly
+		typewriter_timer.stop()
+		dialogue_text.text = full_dialogue_text
+		typewriter_char_index = full_dialogue_text.length()
+	else:
+		# Text is fully shown — move to next line
+		next_dialogue()
 
 func show_time_up_dialogue():
 	# Define the dialogue lines for running out of time
 	# You can have one or more characters speak
 	current_dialogue = [
-		{"name": "Buddy", "text": "Ummm... Are you OK?"},
+		{"name": "Buddy", "text": "Hey, You Good?"},
 		{"name": "Buddy", "text": "Come on bud, Stay Alert!"}
 		# Or just one speaker:
 		# {"name": "Teacher", "text": "Time's up! You need to answer faster."}
@@ -354,8 +352,9 @@ func time_up() -> void:
 		end_game()
 		return
 
-	# --- COMMON LOGIC ---
-	# (Code remains the same here)
+	# Wait for dialogue to finish, if any
+	await _wait_for_dialogue_finish()
+
 	total_problems += 1
 	score_label.text = str(score) + "/" + str(total_problems)
 
@@ -387,36 +386,64 @@ func lose_hp() -> void:
 		end_game()
 
 func generate_new_problem() -> void:
-	   # Check if game should end (handle HP=0 case here too)
-	if total_problems >= max_problems or current_hp <= 0:
-		# Ensure positions are reset before potential end game transition if HP was 0
+	if current_hp <= 0 or total_problems >= max_problems:
 		player_animation.position = player_original_pos
 		buddy_animation.position = buddy_original_pos
 		enemy_animation.position = enemy_original_pos
-		buddy2_animation.position = buddy2_original_pos
 		end_game()
 		return
-	if !tutorial_completed:
-		return  # Don't generate problems if tutorial isn't finished
 
-	# Reset positions before setting Idle animation
+	if !tutorial_completed:
+		return
+		
+	question_answered = false # <<< Reset answer state for new problem
+
+	# Reset positions and animations
 	player_animation.position = player_original_pos
 	enemy_animation.position = enemy_original_pos
 	buddy_animation.position = buddy_original_pos
-	buddy2_animation.position = buddy2_original_pos
-
 	player_animation.play("Idle")
 	enemy_animation.play("Idle")
 	buddy_animation.play("Idle")
-	buddy2_animation.play("Idle")
-	
-	# Generate two random numbers between 1 and 20
-	var num1 = randi() % 10 + 1
-	var num2 = randi() % 10 + 1
 
-	# Only do addition problems
-	current_answer = num1 * num2
-	problem_label.text = str(num1) + " * " + str(num2) + " = ?"
+	# Randomly decide on the type of problem
+	# Generate two random numbers between 1 and 20
+	var max_operand = 10 
+
+	# Randomly choose the operation: 0:+, 1:-, 2:*, 3:/
+	var operation_type = randi() % 4
+
+	var num1 = 0
+	var num2 = 0
+
+	match operation_type:
+		0: # Addition
+			num1 = randi() % max_operand + 1
+			num2 = randi() % max_operand + 1
+			current_answer = num1 + num2
+			problem_label.text = str(num1) + " + " + str(num2) + " = ?"
+		1: # Subtraction
+			num1 = randi() % max_operand + 1
+			num2 = randi() % max_operand + 1
+			# --- This block prevents negative answers for subtraction ---
+			if num2 > num1:
+				var temp = num1
+				num1 = num2
+				num2 = temp
+			# ----------------------------------------------------------
+			current_answer = num1 - num2
+			problem_label.text = str(num1) + " - " + str(num2) + " = ?"
+		2: # Multiplication
+			num1 = randi() % max_operand + 1
+			num2 = randi() % max_operand + 1
+			current_answer = num1 * num2
+			problem_label.text = str(num1) + " X " + str(num2) + " = ?" # Or use " x "
+		3: # Division (Constructed to ensure whole positive answers)
+			var quotient = randi() % max_operand + 1 
+			num2 = randi() % max_operand + 1        
+			num1 = quotient * num2 
+			current_answer = quotient
+			problem_label.text = str(num1) + " ÷ " + str(num2) + " = ?" # Or use " ÷ "
 
 	# Clear the answer display
 	clear_display()
@@ -425,10 +452,16 @@ func generate_new_problem() -> void:
 	start_timer()
 
 
+
 func check_answer() -> void:
+	if question_answered:
+		return # Prevent double-answering the same question
+
 	if current_text != "":
 		timer_active = false
 		var player_answer = int(current_text)
+
+		question_answered = true # Lock the current question once answered
 
 		if player_answer == current_answer:
 			# --- CORRECT ANSWER ---
@@ -450,11 +483,6 @@ func check_answer() -> void:
 			var buddy_target_pos = buddy_animation.position + Vector2(attack_move_distance, 0)
 			var buddy_move_tween = create_tween().set_ease(Tween.EaseType.EASE_OUT).set_trans(Tween.TransitionType.TRANS_CUBIC)
 			buddy_move_tween.tween_property(buddy_animation, "position", buddy_target_pos, attack_move_duration)
-			
-			buddy2_animation.play("Run")
-			var buddy2_target_pos = buddy2_animation.position + Vector2(attack_move_distance, 0)
-			var buddy2_move_tween = create_tween().set_ease(Tween.EaseType.EASE_OUT).set_trans(Tween.TransitionType.TRANS_CUBIC)
-			buddy2_move_tween.tween_property(buddy2_animation, "position", buddy2_target_pos, attack_move_duration)
 
 			# 4. Wait for Buddy Forward Movement to Finish
 			await buddy_move_tween.finished
@@ -463,7 +491,6 @@ func check_answer() -> void:
 			player_animation.play("Attack")
 			buddy_animation.play("Run")
 			enemy_animation.play("Hit")
-			buddy2_animation.play("Attack")
 			AudioManager.play_sfx("ehit")
 
 			# 6. Wait for Attack/Hit animation to have some effect
@@ -472,16 +499,12 @@ func check_answer() -> void:
 			# 7. Set player and buddy back to Idle before returning
 			player_animation.play("Idle")
 			buddy_animation.play("Idle")
-			buddy2_animation.play("Idle")
 			var return_tween = create_tween().set_ease(Tween.EaseType.EASE_IN).set_trans(Tween.TransitionType.TRANS_CUBIC)
 			return_tween.tween_property(player_animation, "position", player_original_pos, return_move_duration)
 			var buddy_return_tween = create_tween().set_ease(Tween.EaseType.EASE_IN).set_trans(Tween.TransitionType.TRANS_CUBIC)
 			buddy_return_tween.tween_property(buddy_animation, "position", buddy_original_pos, return_move_duration)
-			var buddy2_return_tween = create_tween().set_ease(Tween.EaseType.EASE_IN).set_trans(Tween.TransitionType.TRANS_CUBIC)
-			buddy2_return_tween.tween_property(buddy2_animation, "position", buddy2_original_pos, return_move_duration)
 			await return_tween.finished
 			await buddy_return_tween.finished
-			await buddy2_return_tween.finished
 
 		else:
 			# --- WRONG ANSWER ---
@@ -531,6 +554,8 @@ func check_answer() -> void:
 			await get_tree().create_timer(0.3).timeout
 			end_game()
 		else:
+			# Wait for dialogue to finish, if any
+			await _wait_for_dialogue_finish()
 			await get_tree().create_timer(0.1).timeout
 			generate_new_problem()
 			
@@ -556,30 +581,26 @@ func show_end_stage_dialogue() -> void:
 
 	if player_won:
 		current_dialogue = [
-			{"name": "", "text": "(After a grueling fight, the rebel realized all hope is lost and capitulates.)"},
-			{"name": "RebMil", "text": "Fine, I give up."},
-			{"name": "", "text": "(Atalea throws down her arms as well as Division.)"},
-			{"name": "Rebkn", "text": "Alright, take her away."},
-			{"name": "Rebmil2", "text": "Orders Recieved."},
-			{"name": "Rebkn", "text": "Whew, this ordeal is now over."},
-			{"name": "Rebkn", "text": "A potentially catastrophic event has been stopped and Division has beed recovered."},
-			{"name": "Rebkn", "text": "A thanks to you, Im proud of you."},
-			{"name": "Teacher", "text": "Not a problem."},
-			{"name": "Rebkn", "text": "What's next for both of you?"},
-			{"name": "Teacher", "text": "We continue on our quest."},
-			{"name": "Rebkn", "text": "Well then, good luck to you both."}
+			{"name": "bandit", "text": "Ugh! Damn you both!"},
+			{"name": "", "text": "(The Bandit Queen, Defeated, flees, leaving all the things she and her gang has stolen.)"},
+			{"name": "Buddy", "text": "Whew! That was a tough fight, but still..."},
+			{"name": "hBuddy", "text": "We got our stuff back!!"},
+			{"name": "Teacher", "text": "Well yeah, Let's search for them."},
+			{"name": "T", "text": "(After rummaging through all of the stolen things.)"},
+			{"name": "Teacher", "text": "We found them. Wait, whats that?"},
+			{"name": "hBuddy", "text": "Wait a minute... Is that Exponents?!"},
+			{"name": "Teacher", "text": "What a coincidence."},
+			{"name": "", "text": "(Aric picks Exponents from the ground.)"},
+			{"name": "Teacher", "text": "Now we got Exponents, looks like our journey got shorter, huh?"},
+			{"name": "Buddy", "text": "Agree, We now have addition, subtraction, multiplication, division and Exponents."},
+			{"name": "hBuddy", "text": "Next Stop, the Architect himself!"},
+			{"name": "Teacher", "text": "All good, Let's Go!"},
 		]
 	else:
 		current_dialogue = [
-			{"name": "Buddy", "text": "Hey Bud? Hey! Are you OK?"},
-			{"name": "Buddy", "text": "Time for us to get out of here, i suppose."}
+			{"name": "Buddy", "text": "Hey Bud? Hey! Wake Up!"},
+			{"name": "Buddy", "text": "Damn It!"}
 		]
-
-	dialogue_active = true
-	dialogue_index = 0
-	dialogue_animator.play("dialogue_show")
-	display_dialogue()
-
 
 	dialogue_active = true
 	dialogue_index = 0
@@ -681,6 +702,7 @@ func _on_typewriter_timer_timeout():
 		typewriter_timer.start() # Uses its wait_time property
 	# else: # All characters displayed, do nothing, timer stays stopped.
 	
+	
 func play_video(video_path: String) -> void:
 	var video_player = VideoStreamPlayer.new()
 	add_child(video_player)
@@ -692,4 +714,5 @@ func _on_video_finished(video_player):
 	video_player.queue_free() # Remove video player
 	dialogue_index += 1 # Advance dialogue
 	display_dialogue() # Resume dialogue
+	
 	

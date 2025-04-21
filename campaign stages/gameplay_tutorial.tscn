@@ -543,7 +543,7 @@ metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
 [node name="Stage1_3BG" type="TextureRect" parent="."]
-modulate = Color(0.8125, 0.8125, 0.8125, 1)
+modulate = Color(0.707031, 0.704269, 0.704269, 1)
 offset_right = 1080.0
 offset_bottom = 776.0
 texture = ExtResource("3_45c8q")
@@ -759,7 +759,6 @@ theme_override_font_sizes/font_size = 40
 text = "TIME"
 
 [node name="Enemy2" type="AnimatedSprite2D" parent="."]
-modulate = Color(0.76, 0.76, 0.76, 1)
 position = Vector2(864, 576)
 scale = Vector2(5.33594, 6.36932)
 sprite_frames = SubResource("SpriteFrames_b3w2y")
@@ -769,7 +768,6 @@ flip_h = true
 metadata/_edit_lock_ = true
 
 [node name="Player" type="AnimatedSprite2D" parent="."]
-modulate = Color(0.76, 0.76, 0.76, 1)
 position = Vector2(216, 552)
 scale = Vector2(3.97076, 3.41458)
 sprite_frames = SubResource("SpriteFrames_jf1du")
@@ -834,7 +832,7 @@ libraries = {
 }
 
 [node name="TypewriterTimer" type="Timer" parent="."]
-wait_time = 0.05
+wait_time = 0.03
 one_shot = true
 
 [connection signal="pressed" from="Number_Button/num_row_123/one" to="." method="_on_one_pressed"]

@@ -44,7 +44,7 @@ var max_hp: int = 10          # Maximum health points
 var current_hp: int = 10      # Current health points
 
 # Timer System variables
-var max_time: float = 20.0   # Time limit per question in seconds
+var max_time: float = 15.0   # Time limit per question in seconds
 var current_time: float = 0.0 # Current time elapsed
 var timer_active: bool = false # Flag to track if timer is active
 
@@ -61,6 +61,7 @@ var character_sprites: Dictionary = {}
 # --- Dictionary to map speaker IDs to DISPLAY NAMES ---
 var display_names: Dictionary = {}
 
+var question_answered: bool = false
 
 # Stage Information
 var current_stage_path: String = ""  # Will be set dynamically
@@ -277,7 +278,14 @@ func end_dialogue() -> void:
 		generate_new_problem()
 		
 func _on_continue_button_pressed() -> void:
-	next_dialogue()
+	if typewriter_timer.time_left > 0:
+		# Typewriter is still running — complete the text instantly
+		typewriter_timer.stop()
+		dialogue_text.text = full_dialogue_text
+		typewriter_char_index = full_dialogue_text.length()
+	else:
+		# Text is fully shown — move to next line
+		next_dialogue()
 
 func show_time_up_dialogue():
 	# Define the dialogue lines for running out of time
@@ -385,6 +393,8 @@ func generate_new_problem() -> void:
 		return
 	if !tutorial_completed:
 		return  # Don't generate problems if tutorial isn't finished
+	
+	question_answered = false # <<< Reset answer state for new problem
 
 	# Reset positions before setting Idle animation
 	player_animation.position = player_original_pos
@@ -417,9 +427,14 @@ func generate_new_problem() -> void:
 
 
 func check_answer() -> void:
+	if question_answered:
+		return # Prevent double-answering the same question
+
 	if current_text != "":
 		timer_active = false
 		var player_answer = int(current_text)
+
+		question_answered = true # Lock the current question once answered
 
 		if player_answer == current_answer:
 			# --- CORRECT ANSWER ---

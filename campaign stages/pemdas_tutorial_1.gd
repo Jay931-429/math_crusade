@@ -44,7 +44,7 @@ var max_hp: int = 10          # Maximum health points
 var current_hp: int = 10      # Current health points
 
 # Timer System variables
-var max_time: float = 20.0   # Time limit per question in seconds
+var max_time: float = 35.0   # Time limit per question in seconds
 var current_time: float = 0.0 # Current time elapsed
 var timer_active: bool = false # Flag to track if timer is active
 
@@ -60,6 +60,8 @@ var return_move_duration: float = 0.1 # How long the return move takes (adjust!)
 var character_sprites: Dictionary = {}
 # --- Dictionary to map speaker IDs to DISPLAY NAMES ---
 var display_names: Dictionary = {}
+
+var question_answered: bool = false
 
 
 # Stage Information
@@ -207,60 +209,61 @@ func show_tutorial_dialogue() -> void:
 
 func display_dialogue() -> void:
 	if dialogue_index >= current_dialogue.size():
-		# If skipping animation, ensure full text is shown before ending
 		if typewriter_timer.time_left > 0:
 			typewriter_timer.stop()
-			dialogue_text.text = full_dialogue_text # Show full text instantly
+			dialogue_text.text = full_dialogue_text
 		end_dialogue()
 		return
 
 	var current = current_dialogue[dialogue_index]
-	# KEEP using current.name as the INTERNAL identifier for sprite lookup
 	var speaker_id = current.name
-	dialogue_text.text = current.text # Text remains the same
-	
-	
-	# --- Store full text, clear label, reset index ---
-	full_dialogue_text = current.text
-	dialogue_text.text = "" # Clear text label
-	typewriter_char_index = 0
-	# --- End setup ---
-	
-		# Play SFX if specified
+	dialogue_text.text = current.text
+
+	if current.has("video") and current.video != "":
+		dialogue_box.visible = false
+		dialogue_text.visible = false
+		dialogue_name.visible = false
+		play_video(current.video)
+	else:
+		dialogue_box.visible = true
+		dialogue_text.visible = true
+		
+		#  NARRATION CHECK
+		if speaker_id == "":
+			# Narration: center the text and hide the name
+			dialogue_name.visible = false
+			dialogue_text.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+			dialogue_text.position = Vector2(273.0, 83.0) # Change to fit your layout
+		else:
+			# Regular dialogue
+			dialogue_name.visible = true
+			dialogue_text.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+			dialogue_text.position = Vector2(379.0, 83.0) # Change to your default position
+
+		full_dialogue_text = current.text
+		dialogue_text.text = ""
+		typewriter_char_index = 0
+
 	if current.has("sfx") and current.sfx != "":
 		AudioManager.play_sfx(current.sfx)
 
-
-	# --- Set the DISPLAY NAME using the new dictionary ---
+	# Set speaker name
 	if display_names.has(speaker_id):
-		# If we have a specific display name mapped, use it
 		dialogue_name.text = display_names[speaker_id]
 	else:
-		# Otherwise, fall back to using the internal ID as the name
 		dialogue_name.text = speaker_id
-	# --- End setting display name ---
 
-
-	# --- Logic to show/hide character sprites (NO CHANGE NEEDED HERE) ---
-	# This part STILL uses the internal speaker_id ("Teacher", "Buddy")
-	# to find the correct sprite in character_sprites.
-	# 1. Hide all character sprites first
+	# Character sprite visibility
 	for sprite_node in character_sprites.values():
 		sprite_node.visible = false
 
-	# 2. Get the current speaker's internal ID (already done above)
-	# var speaker_id = current.name
-
-	# 3. Check if this speaker ID has a mapped sprite and show it
 	if character_sprites.has(speaker_id):
 		var active_sprite = character_sprites[speaker_id]
 		active_sprite.visible = true
 
-	# --- Start Typewriter Effect ---
-	# Don't start if text is empty
 	if full_dialogue_text.length() > 0:
-		typewriter_timer.start() # Use timer's wait_time
-	# --- End Start Typewriter ---
+		typewriter_timer.start()
+	
 
 func next_dialogue() -> void:
 	dialogue_index += 1
@@ -288,7 +291,14 @@ func end_dialogue() -> void:
 		generate_new_problem()
 		
 func _on_continue_button_pressed() -> void:
-	next_dialogue()
+	if typewriter_timer.time_left > 0:
+		# Typewriter is still running — complete the text instantly
+		typewriter_timer.stop()
+		dialogue_text.text = full_dialogue_text
+		typewriter_char_index = full_dialogue_text.length()
+	else:
+		# Text is fully shown — move to next line
+		next_dialogue()
 
 func show_time_up_dialogue():
 	# Define the dialogue lines for running out of time
@@ -395,6 +405,8 @@ func generate_new_problem() -> void:
 	
 	if !tutorial_completed:
 		return
+		
+	question_answered = false # <<< Reset answer state for new problem
 
 	# Reset positions and animations
 	player_animation.position = player_original_pos
@@ -409,24 +421,20 @@ func generate_new_problem() -> void:
 	var num2 = randi() % 5 + 1
 	var num3 = randi() % 5 + 1
 	var num4 = randi() % 5 + 1
-
 	# Random operations
 	var operation1 = randi() % 4  # 0:+, 1:-, 2:*, 3:/
 	var operation2 = randi() % 4
 	var operation3 = randi() % 4
-
 	var op1_str = "+"
 	var op2_str = "+"
 	var op3_str = "+"
-
 	var op1_func = func(a, b): return a + b
 	var op2_func = func(a, b): return a + b
 	var op3_func = func(a, b): return a + b
-
 	# Assign operation 1
 	if operation1 == 1:
 		op1_str = "-"
-		if num1 < num2:
+		if num1 < num2:  # Ensure num1 ≥ num2 for subtraction
 			var temp = num1
 			num1 = num2
 			num2 = temp
@@ -441,14 +449,15 @@ func generate_new_problem() -> void:
 			num1 = randi() % 5 + 1
 			num2 = randi() % 5 + 1
 		op1_func = func(a, b): return a / b
-
 	var temp_result = op1_func.call(num1, num2)
-
+	
 	# Assign operation 2
 	if operation2 == 1:
 		op2_str = "-"
-		if temp_result < num3:
-			num3 = int(temp_result)
+		if temp_result < num3:  # For subtraction, ensure temp_result ≥ num3
+			var swap = num3
+			num3 = temp_result
+			temp_result = swap  # This preserves the result being non-negative
 		op2_func = func(a, b): return a - b
 	elif operation2 == 2:
 		op2_str = "*"
@@ -459,14 +468,15 @@ func generate_new_problem() -> void:
 		while int(temp_result) % num3 != 0:
 			num3 = randi() % 5 + 1
 		op2_func = func(a, b): return a / b
-
 	temp_result = op2_func.call(temp_result, num3)
-
+	
 	# Assign operation 3
 	if operation3 == 1:
 		op3_str = "-"
-		if temp_result < num4:
-			num4 = int(temp_result)
+		if temp_result < num4:  # For subtraction, ensure temp_result ≥ num4
+			var swap = num4
+			num4 = temp_result
+			temp_result = swap  # This preserves the result being non-negative
 		op3_func = func(a, b): return a - b
 	elif operation3 == 2:
 		op3_str = "*"
@@ -477,12 +487,10 @@ func generate_new_problem() -> void:
 		while int(temp_result) % num4 != 0:
 			num4 = randi() % 5 + 1
 		op3_func = func(a, b): return a / b
-
 	current_answer = int(op3_func.call(temp_result, num4))
-
+	
 	# Final problem display
 	problem_label.text = "( ( " + str(num1) + " " + op1_str + " " + str(num2) + " ) " + op2_str + " " + str(num3) + " ) " + op3_str + " " + str(num4) + " = ?"
-
 	# Clear the answer display and start timer
 	clear_display()
 	start_timer()
@@ -490,9 +498,14 @@ func generate_new_problem() -> void:
 
 
 func check_answer() -> void:
+	if question_answered:
+		return # Prevent double-answering the same question
+
 	if current_text != "":
 		timer_active = false
 		var player_answer = int(current_text)
+
+		question_answered = true # Lock the current question once answered
 
 		if player_answer == current_answer:
 			# --- CORRECT ANSWER ---
@@ -722,3 +735,15 @@ func _on_typewriter_timer_timeout():
 		# Start timer again for the next character
 		typewriter_timer.start() # Uses its wait_time property
 	# else: # All characters displayed, do nothing, timer stays stopped.
+	
+func play_video(video_path: String) -> void:
+	var video_player = VideoStreamPlayer.new()
+	add_child(video_player)
+	video_player.stream = load(video_path)
+	video_player.play()
+	video_player.finished.connect(_on_video_finished.bind(video_player))
+#
+func _on_video_finished(video_player):
+	video_player.queue_free() # Remove video player
+	dialogue_index += 1 # Advance dialogue
+	display_dialogue() # Resume dialogue
