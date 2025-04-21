@@ -35,7 +35,7 @@
 [ext_resource type="Texture2D" uid="uid://cql6vrmroylir" path="res://asset/Main Character/Knight_player/Attack_KG_4.png" id="32_hax5k"]
 [ext_resource type="Texture2D" uid="uid://4lpfjpnhoeqr" path="res://asset/npc/usedportraits/wabbajack12.png" id="34_ho0xa"]
 [ext_resource type="Texture2D" uid="uid://blwpegxj3nxiy" path="res://asset/npc/usedportraits/CLOAK-4 .png" id="35_ho0xa"]
-[ext_resource type="VideoStream" path="res://asset/video/aspose_video_133896895066492131_out.ogv" id="36_2r4is"]
+[ext_resource type="VideoStream" uid="uid://b7pde7xm1jewk" path="res://asset/video/aspose_video_133896895066492131_out.ogv" id="36_2r4is"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o21j7"]
 atlas = ExtResource("29_e1vrr")
