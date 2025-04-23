@@ -33,7 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://6fkjaxweqoi0" path="res://asset/Main Character/Crusader-4-Running.png" id="32_kl8oi"]
 [ext_resource type="Texture2D" uid="uid://d1c1wgg3lt355" path="res://asset/enemy/Evil Wizard/Sprites/Move.png" id="32_w84bs"]
 [ext_resource type="Texture2D" uid="uid://bskhtf2opvoko" path="res://asset/npc/usedportraits/CLOAK-1.png" id="33_js277"]
-[ext_resource type="Texture2D" uid="uid://cjdfnsdc3c01c" path="res://asset/npc/free_character_1_20_cogabushi/character/normal/A_534235.png" id="34_06am4"]
+[ext_resource type="Texture2D" uid="uid://4lpfjpnhoeqr" path="res://asset/npc/usedportraits/wabbajack12.png" id="34_ehtmn"]
 [ext_resource type="Texture2D" uid="uid://4ix3u3e03yis" path="res://asset/npc/usedportraits/276dsad.png" id="35_w84bs"]
 [ext_resource type="VideoStream" uid="uid://ysu834o6bfb" path="res://asset/video/Ending Cutscene2.ogv" id="36_ehtmn"]
 
@@ -1031,9 +1031,9 @@ scale = Vector2(0.72449, 0.778761)
 texture = ExtResource("33_js277")
 
 [node name="Teacher" type="Sprite2D" parent="DialogueBox"]
-position = Vector2(183.5, 204)
-scale = Vector2(0.378631, 0.362105)
-texture = ExtResource("34_06am4")
+position = Vector2(189, 192)
+scale = Vector2(0.51087, 0.481675)
+texture = ExtResource("34_ehtmn")
 
 [node name="wizard" type="Sprite2D" parent="DialogueBox"]
 position = Vector2(181, 196)

@@ -586,7 +586,7 @@ func show_end_stage_dialogue() -> void:
 			{"name": "Buddy", "text": "Whew! That was a tough fight, but still..."},
 			{"name": "hBuddy", "text": "We got our stuff back!!"},
 			{"name": "Teacher", "text": "Well yeah, Let's search for them."},
-			{"name": "T", "text": "(After rummaging through all of the stolen things.)"},
+			{"name": "", "text": "(After rummaging through all of the stolen things.)"},
 			{"name": "Teacher", "text": "We found them. Wait, whats that?"},
 			{"name": "hBuddy", "text": "Wait a minute... Is that Exponents?!"},
 			{"name": "Teacher", "text": "What a coincidence."},
