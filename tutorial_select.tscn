@@ -35,6 +35,11 @@ grow_horizontal = 2
 theme_override_constants/separation = 50
 metadata/_edit_group_ = true
 
+[node name="Gameplay" type="Button" parent="CanvasLayer/Mode_Select_UI"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 70
+text = "GAMEPLAY"
+
 [node name="Addition" type="Button" parent="CanvasLayer/Mode_Select_UI"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 70
@@ -84,6 +89,7 @@ theme_override_font_sizes/font_size = 120
 text = "SELECT TUTORIAL"
 horizontal_alignment = 1
 
+[connection signal="pressed" from="CanvasLayer/Mode_Select_UI/Gameplay" to="." method="_on_gameplay_pressed"]
 [connection signal="pressed" from="CanvasLayer/Mode_Select_UI/Addition" to="." method="_on_addition_pressed"]
 [connection signal="pressed" from="CanvasLayer/Mode_Select_UI/Subtraction" to="." method="_on_subtraction_pressed"]
 [connection signal="pressed" from="CanvasLayer/Mode_Select_UI/Multiplication" to="." method="_on_multiplication_pressed"]

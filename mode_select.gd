@@ -26,4 +26,4 @@ func _on_stages_pressed() -> void:
 
 func _on_tutorial_pressed() -> void:
 	pass
-	get_tree().change_scene_to_file("res://campaign stages/gameplay_tutorial.tscn")
+	get_tree().change_scene_to_file("res://tutorial_select.tscn")

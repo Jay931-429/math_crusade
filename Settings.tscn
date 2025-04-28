@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bqlm2rsqt4crn"]
+[gd_scene load_steps=6 format=3 uid="uid://bqlm2rsqt4crn"]
 
 [ext_resource type="Script" uid="uid://ddyfg7et3b4av" path="res://settings.gd" id="1_8ym62"]
 [ext_resource type="Texture2D" uid="uid://dhs5rlbdm23nl" path="res://asset/art/minmax-ai.jpeg" id="2_37a8j"]
 [ext_resource type="Texture2D" uid="uid://b5c62fsc3wbw4" path="res://asset/UI/Back.png" id="3_sfvul"]
 [ext_resource type="Texture2D" uid="uid://b6o5c744rnjt" path="res://asset/UI/Music.png" id="4_brh15"]
+[ext_resource type="Texture2D" uid="uid://caifnlfmelihq" path="res://asset/art/Replay_BTN.png" id="5_sfvul"]
 
 [node name="Settings" type="Node2D"]
 script = ExtResource("1_8ym62")
@@ -42,7 +43,7 @@ metadata/_edit_lock_ = true
 
 [node name="settings_ui_text" type="Label" parent="Settings UI"]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.564706, 0, 1)
+theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 200
 text = "SETTINGS
 "
@@ -54,6 +55,7 @@ theme_override_constants/separation = 300
 
 [node name="music_text" type="Label" parent="Settings UI/music section"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_font_sizes/font_size = 150
 text = "Music"
 
@@ -61,5 +63,25 @@ text = "Music"
 layout_mode = 2
 icon = ExtResource("4_brh15")
 
+[node name="reset_button" type="Button" parent="."]
+offset_left = 583.0
+offset_top = 956.0
+offset_right = 681.0
+offset_bottom = 1054.0
+scale = Vector2(3, 3)
+icon = ExtResource("5_sfvul")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 86.0
+offset_top = 998.0
+offset_right = 574.0
+offset_bottom = 1205.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 110
+text = "Reset 
+Progress?"
+vertical_alignment = 1
+
 [connection signal="pressed" from="back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="Settings UI/music section/toggle_music" to="." method="_on_toggle_music_pressed"]
+[connection signal="pressed" from="reset_button" to="." method="_on_reset_button_pressed"]

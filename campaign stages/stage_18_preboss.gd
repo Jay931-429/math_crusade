@@ -627,9 +627,12 @@ func end_game() -> void:
 
 	# Wait for the dialogue to finish
 	await _wait_for_dialogue_finish()
+	
+	PlayerData.complete_stage(18)
 
 	# Transition to the after_stage scene
 	get_tree().change_scene_to_file("res://after_stage.tscn")
+	
 	
 # Helper function to wait for dialogue to finish
 func _wait_for_dialogue_finish() -> void:

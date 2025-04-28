@@ -24,6 +24,7 @@ config/icon="uid://cwwfbsu8a0bhu"
 AudioManager="*res://audio_manager.gd"
 ResponsiveLayout="*res://responsive_layout.gd"
 GameData="*res://game_data.gd"
+PlayerData="*res://PlayerData.gd"
 
 [display]
 

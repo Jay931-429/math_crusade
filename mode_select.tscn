@@ -54,6 +54,7 @@ flat = true
 icon_alignment = 1
 
 [node name="stages" type="Button" parent="CanvasLayer/Mode_Select_UI"]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 icon = ExtResource("5_gw0tt")
