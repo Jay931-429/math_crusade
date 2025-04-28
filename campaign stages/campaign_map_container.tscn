@@ -1,8 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://8qt2u2jf018p"]
+[gd_scene load_steps=26 format=3 uid="uid://8qt2u2jf018p"]
 
 [ext_resource type="Script" uid="uid://bllvsukw310mn" path="res://campaign stages/campaign_map_container.gd" id="1_7rd28"]
 [ext_resource type="Texture2D" uid="uid://b5c62fsc3wbw4" path="res://asset/UI/Back.png" id="1_qicr5"]
 [ext_resource type="Texture2D" uid="uid://byc5d0046dvgt" path="res://asset/art/MAP_2_2.png" id="2_7rd28"]
+[ext_resource type="Texture2D" uid="uid://b2capxdpvd4vu" path="res://asset/UI/Transparent.png" id="2_wrdu8"]
 [ext_resource type="Texture2D" uid="uid://dmxfl3qklw58l" path="res://asset/UI/imagy-splitted-images(1)/image1x1.png" id="4_m1x6p"]
 [ext_resource type="Texture2D" uid="uid://bipa3l0gouevv" path="res://asset/UI/imagy-splitted-images(1)/image2x1.png" id="5_87ehg"]
 [ext_resource type="Texture2D" uid="uid://dh2euf7lmfc0n" path="res://asset/UI/imagy-splitted-images(1)/image3x1.png" id="6_wrdu8"]
@@ -23,11 +24,29 @@
 [ext_resource type="Texture2D" uid="uid://dqhbpt84pnt3" path="res://asset/UI/imagy-splitted-images(1)/image4x3.png" id="21_bemo5"]
 [ext_resource type="Texture2D" uid="uid://bfpjvb7mjh8si" path="res://asset/UI/imagy-splitted-images(1)/image5x3.png" id="22_2n5fh"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wrdu8"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_detail = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tb7ny"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_color = Color(0.8, 0.8, 0.8, 0)
+
 [node name="CampaignMapContainer" type="Node2D"]
 top_level = true
 script = ExtResource("1_7rd28")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer"]
+offset_left = 304.0
+offset_top = 40.0
+offset_right = 2247.0
+offset_bottom = 627.0
+scale = Vector2(0.21, 0.15)
+texture = ExtResource("2_wrdu8")
+expand_mode = 1
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 modulate = Color(0.960938, 0.720703, 0, 1)
@@ -39,6 +58,7 @@ theme_override_font_sizes/font_size = 120
 text = "NUMERIA"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_lock_ = true
 
 [node name="back" type="Button" parent="CanvasLayer"]
 offset_left = 56.0
@@ -62,6 +82,8 @@ offset_right = -531.0
 offset_bottom = -391.0
 scale = Vector2(0.4, 0.4)
 theme_override_font_sizes/font_size = 80
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wrdu8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_tb7ny")
 icon = ExtResource("4_m1x6p")
 metadata/_edit_lock_ = true
 
@@ -72,6 +94,8 @@ offset_right = -722.812
 offset_bottom = -487.6
 scale = Vector2(0.4, 0.4)
 theme_override_font_sizes/font_size = 80
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wrdu8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_tb7ny")
 icon = ExtResource("5_87ehg")
 metadata/_edit_lock_ = true
 
@@ -83,6 +107,8 @@ offset_right = -603.986
 offset_bottom = -481.2
 scale = Vector2(0.4, 0.4)
 theme_override_font_sizes/font_size = 80
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wrdu8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_tb7ny")
 icon = ExtResource("6_wrdu8")
 metadata/_edit_lock_ = true
 
@@ -93,6 +119,8 @@ offset_right = -701.843
 offset_bottom = -372.4
 scale = Vector2(0.4, 0.4)
 theme_override_font_sizes/font_size = 80
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wrdu8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_tb7ny")
 icon = ExtResource("7_tb7ny")
 metadata/_edit_lock_ = true
 
@@ -103,6 +131,8 @@ offset_right = -576.027
 offset_bottom = -334.0
 scale = Vector2(0.4, 0.4)
 theme_override_font_sizes/font_size = 80
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wrdu8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_tb7ny")
 icon = ExtResource("8_msggt")
 metadata/_edit_lock_ = true
 
@@ -114,6 +144,8 @@ offset_right = -449.201
 offset_bottom = -295.6
 scale = Vector2(0.4, 0.4)
 theme_override_font_sizes/font_size = 80
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wrdu8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_tb7ny")
 icon = ExtResource("9_y2u6n")
 metadata/_edit_lock_ = true
 
@@ -124,6 +156,8 @@ offset_right = -596.997
 offset_bottom = -206.0
 scale = Vector2(0.4, 0.4)
 theme_override_font_sizes/font_size = 80
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wrdu8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_tb7ny")
 icon = ExtResource("10_8rqm2")
 metadata/_edit_lock_ = true
 
@@ -134,6 +168,8 @@ offset_right = -721.802
 offset_bottom = -154.8
 scale = Vector2(0.4, 0.4)
 theme_override_font_sizes/font_size = 80
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wrdu8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_tb7ny")
 icon = ExtResource("11_7tkfc")
 metadata/_edit_lock_ = true
 
@@ -145,6 +181,8 @@ offset_right = -679.864
 offset_bottom = -52.4
 scale = Vector2(0.4, 0.4)
 theme_override_font_sizes/font_size = 80
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wrdu8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_tb7ny")
 icon = ExtResource("12_uloqy")
 metadata/_edit_lock_ = true
 
@@ -155,6 +193,8 @@ offset_right = -260.478
 offset_bottom = 126.8
 scale = Vector2(0.4, 0.4)
 theme_override_font_sizes/font_size = 80
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wrdu8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_tb7ny")
 icon = ExtResource("13_auu4g")
 metadata/_edit_lock_ = true
 
@@ -165,6 +205,8 @@ offset_right = -197.57
 offset_bottom = 280.4
 scale = Vector2(0.4, 0.4)
 theme_override_font_sizes/font_size = 80
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wrdu8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_tb7ny")
 icon = ExtResource("14_6yapf")
 metadata/_edit_lock_ = true
 
@@ -176,6 +218,8 @@ offset_right = -56.7646
 offset_bottom = 161.6
 scale = Vector2(0.4, 0.4)
 theme_override_font_sizes/font_size = 80
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wrdu8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_tb7ny")
 icon = ExtResource("15_qfpql")
 metadata/_edit_lock_ = true
 
@@ -186,6 +230,8 @@ offset_right = 28.1228
 offset_bottom = 297.6
 scale = Vector2(0.4, 0.4)
 theme_override_font_sizes/font_size = 80
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wrdu8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_tb7ny")
 icon = ExtResource("16_jb74f")
 metadata/_edit_lock_ = true
 
@@ -196,6 +242,8 @@ offset_right = 187.877
 offset_bottom = 281.6
 scale = Vector2(0.4, 0.4)
 theme_override_font_sizes/font_size = 80
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wrdu8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_tb7ny")
 icon = ExtResource("17_ei7i4")
 metadata/_edit_lock_ = true
 
@@ -207,6 +255,8 @@ offset_right = 488.437
 offset_bottom = 478.4
 scale = Vector2(0.4, 0.4)
 theme_override_font_sizes/font_size = 80
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wrdu8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_tb7ny")
 icon = ExtResource("18_h1act")
 metadata/_edit_lock_ = true
 
@@ -217,6 +267,8 @@ offset_right = 395.549
 offset_bottom = 345.6
 scale = Vector2(0.4, 0.4)
 theme_override_font_sizes/font_size = 80
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wrdu8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_tb7ny")
 icon = ExtResource("19_w8ffb")
 metadata/_edit_lock_ = true
 
@@ -227,6 +279,8 @@ offset_right = 326.662
 offset_bottom = 216.0
 scale = Vector2(0.4, 0.4)
 theme_override_font_sizes/font_size = 80
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wrdu8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_tb7ny")
 icon = ExtResource("20_ifajt")
 metadata/_edit_lock_ = true
 
@@ -237,6 +291,8 @@ offset_right = 480.437
 offset_bottom = 243.2
 scale = Vector2(0.4, 0.4)
 theme_override_font_sizes/font_size = 80
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wrdu8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_tb7ny")
 icon = ExtResource("21_bemo5")
 metadata/_edit_lock_ = true
 
@@ -248,6 +304,8 @@ offset_right = 649.201
 offset_bottom = 206.4
 scale = Vector2(0.4, 0.4)
 theme_override_font_sizes/font_size = 80
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wrdu8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_tb7ny")
 icon = ExtResource("22_2n5fh")
 metadata/_edit_lock_ = true
 

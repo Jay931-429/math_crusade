@@ -14,28 +14,26 @@ func _on_back_main_menu_pressed() -> void:
 
 
 func _on_addition_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://math_tutorial/a_tutorial.tscn")
 
 
 func _on_subtraction_pressed() -> void:
-	pass # Replace with function body.
-
+	get_tree().change_scene_to_file("res://math_tutorial/s_tutorial.tscn")
 
 func _on_multiplication_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://math_tutorial/m_tutorial.tscn")
 
 
 func _on_division_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://math_tutorial/d_tutorial.tscn")
 
 
 func _on_exponent_pressed() -> void:
-	pass # Replace with function body.
-
+	get_tree().change_scene_to_file("res://math_tutorial/e_tutorial.tscn")
 
 func _on_pemdas_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://math_tutorial/p_tutorial.tscn")
 
 
 func _on_gameplay_pressed() -> void:
-	get_tree().change_scene_to_file("rres://campaign stages/gameplay_tutorial.tscn")
+	get_tree().change_scene_to_file("res://campaign stages/gameplay_tutorial.tscn")

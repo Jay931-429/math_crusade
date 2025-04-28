@@ -1036,6 +1036,7 @@ scale = Vector2(0.478261, 0.481675)
 texture = ExtResource("34_vgd5b")
 
 [node name="wizard" type="Sprite2D" parent="DialogueBox"]
+modulate = Color(0.0703125, 0.97821, 1, 1)
 position = Vector2(193.25, 192)
 scale = Vector2(0.831055, 0.727539)
 texture = ExtResource("35_p4cfk")

@@ -8,6 +8,7 @@
 script = ExtResource("1_5otvr")
 
 [node name="Stage_BG" type="TextureRect" parent="."]
+modulate = Color(0.38, 0.38, 0.38, 1)
 anchors_preset = -1
 anchor_left = -12.975
 anchor_top = -23.375
@@ -19,43 +20,42 @@ texture = ExtResource("1_itm6u")
 metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
-[node name="backbutton" type="Button" parent="Stage_BG"]
-layout_mode = 0
-offset_left = 69.0
-offset_top = 1582.0
-offset_right = 401.0
-offset_bottom = 1913.0
-scale = Vector2(0.7, 0.7)
+[node name="backbutton" type="Button" parent="."]
+offset_left = 64.0
+offset_top = 1616.0
+offset_right = 396.0
+offset_bottom = 1947.0
+scale = Vector2(0.5, 0.5)
 size_flags_vertical = 8
 icon = ExtResource("3_b7bnf")
 
 [node name="Label" type="Label" parent="."]
-offset_left = 232.0
-offset_top = 150.0
-offset_right = 883.0
-offset_bottom = 411.0
-theme_override_colors/font_color = Color(1, 0, 0, 1)
+offset_left = 217.0
+offset_top = 328.0
+offset_right = 868.0
+offset_bottom = 589.0
+theme_override_colors/font_color = Color(1, 0.585938, 0, 1)
 theme_override_font_sizes/font_size = 200
 text = "THE END"
 horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="."]
-offset_left = -32.0
-offset_top = 294.0
-offset_right = 1149.0
-offset_bottom = 423.0
-theme_override_colors/font_color = Color(1, 0, 0, 1)
+offset_left = -47.0
+offset_top = 472.0
+offset_right = 1134.0
+offset_bottom = 601.0
+theme_override_colors/font_color = Color(1, 0.585938, 0, 1)
 theme_override_font_sizes/font_size = 120
 text = "tHANKS FOR PLAYING!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label3" type="Label" parent="."]
-offset_left = -40.0
-offset_top = 526.0
-offset_right = 1141.0
-offset_bottom = 749.0
-theme_override_colors/font_color = Color(1, 0, 0, 1)
+offset_left = -48.0
+offset_top = 704.0
+offset_right = 1133.0
+offset_bottom = 927.0
+theme_override_colors/font_color = Color(1, 0.585938, 0, 1)
 theme_override_font_sizes/font_size = 110
 text = "Math Crusades: 
 A Pemdas based game"
@@ -63,11 +63,11 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label4" type="Label" parent="."]
-offset_left = -57.0
-offset_top = 760.0
-offset_right = 1124.0
-offset_bottom = 1282.0
-theme_override_colors/font_color = Color(1, 0, 0, 1)
+offset_left = -40.0
+offset_top = 944.0
+offset_right = 1141.0
+offset_bottom = 1466.0
+theme_override_colors/font_color = Color(1, 0.585938, 0, 1)
 theme_override_font_sizes/font_size = 110
 text = "bY:
 jULES rvin lopez
@@ -77,4 +77,4 @@ ic jadulos"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="Stage_BG/backbutton" to="." method="_on_backbutton_pressed"]
+[connection signal="pressed" from="backbutton" to="." method="_on_backbutton_pressed"]

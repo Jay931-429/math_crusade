@@ -758,13 +758,15 @@ func _on_typewriter_timer_timeout():
 	
 	
 func play_video(video_path: String) -> void:
+	AudioManager.background_music_player.volume_db = -80 # Mute (almost silent)
 	var video_player = VideoStreamPlayer.new()
 	add_child(video_player)
 	video_player.stream = load(video_path)
 	video_player.play()
 	video_player.finished.connect(_on_video_finished.bind(video_player))
-
+#
 func _on_video_finished(video_player):
+	AudioManager.background_music_player.volume_db = 0 # Restore to 0 dB (normal volume)
 	video_player.queue_free() # Remove video player
 	dialogue_index += 1 # Advance dialogue
 	display_dialogue() # Resume dialogue

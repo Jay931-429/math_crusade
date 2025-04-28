@@ -1,0 +1,61 @@
+[gd_scene load_steps=4 format=3 uid="uid://d28ub5p6t6532"]
+
+[ext_resource type="Script" uid="uid://1btyfpj3p6hs" path="res://math_tutorial/a_tutorial.gd" id="1_6mh05"]
+[ext_resource type="Texture2D" uid="uid://cq4dr0anxd2vo" path="res://asset/art/minmax-ai3.jpeg" id="2_jl6oi"]
+[ext_resource type="Texture2D" uid="uid://b5c62fsc3wbw4" path="res://asset/UI/Back.png" id="3_2xt4f"]
+
+[node name="m_tutorial" type="Node2D"]
+script = ExtResource("1_6mh05")
+
+[node name="Stage_BG" type="TextureRect" parent="."]
+modulate = Color(0.24, 0.24, 0.24, 1)
+anchors_preset = -1
+anchor_left = -12.975
+anchor_top = -23.375
+anchor_right = -12.975
+anchor_bottom = -23.375
+offset_right = 1080.0
+offset_bottom = 1912.0
+texture = ExtResource("2_jl6oi")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = 40.0
+offset_top = 298.0
+offset_right = 1049.0
+offset_bottom = 455.0
+theme_override_colors/font_color = Color(0.996094, 0.638913, 0.0817108, 1)
+theme_override_font_sizes/font_size = 170
+text = "Multiplication"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 144.0
+offset_top = 480.0
+offset_right = 968.0
+offset_bottom = 1600.0
+theme_override_font_sizes/normal_font_size = 75
+bbcode_enabled = true
+text = "Multiplication is repeated addition.
+
+Example:
+4 × 3 = 12 (4 + 4 + 4)
+
+Important Rules:
+- Order doesn't matter: 4 × 3 = 3 × 4
+- Anything times 0 is 0.
+- Anything times 1 stays the same.
+
+Practice Tip:
+Memorize your times tables!"
+
+[node name="backbutton" type="Button" parent="."]
+offset_left = 58.0
+offset_top = 1686.0
+offset_right = 390.0
+offset_bottom = 2017.0
+scale = Vector2(0.5, 0.5)
+size_flags_vertical = 8
+icon = ExtResource("3_2xt4f")
+
+[connection signal="pressed" from="backbutton" to="." method="_on_backbutton_pressed"]
