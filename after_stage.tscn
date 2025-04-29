@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ckwms6hu7db6t" path="res://after_stage.gd" id="1_4ocfc"]
 [ext_resource type="Texture2D" uid="uid://dhcdkokk2w3px" path="res://asset/art/stage_clear_-_failed_gui1.png" id="2_gn5vl"]
-[ext_resource type="Texture2D" uid="uid://c4bop8t3m7ugh" path="res://asset/art/256x256 Pixel Textures/256x256/256_Checkered 01.png" id="2_j2cbo"]
+[ext_resource type="Texture2D" uid="uid://c4bop8t3m7ugh" path="res://asset/art/256_Checkered 01.png" id="2_xpv0c"]
 [ext_resource type="FontFile" uid="uid://ee0yrhutnoks" path="res://asset/font/ThaleahFat.ttf" id="3_g6jej"]
 [ext_resource type="Texture2D" uid="uid://cs7jejrn3fh6w" path="res://asset/art/stage_clear_-_failed_gui2.png" id="3_j2cbo"]
 [ext_resource type="Texture2D" uid="uid://caifnlfmelihq" path="res://asset/art/Replay_BTN.png" id="3_nj2d6"]
@@ -116,7 +116,7 @@ script = ExtResource("1_4ocfc")
 [node name="Main_Menu_BG" type="TextureRect" parent="."]
 offset_right = 1078.0
 offset_bottom = 1918.0
-texture = ExtResource("2_j2cbo")
+texture = ExtResource("2_xpv0c")
 expand_mode = 1
 metadata/_edit_lock_ = true
 

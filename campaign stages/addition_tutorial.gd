@@ -586,6 +586,7 @@ func show_end_stage_dialogue() -> void:
 	display_dialogue()
 
 func end_game() -> void:
+	PlayerData.complete_stage(1) # Tell the system Stage 1 is done
 	timer_active = false
 	var player_won = score >= target_score && current_hp > 0
 
@@ -604,9 +605,6 @@ func end_game() -> void:
 
 	# Wait for the dialogue to finish
 	await _wait_for_dialogue_finish()
-	
-	PlayerData.complete_stage(1) # Tell the system Stage 1 is done
-
 	# Transition to the after_stage scene
 	get_tree().change_scene_to_file("res://after_stage.tscn")
 	
