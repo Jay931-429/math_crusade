@@ -1,0 +1,61 @@
+[gd_scene load_steps=4 format=3 uid="uid://c107yukwr5rfr"]
+
+[ext_resource type="Script" uid="uid://1btyfpj3p6hs" path="res://math_tutorial/a_tutorial.gd" id="1_lvqo0"]
+[ext_resource type="Texture2D" uid="uid://cq4dr0anxd2vo" path="res://asset/art/minmax-ai3.jpeg" id="2_dl7wf"]
+[ext_resource type="Texture2D" uid="uid://b5c62fsc3wbw4" path="res://asset/UI/Back.png" id="3_tffam"]
+
+[node name="d_tutorial" type="Node2D"]
+script = ExtResource("1_lvqo0")
+
+[node name="Stage_BG" type="TextureRect" parent="."]
+modulate = Color(0.24, 0.24, 0.24, 1)
+anchors_preset = -1
+anchor_left = -12.975
+anchor_top = -23.375
+anchor_right = -12.975
+anchor_bottom = -23.375
+offset_right = 1080.0
+offset_bottom = 1912.0
+texture = ExtResource("2_dl7wf")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = 232.0
+offset_top = 272.0
+offset_right = 845.0
+offset_bottom = 456.0
+theme_override_colors/font_color = Color(0.996094, 0.638913, 0.0817108, 1)
+theme_override_font_sizes/font_size = 200
+text = "Division"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 144.0
+offset_top = 480.0
+offset_right = 968.0
+offset_bottom = 1600.0
+theme_override_font_sizes/normal_font_size = 75
+bbcode_enabled = true
+text = "Division means splitting into equal parts.
+
+Example:
+12 ÷ 4 = 3
+
+Important Rules:
+- Order matters: 12 ÷ 4 ≠ 4 ÷ 12
+- Dividing by 1 keeps the number the same.
+- Cannot divide by 0.
+
+Practice Tip:
+Use multiplication backwards to check."
+
+[node name="backbutton" type="Button" parent="."]
+offset_left = 58.0
+offset_top = 1686.0
+offset_right = 390.0
+offset_bottom = 2017.0
+scale = Vector2(0.5, 0.5)
+size_flags_vertical = 8
+icon = ExtResource("3_tffam")
+
+[connection signal="pressed" from="backbutton" to="." method="_on_backbutton_pressed"]

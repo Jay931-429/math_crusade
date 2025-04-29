@@ -35,7 +35,7 @@
 [ext_resource type="Texture2D" uid="uid://blwpegxj3nxiy" path="res://asset/npc/usedportraits/CLOAK-4 .png" id="34_nmmxe"]
 [ext_resource type="Texture2D" uid="uid://cjdfnsdc3c01c" path="res://asset/npc/free_character_1_20_cogabushi/character/normal/A_534235.png" id="35_nah28"]
 [ext_resource type="Texture2D" uid="uid://4lpfjpnhoeqr" path="res://asset/npc/usedportraits/wabbajack12.png" id="35_qmp6j"]
-[ext_resource type="VideoStream" uid="uid://ysu834o6bfb" path="res://asset/video/Ending Cutscene2.ogv" id="39_2wtlq"]
+[ext_resource type="VideoStream" uid="uid://b7pde7xm1jewk" path="res://asset/video/aspose_video_133896895066492131_out.ogv" id="36_nah28"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_no15u"]
 atlas = ExtResource("20_nah28")
@@ -1376,7 +1376,7 @@ one_shot = true
 visible = false
 offset_right = 1076.0
 offset_bottom = 799.0
-stream = ExtResource("39_2wtlq")
+stream = ExtResource("36_nah28")
 expand = true
 
 [connection signal="pressed" from="Number_Button/num_row_123/one" to="." method="_on_one_pressed"]

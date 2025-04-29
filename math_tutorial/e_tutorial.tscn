@@ -1,0 +1,61 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwfapx1j7vo35"]
+
+[ext_resource type="Script" uid="uid://1btyfpj3p6hs" path="res://math_tutorial/a_tutorial.gd" id="1_tnfje"]
+[ext_resource type="Texture2D" uid="uid://cq4dr0anxd2vo" path="res://asset/art/minmax-ai3.jpeg" id="2_rxrlr"]
+[ext_resource type="Texture2D" uid="uid://b5c62fsc3wbw4" path="res://asset/UI/Back.png" id="3_hpv1e"]
+
+[node name="e_tutorial" type="Node2D"]
+script = ExtResource("1_tnfje")
+
+[node name="Stage_BG" type="TextureRect" parent="."]
+modulate = Color(0.24, 0.24, 0.24, 1)
+anchors_preset = -1
+anchor_left = -12.975
+anchor_top = -23.375
+anchor_right = -12.975
+anchor_bottom = -23.375
+offset_right = 1080.0
+offset_bottom = 1912.0
+texture = ExtResource("2_rxrlr")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = 104.0
+offset_top = 280.0
+offset_right = 992.0
+offset_bottom = 464.0
+theme_override_colors/font_color = Color(0.996094, 0.638913, 0.0817108, 1)
+theme_override_font_sizes/font_size = 200
+text = "Exponents"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 144.0
+offset_top = 480.0
+offset_right = 968.0
+offset_bottom = 1600.0
+theme_override_font_sizes/normal_font_size = 75
+bbcode_enabled = true
+text = "Exponents mean repeated multiplication of the same number.
+
+Example:
+2^3 = 2 × 2 × 2 = 8
+
+Important Rules:
+- Any number to the power of 1 is itself.
+- Any number to the power of 0 is 1.
+- Exponents are not multiplication.
+
+Practice Tip:
+Read it as \"2 to the 3rd power."
+
+[node name="backbutton" type="Button" parent="."]
+offset_left = 58.0
+offset_top = 1686.0
+offset_right = 390.0
+offset_bottom = 2017.0
+scale = Vector2(0.5, 0.5)
+size_flags_vertical = 8
+icon = ExtResource("3_hpv1e")
+
+[connection signal="pressed" from="backbutton" to="." method="_on_backbutton_pressed"]

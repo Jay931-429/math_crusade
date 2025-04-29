@@ -601,7 +601,7 @@ func show_end_stage_dialogue() -> void:
 			{"name": "hBuddy", "text": "(Ahem)"},
 			{"name": "buddy", "text": "Next, is we need to look for Division!"},
 			{"name": "hBuddy", "text": "But,I think for now, we should get out of here."},
-			{"name": "Buddy", "text": "According to my map, there is a town nearby."},
+			{"name": "Buddy", "text": "According to my map, there is a village nearby."},
 			{"name": "Buddy", "text": "We should stop by there to take a rest and resupply."},
 			{"name": "Teacher", "text": "Sounds Good."},
 			{"name": "Teacher", "text": "Let's Go!, I'll lead the way."},

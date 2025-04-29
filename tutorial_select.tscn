@@ -1,13 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://cm3w56bl32p1j"]
+[gd_scene load_steps=5 format=3 uid="uid://cm3w56bl32p1j"]
 
 [ext_resource type="Script" uid="uid://dyqr4nl3mc7d2" path="res://tutorial_select.gd" id="1_1x41d"]
 [ext_resource type="Texture2D" uid="uid://dhs5rlbdm23nl" path="res://asset/art/minmax-ai.jpeg" id="2_262x3"]
 [ext_resource type="Texture2D" uid="uid://b5c62fsc3wbw4" path="res://asset/UI/Back.png" id="7_ofawt"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_obuhl"]
+bg_color = Color(0.601563, 0.422974, 0, 1)
+border_color = Color(0.601563, 0.422974, 0, 1)
+
 [node name="tutorial_select" type="Node2D"]
 script = ExtResource("1_1x41d")
 
 [node name="Main_BG" type="TextureRect" parent="."]
+modulate = Color(0.52, 0.52, 0.52, 1)
 anchors_preset = -1
 anchor_left = -12.975
 anchor_top = -23.375
@@ -37,37 +42,44 @@ metadata/_edit_group_ = true
 
 [node name="Gameplay" type="Button" parent="CanvasLayer/Mode_Select_UI"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 70
+theme_override_font_sizes/font_size = 90
+theme_override_styles/normal = SubResource("StyleBoxFlat_obuhl")
 text = "GAMEPLAY"
 
 [node name="Addition" type="Button" parent="CanvasLayer/Mode_Select_UI"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 70
+theme_override_font_sizes/font_size = 90
+theme_override_styles/normal = SubResource("StyleBoxFlat_obuhl")
 text = "ADDITION"
 
 [node name="Subtraction" type="Button" parent="CanvasLayer/Mode_Select_UI"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 90
+theme_override_styles/normal = SubResource("StyleBoxFlat_obuhl")
 text = "SUBTRACTION"
 
 [node name="Multiplication" type="Button" parent="CanvasLayer/Mode_Select_UI"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 70
+theme_override_font_sizes/font_size = 90
+theme_override_styles/normal = SubResource("StyleBoxFlat_obuhl")
 text = "MULTIPLICATION"
 
 [node name="Division" type="Button" parent="CanvasLayer/Mode_Select_UI"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 70
+theme_override_font_sizes/font_size = 90
+theme_override_styles/normal = SubResource("StyleBoxFlat_obuhl")
 text = "DIVISION"
 
 [node name="Exponent" type="Button" parent="CanvasLayer/Mode_Select_UI"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 80
+theme_override_font_sizes/font_size = 90
+theme_override_styles/normal = SubResource("StyleBoxFlat_obuhl")
 text = "EXPONENT"
 
 [node name="PEMDAS" type="Button" parent="CanvasLayer/Mode_Select_UI"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 70
+theme_override_font_sizes/font_size = 90
+theme_override_styles/normal = SubResource("StyleBoxFlat_obuhl")
 text = "PEMDAS"
 
 [node name="BackMainMenu" type="Button" parent="."]
@@ -80,14 +92,21 @@ icon = ExtResource("7_ofawt")
 flat = true
 
 [node name="select_tutorial_plceholder" type="Label" parent="."]
-offset_left = 71.0
+offset_left = 41.0
 offset_top = 452.0
-offset_right = 1088.0
+offset_right = 1058.0
 offset_bottom = 562.0
-theme_override_colors/font_color = Color(0.835718, 1.73271e-06, 4.81307e-07, 1)
+theme_override_colors/font_color = Color(1, 0.585938, 0, 1)
 theme_override_font_sizes/font_size = 120
 text = "SELECT TUTORIAL"
 horizontal_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 52.0
+offset_top = 428.0
+offset_right = 1020.0
+offset_bottom = 1638.0
+bbcode_enabled = true
 
 [connection signal="pressed" from="CanvasLayer/Mode_Select_UI/Gameplay" to="." method="_on_gameplay_pressed"]
 [connection signal="pressed" from="CanvasLayer/Mode_Select_UI/Addition" to="." method="_on_addition_pressed"]
