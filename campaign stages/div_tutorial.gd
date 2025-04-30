@@ -542,6 +542,8 @@ func show_feedback_dialogue(dialogue_data) -> void:
 		
 func show_end_stage_dialogue() -> void:
 	var player_won = score >= target_score && current_hp > 0
+	var survived_all = GameData.get_results_data().get("survived_all", false)
+	
 
 	if player_won:
 		current_dialogue = [
@@ -560,10 +562,17 @@ func show_end_stage_dialogue() -> void:
 			{"name": "Teacher", "text": "We can't proceed without those they have stolen. We'll have to track them down."},
 			{"name": "Buddy", "text": "Right! They won't get away with this. Let's follow their tracks!"}
 		]
-	else:
+	elif survived_all:
 		current_dialogue = [
-			{"name": "Buddy", "text": "Hey Bud? Hey! Are you OK?"},
-			{"name": "Buddy", "text": "Time for us to get out of here, i suppose."}
+			{"name": "Buddy", "text": "You made it to the end..."},
+			{"name": "Teacher", "text": "But we didn't get enough correct answers..."},
+			{"name": "Buddy", "text": "Let's try again and push a little harder next time!"}
+		]
+	else:
+		# died by HP loss
+		current_dialogue = [
+			{"name": "Buddy", "text": "Hey Bud? Hey! Wake Up!"},
+			{"name": "Buddy", "text": "Damn It!"}
 		]
 
 	dialogue_active = true
@@ -573,7 +582,8 @@ func show_end_stage_dialogue() -> void:
 
 func end_game() -> void:
 	timer_active = false
-	var player_won = score >= target_score && current_hp > 0
+	var survived_all = total_problems >= max_problems and current_hp > 0
+	var player_won = score >= target_score and survived_all
 
 	GameData.set_results_data({
 		"player_score": score,
@@ -582,8 +592,12 @@ func end_game() -> void:
 		"current_stage": current_stage_path,
 		"next_stage": next_stage_path if player_won else "",
 		"remaining_hp": current_hp,
-		"max_hp": max_hp
+		"max_hp": max_hp,
+		"survived_all": survived_all
 	})
+
+# Save for UI
+	GameData.player_survived_but_failed = survived_all and not player_won
 
 	# Show the end stage dialogue
 	show_end_stage_dialogue()
@@ -591,7 +605,9 @@ func end_game() -> void:
 	# Wait for the dialogue to finish
 	await _wait_for_dialogue_finish()
 	
-	PlayerData.complete_stage(10)
+	# Only unlock next stage if player won
+	if player_won:
+		PlayerData.complete_stage(10)  # or 19 or current stage ID
 
 	# Transition to the after_stage scene
 	get_tree().change_scene_to_file("res://after_stage.tscn")

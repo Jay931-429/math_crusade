@@ -291,15 +291,15 @@ func _on_continue_button_pressed() -> void:
 		# Text is fully shown — move to next line
 		next_dialogue()
 
-#func show_time_up_dialogue():
-	## Define the dialogue lines for running out of time
-	## You can have one or more characters speak
-	#current_dialogue = [
+func show_time_up_dialogue():
+	# Define the dialogue lines for running out of time
+	# You can have one or more characters speak
+	current_dialogue = [
 		#{"name": "Buddy", "text": "Hey, You Good?"},
 		#{"name": "Buddy", "text": "Come on bud, Stay Alert!"}
 		# Or just one speaker:
-		# {"name": "Teacher", "text": "Time's up! You need to answer faster."}
-	#]
+		{"name": "Teacher", "text": "Time's up! You need to answer faster."}
+	]
 
 	# --- Activate the dialogue system ---
 	dialogue_active = true

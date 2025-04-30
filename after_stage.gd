@@ -47,21 +47,24 @@ func setup_ui() -> void:
 		star3.visible = true
 
 		score_label.text = "Score: " + str(player_score)
+	elif player_won:
+		result_label.text = "You Win!"
+		win_sprite.visible = true
+		lose_sprite.visible = false
+		next_stage_button.visible = (next_stage != "")
+		setup_stars()
 	else:
-		if player_won:
-			result_label.text = "You Win!"
-			win_sprite.visible = true
-			lose_sprite.visible = false
-			next_stage_button.visible = (next_stage != "")
-			setup_stars()
+		if GameData.player_survived_but_failed:
+			result_label.text = "You Survived...\nBut Didn't Pass"
 		else:
 			result_label.text = "Game Over"
-			win_sprite.visible = false
-			lose_sprite.visible = true
-			next_stage_button.visible = false
-			star1.visible = false
-			star2.visible = false
-			star3.visible = false
+
+		win_sprite.visible = false
+		lose_sprite.visible = true
+		next_stage_button.visible = false
+		star1.visible = false
+		star2.visible = false
+		star3.visible = false
 
 		score_label.text = "Final Score: " + str(player_score)
 

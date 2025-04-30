@@ -45,6 +45,8 @@ var stage_order = [
 # Dictionary to track stage progress
 var stage_progress = {}
 
+var player_survived_but_failed: bool = false
+
 func _ready() -> void:
 	load_data()
 	# Initialize stage_progress dynamically from stage_order if not loaded

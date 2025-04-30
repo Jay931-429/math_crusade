@@ -16,7 +16,6 @@ var endless_mode_unlocked: bool = false
 func _ready():
 	# Load progress when the game starts
 	load_progress()
-	load_progress()
 	load_endless_score()
 	load_unlock_state()
 

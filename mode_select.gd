@@ -1,7 +1,9 @@
 extends Node2D
 
 @onready var endless_score_label = $EndlessScoreLabel
-@onready var endless_button = $custom_stage
+@onready var endless_button = $CanvasLayer/Mode_Select_UI/custom_stage
+@onready var endlabel = $endLabel
+
 
 
 # Called when the node enters the scene tree for the first time.
@@ -14,10 +16,12 @@ func _ready() -> void:
 		endless_score_label.visible = true
 		#endless_lock_icon.visible = false
 		endless_score_label.text = str(PlayerData.endless_high_score)
+		endlabel.visible = true
 	else:
 		endless_button.disabled = true
 		endless_score_label.visible = false
 		#endless_lock_icon.visible = true
+		endlabel.visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

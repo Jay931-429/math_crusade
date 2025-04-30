@@ -531,6 +531,8 @@ func show_feedback_dialogue(dialogue_data) -> void:
 
 func show_end_stage_dialogue() -> void:
 	var player_won = score >= target_score && current_hp > 0
+	var survived_all = GameData.get_results_data().get("survived_all", false)
+
 
 	if player_won:
 		current_dialogue = [
@@ -541,6 +543,10 @@ func show_end_stage_dialogue() -> void:
 			{"name": "Teacher", "text": "I received a message from the King."},
 			{"name": "Teacher", "text": "You are to report to him immediately!"},
 			{"name": "Buddy", "text": "Understood, I'll be on my way!"}
+		]
+	elif survived_all:
+		current_dialogue = [
+			{"name": "Teacher", "text": "Let's try again and push a little harder next time!"}
 		]
 	else:
 		current_dialogue = [
@@ -555,7 +561,8 @@ func show_end_stage_dialogue() -> void:
 
 func end_game() -> void:
 	timer_active = false
-	var player_won = score >= target_score && current_hp > 0
+	var survived_all = total_problems >= max_problems and current_hp > 0
+	var player_won = score >= target_score and survived_all
 
 	GameData.set_results_data({
 		"player_score": score,
@@ -564,8 +571,12 @@ func end_game() -> void:
 		"current_stage": current_stage_path,
 		"next_stage": next_stage_path if player_won else "",
 		"remaining_hp": current_hp,
-		"max_hp": max_hp
+		"max_hp": max_hp,
+		"survived_all": survived_all
 	})
+
+# Save for UI
+	GameData.player_survived_but_failed = survived_all and not player_won
 
 	# Show the end stage dialogue
 	show_end_stage_dialogue()
