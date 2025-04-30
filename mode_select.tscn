@@ -85,7 +85,29 @@ offset_right = 1089.58
 offset_bottom = 724.365
 texture = ExtResource("8_uod75")
 
+[node name="EndlessScoreLabel" type="Label" parent="."]
+offset_left = 848.0
+offset_top = 1720.0
+offset_right = 973.0
+offset_bottom = 1904.0
+theme_override_colors/font_color = Color(0.996094, 0.638913, 0.0817108, 1)
+theme_override_font_sizes/font_size = 200
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="."]
+modulate = Color(0.996094, 0.638913, 0.0817108, 1)
+offset_left = 768.0
+offset_top = 1640.0
+offset_right = 1053.0
+offset_bottom = 1753.0
+theme_override_font_sizes/font_size = 60
+text = "Endless
+High Score:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="pressed" from="CanvasLayer/Mode_Select_UI/tutorial" to="." method="_on_tutorial_pressed"]
 [connection signal="pressed" from="CanvasLayer/Mode_Select_UI/campaign" to="." method="_on_campaign_pressed"]
 [connection signal="pressed" from="CanvasLayer/Mode_Select_UI/stages" to="." method="_on_stages_pressed"]
+[connection signal="pressed" from="CanvasLayer/Mode_Select_UI/custom_stage" to="." method="_on_custom_stage_pressed"]
 [connection signal="pressed" from="BackMainMenu" to="." method="_on_back_main_menu_pressed"]

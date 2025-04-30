@@ -3,14 +3,22 @@ extends Node
 
 # Path to save the player's progress
 const SAVE_PATH = "user://player_progress.sav"
+const ENDLESS_SAVE_PATH = "user://endless_high_score.sav"
+const UNLOCK_SAVE_PATH = "user://unlock_data.sav"
 
 # Variable to store the highest stage the player has unlocked.
 # Starts at 1, meaning Stage 1 is unlocked by default.
 var highest_stage_unlocked: int = 1
 
+var endless_high_score: int = 0
+var endless_mode_unlocked: bool = false
+
 func _ready():
 	# Load progress when the game starts
 	load_progress()
+	load_progress()
+	load_endless_score()
+	load_unlock_state()
 
 # Call this function from your stage scene when the player successfully completes it
 func complete_stage(stage_number: int):
@@ -19,6 +27,11 @@ func complete_stage(stage_number: int):
 		highest_stage_unlocked += 1
 		save_progress()
 		print("Unlocked stage: ", highest_stage_unlocked) # Optional: for debugging
+		# Unlock Endless Mode if Stage 19 is completed
+		
+	if stage_number >= 19:
+		endless_mode_unlocked = true
+		save_unlock_state()
 
 func save_progress():
 	# Use FileAccess to save the variable
@@ -63,3 +76,33 @@ func reset_progress():
 	save_progress()
 	print("Progress reset.")
 	
+	
+func save_endless_score(score: int) -> void:
+	if score > endless_high_score:
+		endless_high_score = score
+		var file = FileAccess.open(ENDLESS_SAVE_PATH, FileAccess.WRITE)
+		if file:
+			file.store_var(endless_high_score)
+			print("New endless high score saved: ", endless_high_score)
+
+func load_endless_score() -> void:
+	if FileAccess.file_exists(ENDLESS_SAVE_PATH):
+		var file = FileAccess.open(ENDLESS_SAVE_PATH, FileAccess.READ)
+		if file:
+			endless_high_score = file.get_var()
+			print("Loaded endless high score: ", endless_high_score)
+	else:
+		endless_high_score = 0
+
+func save_unlock_state():
+	var file = FileAccess.open(UNLOCK_SAVE_PATH, FileAccess.WRITE)
+	if file:
+		file.store_var(endless_mode_unlocked)
+
+func load_unlock_state():
+	if FileAccess.file_exists(UNLOCK_SAVE_PATH):
+		var file = FileAccess.open(UNLOCK_SAVE_PATH, FileAccess.READ)
+		if file:
+			endless_mode_unlocked = file.get_var()
+	else:
+		endless_mode_unlocked = false

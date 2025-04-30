@@ -17,6 +17,7 @@ var max_score: int
 var player_won: bool
 var current_stage: String
 var next_stage: String
+var is_endless: bool = false  # Add at top
 
 func _ready() -> void:
 	# Load data from GameData
@@ -27,6 +28,7 @@ func _ready() -> void:
 	current_stage = data.current_stage
 	# Get next stage dynamically
 	next_stage = GameData.get_next_stage(current_stage)
+	is_endless = data.has("is_endless") and data.is_endless  # NEW
 	# Setup UI
 	setup_ui()
 	# Play appropriate music
@@ -34,27 +36,34 @@ func _ready() -> void:
 	
 func setup_ui() -> void:
 	# Set result message
-	if player_won:
-		result_label.text = "You Win!"
+	if is_endless:
+		result_label.text = "Run Ended"
 		win_sprite.visible = true
 		lose_sprite.visible = false
-		next_stage_button.visible = (next_stage != "")
-		
-		# Setup stars based on score
-		setup_stars()
-	else:
-		result_label.text = "Game Over"
-		win_sprite.visible = false
-		lose_sprite.visible = true
 		next_stage_button.visible = false
-		
-		# Hide all stars when player loses
-		star1.visible = false
-		star2.visible = false
-		star3.visible = false
-	
-	# Set score display
-	score_label.text = "Final Score: " + str(player_score)
+
+		star1.visible = true
+		star2.visible = true
+		star3.visible = true
+
+		score_label.text = "Score: " + str(player_score)
+	else:
+		if player_won:
+			result_label.text = "You Win!"
+			win_sprite.visible = true
+			lose_sprite.visible = false
+			next_stage_button.visible = (next_stage != "")
+			setup_stars()
+		else:
+			result_label.text = "Game Over"
+			win_sprite.visible = false
+			lose_sprite.visible = true
+			next_stage_button.visible = false
+			star1.visible = false
+			star2.visible = false
+			star3.visible = false
+
+		score_label.text = "Final Score: " + str(player_score)
 
 func setup_stars() -> void:
 	# Calculate score percentage
@@ -110,6 +119,8 @@ func play_result_music() -> void:
 	
 	# Play appropriate music with fade effect
 	if player_won:
+		AudioManager.fade_to_track("victory", 1.0)
+	elif is_endless:
 		AudioManager.fade_to_track("victory", 1.0)
 	else:
 		AudioManager.fade_to_track("game_over", 1.0)

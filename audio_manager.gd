@@ -20,7 +20,8 @@ var music_tracks = {
 	"stage6": preload("res://asset/music/medieval-epic-adventure-action-heroic-powerful-opener-intro-117935.mp3"),
 	"fboss": preload("res://asset/music/Final Boss.mp3"),
 	"game_over": preload("res://asset/music/Game Over-Sibsonic.mp3"),
-	"victory": preload("res://asset/music/Victory.wav")
+	"victory": preload("res://asset/music/Victory.wav"),
+	"endless": preload("res://asset/music/cyberpunk-electro-house-281094.mp3")
 	# Add more BGM tracks as needed
 }
 

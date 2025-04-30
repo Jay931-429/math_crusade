@@ -1,9 +1,23 @@
 extends Node2D
 
+@onready var endless_score_label = $EndlessScoreLabel
+@onready var endless_button = $custom_stage
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	AudioManager.change_music("menu")
+	endless_score_label.text = str(PlayerData.endless_high_score)
+	
+	if PlayerData.endless_mode_unlocked:
+		endless_button.disabled = false
+		endless_score_label.visible = true
+		#endless_lock_icon.visible = false
+		endless_score_label.text = str(PlayerData.endless_high_score)
+	else:
+		endless_button.disabled = true
+		endless_score_label.visible = false
+		#endless_lock_icon.visible = true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -27,3 +41,7 @@ func _on_stages_pressed() -> void:
 func _on_tutorial_pressed() -> void:
 	pass
 	get_tree().change_scene_to_file("res://tutorial_select.tscn")
+
+
+func _on_custom_stage_pressed() -> void:
+	get_tree().change_scene_to_file("res://campaign stages/endless.tscn")
