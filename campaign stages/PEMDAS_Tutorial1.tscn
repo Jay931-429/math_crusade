@@ -1039,8 +1039,8 @@ texture = ExtResource("34_og8n5")
 
 [node name="wizard" type="Sprite2D" parent="DialogueBox"]
 modulate = Color(0.503906, 0.872101, 1, 1)
-position = Vector2(193.25, 192)
-scale = Vector2(0.435, 0.431)
+position = Vector2(193.25, 194.679)
+scale = Vector2(0.435, 0.438013)
 texture = ExtResource("35_r6ow3")
 
 [node name="NameLabel" type="Label" parent="DialogueBox"]

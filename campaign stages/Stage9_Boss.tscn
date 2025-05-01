@@ -32,7 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://ck1pav623hht3" path="res://asset/npc/usedportraits/Mathie1real.png" id="31_nah28"]
 [ext_resource type="Texture2D" uid="uid://cus862h5rwerw" path="res://asset/npc/usedportraits/downloadImage(2).png" id="33_nah28"]
 [ext_resource type="Texture2D" uid="uid://bgqfa340fcj65" path="res://asset/npc/usedportraits/A_8_1.png" id="34_nah28"]
-[ext_resource type="Texture2D" uid="uid://cjdfnsdc3c01c" path="res://asset/npc/free_character_1_20_cogabushi/character/normal/A_534235.png" id="35_nah28"]
+[ext_resource type="Texture2D" uid="uid://cjdfnsdc3c01c" path="res://asset/npc/usedportraits/A_534235.png" id="35_nah28"]
 [ext_resource type="Texture2D" uid="uid://4lpfjpnhoeqr" path="res://asset/npc/usedportraits/wabbajack12.png" id="35_qmp6j"]
 [ext_resource type="VideoStream" uid="uid://b7pde7xm1jewk" path="res://asset/video/aspose_video_133896895066492131_out.ogv" id="36_nah28"]
 

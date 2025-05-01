@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cjdfnsdc3c01c"
-path="res://.godot/imported/A_534235.png-2f5ca164ca871f146614de5acedac291.ctex"
+path="res://.godot/imported/A_534235.png-98ce12619c7d32e892fe13977f8e86a0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/npc/free_character_1_20_cogabushi/character/normal/A_534235.png"
-dest_files=["res://.godot/imported/A_534235.png-2f5ca164ca871f146614de5acedac291.ctex"]
+source_file="res://asset/npc/usedportraits/A_534235.png"
+dest_files=["res://.godot/imported/A_534235.png-98ce12619c7d32e892fe13977f8e86a0.ctex"]
 
 [params]
 
