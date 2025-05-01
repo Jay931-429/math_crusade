@@ -440,10 +440,10 @@ func generate_new_problem() -> void:
 			num2 = temp
 		op1_func = func(a, b): return a - b
 	elif operation1 == 2:
-		op1_str = "*"
+		op1_str = "X"
 		op1_func = func(a, b): return a * b
 	elif operation1 == 3:
-		op1_str = "/"
+		op1_str = "÷"
 		num2 = max(1, num2)
 		while num1 % num2 != 0:
 			num1 = randi() % 5 + 1
@@ -460,10 +460,10 @@ func generate_new_problem() -> void:
 			temp_result = swap  # This preserves the result being non-negative
 		op2_func = func(a, b): return a - b
 	elif operation2 == 2:
-		op2_str = "*"
+		op2_str = "X"
 		op2_func = func(a, b): return a * b
 	elif operation2 == 3:
-		op2_str = "/"
+		op2_str = "÷"
 		num3 = max(1, num3)
 		while int(temp_result) % num3 != 0:
 			num3 = randi() % 5 + 1
@@ -479,10 +479,10 @@ func generate_new_problem() -> void:
 			temp_result = swap  # This preserves the result being non-negative
 		op3_func = func(a, b): return a - b
 	elif operation3 == 2:
-		op3_str = "*"
+		op3_str = "X"
 		op3_func = func(a, b): return a * b
 	elif operation3 == 3:
-		op3_str = "/"
+		op3_str = "÷"
 		num4 = max(1, num4)
 		while int(temp_result) % num4 != 0:
 			num4 = randi() % 5 + 1

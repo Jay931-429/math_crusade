@@ -33,7 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://msivu6nn77gg" path="res://asset/Main Character/Crusader-4-Idle.png" id="31_g2gpt"]
 [ext_resource type="Texture2D" uid="uid://6fkjaxweqoi0" path="res://asset/Main Character/Crusader-4-Running.png" id="32_q3rcd"]
 [ext_resource type="Texture2D" uid="uid://bskhtf2opvoko" path="res://asset/npc/usedportraits/CLOAK-1.png" id="33_ct7yn"]
-[ext_resource type="Texture2D" uid="uid://cjdfnsdc3c01c" path="res://asset/npc/free_character_1_20_cogabushi/character/normal/A_534235.png" id="34_3e2fr"]
+[ext_resource type="Texture2D" uid="uid://4lpfjpnhoeqr" path="res://asset/npc/usedportraits/wabbajack12.png" id="34_og8n5"]
 [ext_resource type="Texture2D" uid="uid://8lhdre052rty" path="res://asset/npc/usedportraits/460dgfd.png" id="35_og8n5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o21j7"]
@@ -1033,9 +1033,9 @@ scale = Vector2(0.72449, 0.778761)
 texture = ExtResource("33_ct7yn")
 
 [node name="Teacher" type="Sprite2D" parent="DialogueBox"]
-position = Vector2(183.5, 204)
-scale = Vector2(0.378631, 0.362105)
-texture = ExtResource("34_3e2fr")
+position = Vector2(181, 192)
+scale = Vector2(0.48913, 0.481675)
+texture = ExtResource("34_og8n5")
 
 [node name="wizard" type="Sprite2D" parent="DialogueBox"]
 position = Vector2(193.25, 192)

@@ -177,15 +177,15 @@ func show_tutorial_dialogue() -> void:
 	current_dialogue = [
 		{ "name": "Buddy", "text": "Alright, this should be the place. Look! Is that... our stuff?!" },
 		{ "name": "Teacher", "text": "Indeed. Just as the scout reported. Stay alert, Mathie. Bandit camps are never truly quiet." },
-		{ "name": "Bandit", "text": "(Chuckles loudly, emerging from behind) Well, well. Speak of the devils. Looking for something?" },
-		{ "name": "Bandit", "text": "Took us a bit of effort to haul all this lovely stuff. Especially these Math Powers...." },
+		{ "name": "bandit", "text": "(Chuckles loudly, emerging from behind) Well, well. Speak of the devils. Looking for something?" },
+		{ "name": "bandit", "text": "Took us a bit of effort to haul all this lovely stuff. Especially these Math Powers...." },
 		{ "name": "Buddy", "text": "Hey! We fought hard for those! Give it back, along with everything else you stole!" },
-		{ "name": "Bandit", "text": "Stole? We prefer 'aggressively borrowed'. Finders keepers, you know? Unless... you plan on taking it back?" },
+		{ "name": "bandit", "text": "Stole? We prefer 'aggressively borrowed'. Finders keepers, you know? Unless... you plan on taking it back?" },
 		{ "name": "Teacher", "text": "Save your breath. Pleading won't sway someone like this. Their actions speak clearly enough." },
-		{ "name": "Bandit", "text": "This one speaks sense! Actions DO speak louder than words. So?" },
+		{ "name": "bandit", "text": "This one speaks sense! Actions DO speak louder than words. So?" },
 		{ "name": "Teacher", "text": "We require our property returned. If force is the only way to achieve that, then so be it." },
-		{ "name": "Bandit", "text": "Hah! Force? Is that a challenge? Finally, some entertainment! Been bored just counting rusty nails all morning." },
-		{ "name": "Bandit", "text": "Alright then, 'heroes'. Show me what you've got!" },
+		{ "name": "bandit", "text": "Hah! Force? Is that a challenge? Finally, some entertainment! Been bored just counting rusty nails all morning." },
+		{ "name": "bandit", "text": "Alright then, 'heroes'. Show me what you've got!" },
 		{ "name": "Buddy", "text": "You have no idea who you're messing with! Challenge accepted!" },
 		{ "name": "Teacher", "text": "Focus, Buddy. Remember your training. Let's reclaim what's ours and end this foolishness." }
 ]
