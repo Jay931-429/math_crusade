@@ -32,9 +32,9 @@
 [ext_resource type="Texture2D" uid="uid://d1mhgk38we2m3" path="res://asset/enemy/Evil Wizard/Sprites/Idle.png" id="31_fcqrg"]
 [ext_resource type="Texture2D" uid="uid://6fkjaxweqoi0" path="res://asset/Main Character/Crusader-4-Running.png" id="32_kl8oi"]
 [ext_resource type="Texture2D" uid="uid://d1c1wgg3lt355" path="res://asset/enemy/Evil Wizard/Sprites/Move.png" id="32_w84bs"]
-[ext_resource type="Texture2D" uid="uid://bskhtf2opvoko" path="res://asset/npc/usedportraits/CLOAK-1.png" id="33_js277"]
+[ext_resource type="Texture2D" uid="uid://ck1pav623hht3" path="res://asset/npc/usedportraits/Mathie1real.png" id="33_ehtmn"]
 [ext_resource type="Texture2D" uid="uid://4lpfjpnhoeqr" path="res://asset/npc/usedportraits/wabbajack12.png" id="34_ehtmn"]
-[ext_resource type="Texture2D" uid="uid://4ix3u3e03yis" path="res://asset/npc/usedportraits/276dsad.png" id="35_w84bs"]
+[ext_resource type="Texture2D" uid="uid://2kn3lxvpb80o" path="res://asset/npc/usedportraits/architect22real.png" id="35_fcqrg"]
 [ext_resource type="VideoStream" uid="uid://ysu834o6bfb" path="res://asset/video/Ending Cutscene2.ogv" id="36_ehtmn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o21j7"]
@@ -1026,20 +1026,19 @@ offset_bottom = 798.0
 color = Color(0, 0, 0, 0.843137)
 
 [node name="Buddy" type="Sprite2D" parent="DialogueBox"]
-position = Vector2(182.5, 200)
-scale = Vector2(0.72449, 0.778761)
-texture = ExtResource("33_js277")
+position = Vector2(193, 192)
+scale = Vector2(0.447578, 0.432047)
+texture = ExtResource("33_ehtmn")
 
 [node name="Teacher" type="Sprite2D" parent="DialogueBox"]
-position = Vector2(189, 192)
-scale = Vector2(0.51087, 0.481675)
+position = Vector2(193, 188)
+scale = Vector2(0.451087, 0.429319)
 texture = ExtResource("34_ehtmn")
 
 [node name="wizard" type="Sprite2D" parent="DialogueBox"]
-modulate = Color(1, 0.488281, 0.488281, 1)
-position = Vector2(181, 196)
-scale = Vector2(0.984375, 0.828125)
-texture = ExtResource("35_w84bs")
+position = Vector2(211.572, 198.182)
+scale = Vector2(0.53061, 0.402498)
+texture = ExtResource("35_fcqrg")
 
 [node name="NameLabel" type="Label" parent="DialogueBox"]
 layout_mode = 1

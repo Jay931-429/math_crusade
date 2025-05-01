@@ -1,8 +1,8 @@
-[gd_scene load_steps=161 format=3 uid="uid://bhsmy2w8wct25"]
+[gd_scene load_steps=160 format=3 uid="uid://bhsmy2w8wct25"]
 
 [ext_resource type="Script" uid="uid://dur24texpdloo" path="res://campaign stages/stage_9_boss.gd" id="1_qbjp3"]
 [ext_resource type="Texture2D" uid="uid://dox6s2pdaah6p" path="res://asset/art/Gray.png" id="2_qvxko"]
-[ext_resource type="Texture2D" uid="uid://bkrrwc3mf8xlp" path="res://asset/art/download_10.png" id="3_qbjp3"]
+[ext_resource type="Texture2D" uid="uid://caytt72gj08s5" path="res://asset/art/Atalea's_Throne1.png" id="3_5f372"]
 [ext_resource type="Texture2D" uid="uid://b2capxdpvd4vu" path="res://asset/UI/Transparent.png" id="4_f3253"]
 [ext_resource type="Texture2D" uid="uid://bphrxf2hyox74" path="res://asset/art/GUI_frame__BG.png" id="5_sdie8"]
 [ext_resource type="Texture2D" uid="uid://dwldsahsmum7d" path="res://asset/UI/1.png" id="6_tsrso"]
@@ -29,10 +29,9 @@
 [ext_resource type="Texture2D" uid="uid://msivu6nn77gg" path="res://asset/Main Character/Crusader-4-Idle.png" id="27_bmtdt"]
 [ext_resource type="Texture2D" uid="uid://6fkjaxweqoi0" path="res://asset/Main Character/Crusader-4-Running.png" id="28_2wtlq"]
 [ext_resource type="Texture2D" uid="uid://6cphoihyaowk" path="res://asset/enemy/WomanWarriorDemo/WomanWarriorDemo-Sheet.png" id="29_pawrp"]
+[ext_resource type="Texture2D" uid="uid://ck1pav623hht3" path="res://asset/npc/usedportraits/Mathie1real.png" id="31_nah28"]
 [ext_resource type="Texture2D" uid="uid://cus862h5rwerw" path="res://asset/npc/usedportraits/downloadImage(2).png" id="33_nah28"]
-[ext_resource type="Texture2D" uid="uid://bskhtf2opvoko" path="res://asset/npc/usedportraits/CLOAK-1.png" id="33_pw02x"]
 [ext_resource type="Texture2D" uid="uid://bgqfa340fcj65" path="res://asset/npc/usedportraits/A_8_1.png" id="34_nah28"]
-[ext_resource type="Texture2D" uid="uid://blwpegxj3nxiy" path="res://asset/npc/usedportraits/CLOAK-4 .png" id="34_nmmxe"]
 [ext_resource type="Texture2D" uid="uid://cjdfnsdc3c01c" path="res://asset/npc/free_character_1_20_cogabushi/character/normal/A_534235.png" id="35_nah28"]
 [ext_resource type="Texture2D" uid="uid://4lpfjpnhoeqr" path="res://asset/npc/usedportraits/wabbajack12.png" id="35_qmp6j"]
 [ext_resource type="VideoStream" uid="uid://b7pde7xm1jewk" path="res://asset/video/aspose_video_133896895066492131_out.ogv" id="36_nah28"]
@@ -1049,7 +1048,8 @@ metadata/_edit_lock_ = true
 [node name="Stage1_3BG" type="TextureRect" parent="."]
 offset_right = 1080.0
 offset_bottom = 776.0
-texture = ExtResource("3_qbjp3")
+texture = ExtResource("3_5f372")
+expand_mode = 1
 metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
@@ -1263,13 +1263,15 @@ theme_override_font_sizes/font_size = 40
 text = "TIME"
 
 [node name="Buddy2" type="AnimatedSprite2D" parent="."]
-position = Vector2(294.671, 567.838)
+modulate = Color(1, 0.938401, 0.679688, 1)
+position = Vector2(287, 582)
 scale = Vector2(4.41534, 5.67446)
 sprite_frames = SubResource("SpriteFrames_no15u")
 animation = &"Idle"
 frame_progress = 0.00832975
 
 [node name="Player" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 0.938401, 0.679688, 1)
 position = Vector2(191, 562)
 scale = Vector2(3.97076, 3.41458)
 sprite_frames = SubResource("SpriteFrames_mgpow")
@@ -1277,6 +1279,7 @@ animation = &"Idle"
 metadata/_edit_lock_ = true
 
 [node name="Buddy" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 0.938401, 0.679688, 1)
 position = Vector2(116.385, 641.9)
 scale = Vector2(2.58769, 3.10365)
 sprite_frames = SubResource("SpriteFrames_qekko")
@@ -1284,6 +1287,7 @@ animation = &"Idle"
 metadata/_edit_lock_ = true
 
 [node name="Enemy2" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 0.938401, 0.679688, 1)
 position = Vector2(931.877, 474.679)
 scale = Vector2(4.15667, 4.02382)
 sprite_frames = SubResource("SpriteFrames_o2shv")
@@ -1299,33 +1303,33 @@ offset_bottom = 798.0
 color = Color(0, 0, 0, 0.843137)
 
 [node name="Buddy" type="Sprite2D" parent="DialogueBox"]
-position = Vector2(168, 200)
-scale = Vector2(0.72449, 0.778761)
-texture = ExtResource("33_pw02x")
+position = Vector2(189, 200)
+scale = Vector2(0.416, 0.405333)
+texture = ExtResource("31_nah28")
 
 [node name="hBuddy" type="Sprite2D" parent="DialogueBox"]
-position = Vector2(168, 192)
-scale = Vector2(0.734694, 0.818584)
-texture = ExtResource("34_nmmxe")
+position = Vector2(189, 196.813)
+scale = Vector2(0.416, 0.418167)
+texture = ExtResource("31_nah28")
 
 [node name="Teacher" type="Sprite2D" parent="DialogueBox"]
-position = Vector2(160, 192)
-scale = Vector2(0.486104, 0.481675)
+position = Vector2(189, 189.679)
+scale = Vector2(0.423913, 0.424924)
 texture = ExtResource("35_qmp6j")
 
 [node name="RebMil" type="Sprite2D" parent="DialogueBox"]
-position = Vector2(194, 196)
-scale = Vector2(0.283383, 0.25788)
+position = Vector2(189, 188)
+scale = Vector2(0.243323, 0.234957)
 texture = ExtResource("33_nah28")
 
 [node name="Rebkn" type="Sprite2D" parent="DialogueBox"]
-position = Vector2(177, 192)
-scale = Vector2(0.38341, 0.325376)
+position = Vector2(189, 188)
+scale = Vector2(0.36129, 0.290009)
 texture = ExtResource("34_nah28")
 
 [node name="RebMil2" type="Sprite2D" parent="DialogueBox"]
-position = Vector2(177.371, 194.146)
-scale = Vector2(0.364375, 0.375044)
+position = Vector2(187.325, 188.645)
+scale = Vector2(0.336773, 0.346621)
 texture = ExtResource("35_nah28")
 
 [node name="NameLabel" type="Label" parent="DialogueBox"]

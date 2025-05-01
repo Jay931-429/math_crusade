@@ -1,4 +1,4 @@
-[gd_scene load_steps=119 format=3 uid="uid://261hvorkyq2n"]
+[gd_scene load_steps=118 format=3 uid="uid://261hvorkyq2n"]
 
 [ext_resource type="Script" uid="uid://byn7t80ih0cgq" path="res://campaign stages/addition_tutorial.gd" id="1_vecps"]
 [ext_resource type="Texture2D" uid="uid://dox6s2pdaah6p" path="res://asset/art/Gray.png" id="2_qpcii"]
@@ -30,11 +30,10 @@
 [ext_resource type="Texture2D" uid="uid://6fkjaxweqoi0" path="res://asset/Main Character/Crusader-4-Running.png" id="27_k5vx7"]
 [ext_resource type="Texture2D" uid="uid://dkfm567sbgft2" path="res://asset/Main Character/Knight_player/Attack_KG_2.png" id="29_e1vrr"]
 [ext_resource type="Texture2D" uid="uid://c6i8m5ii8pr7w" path="res://asset/Main Character/Knight_player/Hurt_KG_1.png" id="30_ho0xa"]
-[ext_resource type="Texture2D" uid="uid://bskhtf2opvoko" path="res://asset/npc/usedportraits/CLOAK-1.png" id="30_twiqn"]
 [ext_resource type="Texture2D" uid="uid://vpm3j5rsg7us" path="res://asset/Main Character/Knight_player/Idle_KG_1.png" id="31_2r4is"]
 [ext_resource type="Texture2D" uid="uid://cql6vrmroylir" path="res://asset/Main Character/Knight_player/Attack_KG_4.png" id="32_hax5k"]
+[ext_resource type="Texture2D" uid="uid://ck1pav623hht3" path="res://asset/npc/usedportraits/Mathie1real.png" id="33_2r4is"]
 [ext_resource type="Texture2D" uid="uid://4lpfjpnhoeqr" path="res://asset/npc/usedportraits/wabbajack12.png" id="34_ho0xa"]
-[ext_resource type="Texture2D" uid="uid://blwpegxj3nxiy" path="res://asset/npc/usedportraits/CLOAK-4 .png" id="35_ho0xa"]
 [ext_resource type="VideoStream" uid="uid://bckvgemykb1tg" path="res://asset/video/Untitled-video-Made-with-Clipchamp-RESIZE-Videobolt.net.ogv" id="36_2r4is"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o21j7"]
@@ -991,19 +990,19 @@ offset_bottom = 798.0
 color = Color(0, 0, 0, 0.843137)
 
 [node name="Buddy" type="Sprite2D" parent="DialogueBox"]
-position = Vector2(182.5, 200)
-scale = Vector2(0.72449, 0.778761)
-texture = ExtResource("30_twiqn")
+position = Vector2(189.281, 192.688)
+scale = Vector2(0.417, 0.425)
+texture = ExtResource("33_2r4is")
 
 [node name="Teacher" type="Sprite2D" parent="DialogueBox"]
-position = Vector2(185, 192)
-scale = Vector2(0.5, 0.481675)
+position = Vector2(193, 188)
+scale = Vector2(0.434783, 0.429319)
 texture = ExtResource("34_ho0xa")
 
 [node name="hBuddy" type="Sprite2D" parent="DialogueBox"]
-position = Vector2(185, 195.5)
-scale = Vector2(0.75102, 0.794248)
-texture = ExtResource("35_ho0xa")
+position = Vector2(188.184, 192)
+scale = Vector2(0.418177, 0.426667)
+texture = ExtResource("33_2r4is")
 
 [node name="NameLabel" type="Label" parent="DialogueBox"]
 layout_mode = 1

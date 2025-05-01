@@ -1,4 +1,4 @@
-[gd_scene load_steps=126 format=3 uid="uid://cuq4dqtt17x2x"]
+[gd_scene load_steps=125 format=3 uid="uid://cuq4dqtt17x2x"]
 
 [ext_resource type="Script" uid="uid://bdwr8blsq8uqt" path="res://campaign stages/stage_15_boss.gd" id="1_qgilo"]
 [ext_resource type="Texture2D" uid="uid://dox6s2pdaah6p" path="res://asset/art/Gray.png" id="2_t2eo0"]
@@ -28,7 +28,6 @@
 [ext_resource type="Texture2D" uid="uid://msivu6nn77gg" path="res://asset/Main Character/Crusader-4-Idle.png" id="27_xlei2"]
 [ext_resource type="Texture2D" uid="uid://6fkjaxweqoi0" path="res://asset/Main Character/Crusader-4-Running.png" id="28_bqip8"]
 [ext_resource type="Texture2D" uid="uid://bjcbe24y8885j" path="res://asset/enemy/Individual Sprite/Attack/Bringer-of-Death_Attack_1.png" id="28_fskya"]
-[ext_resource type="Texture2D" uid="uid://bskhtf2opvoko" path="res://asset/npc/usedportraits/CLOAK-1.png" id="29_1mbpk"]
 [ext_resource type="Texture2D" uid="uid://d2pqpspf24cyf" path="res://asset/enemy/Individual Sprite/Hurt/Bringer-of-Death_Hurt_1.png" id="29_ob6du"]
 [ext_resource type="Texture2D" uid="uid://chrjxilsqoyhk" path="res://asset/enemy/Individual Sprite/Idle/Bringer-of-Death_Idle_1.png" id="29_p0m3w"]
 [ext_resource type="Texture2D" uid="uid://dt8f6pb80av5n" path="res://asset/enemy/Individual Sprite/Attack/Bringer-of-Death_Attack_2.png" id="29_ysacx"]
@@ -41,7 +40,6 @@
 [ext_resource type="Texture2D" uid="uid://76vju477tyhf" path="res://asset/enemy/Individual Sprite/Idle/Bringer-of-Death_Idle_3.png" id="31_h01e3"]
 [ext_resource type="Texture2D" uid="uid://brp1bvr72hs07" path="res://asset/enemy/Individual Sprite/Attack/Bringer-of-Death_Attack_4.png" id="31_rstvp"]
 [ext_resource type="Texture2D" uid="uid://dp0i0lvp1ndgo" path="res://asset/enemy/Individual Sprite/Attack/Bringer-of-Death_Attack_5.png" id="32_dokpv"]
-[ext_resource type="Texture2D" uid="uid://blwpegxj3nxiy" path="res://asset/npc/usedportraits/CLOAK-4 .png" id="32_h01e3"]
 [ext_resource type="Texture2D" uid="uid://c3vg7ysqioc1u" path="res://asset/enemy/Individual Sprite/Idle/Bringer-of-Death_Idle_4.png" id="32_ob6du"]
 [ext_resource type="Texture2D" uid="uid://dpfn82ctgo1qf" path="res://asset/enemy/Individual Sprite/Attack/Bringer-of-Death_Attack_6.png" id="33_irc63"]
 [ext_resource type="VideoStream" uid="uid://ysu834o6bfb" path="res://asset/video/Ending Cutscene2.ogv" id="33_ob6du"]
@@ -71,6 +69,7 @@
 [ext_resource type="Texture2D" uid="uid://br7jn5shedevt" path="res://asset/enemy/Individual Sprite/Walk/Bringer-of-Death_Walk_6.png" id="64_7dvff"]
 [ext_resource type="Texture2D" uid="uid://dsrd0m4nmpvch" path="res://asset/enemy/Individual Sprite/Walk/Bringer-of-Death_Walk_7.png" id="65_nuuem"]
 [ext_resource type="Texture2D" uid="uid://bxfij3pjvvv2e" path="res://asset/enemy/Individual Sprite/Walk/Bringer-of-Death_Walk_8.png" id="66_4ixjy"]
+[ext_resource type="Texture2D" uid="uid://ck1pav623hht3" path="res://asset/npc/usedportraits/Mathie1real.png" id="67_m2vaq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o21j7"]
 atlas = ExtResource("20_02g1y")
@@ -945,13 +944,13 @@ offset_bottom = 798.0
 color = Color(0, 0, 0, 0.843137)
 
 [node name="Buddy" type="Sprite2D" parent="DialogueBox"]
-position = Vector2(184.25, 208)
-scale = Vector2(0.754082, 0.743363)
-texture = ExtResource("29_1mbpk")
+position = Vector2(182.02, 208)
+scale = Vector2(0.435, 0.431)
+texture = ExtResource("67_m2vaq")
 
 [node name="Teacher" type="Sprite2D" parent="DialogueBox"]
 position = Vector2(185, 204)
-scale = Vector2(0.5, 0.450262)
+scale = Vector2(0.435, 0.431)
 texture = ExtResource("30_p0m3w")
 
 [node name="bandit" type="Sprite2D" parent="DialogueBox"]
@@ -962,8 +961,8 @@ texture = ExtResource("31_bgc3a")
 
 [node name="hBuddy" type="Sprite2D" parent="DialogueBox"]
 position = Vector2(183, 204)
-scale = Vector2(0.759184, 0.761062)
-texture = ExtResource("32_h01e3")
+scale = Vector2(0.435, 0.431)
+texture = ExtResource("67_m2vaq")
 
 [node name="NameLabel" type="Label" parent="DialogueBox"]
 layout_mode = 1

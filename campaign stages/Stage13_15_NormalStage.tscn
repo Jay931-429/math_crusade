@@ -63,7 +63,7 @@
 [ext_resource type="Texture2D" uid="uid://digsl7cdybtks" path="res://asset/enemy/HeroandOpponents_v1/1 Enemy/PNG/walk-4.png" id="61_pdl0j"]
 [ext_resource type="Texture2D" uid="uid://bg4wmir6onpjo" path="res://asset/enemy/HeroandOpponents_v1/1 Enemy/PNG/walk-5.png" id="62_3cxf2"]
 [ext_resource type="Texture2D" uid="uid://ekigty2qj8wd" path="res://asset/enemy/HeroandOpponents_v1/1 Enemy/PNG/walk-6.png" id="63_36i56"]
-[ext_resource type="Texture2D" uid="uid://bskhtf2opvoko" path="res://asset/npc/usedportraits/CLOAK-1.png" id="64_v6toj"]
+[ext_resource type="Texture2D" uid="uid://ck1pav623hht3" path="res://asset/npc/usedportraits/Mathie1real.png" id="64_xqpyu"]
 [ext_resource type="Texture2D" uid="uid://4lpfjpnhoeqr" path="res://asset/npc/usedportraits/wabbajack12.png" id="65_t0p7a"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o21j7"]
@@ -931,12 +931,12 @@ color = Color(0, 0, 0, 0.843137)
 
 [node name="Buddy" type="Sprite2D" parent="DialogueBox"]
 position = Vector2(182.5, 200)
-scale = Vector2(0.72449, 0.778761)
-texture = ExtResource("64_v6toj")
+scale = Vector2(0.435, 0.431)
+texture = ExtResource("64_xqpyu")
 
 [node name="Teacher" type="Sprite2D" parent="DialogueBox"]
-position = Vector2(181, 192)
-scale = Vector2(0.48913, 0.481675)
+position = Vector2(181, 193.679)
+scale = Vector2(0.435, 0.431)
 texture = ExtResource("65_t0p7a")
 
 [node name="NameLabel" type="Label" parent="DialogueBox"]

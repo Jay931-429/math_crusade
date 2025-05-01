@@ -782,15 +782,15 @@ offset_right = 1081.0
 offset_bottom = 798.0
 color = Color(0, 0, 0, 0.843137)
 
-[node name="Teacher" type="Sprite2D" parent="DialogueBox"]
-position = Vector2(185, 203.5)
-scale = Vector2(0.398157, 0.299735)
-texture = ExtResource("66_45c8q")
-
 [node name="Buddy" type="Sprite2D" parent="DialogueBox"]
-position = Vector2(181, 204)
-scale = Vector2(0.48913, 0.450262)
+position = Vector2(193, 188)
+scale = Vector2(0.457, 0.422)
 texture = ExtResource("66_8lo0q")
+
+[node name="Teacher" type="Sprite2D" parent="DialogueBox"]
+position = Vector2(193, 188.75)
+scale = Vector2(0.38341, 0.291335)
+texture = ExtResource("66_45c8q")
 
 [node name="NameLabel" type="Label" parent="DialogueBox"]
 layout_mode = 1

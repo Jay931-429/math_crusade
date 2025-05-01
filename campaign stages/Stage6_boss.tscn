@@ -1,4 +1,4 @@
-[gd_scene load_steps=148 format=3 uid="uid://s27fdito5o5b"]
+[gd_scene load_steps=147 format=3 uid="uid://s27fdito5o5b"]
 
 [ext_resource type="Script" uid="uid://bkbnl7q1xc34s" path="res://campaign stages/stage_6_boss.gd" id="1_jyy25"]
 [ext_resource type="Texture2D" uid="uid://dox6s2pdaah6p" path="res://asset/art/Gray.png" id="2_diyst"]
@@ -29,13 +29,11 @@
 [ext_resource type="Texture2D" uid="uid://msivu6nn77gg" path="res://asset/Main Character/Crusader-4-Idle.png" id="27_g70bp"]
 [ext_resource type="Texture2D" uid="uid://dqcrj85qly38i" path="res://asset/enemy/boss_demon_slime_FREE_v1.0/boss_demon_slime_FREE_v1.0/individual sprites/03_demon_cleave/demon_cleave_1.png" id="28_4pynb"]
 [ext_resource type="Texture2D" uid="uid://6fkjaxweqoi0" path="res://asset/Main Character/Crusader-4-Running.png" id="28_qrexq"]
-[ext_resource type="Texture2D" uid="uid://bskhtf2opvoko" path="res://asset/npc/usedportraits/CLOAK-1.png" id="29_cqcy3"]
 [ext_resource type="Texture2D" uid="uid://t4peegxlfoep" path="res://asset/enemy/boss_demon_slime_FREE_v1.0/boss_demon_slime_FREE_v1.0/individual sprites/03_demon_cleave/demon_cleave_2.png" id="29_y1rbe"]
 [ext_resource type="Texture2D" uid="uid://4lpfjpnhoeqr" path="res://asset/npc/usedportraits/wabbajack12.png" id="30_6ssv7"]
 [ext_resource type="Texture2D" uid="uid://cmwvnfhqj64ly" path="res://asset/enemy/boss_demon_slime_FREE_v1.0/boss_demon_slime_FREE_v1.0/individual sprites/03_demon_cleave/demon_cleave_3.png" id="30_wlshm"]
 [ext_resource type="Texture2D" uid="uid://djjsjwx12rlq5" path="res://asset/enemy/boss_demon_slime_FREE_v1.0/boss_demon_slime_FREE_v1.0/individual sprites/03_demon_cleave/demon_cleave_4.png" id="31_vgcec"]
 [ext_resource type="Texture2D" uid="uid://dxnt0tc27t22v" path="res://asset/enemy/boss_demon_slime_FREE_v1.0/boss_demon_slime_FREE_v1.0/individual sprites/03_demon_cleave/demon_cleave_5.png" id="32_mdbxa"]
-[ext_resource type="Texture2D" uid="uid://blwpegxj3nxiy" path="res://asset/npc/usedportraits/CLOAK-4 .png" id="32_v3oym"]
 [ext_resource type="Texture2D" uid="uid://bug1h6bf1e242" path="res://asset/enemy/boss_demon_slime_FREE_v1.0/boss_demon_slime_FREE_v1.0/individual sprites/03_demon_cleave/demon_cleave_6.png" id="33_8x6tn"]
 [ext_resource type="VideoStream" uid="uid://ysu834o6bfb" path="res://asset/video/Ending Cutscene2.ogv" id="33_oyqcd"]
 [ext_resource type="Texture2D" uid="uid://dcv2yss71ku2d" path="res://asset/enemy/boss_demon_slime_FREE_v1.0/boss_demon_slime_FREE_v1.0/individual sprites/03_demon_cleave/demon_cleave_7.png" id="34_hcqg8"]
@@ -92,6 +90,7 @@
 [ext_resource type="Texture2D" uid="uid://csnhqdxkusu3r" path="res://asset/enemy/boss_demon_slime_FREE_v1.0/boss_demon_slime_FREE_v1.0/individual sprites/02_demon_walk/demon_walk_10.png" id="85_7x3u4"]
 [ext_resource type="Texture2D" uid="uid://be8xg42l4ibus" path="res://asset/enemy/boss_demon_slime_FREE_v1.0/boss_demon_slime_FREE_v1.0/individual sprites/02_demon_walk/demon_walk_11.png" id="86_wcheo"]
 [ext_resource type="Texture2D" uid="uid://bwi33en8vufyp" path="res://asset/enemy/boss_demon_slime_FREE_v1.0/boss_demon_slime_FREE_v1.0/individual sprites/02_demon_walk/demon_walk_12.png" id="87_5r33d"]
+[ext_resource type="Texture2D" uid="uid://ck1pav623hht3" path="res://asset/npc/usedportraits/Mathie1real.png" id="89_4pynb"]
 [ext_resource type="Texture2D" uid="uid://di5ksnw2di5cu" path="res://asset/npc/usedportraits/Angron6.png" id="91_y1rbe"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o21j7"]
@@ -1043,24 +1042,24 @@ offset_bottom = 798.0
 color = Color(0, 0, 0, 0.843137)
 
 [node name="Buddy" type="Sprite2D" parent="DialogueBox"]
-position = Vector2(184.25, 208)
-scale = Vector2(0.754082, 0.743363)
-texture = ExtResource("29_cqcy3")
+position = Vector2(187.25, 200)
+scale = Vector2(0.435, 0.418167)
+texture = ExtResource("89_4pynb")
 
 [node name="Teacher" type="Sprite2D" parent="DialogueBox"]
-position = Vector2(185, 204)
-scale = Vector2(0.5, 0.450262)
+position = Vector2(189, 196)
+scale = Vector2(0.445652, 0.429319)
 texture = ExtResource("30_6ssv7")
 
 [node name="bandit" type="Sprite2D" parent="DialogueBox"]
-position = Vector2(186.411, 207.853)
-scale = Vector2(0.416869, 0.337393)
+position = Vector2(189.706, 191.926)
+scale = Vector2(0.372818, 0.337541)
 texture = ExtResource("91_y1rbe")
 
 [node name="hBuddy" type="Sprite2D" parent="DialogueBox"]
-position = Vector2(183, 204)
-scale = Vector2(0.759184, 0.761062)
-texture = ExtResource("32_v3oym")
+position = Vector2(187, 200)
+scale = Vector2(0.435, 0.431)
+texture = ExtResource("89_4pynb")
 
 [node name="NameLabel" type="Label" parent="DialogueBox"]
 layout_mode = 1

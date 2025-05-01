@@ -1,4 +1,4 @@
-[gd_scene load_steps=118 format=3 uid="uid://drgykjhumesj0"]
+[gd_scene load_steps=117 format=3 uid="uid://drgykjhumesj0"]
 
 [ext_resource type="Script" uid="uid://bjm6yqxvdqnp8" path="res://campaign stages/subtraction_tutorial.gd" id="1_ljyne"]
 [ext_resource type="Texture2D" uid="uid://dox6s2pdaah6p" path="res://asset/art/Gray.png" id="2_pr83p"]
@@ -28,13 +28,12 @@
 [ext_resource type="Texture2D" uid="uid://msivu6nn77gg" path="res://asset/Main Character/Crusader-4-Idle.png" id="24_2448a"]
 [ext_resource type="Texture2D" uid="uid://d3ygocc20macx" path="res://asset/enemy/Goblin Sprite-20250407T060630Z-001/Goblin Sprite/Run.png" id="24_trymc"]
 [ext_resource type="Texture2D" uid="uid://6fkjaxweqoi0" path="res://asset/Main Character/Crusader-4-Running.png" id="28_ko24w"]
-[ext_resource type="Texture2D" uid="uid://bskhtf2opvoko" path="res://asset/npc/usedportraits/CLOAK-1.png" id="29_4hots"]
 [ext_resource type="Texture2D" uid="uid://dkfm567sbgft2" path="res://asset/Main Character/Knight_player/Attack_KG_2.png" id="31_ajgb1"]
 [ext_resource type="Texture2D" uid="uid://c6i8m5ii8pr7w" path="res://asset/Main Character/Knight_player/Hurt_KG_1.png" id="32_trymc"]
 [ext_resource type="Texture2D" uid="uid://vpm3j5rsg7us" path="res://asset/Main Character/Knight_player/Idle_KG_1.png" id="33_oqxp6"]
+[ext_resource type="Texture2D" uid="uid://ck1pav623hht3" path="res://asset/npc/usedportraits/Mathie1real.png" id="33_trymc"]
 [ext_resource type="Texture2D" uid="uid://cql6vrmroylir" path="res://asset/Main Character/Knight_player/Attack_KG_4.png" id="34_16gya"]
 [ext_resource type="Texture2D" uid="uid://4lpfjpnhoeqr" path="res://asset/npc/usedportraits/wabbajack12.png" id="34_trymc"]
-[ext_resource type="Texture2D" uid="uid://blwpegxj3nxiy" path="res://asset/npc/usedportraits/CLOAK-4 .png" id="35_oqxp6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i28v1"]
 atlas = ExtResource("20_int4k")
@@ -982,21 +981,19 @@ offset_bottom = 798.0
 color = Color(0, 0, 0, 0.843137)
 
 [node name="Buddy" type="Sprite2D" parent="DialogueBox"]
-position = Vector2(182.5, 212)
-scale = Vector2(0.72449, 0.725664)
-texture = ExtResource("29_4hots")
-metadata/_edit_lock_ = true
+position = Vector2(187.5, 195)
+scale = Vector2(0.435, 0.431)
+texture = ExtResource("33_trymc")
 
 [node name="Teacher" type="Sprite2D" parent="DialogueBox"]
-position = Vector2(185, 204)
-scale = Vector2(0.478261, 0.450262)
+position = Vector2(189, 190)
+scale = Vector2(0.445652, 0.434555)
 texture = ExtResource("34_trymc")
-metadata/_edit_lock_ = true
 
 [node name="hBuddy" type="Sprite2D" parent="DialogueBox"]
-position = Vector2(180, 204)
-scale = Vector2(0.738776, 0.761062)
-texture = ExtResource("35_oqxp6")
+position = Vector2(187.438, 195)
+scale = Vector2(0.4415, 0.437333)
+texture = ExtResource("33_trymc")
 
 [node name="NameLabel" type="Label" parent="DialogueBox"]
 layout_mode = 1

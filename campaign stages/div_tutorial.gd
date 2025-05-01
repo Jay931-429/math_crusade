@@ -22,6 +22,7 @@ extends Node2D
 @onready var buddy_sprite = $DialogueBox/Buddy
 @onready var teacher_sprite = $DialogueBox/Teacher
 @onready var tbandit_sprite = $DialogueBox/tbandit
+@onready var tbandit2_sprite = $DialogueBox/tbandit2
 
 
 var full_dialogue_text: String = ""
@@ -90,6 +91,8 @@ func _ready() -> void:
 		character_sprites["Teacher"] = teacher_sprite
 	if tbandit_sprite: # Check if the node exists
 		character_sprites["tbandit"] = tbandit_sprite
+	if tbandit2_sprite: # Check if the node exists
+		character_sprites["tbandit2"] = tbandit2_sprite
 	# Add other characters here:
 	# character_sprites["AnotherNPC"] = another_npc_sprite
 	
@@ -98,6 +101,7 @@ func _ready() -> void:
 	display_names["Buddy"] = "Mathie" # Or maybe "Your Pal" if you want
 	display_names["Teacher"] = "Aric" # <--- CHANGE THIS to whatever you want displayed
 	display_names["tbandit"] = "Desert Bandit"
+	display_names["tbandit2"] = "Desert Bandit 2"
 	# Add other characters if needed
 	# display_names["Boss"] = "Dark Lord Malakor"
 	
@@ -182,7 +186,7 @@ func show_tutorial_dialogue() -> void:
 		{"name": "Teacher", "text": "Wait... I hear something..."},
 		{"name": "", "text": "(Suddenly, a group of ragged thieves surround them!)"},
 		{"name": "tbandit", "text": "Well, well, look what we have here. Two travelers, and they seem to know math!"},
-		{"name": "tbandit", "text": "We've heard tales of your... 'mathematical powers.' We'll be taking those!"},
+		{"name": "tbandit2", "text": "We've heard tales of your... 'mathematical powers.' We'll be taking those!"},
 		{"name": "Buddy", "text": "Oh no, not again!"},
 		{"name": "Teacher", "text": "I guess its time to put the lesson we learned into good use."}
 		
@@ -547,7 +551,7 @@ func show_end_stage_dialogue() -> void:
 
 	if player_won:
 		current_dialogue = [
-			{"name": "tbandit", "text": "(ahem) These fellas are too strong!"},
+			{"name": "tbandit2", "text": "(ahem) These fellas are too strong!"},
 			{"name": "tbandit", "text": "Umm... Run!"},
 			{"name": "", "text": "(The bandits flee from the two)"},
 			{"name": "Buddy", "text": "Run and don't bother us again."},

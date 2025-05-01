@@ -1,4 +1,4 @@
-[gd_scene load_steps=126 format=3 uid="uid://cr35eclaoa7d"]
+[gd_scene load_steps=125 format=3 uid="uid://cr35eclaoa7d"]
 
 [ext_resource type="Script" uid="uid://bw21ynelnfaso" path="res://campaign stages/mult_tutorial.gd" id="1_s66tj"]
 [ext_resource type="Texture2D" uid="uid://dox6s2pdaah6p" path="res://asset/art/Gray.png" id="2_6docs"]
@@ -32,11 +32,10 @@
 [ext_resource type="Texture2D" uid="uid://b2i5aosotcqv3" path="res://asset/Main Character/Crusader-4-Hurt.png" id="30_x3xge"]
 [ext_resource type="Texture2D" uid="uid://msivu6nn77gg" path="res://asset/Main Character/Crusader-4-Idle.png" id="31_2psry"]
 [ext_resource type="Texture2D" uid="uid://6fkjaxweqoi0" path="res://asset/Main Character/Crusader-4-Running.png" id="32_rrp25"]
-[ext_resource type="Texture2D" uid="uid://bskhtf2opvoko" path="res://asset/npc/usedportraits/CLOAK-1.png" id="33_7cd5b"]
-[ext_resource type="Texture2D" uid="uid://blwpegxj3nxiy" path="res://asset/npc/usedportraits/CLOAK-4 .png" id="34_fj1e3"]
+[ext_resource type="Texture2D" uid="uid://ck1pav623hht3" path="res://asset/npc/usedportraits/Mathie1real.png" id="33_x7se6"]
 [ext_resource type="Texture2D" uid="uid://4lpfjpnhoeqr" path="res://asset/npc/usedportraits/wabbajack12.png" id="35_fj1e3"]
-[ext_resource type="Texture2D" uid="uid://dcc8ndvnaf75c" path="res://asset/npc/usedportraits/wwwe.png" id="36_quccy"]
-[ext_resource type="Texture2D" uid="uid://cwhiqpvs2j1bs" path="res://asset/npc/usedportraits/downloadImage(4).png" id="37_fj1e3"]
+[ext_resource type="Texture2D" uid="uid://cuhu4lnv7i6rm" path="res://asset/npc/usedportraits/fempeasantmil22real.png" id="35_quccy"]
+[ext_resource type="Texture2D" uid="uid://n2tsscvs1226" path="res://asset/npc/usedportraits/rebmilcapt1real.png" id="36_quccy"]
 [ext_resource type="Texture2D" uid="uid://bgqhd3idn8kid" path="res://asset/npc/usedportraits/downloadImage(1).png" id="38_quccy"]
 [ext_resource type="VideoStream" uid="uid://ysu834o6bfb" path="res://asset/video/Ending Cutscene2.ogv" id="39_x7se6"]
 
@@ -1020,33 +1019,33 @@ offset_bottom = 798.0
 color = Color(0, 0, 0, 0.843137)
 
 [node name="Buddy" type="Sprite2D" parent="DialogueBox"]
-position = Vector2(168, 200)
-scale = Vector2(0.72449, 0.778761)
-texture = ExtResource("33_7cd5b")
+position = Vector2(187, 200)
+scale = Vector2(0.435, 0.431)
+texture = ExtResource("33_x7se6")
 
 [node name="hBuddy" type="Sprite2D" parent="DialogueBox"]
-position = Vector2(168, 192)
-scale = Vector2(0.734694, 0.818584)
-texture = ExtResource("34_fj1e3")
+position = Vector2(187, 200)
+scale = Vector2(0.435, 0.431)
+texture = ExtResource("33_x7se6")
 
 [node name="Teacher" type="Sprite2D" parent="DialogueBox"]
-position = Vector2(160, 192)
-scale = Vector2(0.486104, 0.481675)
+position = Vector2(189, 192)
+scale = Vector2(0.445652, 0.439791)
 texture = ExtResource("35_fj1e3")
 
 [node name="RebMil" type="Sprite2D" parent="DialogueBox"]
-position = Vector2(176, 196.667)
-scale = Vector2(0.222742, 0.212051)
-texture = ExtResource("36_quccy")
+position = Vector2(185, 200)
+scale = Vector2(0.422287, 0.388821)
+texture = ExtResource("35_quccy")
 
 [node name="Rebkn" type="Sprite2D" parent="DialogueBox"]
-position = Vector2(176, 192.194)
-scale = Vector2(0.195122, 0.182001)
-texture = ExtResource("37_fj1e3")
+position = Vector2(181, 200)
+scale = Vector2(0.448501, 0.437158)
+texture = ExtResource("36_quccy")
 
 [node name="RebMil2" type="Sprite2D" parent="DialogueBox"]
-position = Vector2(176, 192)
-scale = Vector2(0.333333, 0.32)
+position = Vector2(193, 192)
+scale = Vector2(0.291667, 0.28)
 texture = ExtResource("38_quccy")
 
 [node name="NameLabel" type="Label" parent="DialogueBox"]

@@ -32,7 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://6fkjaxweqoi0" path="res://asset/Main Character/Crusader-4-Running.png" id="26_wb3y6"]
 [ext_resource type="Texture2D" uid="uid://bxgvmu80n5bw4" path="res://asset/enemy/EVil Wizard 2/Sprites/Idle.png" id="27_hr7gq"]
 [ext_resource type="Texture2D" uid="uid://by8won5lu103d" path="res://asset/enemy/EVil Wizard 2/Sprites/Run.png" id="28_hfhx1"]
-[ext_resource type="Texture2D" uid="uid://bskhtf2opvoko" path="res://asset/npc/usedportraits/CLOAK-1.png" id="33_fbxk7"]
+[ext_resource type="Texture2D" uid="uid://ck1pav623hht3" path="res://asset/npc/usedportraits/Mathie1real.png" id="33_vgd5b"]
 [ext_resource type="Texture2D" uid="uid://4lpfjpnhoeqr" path="res://asset/npc/usedportraits/wabbajack12.png" id="34_vgd5b"]
 [ext_resource type="Texture2D" uid="uid://8lhdre052rty" path="res://asset/npc/usedportraits/460dgfd.png" id="35_p4cfk"]
 
@@ -1026,16 +1026,17 @@ offset_bottom = 798.0
 color = Color(0, 0, 0, 0.843137)
 
 [node name="Buddy" type="Sprite2D" parent="DialogueBox"]
-position = Vector2(182.5, 200)
-scale = Vector2(0.72449, 0.778761)
-texture = ExtResource("33_fbxk7")
+position = Vector2(183.438, 198.182)
+scale = Vector2(0.4225, 0.427)
+texture = ExtResource("33_vgd5b")
 
 [node name="Teacher" type="Sprite2D" parent="DialogueBox"]
-position = Vector2(185, 192)
-scale = Vector2(0.478261, 0.481675)
+position = Vector2(185, 195.398)
+scale = Vector2(0.434783, 0.430895)
 texture = ExtResource("34_vgd5b")
 
 [node name="wizard" type="Sprite2D" parent="DialogueBox"]
+visible = false
 modulate = Color(0.0703125, 0.97821, 1, 1)
 position = Vector2(193.25, 192)
 scale = Vector2(0.831055, 0.727539)

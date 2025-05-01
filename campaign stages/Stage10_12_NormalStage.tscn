@@ -94,9 +94,9 @@
 [ext_resource type="Texture2D" uid="uid://bfncx05172vtn" path="res://asset/enemy/elementals_wind_hashashin_FREE_v1.1/PNG/run/run_6.png" id="88_8qjd3"]
 [ext_resource type="Texture2D" uid="uid://cwy3pspf1p2jc" path="res://asset/enemy/elementals_wind_hashashin_FREE_v1.1/PNG/run/run_7.png" id="89_nwf1u"]
 [ext_resource type="Texture2D" uid="uid://csijmctbbl44h" path="res://asset/enemy/elementals_wind_hashashin_FREE_v1.1/PNG/run/run_8.png" id="90_qfceo"]
-[ext_resource type="Texture2D" uid="uid://bskhtf2opvoko" path="res://asset/npc/usedportraits/CLOAK-1.png" id="95_70i4w"]
+[ext_resource type="Texture2D" uid="uid://ck1pav623hht3" path="res://asset/npc/usedportraits/Mathie1real.png" id="95_fvsft"]
 [ext_resource type="Texture2D" uid="uid://4lpfjpnhoeqr" path="res://asset/npc/usedportraits/wabbajack12.png" id="96_ja3tv"]
-[ext_resource type="Texture2D" uid="uid://rgn41jsopg4l" path="res://asset/npc/usedportraits/desert warrior 1.png" id="97_uisa2"]
+[ext_resource type="Texture2D" uid="uid://dvib6xsqocisj" path="res://asset/npc/usedportraits/Desert_warrior011real.png" id="97_rtpn6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o21j7"]
 atlas = ExtResource("20_rtpn6")
@@ -1053,18 +1053,19 @@ color = Color(0, 0, 0, 0.843137)
 
 [node name="Buddy" type="Sprite2D" parent="DialogueBox"]
 position = Vector2(182.5, 200)
-scale = Vector2(0.72449, 0.778761)
-texture = ExtResource("95_70i4w")
+scale = Vector2(0.435, 0.431)
+texture = ExtResource("95_fvsft")
 
 [node name="Teacher" type="Sprite2D" parent="DialogueBox"]
 position = Vector2(185, 192)
-scale = Vector2(0.478261, 0.481675)
+scale = Vector2(0.435, 0.431)
 texture = ExtResource("96_ja3tv")
 
 [node name="tbandit" type="Sprite2D" parent="DialogueBox"]
+visible = false
 position = Vector2(194.567, 192)
-scale = Vector2(1.44816, 1.6)
-texture = ExtResource("97_uisa2")
+scale = Vector2(0.435, 0.431)
+texture = ExtResource("97_rtpn6")
 
 [node name="NameLabel" type="Label" parent="DialogueBox"]
 layout_mode = 1

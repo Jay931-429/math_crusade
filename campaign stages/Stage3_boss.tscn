@@ -1,8 +1,8 @@
-[gd_scene load_steps=133 format=3 uid="uid://dxg82dqffut0t"]
+[gd_scene load_steps=132 format=3 uid="uid://dxg82dqffut0t"]
 
 [ext_resource type="Script" uid="uid://djrvwgl6841kv" path="res://campaign stages/stage_3_boss.gd" id="1_0228h"]
 [ext_resource type="Texture2D" uid="uid://dox6s2pdaah6p" path="res://asset/art/Gray.png" id="2_mhwm4"]
-[ext_resource type="Texture2D" uid="uid://c8snlb1xuscnp" path="res://asset/art/stage1.png" id="3_6yoe1"]
+[ext_resource type="Texture2D" uid="uid://cjxsnc5h62ttu" path="res://asset/art/Bandit_Camp1.png" id="3_pjnpl"]
 [ext_resource type="Texture2D" uid="uid://b2capxdpvd4vu" path="res://asset/UI/Transparent.png" id="4_v45iw"]
 [ext_resource type="Texture2D" uid="uid://bphrxf2hyox74" path="res://asset/art/GUI_frame__BG.png" id="5_6yoe1"]
 [ext_resource type="Texture2D" uid="uid://dwldsahsmum7d" path="res://asset/UI/1.png" id="6_pjnpl"]
@@ -27,11 +27,10 @@
 [ext_resource type="Texture2D" uid="uid://b2i5aosotcqv3" path="res://asset/Main Character/Crusader-4-Hurt.png" id="26_o35c0"]
 [ext_resource type="Texture2D" uid="uid://msivu6nn77gg" path="res://asset/Main Character/Crusader-4-Idle.png" id="27_cleik"]
 [ext_resource type="Texture2D" uid="uid://6fkjaxweqoi0" path="res://asset/Main Character/Crusader-4-Running.png" id="28_tlht7"]
+[ext_resource type="Texture2D" uid="uid://ck1pav623hht3" path="res://asset/npc/usedportraits/Mathie1real.png" id="29_pjnpl"]
 [ext_resource type="Texture2D" uid="uid://c03in03w6nba1" path="res://asset/enemy/Quixote_Default_Weapons.png" id="31_vmt3k"]
-[ext_resource type="Texture2D" uid="uid://bskhtf2opvoko" path="res://asset/npc/usedportraits/CLOAK-1.png" id="33_kx6uh"]
 [ext_resource type="Texture2D" uid="uid://4lpfjpnhoeqr" path="res://asset/npc/usedportraits/wabbajack12.png" id="34_6yoe1"]
 [ext_resource type="Texture2D" uid="uid://dnr0vrlyusqwb" path="res://asset/npc/usedportraits/Guard_121323.png" id="35_x43tf"]
-[ext_resource type="Texture2D" uid="uid://blwpegxj3nxiy" path="res://asset/npc/usedportraits/CLOAK-4 .png" id="36_6yoe1"]
 [ext_resource type="VideoStream" uid="uid://ysu834o6bfb" path="res://asset/video/Ending Cutscene2.ogv" id="36_n2krf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o21j7"]
@@ -858,10 +857,11 @@ metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
 [node name="Stage1_3BG" type="TextureRect" parent="."]
-modulate = Color(0.707031, 0.707031, 0.707031, 1)
+modulate = Color(0.78125, 0.78125, 0.78125, 1)
 offset_right = 1080.0
 offset_bottom = 776.0
-texture = ExtResource("3_6yoe1")
+texture = ExtResource("3_pjnpl")
+expand_mode = 1
 metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
 
@@ -1075,15 +1075,14 @@ theme_override_font_sizes/font_size = 40
 text = "TIME"
 
 [node name="Buddy" type="AnimatedSprite2D" parent="."]
-position = Vector2(128, 568)
+position = Vector2(130.363, 607.746)
 scale = Vector2(2.58769, 3.10365)
 sprite_frames = SubResource("SpriteFrames_347i2")
 animation = &"Idle"
 frame_progress = 0.694189
-metadata/_edit_lock_ = true
 
 [node name="Player" type="AnimatedSprite2D" parent="."]
-position = Vector2(216, 488)
+position = Vector2(218.363, 527.746)
 scale = Vector2(3.97076, 3.41458)
 sprite_frames = SubResource("SpriteFrames_pjnpl")
 animation = &"Idle"
@@ -1091,7 +1090,7 @@ frame_progress = 0.67761
 
 [node name="Enemy2" type="AnimatedSprite2D" parent="."]
 self_modulate = Color(0.82, 0.7216, 0.7462, 1)
-position = Vector2(856, 488)
+position = Vector2(858.363, 527.746)
 scale = Vector2(4.24241, 3.95305)
 sprite_frames = SubResource("SpriteFrames_o35c0")
 animation = &"Idle"
@@ -1106,24 +1105,24 @@ offset_bottom = 798.0
 color = Color(0, 0, 0, 0.843137)
 
 [node name="Buddy" type="Sprite2D" parent="DialogueBox"]
-position = Vector2(184.25, 208)
-scale = Vector2(0.754082, 0.743363)
-texture = ExtResource("33_kx6uh")
+position = Vector2(191.563, 192.688)
+scale = Vector2(0.422833, 0.424833)
+texture = ExtResource("29_pjnpl")
 
 [node name="Teacher" type="Sprite2D" parent="DialogueBox"]
-position = Vector2(185, 204)
-scale = Vector2(0.5, 0.450262)
+position = Vector2(193, 190)
+scale = Vector2(0.434783, 0.434555)
 texture = ExtResource("34_6yoe1")
 
 [node name="bandit" type="Sprite2D" parent="DialogueBox"]
-position = Vector2(185, 204)
-scale = Vector2(1.33333, 1.48276)
+position = Vector2(193, 190)
+scale = Vector2(1.15942, 1.43104)
 texture = ExtResource("35_x43tf")
 
 [node name="hBuddy" type="Sprite2D" parent="DialogueBox"]
-position = Vector2(183, 204)
-scale = Vector2(0.759184, 0.761062)
-texture = ExtResource("36_6yoe1")
+position = Vector2(188.438, 195)
+scale = Vector2(0.438833, 0.431)
+texture = ExtResource("29_pjnpl")
 
 [node name="NameLabel" type="Label" parent="DialogueBox"]
 layout_mode = 1

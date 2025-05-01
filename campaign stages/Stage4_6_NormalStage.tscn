@@ -1,4 +1,4 @@
-[gd_scene load_steps=118 format=3 uid="uid://dqh70foevyu4f"]
+[gd_scene load_steps=117 format=3 uid="uid://dqh70foevyu4f"]
 
 [ext_resource type="Script" uid="uid://c3y4cso3r4xki" path="res://campaign stages/stage_4_6_normal_stage.gd" id="1_1rs8j"]
 [ext_resource type="Texture2D" uid="uid://dox6s2pdaah6p" path="res://asset/art/Gray.png" id="2_aieop"]
@@ -32,9 +32,8 @@
 [ext_resource type="Texture2D" uid="uid://c6i8m5ii8pr7w" path="res://asset/Main Character/Knight_player/Hurt_KG_1.png" id="26_yjnfl"]
 [ext_resource type="Texture2D" uid="uid://vpm3j5rsg7us" path="res://asset/Main Character/Knight_player/Idle_KG_1.png" id="27_145la"]
 [ext_resource type="Texture2D" uid="uid://cql6vrmroylir" path="res://asset/Main Character/Knight_player/Attack_KG_4.png" id="28_p8ntu"]
-[ext_resource type="Texture2D" uid="uid://bskhtf2opvoko" path="res://asset/npc/usedportraits/CLOAK-1.png" id="33_mfi3t"]
+[ext_resource type="Texture2D" uid="uid://ck1pav623hht3" path="res://asset/npc/usedportraits/Mathie1real.png" id="33_smlam"]
 [ext_resource type="Texture2D" uid="uid://4lpfjpnhoeqr" path="res://asset/npc/usedportraits/wabbajack12.png" id="34_nmonm"]
-[ext_resource type="Texture2D" uid="uid://blwpegxj3nxiy" path="res://asset/npc/usedportraits/CLOAK-4 .png" id="35_jvjsg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i28v1"]
 atlas = ExtResource("20_tdos0")
@@ -982,21 +981,19 @@ offset_bottom = 798.0
 color = Color(0, 0, 0, 0.843137)
 
 [node name="Buddy" type="Sprite2D" parent="DialogueBox"]
-position = Vector2(182.5, 212)
-scale = Vector2(0.72449, 0.725664)
-texture = ExtResource("33_mfi3t")
-metadata/_edit_lock_ = true
+position = Vector2(187, 195.188)
+scale = Vector2(0.435, 0.418167)
+texture = ExtResource("33_smlam")
 
 [node name="Teacher" type="Sprite2D" parent="DialogueBox"]
-position = Vector2(185, 204)
-scale = Vector2(0.478261, 0.450262)
+position = Vector2(189, 192)
+scale = Vector2(0.445652, 0.418848)
 texture = ExtResource("34_nmonm")
-metadata/_edit_lock_ = true
 
 [node name="hBuddy" type="Sprite2D" parent="DialogueBox"]
-position = Vector2(180, 204)
-scale = Vector2(0.738776, 0.761062)
-texture = ExtResource("35_jvjsg")
+position = Vector2(187, 195)
+scale = Vector2(0.435, 0.431)
+texture = ExtResource("33_smlam")
 
 [node name="NameLabel" type="Label" parent="DialogueBox"]
 layout_mode = 1

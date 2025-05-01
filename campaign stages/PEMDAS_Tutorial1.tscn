@@ -32,9 +32,9 @@
 [ext_resource type="Texture2D" uid="uid://b2i5aosotcqv3" path="res://asset/Main Character/Crusader-4-Hurt.png" id="30_7ttml"]
 [ext_resource type="Texture2D" uid="uid://msivu6nn77gg" path="res://asset/Main Character/Crusader-4-Idle.png" id="31_g2gpt"]
 [ext_resource type="Texture2D" uid="uid://6fkjaxweqoi0" path="res://asset/Main Character/Crusader-4-Running.png" id="32_q3rcd"]
-[ext_resource type="Texture2D" uid="uid://bskhtf2opvoko" path="res://asset/npc/usedportraits/CLOAK-1.png" id="33_ct7yn"]
+[ext_resource type="Texture2D" uid="uid://ck1pav623hht3" path="res://asset/npc/usedportraits/Mathie1real.png" id="33_og8n5"]
 [ext_resource type="Texture2D" uid="uid://4lpfjpnhoeqr" path="res://asset/npc/usedportraits/wabbajack12.png" id="34_og8n5"]
-[ext_resource type="Texture2D" uid="uid://8lhdre052rty" path="res://asset/npc/usedportraits/460dgfd.png" id="35_og8n5"]
+[ext_resource type="Texture2D" uid="uid://besmsndlfjq0v" path="res://asset/npc/usedportraits/old_wizard1.png" id="35_r6ow3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o21j7"]
 atlas = ExtResource("20_dyph8")
@@ -1028,19 +1028,20 @@ offset_bottom = 798.0
 color = Color(0, 0, 0, 0.843137)
 
 [node name="Buddy" type="Sprite2D" parent="DialogueBox"]
-position = Vector2(182.5, 200)
-scale = Vector2(0.72449, 0.778761)
-texture = ExtResource("33_ct7yn")
+position = Vector2(182.02, 200)
+scale = Vector2(0.435, 0.431)
+texture = ExtResource("33_og8n5")
 
 [node name="Teacher" type="Sprite2D" parent="DialogueBox"]
 position = Vector2(181, 192)
-scale = Vector2(0.48913, 0.481675)
+scale = Vector2(0.435, 0.431)
 texture = ExtResource("34_og8n5")
 
 [node name="wizard" type="Sprite2D" parent="DialogueBox"]
+modulate = Color(0.503906, 0.872101, 1, 1)
 position = Vector2(193.25, 192)
-scale = Vector2(0.831055, 0.727539)
-texture = ExtResource("35_og8n5")
+scale = Vector2(0.435, 0.431)
+texture = ExtResource("35_r6ow3")
 
 [node name="NameLabel" type="Label" parent="DialogueBox"]
 layout_mode = 1
