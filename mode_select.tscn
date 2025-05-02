@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://coop7favf6qgx" path="res://mode_select.gd" id="1_6n8di"]
 [ext_resource type="Texture2D" uid="uid://dhs5rlbdm23nl" path="res://asset/art/minmax-ai.jpeg" id="2_ynojf"]
-[ext_resource type="Texture2D" uid="uid://d32g63btc7spl" path="res://asset/Math UI/Tutorial.png" id="3_ynojf"]
-[ext_resource type="Texture2D" uid="uid://c67eowxkf7xb5" path="res://asset/Math UI/Story Mode.png" id="4_ynojf"]
+[ext_resource type="Texture2D" uid="uid://dfw4lwr8x88cr" path="res://asset/UI/Tutorial.png" id="3_ynojf"]
+[ext_resource type="Texture2D" uid="uid://wq6oe7vstarj" path="res://asset/UI/story mode.png" id="4_gw0tt"]
 [ext_resource type="Texture2D" uid="uid://orfpa7br36qe" path="res://asset/Math UI/stages.png" id="5_gw0tt"]
-[ext_resource type="Texture2D" uid="uid://y10icckbffyi" path="res://asset/Math UI/custom.png" id="6_glg53"]
-[ext_resource type="Texture2D" uid="uid://cs6snx0add4x6" path="res://asset/Math UI/Back.png" id="7_gw0tt"]
+[ext_resource type="Texture2D" uid="uid://bvo5tqr726hoe" path="res://asset/UI/Custom.png" id="6_glg53"]
+[ext_resource type="Texture2D" uid="uid://b5c62fsc3wbw4" path="res://asset/UI/Back.png" id="7_es5ak"]
 [ext_resource type="Texture2D" uid="uid://c270r4vfiwrol" path="res://asset/UI/Mode Select.png" id="8_uod75"]
 
 [node name="Stage_Select" type="Node2D"]
@@ -50,7 +50,7 @@ icon_alignment = 1
 [node name="campaign" type="Button" parent="CanvasLayer/Mode_Select_UI"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
-icon = ExtResource("4_ynojf")
+icon = ExtResource("4_gw0tt")
 flat = true
 icon_alignment = 1
 
@@ -75,7 +75,7 @@ offset_top = 1698.01
 offset_right = 377.33
 offset_bottom = 2029.01
 scale = Vector2(0.505, 0.505)
-icon = ExtResource("7_gw0tt")
+icon = ExtResource("7_es5ak")
 flat = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
