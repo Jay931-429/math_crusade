@@ -28,9 +28,9 @@
 [ext_resource type="Texture2D" uid="uid://msivu6nn77gg" path="res://asset/Main Character/Crusader-4-Idle.png" id="27_cleik"]
 [ext_resource type="Texture2D" uid="uid://6fkjaxweqoi0" path="res://asset/Main Character/Crusader-4-Running.png" id="28_tlht7"]
 [ext_resource type="Texture2D" uid="uid://ck1pav623hht3" path="res://asset/npc/usedportraits/Mathie1real.png" id="29_pjnpl"]
+[ext_resource type="Texture2D" uid="uid://dw23hg8f1lj2o" path="res://asset/npc/usedportraits/Aricreal.png" id="30_2o2it"]
+[ext_resource type="Texture2D" uid="uid://b858flx6nji1n" path="res://asset/npc/usedportraits/Perturaboreal.png" id="31_pjnpl"]
 [ext_resource type="Texture2D" uid="uid://c03in03w6nba1" path="res://asset/enemy/Quixote_Default_Weapons.png" id="31_vmt3k"]
-[ext_resource type="Texture2D" uid="uid://4lpfjpnhoeqr" path="res://asset/npc/usedportraits/wabbajack12.png" id="34_6yoe1"]
-[ext_resource type="Texture2D" uid="uid://dnr0vrlyusqwb" path="res://asset/npc/usedportraits/Guard_121323.png" id="35_x43tf"]
 [ext_resource type="VideoStream" uid="uid://ysu834o6bfb" path="res://asset/video/Ending Cutscene2.ogv" id="36_n2krf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o21j7"]
@@ -1112,12 +1112,12 @@ texture = ExtResource("29_pjnpl")
 [node name="Teacher" type="Sprite2D" parent="DialogueBox"]
 position = Vector2(193, 190)
 scale = Vector2(0.434783, 0.434555)
-texture = ExtResource("34_6yoe1")
+texture = ExtResource("30_2o2it")
 
 [node name="bandit" type="Sprite2D" parent="DialogueBox"]
 position = Vector2(193, 190)
 scale = Vector2(1.15942, 1.43104)
-texture = ExtResource("35_x43tf")
+texture = ExtResource("31_pjnpl")
 
 [node name="hBuddy" type="Sprite2D" parent="DialogueBox"]
 position = Vector2(188.438, 195)

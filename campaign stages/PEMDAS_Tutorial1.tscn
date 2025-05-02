@@ -33,7 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://msivu6nn77gg" path="res://asset/Main Character/Crusader-4-Idle.png" id="31_g2gpt"]
 [ext_resource type="Texture2D" uid="uid://6fkjaxweqoi0" path="res://asset/Main Character/Crusader-4-Running.png" id="32_q3rcd"]
 [ext_resource type="Texture2D" uid="uid://ck1pav623hht3" path="res://asset/npc/usedportraits/Mathie1real.png" id="33_og8n5"]
-[ext_resource type="Texture2D" uid="uid://4lpfjpnhoeqr" path="res://asset/npc/usedportraits/wabbajack12.png" id="34_og8n5"]
+[ext_resource type="Texture2D" uid="uid://dw23hg8f1lj2o" path="res://asset/npc/usedportraits/Aricreal.png" id="34_og8n5"]
 [ext_resource type="Texture2D" uid="uid://besmsndlfjq0v" path="res://asset/npc/usedportraits/old_wizard1.png" id="35_r6ow3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o21j7"]

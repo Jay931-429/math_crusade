@@ -33,10 +33,10 @@
 [ext_resource type="Texture2D" uid="uid://msivu6nn77gg" path="res://asset/Main Character/Crusader-4-Idle.png" id="31_2psry"]
 [ext_resource type="Texture2D" uid="uid://6fkjaxweqoi0" path="res://asset/Main Character/Crusader-4-Running.png" id="32_rrp25"]
 [ext_resource type="Texture2D" uid="uid://ck1pav623hht3" path="res://asset/npc/usedportraits/Mathie1real.png" id="33_x7se6"]
-[ext_resource type="Texture2D" uid="uid://4lpfjpnhoeqr" path="res://asset/npc/usedportraits/wabbajack12.png" id="35_fj1e3"]
+[ext_resource type="Texture2D" uid="uid://dw23hg8f1lj2o" path="res://asset/npc/usedportraits/Aricreal.png" id="34_quccy"]
 [ext_resource type="Texture2D" uid="uid://cuhu4lnv7i6rm" path="res://asset/npc/usedportraits/fempeasantmil22real.png" id="35_quccy"]
 [ext_resource type="Texture2D" uid="uid://n2tsscvs1226" path="res://asset/npc/usedportraits/rebmilcapt1real.png" id="36_quccy"]
-[ext_resource type="Texture2D" uid="uid://bgqhd3idn8kid" path="res://asset/npc/usedportraits/downloadImage(1).png" id="38_quccy"]
+[ext_resource type="Texture2D" uid="uid://c57uhj0ne6bwx" path="res://asset/npc/usedportraits/rebmill22real.png" id="37_x7se6"]
 [ext_resource type="VideoStream" uid="uid://ysu834o6bfb" path="res://asset/video/Ending Cutscene2.ogv" id="39_x7se6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o21j7"]
@@ -1031,7 +1031,7 @@ texture = ExtResource("33_x7se6")
 [node name="Teacher" type="Sprite2D" parent="DialogueBox"]
 position = Vector2(189, 192)
 scale = Vector2(0.445652, 0.439791)
-texture = ExtResource("35_fj1e3")
+texture = ExtResource("34_quccy")
 
 [node name="RebMil" type="Sprite2D" parent="DialogueBox"]
 position = Vector2(185, 200)
@@ -1046,7 +1046,7 @@ texture = ExtResource("36_quccy")
 [node name="RebMil2" type="Sprite2D" parent="DialogueBox"]
 position = Vector2(193, 192)
 scale = Vector2(0.291667, 0.28)
-texture = ExtResource("38_quccy")
+texture = ExtResource("37_x7se6")
 
 [node name="NameLabel" type="Label" parent="DialogueBox"]
 layout_mode = 1

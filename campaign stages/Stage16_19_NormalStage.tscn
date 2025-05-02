@@ -33,8 +33,8 @@
 [ext_resource type="Texture2D" uid="uid://bxgvmu80n5bw4" path="res://asset/enemy/EVil Wizard 2/Sprites/Idle.png" id="27_hr7gq"]
 [ext_resource type="Texture2D" uid="uid://by8won5lu103d" path="res://asset/enemy/EVil Wizard 2/Sprites/Run.png" id="28_hfhx1"]
 [ext_resource type="Texture2D" uid="uid://ck1pav623hht3" path="res://asset/npc/usedportraits/Mathie1real.png" id="33_vgd5b"]
-[ext_resource type="Texture2D" uid="uid://4lpfjpnhoeqr" path="res://asset/npc/usedportraits/wabbajack12.png" id="34_vgd5b"]
-[ext_resource type="Texture2D" uid="uid://8lhdre052rty" path="res://asset/npc/usedportraits/460dgfd.png" id="35_p4cfk"]
+[ext_resource type="Texture2D" uid="uid://dw23hg8f1lj2o" path="res://asset/npc/usedportraits/Aricreal.png" id="34_vgd5b"]
+[ext_resource type="Texture2D" uid="uid://besmsndlfjq0v" path="res://asset/npc/usedportraits/old_wizard1.png" id="35_vgd5b"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o21j7"]
 atlas = ExtResource("20_s7uhs")
@@ -1040,7 +1040,7 @@ visible = false
 modulate = Color(0.0703125, 0.97821, 1, 1)
 position = Vector2(193.25, 192)
 scale = Vector2(0.831055, 0.727539)
-texture = ExtResource("35_p4cfk")
+texture = ExtResource("35_vgd5b")
 
 [node name="NameLabel" type="Label" parent="DialogueBox"]
 layout_mode = 1

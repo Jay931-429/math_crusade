@@ -33,7 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://vpm3j5rsg7us" path="res://asset/Main Character/Knight_player/Idle_KG_1.png" id="31_2r4is"]
 [ext_resource type="Texture2D" uid="uid://cql6vrmroylir" path="res://asset/Main Character/Knight_player/Attack_KG_4.png" id="32_hax5k"]
 [ext_resource type="Texture2D" uid="uid://ck1pav623hht3" path="res://asset/npc/usedportraits/Mathie1real.png" id="33_2r4is"]
-[ext_resource type="Texture2D" uid="uid://4lpfjpnhoeqr" path="res://asset/npc/usedportraits/wabbajack12.png" id="34_ho0xa"]
+[ext_resource type="Texture2D" uid="uid://dw23hg8f1lj2o" path="res://asset/npc/usedportraits/Aricreal.png" id="34_ho0xa"]
 [ext_resource type="VideoStream" uid="uid://bckvgemykb1tg" path="res://asset/video/Untitled-video-Made-with-Clipchamp-RESIZE-Videobolt.net.ogv" id="36_2r4is"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o21j7"]

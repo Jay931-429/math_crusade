@@ -95,7 +95,7 @@
 [ext_resource type="Texture2D" uid="uid://cwy3pspf1p2jc" path="res://asset/enemy/elementals_wind_hashashin_FREE_v1.1/PNG/run/run_7.png" id="89_5t6b7"]
 [ext_resource type="Texture2D" uid="uid://csijmctbbl44h" path="res://asset/enemy/elementals_wind_hashashin_FREE_v1.1/PNG/run/run_8.png" id="90_t3rbr"]
 [ext_resource type="Texture2D" uid="uid://ck1pav623hht3" path="res://asset/npc/usedportraits/Mathie1real.png" id="95_p8vbr"]
-[ext_resource type="Texture2D" uid="uid://4lpfjpnhoeqr" path="res://asset/npc/usedportraits/wabbajack12.png" id="96_dikeq"]
+[ext_resource type="Texture2D" uid="uid://dw23hg8f1lj2o" path="res://asset/npc/usedportraits/Aricreal.png" id="96_p8vbr"]
 [ext_resource type="Texture2D" uid="uid://dvib6xsqocisj" path="res://asset/npc/usedportraits/Desert_warrior011real.png" id="97_p8vbr"]
 [ext_resource type="Texture2D" uid="uid://051k1dlgplc3" path="res://asset/npc/usedportraits/desert warrior33real.png" id="98_5n3k1"]
 
@@ -1063,7 +1063,7 @@ texture = ExtResource("95_p8vbr")
 [node name="Teacher" type="Sprite2D" parent="DialogueBox"]
 position = Vector2(185, 192)
 scale = Vector2(0.435, 0.431)
-texture = ExtResource("96_dikeq")
+texture = ExtResource("96_p8vbr")
 
 [node name="tbandit" type="Sprite2D" parent="DialogueBox"]
 position = Vector2(194.567, 192)

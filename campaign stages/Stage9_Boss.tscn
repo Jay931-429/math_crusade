@@ -29,11 +29,11 @@
 [ext_resource type="Texture2D" uid="uid://msivu6nn77gg" path="res://asset/Main Character/Crusader-4-Idle.png" id="27_bmtdt"]
 [ext_resource type="Texture2D" uid="uid://6fkjaxweqoi0" path="res://asset/Main Character/Crusader-4-Running.png" id="28_2wtlq"]
 [ext_resource type="Texture2D" uid="uid://6cphoihyaowk" path="res://asset/enemy/WomanWarriorDemo/WomanWarriorDemo-Sheet.png" id="29_pawrp"]
+[ext_resource type="Texture2D" uid="uid://dw23hg8f1lj2o" path="res://asset/npc/usedportraits/Aricreal.png" id="31_5f372"]
 [ext_resource type="Texture2D" uid="uid://ck1pav623hht3" path="res://asset/npc/usedportraits/Mathie1real.png" id="31_nah28"]
 [ext_resource type="Texture2D" uid="uid://cus862h5rwerw" path="res://asset/npc/usedportraits/downloadImage(2).png" id="33_nah28"]
-[ext_resource type="Texture2D" uid="uid://bgqfa340fcj65" path="res://asset/npc/usedportraits/A_8_1.png" id="34_nah28"]
+[ext_resource type="Texture2D" uid="uid://la1deoy5i4aa" path="res://asset/npc/usedportraits/Lady Hildareal.png" id="33_pawrp"]
 [ext_resource type="Texture2D" uid="uid://cjdfnsdc3c01c" path="res://asset/npc/usedportraits/A_534235.png" id="35_nah28"]
-[ext_resource type="Texture2D" uid="uid://4lpfjpnhoeqr" path="res://asset/npc/usedportraits/wabbajack12.png" id="35_qmp6j"]
 [ext_resource type="VideoStream" uid="uid://b7pde7xm1jewk" path="res://asset/video/aspose_video_133896895066492131_out.ogv" id="36_nah28"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_no15u"]
@@ -1315,7 +1315,7 @@ texture = ExtResource("31_nah28")
 [node name="Teacher" type="Sprite2D" parent="DialogueBox"]
 position = Vector2(189, 189.679)
 scale = Vector2(0.423913, 0.424924)
-texture = ExtResource("35_qmp6j")
+texture = ExtResource("31_5f372")
 
 [node name="RebMil" type="Sprite2D" parent="DialogueBox"]
 position = Vector2(189, 188)
@@ -1325,7 +1325,7 @@ texture = ExtResource("33_nah28")
 [node name="Rebkn" type="Sprite2D" parent="DialogueBox"]
 position = Vector2(189, 188)
 scale = Vector2(0.36129, 0.290009)
-texture = ExtResource("34_nah28")
+texture = ExtResource("33_pawrp")
 
 [node name="RebMil2" type="Sprite2D" parent="DialogueBox"]
 position = Vector2(187.325, 188.645)

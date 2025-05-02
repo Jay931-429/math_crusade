@@ -64,7 +64,7 @@
 [ext_resource type="Texture2D" uid="uid://bg4wmir6onpjo" path="res://asset/enemy/HeroandOpponents_v1/1 Enemy/PNG/walk-5.png" id="62_3cxf2"]
 [ext_resource type="Texture2D" uid="uid://ekigty2qj8wd" path="res://asset/enemy/HeroandOpponents_v1/1 Enemy/PNG/walk-6.png" id="63_36i56"]
 [ext_resource type="Texture2D" uid="uid://ck1pav623hht3" path="res://asset/npc/usedportraits/Mathie1real.png" id="64_xqpyu"]
-[ext_resource type="Texture2D" uid="uid://4lpfjpnhoeqr" path="res://asset/npc/usedportraits/wabbajack12.png" id="65_t0p7a"]
+[ext_resource type="Texture2D" uid="uid://dw23hg8f1lj2o" path="res://asset/npc/usedportraits/Aricreal.png" id="65_xqpyu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o21j7"]
 atlas = ExtResource("20_pkn0j")
@@ -937,7 +937,7 @@ texture = ExtResource("64_xqpyu")
 [node name="Teacher" type="Sprite2D" parent="DialogueBox"]
 position = Vector2(181, 193.679)
 scale = Vector2(0.435, 0.431)
-texture = ExtResource("65_t0p7a")
+texture = ExtResource("65_xqpyu")
 
 [node name="NameLabel" type="Label" parent="DialogueBox"]
 layout_mode = 1

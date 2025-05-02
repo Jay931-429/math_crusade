@@ -647,7 +647,7 @@ func _on_submit_pressed() -> void:
 	check_answer()
 
 func _on_placeholder_back_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://mode_select.tscn")
+	get_tree().change_scene_to_file("res://tutorial_select.tscn")
 
 
 func _on_typewriter_timer_timeout():

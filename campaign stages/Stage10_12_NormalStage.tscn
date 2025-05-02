@@ -95,7 +95,7 @@
 [ext_resource type="Texture2D" uid="uid://cwy3pspf1p2jc" path="res://asset/enemy/elementals_wind_hashashin_FREE_v1.1/PNG/run/run_7.png" id="89_nwf1u"]
 [ext_resource type="Texture2D" uid="uid://csijmctbbl44h" path="res://asset/enemy/elementals_wind_hashashin_FREE_v1.1/PNG/run/run_8.png" id="90_qfceo"]
 [ext_resource type="Texture2D" uid="uid://ck1pav623hht3" path="res://asset/npc/usedportraits/Mathie1real.png" id="95_fvsft"]
-[ext_resource type="Texture2D" uid="uid://4lpfjpnhoeqr" path="res://asset/npc/usedportraits/wabbajack12.png" id="96_ja3tv"]
+[ext_resource type="Texture2D" uid="uid://dw23hg8f1lj2o" path="res://asset/npc/usedportraits/Aricreal.png" id="96_fvsft"]
 [ext_resource type="Texture2D" uid="uid://dvib6xsqocisj" path="res://asset/npc/usedportraits/Desert_warrior011real.png" id="97_rtpn6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o21j7"]
@@ -1059,7 +1059,7 @@ texture = ExtResource("95_fvsft")
 [node name="Teacher" type="Sprite2D" parent="DialogueBox"]
 position = Vector2(185, 192)
 scale = Vector2(0.435, 0.431)
-texture = ExtResource("96_ja3tv")
+texture = ExtResource("96_fvsft")
 
 [node name="tbandit" type="Sprite2D" parent="DialogueBox"]
 visible = false

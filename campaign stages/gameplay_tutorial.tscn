@@ -64,8 +64,8 @@
 [ext_resource type="Texture2D" uid="uid://dphwdxwtbnyih" path="res://asset/npc/Warrior/Individual Sprite/Run/Warrior_Run_6.png" id="58_uimsr"]
 [ext_resource type="Texture2D" uid="uid://daxj8s7hrojl2" path="res://asset/npc/Warrior/Individual Sprite/Run/Warrior_Run_7.png" id="59_jlo2r"]
 [ext_resource type="Texture2D" uid="uid://bwdfx4cw26b2x" path="res://asset/npc/Warrior/Individual Sprite/Run/Warrior_Run_8.png" id="60_7lnpv"]
-[ext_resource type="Texture2D" uid="uid://4lpfjpnhoeqr" path="res://asset/npc/usedportraits/wabbajack12.png" id="66_8lo0q"]
-[ext_resource type="Texture2D" uid="uid://bgqfa340fcj65" path="res://asset/npc/usedportraits/A_8_1.png" id="66_45c8q"]
+[ext_resource type="Texture2D" uid="uid://dw23hg8f1lj2o" path="res://asset/npc/usedportraits/Aricreal.png" id="65_45c8q"]
+[ext_resource type="Texture2D" uid="uid://la1deoy5i4aa" path="res://asset/npc/usedportraits/Lady Hildareal.png" id="66_8lo0q"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_b3w2y"]
 animations = [{
@@ -785,12 +785,12 @@ color = Color(0, 0, 0, 0.843137)
 [node name="Buddy" type="Sprite2D" parent="DialogueBox"]
 position = Vector2(193, 188)
 scale = Vector2(0.457, 0.422)
-texture = ExtResource("66_8lo0q")
+texture = ExtResource("65_45c8q")
 
 [node name="Teacher" type="Sprite2D" parent="DialogueBox"]
 position = Vector2(193, 188.75)
 scale = Vector2(0.38341, 0.291335)
-texture = ExtResource("66_45c8q")
+texture = ExtResource("66_8lo0q")
 
 [node name="NameLabel" type="Label" parent="DialogueBox"]
 layout_mode = 1

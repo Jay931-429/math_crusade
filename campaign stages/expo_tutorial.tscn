@@ -64,7 +64,7 @@
 [ext_resource type="Texture2D" uid="uid://bg4wmir6onpjo" path="res://asset/enemy/HeroandOpponents_v1/1 Enemy/PNG/walk-5.png" id="62_jyhi4"]
 [ext_resource type="Texture2D" uid="uid://ekigty2qj8wd" path="res://asset/enemy/HeroandOpponents_v1/1 Enemy/PNG/walk-6.png" id="63_2egn3"]
 [ext_resource type="Texture2D" uid="uid://ck1pav623hht3" path="res://asset/npc/usedportraits/Mathie1real.png" id="64_tm6pl"]
-[ext_resource type="Texture2D" uid="uid://4lpfjpnhoeqr" path="res://asset/npc/usedportraits/wabbajack12.png" id="65_tm6pl"]
+[ext_resource type="Texture2D" uid="uid://dw23hg8f1lj2o" path="res://asset/npc/usedportraits/Aricreal.png" id="65_tm6pl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o21j7"]
 atlas = ExtResource("20_6m41u")

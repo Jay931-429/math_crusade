@@ -33,7 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://vpm3j5rsg7us" path="res://asset/Main Character/Knight_player/Idle_KG_1.png" id="31_d6bfp"]
 [ext_resource type="Texture2D" uid="uid://cql6vrmroylir" path="res://asset/Main Character/Knight_player/Attack_KG_4.png" id="32_6pq8e"]
 [ext_resource type="Texture2D" uid="uid://ck1pav623hht3" path="res://asset/npc/usedportraits/Mathie1real.png" id="33_6pq8e"]
-[ext_resource type="Texture2D" uid="uid://4lpfjpnhoeqr" path="res://asset/npc/usedportraits/wabbajack12.png" id="34_kh6bs"]
+[ext_resource type="Texture2D" uid="uid://dw23hg8f1lj2o" path="res://asset/npc/usedportraits/Aricreal.png" id="34_d6bfp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o21j7"]
 atlas = ExtResource("29_0g1px")
@@ -993,7 +993,7 @@ texture = ExtResource("33_6pq8e")
 [node name="Teacher" type="Sprite2D" parent="DialogueBox"]
 position = Vector2(189, 188)
 scale = Vector2(0.423913, 0.429319)
-texture = ExtResource("34_kh6bs")
+texture = ExtResource("34_d6bfp")
 
 [node name="hBuddy" type="Sprite2D" parent="DialogueBox"]
 position = Vector2(189.281, 192.688)

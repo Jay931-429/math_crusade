@@ -30,8 +30,8 @@
 [ext_resource type="Texture2D" uid="uid://cql6vrmroylir" path="res://asset/Main Character/Knight_player/Attack_KG_4.png" id="28_mhmli"]
 [ext_resource type="Texture2D" uid="uid://cjtjfq8kips0o" path="res://asset/enemy/Elementals_metal_bladekeeper_FREE_v1.1/spritesheets/metal_bladekeeper_FREE_v1.1_SpriteSheet_288x128.png" id="29_jrl78"]
 [ext_resource type="Texture2D" uid="uid://ck1pav623hht3" path="res://asset/npc/usedportraits/Mathie1real.png" id="30_04gws"]
-[ext_resource type="Texture2D" uid="uid://y3ajumh1kkbf" path="res://asset/npc/usedportraits/A_6.png" id="31_04gws"]
-[ext_resource type="Texture2D" uid="uid://4lpfjpnhoeqr" path="res://asset/npc/usedportraits/wabbajack12.png" id="32_ge0hv"]
+[ext_resource type="Texture2D" uid="uid://dw23hg8f1lj2o" path="res://asset/npc/usedportraits/Aricreal.png" id="31_04gws"]
+[ext_resource type="Texture2D" uid="uid://j6suh8g17y40" path="res://asset/npc/usedportraits/Bandit Queen.png" id="32_jrl78"]
 [ext_resource type="VideoStream" uid="uid://ysu834o6bfb" path="res://asset/video/Ending Cutscene2.ogv" id="36_ivhdv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o21j7"]
@@ -1207,12 +1207,12 @@ texture = ExtResource("30_04gws")
 [node name="Teacher" type="Sprite2D" parent="DialogueBox"]
 position = Vector2(185, 199.679)
 scale = Vector2(0.435, 0.419688)
-texture = ExtResource("32_ge0hv")
+texture = ExtResource("31_04gws")
 
 [node name="bandit" type="Sprite2D" parent="DialogueBox"]
 position = Vector2(177, 200)
 scale = Vector2(0.435, 0.431)
-texture = ExtResource("31_04gws")
+texture = ExtResource("32_jrl78")
 
 [node name="hBuddy" type="Sprite2D" parent="DialogueBox"]
 position = Vector2(183, 204)

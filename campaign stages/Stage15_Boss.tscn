@@ -32,11 +32,9 @@
 [ext_resource type="Texture2D" uid="uid://chrjxilsqoyhk" path="res://asset/enemy/Individual Sprite/Idle/Bringer-of-Death_Idle_1.png" id="29_p0m3w"]
 [ext_resource type="Texture2D" uid="uid://dt8f6pb80av5n" path="res://asset/enemy/Individual Sprite/Attack/Bringer-of-Death_Attack_2.png" id="29_ysacx"]
 [ext_resource type="Texture2D" uid="uid://gqnhtdxj44da" path="res://asset/enemy/Individual Sprite/Idle/Bringer-of-Death_Idle_2.png" id="30_bgc3a"]
-[ext_resource type="Texture2D" uid="uid://4lpfjpnhoeqr" path="res://asset/npc/usedportraits/wabbajack12.png" id="30_p0m3w"]
 [ext_resource type="Texture2D" uid="uid://bsoi4e5fvtvp8" path="res://asset/enemy/Individual Sprite/Hurt/Bringer-of-Death_Hurt_2.png" id="30_pqteo"]
 [ext_resource type="Texture2D" uid="uid://dh5bddagbpat0" path="res://asset/enemy/Individual Sprite/Attack/Bringer-of-Death_Attack_3.png" id="30_vg0td"]
 [ext_resource type="Texture2D" uid="uid://bcimgvs8vi2gu" path="res://asset/enemy/Individual Sprite/Hurt/Bringer-of-Death_Hurt_3.png" id="31_82uh5"]
-[ext_resource type="Texture2D" uid="uid://dnr0vrlyusqwb" path="res://asset/npc/usedportraits/Guard_121323.png" id="31_bgc3a"]
 [ext_resource type="Texture2D" uid="uid://76vju477tyhf" path="res://asset/enemy/Individual Sprite/Idle/Bringer-of-Death_Idle_3.png" id="31_h01e3"]
 [ext_resource type="Texture2D" uid="uid://brp1bvr72hs07" path="res://asset/enemy/Individual Sprite/Attack/Bringer-of-Death_Attack_4.png" id="31_rstvp"]
 [ext_resource type="Texture2D" uid="uid://dp0i0lvp1ndgo" path="res://asset/enemy/Individual Sprite/Attack/Bringer-of-Death_Attack_5.png" id="32_dokpv"]
@@ -70,6 +68,8 @@
 [ext_resource type="Texture2D" uid="uid://dsrd0m4nmpvch" path="res://asset/enemy/Individual Sprite/Walk/Bringer-of-Death_Walk_7.png" id="65_nuuem"]
 [ext_resource type="Texture2D" uid="uid://bxfij3pjvvv2e" path="res://asset/enemy/Individual Sprite/Walk/Bringer-of-Death_Walk_8.png" id="66_4ixjy"]
 [ext_resource type="Texture2D" uid="uid://ck1pav623hht3" path="res://asset/npc/usedportraits/Mathie1real.png" id="67_m2vaq"]
+[ext_resource type="Texture2D" uid="uid://dw23hg8f1lj2o" path="res://asset/npc/usedportraits/Aricreal.png" id="68_m2vaq"]
+[ext_resource type="Texture2D" uid="uid://b858flx6nji1n" path="res://asset/npc/usedportraits/Perturaboreal.png" id="69_g4cdm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o21j7"]
 atlas = ExtResource("20_02g1y")
@@ -951,13 +951,13 @@ texture = ExtResource("67_m2vaq")
 [node name="Teacher" type="Sprite2D" parent="DialogueBox"]
 position = Vector2(185, 204)
 scale = Vector2(0.435, 0.431)
-texture = ExtResource("30_p0m3w")
+texture = ExtResource("68_m2vaq")
 
 [node name="bandit" type="Sprite2D" parent="DialogueBox"]
 visible = false
 position = Vector2(185, 204)
 scale = Vector2(1.33333, 1.48276)
-texture = ExtResource("31_bgc3a")
+texture = ExtResource("69_g4cdm")
 
 [node name="hBuddy" type="Sprite2D" parent="DialogueBox"]
 position = Vector2(183, 204)
