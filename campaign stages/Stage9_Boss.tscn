@@ -1,4 +1,4 @@
-[gd_scene load_steps=160 format=3 uid="uid://bhsmy2w8wct25"]
+[gd_scene load_steps=161 format=3 uid="uid://bhsmy2w8wct25"]
 
 [ext_resource type="Script" uid="uid://dur24texpdloo" path="res://campaign stages/stage_9_boss.gd" id="1_qbjp3"]
 [ext_resource type="Texture2D" uid="uid://dox6s2pdaah6p" path="res://asset/art/Gray.png" id="2_qvxko"]
@@ -35,6 +35,7 @@
 [ext_resource type="Texture2D" uid="uid://la1deoy5i4aa" path="res://asset/npc/usedportraits/Lady Hildareal.png" id="33_pawrp"]
 [ext_resource type="Texture2D" uid="uid://cjdfnsdc3c01c" path="res://asset/npc/usedportraits/A_534235.png" id="35_nah28"]
 [ext_resource type="VideoStream" uid="uid://b7pde7xm1jewk" path="res://asset/video/aspose_video_133896895066492131_out.ogv" id="36_nah28"]
+[ext_resource type="Texture2D" uid="uid://dnut6wpdev2fr" path="res://asset/UI/5-Photoroom.png" id="36_pawrp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_no15u"]
 atlas = ExtResource("20_nah28")
@@ -1382,6 +1383,14 @@ offset_right = 1076.0
 offset_bottom = 799.0
 stream = ExtResource("36_nah28")
 expand = true
+
+[node name="Artifact" type="TextureRect" parent="."]
+visible = false
+offset_left = 260.0
+offset_top = 75.0
+offset_right = 835.0
+offset_bottom = 728.0
+texture = ExtResource("36_pawrp")
 
 [connection signal="pressed" from="Number_Button/num_row_123/one" to="." method="_on_one_pressed"]
 [connection signal="pressed" from="Number_Button/num_row_123/two" to="." method="_on_two_pressed"]

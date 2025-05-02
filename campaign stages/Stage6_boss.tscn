@@ -1,4 +1,4 @@
-[gd_scene load_steps=147 format=3 uid="uid://s27fdito5o5b"]
+[gd_scene load_steps=148 format=3 uid="uid://s27fdito5o5b"]
 
 [ext_resource type="Script" uid="uid://bkbnl7q1xc34s" path="res://campaign stages/stage_6_boss.gd" id="1_jyy25"]
 [ext_resource type="Texture2D" uid="uid://dox6s2pdaah6p" path="res://asset/art/Gray.png" id="2_diyst"]
@@ -92,6 +92,7 @@
 [ext_resource type="Texture2D" uid="uid://ck1pav623hht3" path="res://asset/npc/usedportraits/Mathie1real.png" id="89_4pynb"]
 [ext_resource type="Texture2D" uid="uid://dw23hg8f1lj2o" path="res://asset/npc/usedportraits/Aricreal.png" id="90_4pynb"]
 [ext_resource type="Texture2D" uid="uid://di5ksnw2di5cu" path="res://asset/npc/usedportraits/Angron6.png" id="91_y1rbe"]
+[ext_resource type="Texture2D" uid="uid://bgym4cj62qokb" path="res://asset/UI/4-Photoroom.png" id="93_y1rbe"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o21j7"]
 atlas = ExtResource("20_v0r3a")
@@ -1110,6 +1111,14 @@ offset_right = 1076.0
 offset_bottom = 799.0
 stream = ExtResource("33_oyqcd")
 expand = true
+
+[node name="Artifact" type="TextureRect" parent="."]
+visible = false
+offset_left = 260.0
+offset_top = 75.0
+offset_right = 835.0
+offset_bottom = 728.0
+texture = ExtResource("93_y1rbe")
 
 [connection signal="pressed" from="Number_Button/num_row_123/one" to="." method="_on_one_pressed"]
 [connection signal="pressed" from="Number_Button/num_row_123/two" to="." method="_on_two_pressed"]

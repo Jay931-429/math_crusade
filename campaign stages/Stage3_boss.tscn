@@ -1,4 +1,4 @@
-[gd_scene load_steps=132 format=3 uid="uid://dxg82dqffut0t"]
+[gd_scene load_steps=133 format=3 uid="uid://dxg82dqffut0t"]
 
 [ext_resource type="Script" uid="uid://djrvwgl6841kv" path="res://campaign stages/stage_3_boss.gd" id="1_0228h"]
 [ext_resource type="Texture2D" uid="uid://dox6s2pdaah6p" path="res://asset/art/Gray.png" id="2_mhwm4"]
@@ -31,6 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://dw23hg8f1lj2o" path="res://asset/npc/usedportraits/Aricreal.png" id="30_2o2it"]
 [ext_resource type="Texture2D" uid="uid://b858flx6nji1n" path="res://asset/npc/usedportraits/Perturaboreal.png" id="31_pjnpl"]
 [ext_resource type="Texture2D" uid="uid://c03in03w6nba1" path="res://asset/enemy/Quixote_Default_Weapons.png" id="31_vmt3k"]
+[ext_resource type="Texture2D" uid="uid://0n3k46wxe5qy" path="res://asset/UI/3-Photoroom.png" id="33_pjnpl"]
 [ext_resource type="VideoStream" uid="uid://ysu834o6bfb" path="res://asset/video/Ending Cutscene2.ogv" id="36_n2krf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o21j7"]
@@ -1173,6 +1174,14 @@ offset_right = 1076.0
 offset_bottom = 799.0
 stream = ExtResource("36_n2krf")
 expand = true
+
+[node name="Artifact" type="TextureRect" parent="."]
+visible = false
+offset_left = 260.0
+offset_top = 75.0
+offset_right = 835.0
+offset_bottom = 728.0
+texture = ExtResource("33_pjnpl")
 
 [connection signal="pressed" from="Number_Button/num_row_123/one" to="." method="_on_one_pressed"]
 [connection signal="pressed" from="Number_Button/num_row_123/two" to="." method="_on_two_pressed"]

@@ -9,6 +9,7 @@ extends Node2D
 @onready var player_animation = $Player  # Adjust the path based on your scene structure
 @onready var enemy_animation = $Enemy2 
 @onready var buddy_animation = $Buddy   # Adjust the path based on your scene structure
+@onready var artifact = $Artifact
 
 @onready var dialogue_box = $DialogueBox  # Panel or ColorRect
 @onready var dialogue_text = $DialogueBox/DialogueText  # Label or RichTextLabel
@@ -52,6 +53,22 @@ var current_time: float = 0.0 # Current time elapsed
 var timer_active: bool = false # Flag to track if timer is active
 
 var question_answered: bool = false
+
+var artifacts = {
+	"dormant_star": {
+		"name": "The Dormant Star",
+		"description": "Grants additional damage when tackling addition questions.",
+		"image": preload("res://asset/UI/4-Photoroom.png"),  # Replace with your image path
+		"effect": "bonus_addition_damage"  # A simple identifier for the effect
+	},
+	# Add more artifacts here as needed
+}
+
+var player_artifacts = []  # Array to store artifacts the player has
+var artifact_active: bool = false # Flag to control artifact display
+var artifact_display_timer: float = 0.0
+const ARTIFACT_DISPLAY_DURATION: float = 1.0 # How long to show the artifact
+var current_artifact_key: String = "" # To store the key of the active artifact
 
 var player_original_pos: Vector2
 var enemy_original_pos: Vector2
@@ -148,6 +165,17 @@ func _process(delta: float) -> void:
 		if current_time <= 0:
 			timer_active = false
 			time_up()
+			
+	if artifact_active:
+		artifact_display_timer -= delta
+		if artifact_display_timer <= 0:
+			# Fade out
+			var fade_out_tween = create_tween()
+			fade_out_tween.tween_property(artifact, "modulate:a", 0.0, 0.5)
+			await fade_out_tween.finished
+			artifact.visible = false
+			artifact_active = false
+			#remove_artifact_effect("dormant_star") # Remove the effect
 
 func update_hp_display() -> void:
 	# Update the HP display with hearts or text
@@ -246,6 +274,9 @@ func display_dialogue() -> void:
 
 	if current.has("sfx") and current.sfx != "":
 		AudioManager.play_sfx(current.sfx)
+		
+	if current.has("artifact"):
+		display_artifact(current.artifact)  # Show the artifact
 
 	# Set speaker name
 	if display_names.has(speaker_id):
@@ -297,8 +328,10 @@ func _on_continue_button_pressed() -> void:
 		dialogue_text.text = full_dialogue_text
 		typewriter_char_index = full_dialogue_text.length()
 	else:
-		# Text is fully shown — move to next line
-		next_dialogue()
+		if artifact_active:
+			await hide_artifact() # Hide the artifact
+		next_dialogue() # Advance dialogue
+		
 func show_time_up_dialogue():
 	# Define the dialogue lines for running out of time
 	# You can have one or more characters speak
@@ -598,6 +631,7 @@ func show_end_stage_dialogue() -> void:
 			{"name": "Buddy", "text": "Wheres your Khorne now?!"},
 			{"name": "hBuddy", "text": "Khorne? More like Khorne flakes AHAHAHAHA..."},
 			{"name": "", "text": "(Alric picks Multiplication off the group.)"},
+			{"name": "", "text": "(Magic Noises)", "sfx": "magic2", "artifact": "dormant_star"},
 			{"name": "Teacher", "text": "So we got another one, whats next?"},
 			{"name": "hBuddy", "text": "(Ahem)"},
 			{"name": "Buddy", "text": "Next, is we need to look for Division!"},
@@ -743,3 +777,42 @@ func _on_video_finished(video_player):
 	dialogue_index += 1 # Advance dialogue
 	display_dialogue() # Resume dialogue
 	
+func display_artifact(artifact_key: String):
+	if !artifacts.has(artifact_key):
+		printerr("Error: Artifact key '" + artifact_key + "' not found!")
+		return
+
+	var artifact_data = artifacts[artifact_key]
+
+	# Set the image and description
+	artifact.texture = artifact_data.image
+	#artifact.get_node("NameLabel").text = artifact_data.name
+	#artifact.get_node("DescriptionLabel").text = artifact_data.description
+
+	#  Fade in (simple tween animation)
+	artifact.modulate.a = 0.0  # Start transparent
+	var tween = create_tween()
+	tween.tween_property(artifact, "modulate:a", 1.0, 0.5)  # Fade in over 0.5 seconds
+
+	artifact.visible = true
+	artifact_active = true
+	artifact_display_timer = ARTIFACT_DISPLAY_DURATION
+
+	# Apply the effect (see next step)
+	#apply_artifact_effect(artifact_key)
+	
+func hide_artifact():
+	var tween = create_tween()
+	tween.tween_property(artifact, "modulate:a", 0.0, 0.5)
+	await tween.finished
+	artifact.visible = false
+	artifact_active = false
+	if current_artifact_key != "":
+		remove_artifact_effect(current_artifact_key)
+		current_artifact_key = "" # Reset the key
+
+func remove_artifact_effect(artifact_key: String):
+	if artifact_key == "dormant_star":
+		#player.bonus_damage_types.erase("addition")
+		#player.bonus_damage_values.erase(2)
+		print("Dormant Star effect removed!")

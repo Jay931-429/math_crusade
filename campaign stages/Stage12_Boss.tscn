@@ -1,4 +1,4 @@
-[gd_scene load_steps=144 format=3 uid="uid://tj2u5m727beq"]
+[gd_scene load_steps=145 format=3 uid="uid://tj2u5m727beq"]
 
 [ext_resource type="Script" uid="uid://cl7gx70qty3xd" path="res://campaign stages/stage_12_boss.gd" id="1_6e26d"]
 [ext_resource type="Texture2D" uid="uid://dox6s2pdaah6p" path="res://asset/art/Gray.png" id="2_rla1x"]
@@ -32,6 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://ck1pav623hht3" path="res://asset/npc/usedportraits/Mathie1real.png" id="30_04gws"]
 [ext_resource type="Texture2D" uid="uid://dw23hg8f1lj2o" path="res://asset/npc/usedportraits/Aricreal.png" id="31_04gws"]
 [ext_resource type="Texture2D" uid="uid://j6suh8g17y40" path="res://asset/npc/usedportraits/Bandit Queen.png" id="32_jrl78"]
+[ext_resource type="Texture2D" uid="uid://dtkh37celurgn" path="res://asset/UI/6-Photoroom.png" id="34_jrl78"]
 [ext_resource type="VideoStream" uid="uid://ysu834o6bfb" path="res://asset/video/Ending Cutscene2.ogv" id="36_ivhdv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o21j7"]
@@ -1270,6 +1271,14 @@ offset_right = 1076.0
 offset_bottom = 799.0
 stream = ExtResource("36_ivhdv")
 expand = true
+
+[node name="Artifact" type="TextureRect" parent="."]
+visible = false
+offset_left = 260.0
+offset_top = 75.0
+offset_right = 835.0
+offset_bottom = 728.0
+texture = ExtResource("34_jrl78")
 
 [connection signal="pressed" from="Number_Button/num_row_123/one" to="." method="_on_one_pressed"]
 [connection signal="pressed" from="Number_Button/num_row_123/two" to="." method="_on_two_pressed"]

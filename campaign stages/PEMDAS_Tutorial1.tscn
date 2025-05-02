@@ -1,4 +1,4 @@
-[gd_scene load_steps=124 format=3 uid="uid://mjkha8k8mm2a"]
+[gd_scene load_steps=125 format=3 uid="uid://mjkha8k8mm2a"]
 
 [ext_resource type="Script" uid="uid://qgs5yvqkiduf" path="res://campaign stages/pemdas_tutorial_1.gd" id="1_xaewc"]
 [ext_resource type="Texture2D" uid="uid://dox6s2pdaah6p" path="res://asset/art/Gray.png" id="2_og8n5"]
@@ -35,6 +35,7 @@
 [ext_resource type="Texture2D" uid="uid://ck1pav623hht3" path="res://asset/npc/usedportraits/Mathie1real.png" id="33_og8n5"]
 [ext_resource type="Texture2D" uid="uid://dw23hg8f1lj2o" path="res://asset/npc/usedportraits/Aricreal.png" id="34_og8n5"]
 [ext_resource type="Texture2D" uid="uid://besmsndlfjq0v" path="res://asset/npc/usedportraits/old_wizard1.png" id="35_r6ow3"]
+[ext_resource type="Texture2D" uid="uid://cnom1ooy318di" path="res://asset/UI/7-Photoroom.png" id="36_r6ow3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o21j7"]
 atlas = ExtResource("20_dyph8")
@@ -1086,6 +1087,14 @@ libraries = {
 [node name="TypewriterTimer" type="Timer" parent="."]
 wait_time = 0.03
 one_shot = true
+
+[node name="Artifact" type="TextureRect" parent="."]
+visible = false
+offset_left = 260.0
+offset_top = 75.0
+offset_right = 835.0
+offset_bottom = 728.0
+texture = ExtResource("36_r6ow3")
 
 [connection signal="pressed" from="Number_Button/num_row_123/one" to="." method="_on_one_pressed"]
 [connection signal="pressed" from="Number_Button/num_row_123/two" to="." method="_on_two_pressed"]

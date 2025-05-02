@@ -1,4 +1,4 @@
-[gd_scene load_steps=118 format=3 uid="uid://261hvorkyq2n"]
+[gd_scene load_steps=119 format=3 uid="uid://261hvorkyq2n"]
 
 [ext_resource type="Script" uid="uid://byn7t80ih0cgq" path="res://campaign stages/addition_tutorial.gd" id="1_vecps"]
 [ext_resource type="Texture2D" uid="uid://dox6s2pdaah6p" path="res://asset/art/Gray.png" id="2_qpcii"]
@@ -35,6 +35,7 @@
 [ext_resource type="Texture2D" uid="uid://ck1pav623hht3" path="res://asset/npc/usedportraits/Mathie1real.png" id="33_2r4is"]
 [ext_resource type="Texture2D" uid="uid://dw23hg8f1lj2o" path="res://asset/npc/usedportraits/Aricreal.png" id="34_ho0xa"]
 [ext_resource type="VideoStream" uid="uid://bckvgemykb1tg" path="res://asset/video/Untitled-video-Made-with-Clipchamp-RESIZE-Videobolt.net.ogv" id="36_2r4is"]
+[ext_resource type="Texture2D" uid="uid://bvqxd44ykgtry" path="res://asset/UI/2-Photoroom.png" id="36_hax5k"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o21j7"]
 atlas = ExtResource("29_e1vrr")
@@ -1054,6 +1055,14 @@ offset_right = 1076.0
 offset_bottom = 799.0
 stream = ExtResource("36_2r4is")
 expand = true
+
+[node name="Artifact" type="TextureRect" parent="."]
+visible = false
+offset_left = 260.0
+offset_top = 75.0
+offset_right = 835.0
+offset_bottom = 728.0
+texture = ExtResource("36_hax5k")
 
 [connection signal="pressed" from="Number_Button/num_row_123/one" to="." method="_on_one_pressed"]
 [connection signal="pressed" from="Number_Button/num_row_123/two" to="." method="_on_two_pressed"]
