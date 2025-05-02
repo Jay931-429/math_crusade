@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Math_Crusade"
 run/main_scene="res://main_menu.tscn"
-config/features=PackedStringArray("4.4", "C#", "Mobile")
+config/features=PackedStringArray("4.4", "Mobile")
 boot_splash/show_image=false
 boot_splash/fullsize=false
 boot_splash/use_filter=false
@@ -33,7 +33,7 @@ window/size/viewport_height=1920
 window/size/window_width_override=400
 window/size/window_height_override=1000
 window/stretch/mode="viewport"
-window/stretch/scale_mode="integer"
+window/stretch/aspect="ignore"
 window/handheld/orientation=1
 
 [dotnet]

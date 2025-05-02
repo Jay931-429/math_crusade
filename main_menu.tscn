@@ -1,15 +1,15 @@
 [gd_scene load_steps=8 format=3 uid="uid://3wuq87vlgd5x"]
 
-[ext_resource type="Script" uid="uid://dg62pb35tqw3v" path="res://main_menu.gd" id="1_88mwd"]
+[ext_resource type="Script" uid="uid://bdtlvq2vv44kq" path="res://main_menu.gd" id="1_88mwd"]
 [ext_resource type="Texture2D" uid="uid://kfsblnp7h3a6" path="res://asset/art/new_bg.png1.png" id="2_qe12f"]
-[ext_resource type="Texture2D" uid="uid://d2qkkta6ygxix" path="res://asset/Math UI/Start.png" id="3_qe12f"]
-[ext_resource type="Texture2D" uid="uid://biwjcc4ujrbmy" path="res://asset/Math UI/Exit.png" id="4_8qtwp"]
-[ext_resource type="Texture2D" uid="uid://bqndwfem45am6" path="res://asset/Math UI/Settings.png" id="5_dy7ct"]
+[ext_resource type="Texture2D" uid="uid://bfml8ivoc7tvb" path="res://asset/UI/Start.png" id="3_qe12f"]
+[ext_resource type="Texture2D" uid="uid://um41fbxwush" path="res://asset/UI/Exit.png" id="4_8qtwp"]
+[ext_resource type="Texture2D" uid="uid://xl14v81v1kve" path="res://asset/UI/Settings.png" id="5_qe12f"]
+[ext_resource type="Texture2D" uid="uid://c2ysb5bjbqsgp" path="res://asset/UI/Title.png" id="6_dy7ct"]
 [ext_resource type="Texture2D" uid="uid://csvpcklwpvxl2" path="res://asset/UI/Info.png" id="6_qe12f"]
-[ext_resource type="Texture2D" uid="uid://b07cxxbf0rhv3" path="res://asset/Math UI/Title.png" id="7_0o4t1"]
 
 [node name="MainMenu" type="Node2D"]
-position = Vector2(601, 1014)
+position = Vector2(567, 1011)
 metadata/_edit_group_ = true
 
 [node name="UI Main_Menu" type="CanvasLayer" parent="."]
@@ -79,9 +79,9 @@ anchor_left = 8.035
 anchor_top = 15.871
 anchor_right = 8.035
 anchor_bottom = 15.871
-offset_left = -253.31
+offset_left = -388.31
 offset_top = 95.025
-offset_right = 412.69
+offset_right = 277.89
 offset_bottom = 426.025
 grow_horizontal = 2
 grow_vertical = 2
@@ -90,26 +90,31 @@ alignment = 1
 
 [node name="Settings" type="Button" parent="UI Main_Menu/Main Menu/Info_Music"]
 layout_mode = 2
-icon = ExtResource("5_dy7ct")
-flat = true
-
-[node name="Credits" type="Button" parent="UI Main_Menu/Main Menu/Info_Music"]
-layout_mode = 2
-action_mode = 0
-icon = ExtResource("6_qe12f")
+icon = ExtResource("5_qe12f")
 flat = true
 
 [node name="TextureRect" type="TextureRect" parent="UI Main_Menu/Main Menu"]
 layout_direction = 1
 layout_mode = 2
-offset_left = -528.625
+offset_left = -515.045
 offset_top = -580.985
-offset_right = 571.375
+offset_right = 584.955
 offset_bottom = -80.47
-texture = ExtResource("7_0o4t1")
+texture = ExtResource("6_dy7ct")
 metadata/_edit_group_ = true
+
+[node name="Credits" type="Button" parent="UI Main_Menu/Main Menu"]
+layout_mode = 2
+offset_left = 309.0
+offset_top = 631.0
+offset_right = 550.0
+offset_bottom = 1003.0
+scale = Vector2(1.15, 1.15)
+action_mode = 0
+icon = ExtResource("6_qe12f")
+flat = true
 
 [connection signal="pressed" from="UI Main_Menu/Main Menu/Main_Menu_UI/Start" to="UI Main_Menu/Main Menu" method="_on_start_pressed"]
 [connection signal="pressed" from="UI Main_Menu/Main Menu/Main_Menu_UI/Exit" to="UI Main_Menu/Main Menu" method="_on_exit_pressed"]
 [connection signal="pressed" from="UI Main_Menu/Main Menu/Info_Music/Settings" to="UI Main_Menu/Main Menu" method="_on_settings_pressed"]
-[connection signal="pressed" from="UI Main_Menu/Main Menu/Info_Music/Credits" to="UI Main_Menu/Main Menu" method="_on_credits_pressed"]
+[connection signal="pressed" from="UI Main_Menu/Main Menu/Credits" to="UI Main_Menu/Main Menu" method="_on_credits_pressed"]
