@@ -55,7 +55,7 @@ func setup_ui() -> void:
 		setup_stars()
 	else:
 		if GameData.player_survived_but_failed:
-			result_label.text = "You Survived...\nBut Didn't Pass"
+			result_label.text = "Too Close.."
 		else:
 			result_label.text = "Game Over"
 
