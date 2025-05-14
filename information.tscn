@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://talictwt8sxo"]
 
-[ext_resource type="Script" uid="uid://broxwcnr73uy7" path="res://information.gd" id="1_gyy28"]
+[ext_resource type="Script" uid="uid://v6cd3d83eg18" path="res://information.gd" id="1_gyy28"]
 [ext_resource type="Texture2D" uid="uid://b4mftjq5u8te6" path="res://asset/art/mainbg.webp" id="2_jaie5"]
 [ext_resource type="Texture2D" uid="uid://b5c62fsc3wbw4" path="res://asset/UI/Back.png" id="3_k51pg"]
 
@@ -12,19 +12,23 @@ script = ExtResource("1_gyy28")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Main_Menu_BG" type="TextureRect" parent="CanvasLayer"]
-modulate = Color(0.41, 0.41, 0.41, 1)
+modulate = Color(0.21, 0.21, 0.21, 1)
 offset_right = 1080.0
 offset_bottom = 1920.0
 texture = ExtResource("2_jaie5")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
 
 [node name="back" type="Button" parent="CanvasLayer"]
 offset_left = 70.0
-offset_top = 1558.0
+offset_top = 1700.0
 offset_right = 402.0
-offset_bottom = 1889.0
+offset_bottom = 2031.0
 scale = Vector2(0.5, 0.5)
 size_flags_vertical = 8
 icon = ExtResource("3_k51pg")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
 
 [node name="Backbutton" type="HBoxContainer" parent="CanvasLayer"]
 anchors_preset = -1
@@ -41,6 +45,8 @@ grow_vertical = 2
 scale = Vector2(3, 3)
 size_flags_horizontal = 0
 size_flags_vertical = 4
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
 
 [node name="Credits" type="VBoxContainer" parent="CanvasLayer"]
 anchors_preset = 8
@@ -54,31 +60,137 @@ offset_right = 383.0
 offset_bottom = 599.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
 
 [node name="Button" type="Button" parent="CanvasLayer"]
 offset_right = 8.0
 offset_bottom = 8.0
 icon = SubResource("CanvasTexture_ae3w0")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
 
-[node name="Credits Placeholder" type="Label" parent="CanvasLayer"]
-offset_left = 99.0
-offset_top = 562.0
-offset_right = 976.0
-offset_bottom = 1259.0
-theme_override_font_sizes/font_size = 50
-text = "Math Crusade: A PEMDAS Based Math Game
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+offset_left = 92.0
+offset_top = 182.0
+offset_right = 1016.0
+offset_bottom = 1651.0
+theme_override_font_sizes/mono_font_size = 80
+theme_override_font_sizes/normal_font_size = 80
+theme_override_font_sizes/bold_font_size = 80
+bbcode_enabled = true
+text = "[color=goldenrod][font_size={140}]Math Crusade:[/font_size][/color]
+[color=goldenrod][font_size={100}]A PEMDAS Based Math Game[/font_size][/color]
 
-Developed by: Team Arasaka - BSIT-4A
-Developers: 
+
+[color=goldenrod]Developed by:[/color]
+
+[font_size={80}]Team Arasaka BSIT-4A[/font_size]
+
+[font_size={80}]UNIVERSITY OF SAN AGUSTIN[/font_size]
+
+[font_size={70}]BS IN INFORMATION TECHNOLOGY[/font_size]
 
 
-Music Credits:
+[color=goldenrod]Developers: [/color]
 
-Track: Zachz Winner - blu [NCS Release]
-Music provided by NoCopyrightSounds.
-Watch more NCS on YouTube: 
-https://ncs.lnk.to/YouTubeAT
-Free Download / Stream: http://ncs.io/blu
+Lopez - QuaSunt
+leonor - 1nsanitee
+colada- Inquisitor_7245
+Jadulos - ice_ice.baby
+
+
+[color=goldenrod]Credits[/color]
+
+[color=goldenrod]SPECIAL THANKS TO THESE CREATORS/ARTISTS[/color]
+
+
+[color=goldenrod]SPRITES[/color]
+
+LuizMelo
+CraftPix
+Otsoga
+SanctumPixel 
+two-orcs
+Cogabushi
+JumpButton
+Dreamir
+Mattz Art
+chierit
+Jobanni
+Clembod
+jchristopherclaybrooks
+
+
+[color=goldenrod]MUSIC[/color] 
+
+[left]Track: Final Boss[/left]
+[left]By: ayitzmatt[/left]
+
+[left]Track: The Wild New World[/left]
+[left]By: ayitzmatt[/left]
+
+[left]Track: Desert Battle[/left]
+[left]By: ayitzmatt[/left]
+
+[left]Track: Forest Battle[/left]
+[left]By: ayitzmat[/left]
+
+[left]Track: Zachz Winner - blu [NCS Release][/left]
+[left]Music provided by NoCopyrightSounds.[/left]
+[left]Watch more NCS on YouTube: https://ncs.lnk.to/YouTubeAT[/left]
+[left]Free Download / Stream: http://ncs.io/blu[/left]
+
+[left]Track: Zachz Winner, Фрози, Joyful - Boogie[/left]
+[left]Music provided by NoCopyrightSounds.[/left]
+[left]Watch more NCS on YouTube: https://ncs.lnk.to/Boogie/YouTubeAT[/left]
+[left]Free Download / Stream: http://ncs.io/Boogie[/left]
+
+
+[color=goldenrod]BACKGROUND[/color]
+CraftPix
+Pixfinity
+David G
+two-orcs
+Free Game Assets (GUI, Sprite, Tilesets)
+
+[color=goldenrod]UI-GUI[/color]
+
+Friendlycosmonaut
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 "
+autowrap_mode = 1
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
 
 [connection signal="pressed" from="CanvasLayer/back" to="." method="_on_back_pressed"]
