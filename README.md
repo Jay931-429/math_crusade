@@ -15,10 +15,10 @@ Math Crusade transforms learning PEMDAS (Parentheses, Exponents, Multiplication,
 
 
 # Team Members:
-Lopez\
-Leonor\
-Jadulos\
-Colada
+Lopez - Quasunt\
+Leonor - 1nsanitee\
+Jadulos - Iceicebabyboy\
+Colada - Jay931-429
 
 # Download Link
 https://1nsanityy.itch.io/math-crusade
