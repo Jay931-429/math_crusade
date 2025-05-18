@@ -1,7 +1,7 @@
 # Math Crusade
 A PEMDAS Based Math Game 
-Capstone Project of Students of University of San Agustin
-Bachelors of Science in Information Technology
+\nCapstone Project of Students of University of San Agustin
+\nBachelors of Science in Information Technology
 
 Team Members:
 
