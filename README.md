@@ -23,6 +23,12 @@ Colada - Jay931-429
 # Download Link
 https://1nsanityy.itch.io/math-crusade
 
+# Platform
+Android
+
+# Engine
+Godot 4.4
+
 # Gallery
 
 <div align="center">
