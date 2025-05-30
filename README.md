@@ -24,11 +24,13 @@ Colada - Jay931-429
 https://1nsanityy.itch.io/math-crusade
 
 # Gallery
+
 <div align="center">
-![36b8x5](https://github.com/user-attachments/assets/e65eb53d-9496-4c14-880b-a1c366660bc5)
-![VWLPhr](https://github.com/user-attachments/assets/dbed1907-feb0-4b8d-87f4-28688ece7c81)
-![kZFjpj](https://github.com/user-attachments/assets/dfd29a9b-bdeb-4679-80d0-f365594a82b3)
-![52O6Sc](https://github.com/user-attachments/assets/987fa5ee-ed76-41de-b1e4-0ca62c1c048c)
-![L2YnO9](https://github.com/user-attachments/assets/cf4864e0-58d4-4e0d-baf3-0edc175657b4)
-![R4OFoN](https://github.com/user-attachments/assets/0062e0c7-bac9-41c5-a79f-96983a9b188f)
+  <img src="https://github.com/user-attachments/assets/e65eb53d-9496-4c14-880b-a1c366660bc5" width="300" style="margin: 10px;" />
+  <img src="https://github.com/user-attachments/assets/dbed1907-feb0-4b8d-87f4-28688ece7c81" width="300" style="margin: 10px;" />
+  <img src="https://github.com/user-attachments/assets/dfd29a9b-bdeb-4679-80d0-f365594a82b3" width="300" style="margin: 10px;" />
+  <img src="https://github.com/user-attachments/assets/987fa5ee-ed76-41de-b1e4-0ca62c1c048c" width="300" style="margin: 10px;" />
+  <img src="https://github.com/user-attachments/assets/cf4864e0-58d4-4e0d-baf3-0edc175657b4" width="300" style="margin: 10px;" />
+  <img src="https://github.com/user-attachments/assets/0062e0c7-bac9-41c5-a79f-96983a9b188f" width="300" style="margin: 10px;" />
 </div>
+
