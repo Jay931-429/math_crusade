@@ -1,7 +1,7 @@
 # Math Crusade
 A PEMDAS Based Math Game
 
-A Capstone Project of Students of University of San Agustin\
+Capstone Project by Students of University of San Agustin\
 Bachelors of Science in Information Technology
 
 Math Crusade transforms learning PEMDAS (Parentheses, Exponents, Multiplication, Division, Addition, Subtraction) into an interactive monster-battling adventure. Each correct answer empowers you to vanquish foes, while incorrect answers challenge you to learn and try again with immediate feedback. This game is an Information Technology student project, born from a passion for education and technology, developed by a dedicated team aiming to create a supplementary tool that makes learning fundamental math skills more accessible and enjoyable for everyone. Our mission is to show that mastering math can be an exciting journey!
